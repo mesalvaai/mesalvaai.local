@@ -1,0 +1,671 @@
+.rangeslider,
+.rangeslider__fill {
+  display: block;.radio-primary
+  /*-moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);*/
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.rangeslider {
+  background: #e6e6e6;
+  position: relative;
+}
+
+.rangeslider--horizontal {
+  height: 13px;
+  width: 100%;
+}
+
+.rangeslider--vertical {
+  width: 20px;
+  min-height: 150px;
+  max-height: 100%;
+}
+
+.rangeslider--disabled {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  opacity: 0.4;
+}
+
+.rangeslider__fill {
+  background: #ffb401;
+  position: absolute;
+}
+.rangeslider--horizontal .rangeslider__fill {
+  top: 0;
+  height: 100%;
+}
+.rangeslider--vertical .rangeslider__fill {
+  bottom: 0;
+  width: 100%;
+}
+
+.rangeslider__handle {
+  background: transparent;
+  border: 3px solid #ffb401;
+  cursor: pointer;
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  position: absolute;
+/*  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4xIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(0, 0, 0, 0.1)));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1));
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1));
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);*/
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.rangeslider__handle:after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #ffb401;
+  /*background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjEzIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.13)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.13), rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.13), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.13), rgba(255, 255, 255, 0));*/
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.rangeslider__handle:active {
+  /*background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4xMiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.1)), color-stop(100%, rgba(0, 0, 0, 0.12)));
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.12));
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.12));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.12));*/
+  background-color: transparent;
+}
+.rangeslider--horizontal .rangeslider__handle {
+  top: -15px;
+  touch-action: pan-y;
+  -ms-touch-action: pan-y;
+}
+.rangeslider--vertical .rangeslider__handle {
+  left: -10px;
+  touch-action: pan-x;
+  -ms-touch-action: pan-x;
+}
+
+input[type="range"]:focus + .rangeslider .rangeslider__handle { -moz-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9); -webkit-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9); box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);}
+.range { display: inline; line-height: auto; }
+.dragdrop { cursor: move; width: 16px; height: 16px; position: absolute; top: 10px; left: 10px; max-width: 256px;max-height: 256px;background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3Ni43MzcgNDc2LjczNyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDc2LjczNyA0NzYuNzM3OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTQ3NS40OTgsMjMyLjI5OGwtMy40MDEtNS4xNDlsLTYzLjU2NS02My41NjVjLTYuMTk4LTYuMTk4LTE2LjMwNC02LjE5OC0yMi40NywwICAgIGMtNi4xOTgsNi4xOTgtNi4xOTgsMTYuMjczLDAsMjIuNDdsMzYuNDIzLDM2LjQyM0gyNTQuMjZWNTQuMjUzbDM2LjQyMywzNi40MjNjNi4xNjYsNi4xOTgsMTYuMjczLDYuMTk4LDIyLjQ3LDAgICAgYzYuMTY2LTYuMTk4LDYuMTY2LTE2LjI3MywwLTIyLjQ3TDI0OS41ODgsNC42NGwtMC4xNTktMC4wOTVsLTQuOTktMy4zMDVMMjM4LjM2OSwwaC0wLjA2NGwtNi4wMDcsMS4yNGwtNC45OSwzLjMwNWwtMC4xOTEsMC4wOTUgICAgbC02My41NjUsNjMuNTY1Yy02LjE5OCw2LjE5OC02LjE5OCwxNi4yNzMsMCwyMi40N3MxNi4yNzMsNi4xOTgsMjIuNDcsMGwzNi40NTUtMzYuNDIzdjE2OC4yMjVINTQuMjUzbDM2LjQyMy0zNi40MjMgICAgYzYuMTk4LTYuMTk4LDYuMTk4LTE2LjI3MywwLTIyLjQ3cy0xNi4yNzMtNi4xOTgtMjIuNDcsMEw0LjY0LDIyNy4xNDlsLTAuMDk1LDAuMTU5bC0zLjMwNSw0Ljk5TDAsMjM4LjM2OXYwLjA2NGwxLjI0LDYuMDA3ICAgIGwzLjMwNSw0Ljk1OGwwLjA5NSwwLjE5MWw2My41NjUsNjMuNTY1YzYuMTk4LDYuMTk4LDE2LjI3Myw2LjE5OCwyMi40NywwYzYuMTk4LTYuMTY2LDYuMTk4LTE2LjI3MywwLTIyLjQ3TDU0LjI1MywyNTQuMjYgICAgaDE2OC4yMjV2MTY4LjIyNWwtMzYuNDIzLTM2LjQyM2MtNi4xOTgtNi4xNjYtMTYuMjczLTYuMTY2LTIyLjQ3LDBjLTYuMTk4LDYuMTk4LTYuMTk4LDE2LjMwNCwwLDIyLjQ3bDYzLjU2NSw2My41NjVsNS4xNDksMy40MzIgICAgbDYuMDA3LDEuMjA4aDAuMDY0bDYuMDctMS4yNGw1LjE0OS0zLjQwMWw2My41NjUtNjMuNTY1YzYuMTY2LTYuMTk4LDYuMTY2LTE2LjMwNCwwLTIyLjQ3Yy02LjE5OC02LjE5OC0xNi4zMDQtNi4xOTgtMjIuNDcsMCAgICBsLTM2LjQyMywzNi40MjNWMjU0LjI2aDE2OC4yMjVsLTM2LjQyMywzNi40MjNjLTYuMTY2LDYuMTY2LTYuMTY2LDE2LjI3MywwLDIyLjQ3YzYuMTk4LDYuMTY2LDE2LjMwNCw2LjE2NiwyMi40NywwICAgIGw2My41NjUtNjMuNTY1bDMuNDMyLTUuMTQ5bDEuMjA4LTYuMDA3di0wLjA2NEw0NzUuNDk4LDIzMi4yOTh6IiBmaWxsPSIjRkZGRkZGIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==);}
+.draggable { background: #fff; }
+.draggable.is-pointer-down { opacity: 0.2; }
+.draggable.is-dragging { opacity: 0.7; }
+.simulator { position: absolute; z-index: 50; }
+
+
+.radioSimulator {
+    padding-left: 20px; }
+.radioSimulator label {
+    display: inline-block;
+    position: relative;
+    padding-left: 3px;
+     margin-bottom: 0;
+   }
+.radioSimulator label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 0;
+    top:2px;
+    margin-left: -20px;
+    border: 1px solid #cccccc;
+    border-radius: 50%;
+    background-color:#666 #fff;
+    -webkit-transition: border 0.15s ease-in-out;
+    -o-transition: border 0.15s ease-in-out;
+    transition: border 0.15s ease-in-out; }
+.radioSimulator label::after {
+    display: inline-block;
+    position: absolute;
+    content: " ";
+    width: 11px;
+    height: 11px;
+    left: 3px;
+    top: 5px;
+    margin-left: -20px;
+    border-radius: 50%;
+    background-color: #555555;
+    -webkit-transform: scale(0, 0);
+    -ms-transform: sca#666le(0, 0);
+    -o-transform: scale(0, 0);
+    transform: scale(0, 0);
+    -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33); }
+.radioSimulator input[type="radio"] {
+    opacity: 0; }
+.radioSimulator input[type="radio"]:focus + label::before {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+.radioSimulator input[type="radio"]:checked + label::after {
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -o-transform: scal#666e(1, 1);
+    transform: scale(1, 1); }
+.radioSimulator input[type="radio"]:disabled + label {
+    opacity: 0.65; }
+.radioSimulator input[type="radio"]:disabled + label::before {
+    cursor: not-allowed; }
+.radio.radio-inline {
+    margin-top: 0; }
+
+.radio-primarySimulator input[type="radio"] + label::after {
+    background-color: #ffb401; }
+.radio-primarySimulator input[type="radio"]:checked + label::before {
+    border-color: #ffb401; }
+.radio-primarySimulator input[type="radio"]:checked + label::after {
+    background-color: #ffb401; }
+
+.radio-danger input[type="radio"] + label::after {
+    background-color: #d9534f; }
+.radio-danger input[type="radio"]:checked + label::before {
+    border-color: #d9534f; }
+.radio-danger input[type="radio"]:checked + label::after {
+    background-color: #d9534f; }
+
+.radio-info input[type="radio"] + label::after {
+    background-color: #5bc0de; }
+.radio-info input[type="radio"]:checked + label::before {
+    border-color: #5bc0de; }
+.radio-info input[type="radio"]:checked + label::after {
+    background-color: #5bc0de; }
+
+.radio-warning input[type="radio"] + label::after {
+    background-color: #f0ad4e; }
+.radio-warning input[type="radio"]:checked + label::before {
+    border-color: #f0ad4e; }
+.radio-warning input[type="radio"]:checked + label::after {
+    background-color: #f0ad4e; }
+
+.radio-success input[type="radio"] + label::after {
+    background-color: #5cb85c; }
+.radio-success input[type="radio"]:checked + label::before {
+    border-color: #5cb85c; }
+.radio-success input[type="radio"]:checked + label::after {
+    background-color: #5cb85c; }
+
+.cashback .row text-Onecash {  }
+.cashback .row text-Twocash {  }
+.cashback .row text-Threecash {  }
+
+/* Classes do Simulador - Início */
+.box-Simulator { background-color: transparent; width: 100%; z-index: 5; border: 0 none; }
+.box-Simulator ul { list-style: none; padding: 0; margin: 15px 25px 30px;}
+.box-Simulator ul li { padding-top: 0; display: table; width:100%;  color:#fff; font-weight: normal; text-align: center; }
+.box-Simulator ul li .btColor { background-color: #ffb401 !important; border: 2px solid #ffb401 !important; border-radius: 2em; color: #fff !important; font-size: 15px; font-weight: 600 !important; margin:0 auto; padding: 9px 25px;  text-align: center; text-transform: uppercase; }
+.box-Simulator ul li .btColor:hover { background-color: #fff !important; border: 2px solid #ffb401 !important; color: #ffb401 !important; }
+.box-Simulator .doubleLine { margin: 15px 0 13px; border-top: 1px solid #e7ebee; width: auto; height: 1px; }
+.box-Simulator h3.titleSimulador { font-family: Arial; color: #525350; text-align: center; width: auto; display: block; font-size: 11px; margin: 0 0 0 28px; text-align: left; text-transform: uppercase;}
+.box-Simulator h4.titleSimulador { font-family: Arial; color: #525350; text-align: center; width: auto; display: block; font-size: 11px; margin: 10px 0 10px 28px; text-align: left; text-transform: uppercase;}
+.box-Simulator .proposalSimulator { -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; width: 96%; background-color: #fff; border: 1px solid #dfe1e4; margin: 0 auto; text-align: center; padding: 5px 0 5px 5px; }
+.box-Simulator .proposalSimulator li { text-align: left; font-family: Arial; color: #333;  }
+.box-Simulator .proposalSimulator .radio label,  .box-Simulator .proposalSimulator .checkbox label { line-height: 12px; color: #2F2C32; font-size: 9px; margin:5px auto; text-align: justify; width: 96%; font-family:"Lato",Arial;  }
+.box-Simulator .informe { line-height: 12px; color: #2F2C32; font-size: 9px; margin:0 auto; text-align: justify; width: 96%; font-family:"Lato",Arial;  }
+.box-Simulator span.box-OnlySP { border: 1px dotted #ffb401; color: #ffb401; display: block; font-size: 11px; margin: 0 0 3px; padding: 3px 0; text-align: center; }
+.box-Simulator span.box-OnlySP strong { display: block; margin: 0 0 4px; text-transform: uppercase;}
+.box-Simulator .titleBox { margin-bottom: 10px;padding: 10px 0 10px 15px; text-align: left; background: rgba(0, 0, 0, 0) linear-gradient(-45deg, #ffb401 0%, #ffb401 100%) repeat scroll 0 0; font-weight: bold; text-transform: uppercase; color: #fff; }
+.box-Simulator .titleBox img { width: 78px; height: 100%; }
+.box-Simulator .titleBox b { display: block; font-size: 13px; font-weight: normal; text-transform: normal; color: #fff; text-transform: none; }
+.box-Simulator .subtitleBox { background: rgba(0, 0, 0, 0) linear-gradient(-45deg, #ffb401 0%, #ffb401 100%) repeat scroll 0 0; font-weight: bold; text-transform: uppercase; color: #fff; text-align: center }
+.box-Simulator .btnSimulator { font-size: 12px; padding: 5px 0; text-transform: uppercase; font-weight: bold; text-decoration: none; background-color: #ffb401; border: 2px solid #ffb401; color: #fff; display: block; text-align: center; width: 96%; }
+.box-Simulator .btnSimulator:hover { background-color: #fff; border: 2px solid #ffb401; color: #ffb401;  }
+/* Classes do Simulador - Fim */
+
+/*Formata Botoes Radio do Simulador - INÍCIO*/
+
+.funkyradio { margin: 0 auto; text-align: center;}
+.funkyradio div { clear: both; display: inline-table; overflow: hidden; text-align: left; margin-bottom: 3px; }
+.funkyradio label { width: 100%; border: 1px solid #D1D3D4; font-weight: normal; font-size: 11px;}
+
+.funkyradio input[type="radio"]:empty,
+.funkyradio input[type="checkbox"]:empty {
+  display: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label,
+.funkyradio input[type="checkbox"]:empty ~ label {
+  position: relative;
+  line-height: 2.5em;
+  text-indent: 2.1em;
+  margin: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label:before,
+.funkyradio input[type="checkbox"]:empty ~ label:before {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 1.5em;
+  background: #fff;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label,
+.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
+  color: #888;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,
+.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
+  content: '\2714';
+  text-indent: .7em;
+  color: #77C4B3;
+}
+
+.funkyradio input[type="radio"]:checked ~ label,
+.funkyradio input[type="checkbox"]:checked ~ label {
+    background-color: #EAEAEA;
+    color: #2F2C32;
+    font-weight: bold;
+}
+
+.funkyradio input[type="radio"]:checked ~ label:before,
+.funkyradio input[type="checkbox"]:checked ~ label:before {
+  content: '\2714';
+  text-indent: .7em;
+  color: #333;
+  background-color: #ccc;
+}
+
+.funkyradio input[type="radio"]:focus ~ label:before,
+.funkyradio input[type="checkbox"]:focus ~ label:before {
+  box-shadow: 0 0 0 3px #999;
+}
+
+.funkyradio-default input[type="radio"]:checked ~ label:before,
+.funkyradio-default input[type="checkbox"]:checked ~ label:before {
+  color: #333;
+  background-color: #ccc;
+}
+
+.funkyradio-primary input[type="radio"]:checked ~ label:before,
+.funkyradio-primary input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #337ab7;
+}
+
+.funkyradio-success input[type="radio"]:checked ~ label:before,
+.funkyradio-success input[type="checkbox"]:checked ~ label:before {
+  color: #ffb401;
+  background-color: #EAEAEA;
+}
+
+.funkyradio-danger input[type="radio"]:checked ~ label:before,
+.funkyradio-danger input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #d9534f;
+}
+
+.funkyradio-warning input[type="radio"]:checked ~ label:before,
+.funkyradio-warning input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #f0ad4e;
+}
+
+.funkyradio-info input[type="radio"]:checked ~ label:before,
+.funkyradio-info input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #5bc0de;
+}
+/*Formata Botoes Radio do Simulador - FIM*/
+
+
+.box-taxBox { font-weight: bold; background-color: #77c4b3; color: #fff; font-size: 11px; line-height: 15px; margin-bottom: 10px; padding: 4px 0 5px; text-align: center; text-transform: uppercase; }
+.box-taxBox b { margin: 0 5px; text-transform: none; }
+
+
+/* Iphone 3/3g - 4/4s - 5/5s + Nokia Lumia */
+@media screen and (min-width: 320px) {
+  .simulator { width: 100%; top: 35px; left: 0; }
+  .range { padding-top: 7px; }
+  .box-Simulator .proposalSimulator li { font-size: 12px; padding:4px 10px; width: 100%; display: inline-block; }
+  .rangeslider--horizontal { margin: 15px 0 5px; }
+  .box-Simulator .proposalSimulator { line-height: 21px }
+  .dragdrop, .go-down { display: none; }
+  .box-Simulator .informe { display: block; }
+  header.masthead h1 { font-size: 55px; }
+  .tp-simpleresponsive ul { display: none !important }
+  .box-LogoTopo { display: none }
+  .funkyradio { width: 98%; }
+  .funkyradio-success label {padding: 5px 0 5px 5px; font-size: 11px;}
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .funkyradio-success input[type="radio"]:checked ~ label:before, .funkyradio-success input[type="checkbox"]:checked ~ label:before {left: 2px;top: 6px;}
+  .box-Simulator .btnSimulator { margin: 5px auto 5px; padding: 10px;}
+  .box-Simulator h3.titleSimulador {margin: 15px 0 0 28px;}
+  .box-Simulator h4.titleSimulador {margin: 15px 0 10px 28px;}
+  .box-Simulator .informe { display: block; margin: 5px auto; }
+  .box-Simulator ul li { font-size: 27px; }
+}
+
+/* Galaxy S3/S4/S5/S6 + BlackBerry Z30 + Galaxy Note2/3 + Nexus 5 */
+@media screen and (min-width: 360px) {
+  .simulator { width: 100%; top: 35px; left: 0; }
+  .range { padding-top: 7px; }
+  .box-Simulator .proposalSimulator li { font-size: 14px; padding: 4px 10px; width: 100%; display: inline-block; }
+  .rangeslider--horizontal { margin: 15px 0 25px; }
+  .box-Simulator .proposalSimulator { line-height: 20px }
+  .dragdrop, .go-down { display: none; }
+  header.masthead h1 { font-size: 55px; }
+  .tp-simpleresponsive ul { display: none !important }
+  .box-LogoTopo { display: none }
+  .box-Simulator ul li { font-size: 27px; }
+}
+
+/* Iphone 6 + LG Optimun + Nexus 4 + Nokia N9 */
+@media screen and (min-width: 375px) {
+  .simulator { width: 100%; top: 35px; left: 0; }
+  .range { padding-top: 7px; }
+  .box-Simulator .proposalSimulator li { font-size: 14px; padding:4px 10px; width: 100%; display: inline-block; }
+  .rangeslider--horizontal { margin: 25px 0 25px; }
+  .box-Simulator .proposalSimulator { line-height: 25px }
+  .dragdrop, .go-down { display: none; }
+  .box-Simulator .informe { display: block; }
+  header.masthead h1 { font-size: 55px; }
+  .tp-simpleresponsive ul { display: none !important }
+  .box-LogoTopo { display: none }
+  .funkyradio { width: 98%; }
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .box-Simulator h3.titleSimulador {margin: 25px 0 0 28px;}
+  .box-Simulator ul li { font-size: 27px; }
+}
+
+/* Iphone 6Plus + Nexus 5X + Nexus 6 */
+@media screen and (min-width: 412px) {
+  .simulator { width: 100%; top: 35px; left: 0; }
+  .range { padding-top: 7px; }
+  .box-Simulator .proposalSimulator li { font-size: 14px; padding:4px 10px; width: 100%; display: inline-block; }
+  .rangeslider--horizontal { margin: 20px 0 25px; }
+  .box-Simulator .proposalSimulator { line-height: 26px }
+  .dragdrop, .go-down { display: none; }
+  .box-Simulator .informe { display: block; }
+  header.masthead h1 { font-size: 55px; }
+  .tp-simpleresponsive ul { display: none !important }
+  .box-LogoTopo { display: none }
+  .funkyradio { width: 98%; }
+  .funkyradio-success label { margin-top: 2px; margin-bottom: 2px; padding: 6px 0 6px 6px; font-size: 13px;}
+  .funkyradio div:nth-child(odd) { margin-top: 2px; margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-top: 2px; margin-right: 0; width: 48%; }
+  .funkyradio-success input[type="radio"]:checked ~ label:before, .funkyradio-success input[type="checkbox"]:checked ~ label:before {left: 2px;top: 6px;}
+  .box-Simulator .btnSimulator { margin: 10px auto 10px; padding: 10px;}
+  .box-Simulator h3.titleSimulador {margin: 25px 0 0 28px;}
+  .box-Simulator h4.titleSimulador {margin: 25px 0 10px 28px;}
+  .box-Simulator .informe { display: block; margin: 15px auto; }
+  .box-Simulator ul li { font-size: 27px; }
+}
+
+/* Nexus 6 ... */
+@media screen and (min-width: 435px) {
+  .simulator { width: 100%; top: 35px; left: 0; }
+  .range { padding-top: 7px; }
+  .box-Simulator .proposalSimulator li { font-size: 14px; padding:4px 10px; width: 100%; display: inline-block; }
+  .rangeslider--horizontal { margin: 25px 0 25px; }
+  .box-Simulator .proposalSimulator { line-height: 28px }
+  .dragdrop, .go-down { display: none; }
+  .box-Simulator .informe { display: block; }
+  header.masthead h1 { font-size: 55px; }
+  .tp-simpleresponsive ul { display: none !important }
+  .box-LogoTopo { display: none }
+  .funkyradio { width: 98%; }
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .box-Simulator ul li { font-size: 27px; }
+}
+
+/* Android Phones HTC, LG, Older Droids, Samsung styles ... */
+@media screen and (min-width: 480px) and (orientation:portrait) {
+  .simulator { width: 100%; top: 35px; left: 0; }
+  .range { padding-top: 7px; }
+  .box-Simulator .proposalSimulator li { font-size: 14px; padding: 4px 10px; width: 100%; display: inline-block; }
+  .rangeslider--horizontal { margin: 15px 0 25px; }
+  .box-Simulator .proposalSimulator { line-height: 22px }
+  .dragdrop, .go-down { display: none; }
+  .box-Simulator .informe { display: block; }
+  header.masthead h1 { font-size: 55px; }
+  .tp-simpleresponsive ul { display: none !important }
+  .box-LogoTopo { display: none }
+  .funkyradio { width: 98%; }
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .box-Simulator .btnSimulator { margin: 0 auto 3px; }
+  .box-Simulator ul li { font-size: 27px; }
+}
+
+/* Iphone 3/3g - 4/4s - 5/5s + Android Phones HTC, LG, Older Droids + Nokia Lumia ... */
+@media screen and (min-width: 480px) and (orientation:landscape) {
+  .simulator { width: 100%; top: 35px; left: 0; }
+  .range { padding-top: 7px; }
+  .box-Simulator .proposalSimulator li { font-size: 9px; padding: 0; width: 45%; display: inline-block; }
+  .rangeslider--horizontal { margin: 10px 0 25px; }
+  .box-Simulator .proposalSimulator { line-height: 22px }
+  .go-down, .dragdrop { display: none; }
+  header.masthead h1 { font-size: 55px; }
+  .tp-simpleresponsive ul { display: none !important }
+  .box-LogoTopo { display: none }
+  .funkyradio { width: 98%; }
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .box-Simulator .btnSimulator { margin: 10px auto 10px; padding: 10px;}
+  .box-Simulator ul li { font-size: 27px; }
+}
+
+/* BlackBerry Playbook + Nexus 7 */
+@media screen and (min-width: 600px) and (orientation:portrait) {
+  .simulator { width: 253px; top: 315px; left: 5px; }
+  .range { padding-top: 7px; }
+  .box-Simulator .proposalSimulator li { font-size: 12px; padding: 0 5px; width: 100%; display: inline-block; }
+  .rangeslider--horizontal { margin: 15px 0 25px; }
+  .box-Simulator .proposalSimulator { line-height: 22px }
+  .dragdrop, .go-down { display: block; }
+  .box-Simulator .informe { display: block; }
+  header.masthead h1 { font-size: 35px; }
+  .tp-simpleresponsive ul { display: block !important }
+  .box-LogoTopo { display: block }
+  .funkyradio { width: 98%; }
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .box-Simulator .btnSimulator { margin: 0 auto 3px; }
+  .box-Simulator ul li { font-size: 35px; }
+
+}
+
+/* Kindle Fire styles ... */
+@media screen and (min-width: 600px) and (orientation:landscape) {
+  .simulator { width: 100%; top: 35px; left: 0; }
+  .range { padding-top: 7px; }
+  .box-Simulator .proposalSimulator li { font-size: 12px; padding: 0 5px; width: 48%; display: inline-block; }
+  .rangeslider--horizontal { margin: 10px 0 25px; }
+  .box-Simulator .proposalSimulator { line-height: 22px }
+  .go-down, .box-Simulator .informe, .dragdrop { display: block; }
+  header.masthead h1 { font-size: 55px; }
+  .tp-simpleresponsive ul { display: block !important }
+  .box-LogoTopo { display: block }
+  .funkyradio { width: 390px; }
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .box-Simulator .btnSimulator { margin: 0 auto 3px; }
+  .box-Simulator ul li { font-size: 35px; }
+}
+
+/* Galaxy S3/S4/S5/S6 landscape + BlackBerry Z30 + Galaxy Note2/3 + LG Optimun + Nexus 4 + Nokia N9 */
+@media screen and (min-width: 640px) and (orientation:landscape) {
+  .simulator { width: 100%; top: 35px; left: 0; }
+  .range { padding-top: 7px; }
+  .box-Simulator .proposalSimulator li { font-size: 12px; padding: 0 5px; width: 48%; display: inline-block; }
+  .rangeslider--horizontal { margin: 10px 0 25px; }
+  .box-Simulator .proposalSimulator { line-height: 22px }
+  .go-down, .box-Simulator .informe { display: block; }
+  .dragdrop { display: none; }
+  header.masthead h1 { font-size: 55px; }
+  .tp-simpleresponsive ul { display: none !important }
+  .box-LogoTopo { display: none }
+  .funkyradio { width: 450px; }
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .box-Simulator .btnSimulator { margin: 0 auto 3px; }
+  .box-Simulator ul li { font-size: 35px; }
+}
+
+/* Nexus4 landscape ... */
+@media screen and (min-width: 640px) and (min-height: 384px) and (orientation:landscape) {
+  .box-Simulator .proposalSimulator { line-height: 30px }
+  header.masthead h1 { font-size: 55px; }
+  .box-LogoTopo { display: none }
+  .funkyradio { width: 450px; }
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .box-Simulator .btnSimulator { margin: 0 auto 3px; }
+  .box-Simulator ul li { font-size: 35px; }
+}
+
+/* Iphone 6 landscape + Galaxy S5 / S6 landscape ... */
+@media screen and (min-width: 667px) and (orientation:landscape) {
+  .simulator { width: 100%; top: 35px; left: 0; }
+  .range { padding-top: 7px; }
+  .box-Simulator .proposalSimulator li { font-size: 12px; padding: 0 5px; width: 48%; display: inline-block; }
+  header.masthead h1 { font-size: 55px; }
+  .tp-simpleresponsive ul { display: none !important }
+  .box-LogoTopo { display: none }
+  .funkyradio { width: 450px; }
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .box-Simulator .btnSimulator { margin: 0 auto 3px; }
+  .box-Simulator ul li { font-size: 35px; }
+}
+
+/* iPad + Ipad mini +  + Nexus 10 ... */
+@media screen and (min-width: 732px) and (orientation:portrait) {
+  .simulator { width: 300px; top: 275px; left: 25px; }
+  .range { padding-top: 7px; }
+  .box-Simulator .proposalSimulator li { font-size: 12px; padding: 0 5px; width: 100%; display: inline-block; }
+  .rangeslider--horizontal { margin: 15px 0 25px; }
+  .box-Simulator .proposalSimulator { line-height: 22px }
+  .dragdrop, .go-down { display: block; }
+  .box-Simulator .informe { display: block; }
+  header.masthead h1 { font-size: 45px; }
+  .tp-simpleresponsive ul { display: block !important }
+  .box-LogoTopo { display: none }
+  .funkyradio { width: 390px; }
+  .funkyradio div:nth-child(odd) { margin-top: 0; margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-top: 0; margin-right: 0; width: 48%; }
+  .box-Simulator .btnSimulator { margin: 0 auto 3px; }
+  .funkyradio-success label {padding: 0;}
+  .box-Simulator h3.titleSimulador {margin: 0 0 0 28px; }
+  .funkyradio-success input[type="radio"]:checked ~ label:before, .funkyradio-success input[type="checkbox"]:checked ~ label:before {top: 0;}
+  .box-Simulator .btnSimulator { padding: 5px 0;}
+  .box-Simulator .informe {padding-bottom: 15px;}
+  .box-Simulator ul li { font-size: 35px; }
+}
+
+/* Iphone6Plus landscape + Iphone6 landscape + Nexus 6 */
+@media screen and (min-width: 732px) and (orientation:20landscape) {
+  .simulator { width: 100%; top: 35px; left: 0; }
+  .range { padding-top: 7px; }
+  .box-Simulator .proposalSimulator li { font-size: 12px; padding: 0 5px; width: 48%; display: inline-block; }
+  .box-Simulator .informe { display: block; }
+  header.masthead h1 { font-size: 55px; }
+  .tp-simpleresponsive ul { display: block !important }
+  .box-LogoTopo { display: block }
+  .funkyradio { width: 500px; }
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .box-Simulator .btnSimulator { margin: 0 auto 3px; }
+  .funkyradio-success label {padding: 0;}
+  .box-Simulator h3.titleSimulador {margin: 0 0 0 28px; }
+  .funkyradio-success input[type="radio"]:checked ~ label:before, .funkyradio-success input[type="checkbox"]:checked ~ label:before {top: 0;}
+  .box-Simulator .btnSimulator { padding: 5px 0; margin: 0 0;}
+  .box-Simulator .informe {margin: 0 auto; padding-bottom: 15px;}
+  .box-Simulator ul li { font-size: 35px; }
+}
+
+/* Nexus4 landscape ... */
+@media screen and (min-width: 736px) and (orientation:landscape) {
+  .box-Simulator .proposalSimulator { line-height: 22px }
+  header.masthead h1 { font-size: 55px;  }
+  .box-LogoTopo { display: none }
+  .funkyradio { width: 500px; }
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .box-Simulator .btnSimulator { margin: 0 auto 3px; }
+  .funkyradio-success label {padding: 0;}
+  .box-Simulator h3.titleSimulador {margin: 0 0 0 28px; }
+  .funkyradio-success input[type="radio"]:checked ~ label:before, .funkyradio-success input[type="checkbox"]:checked ~ label:before {top: 0;}
+  .box-Simulator .btnSimulator { padding: 5px 0;}
+  .box-Simulator .informe {padding-bottom: 15px;}
+  .box-Simulator ul li { font-size: 35px; }
+}
+
+/* iPad Landscape + Ipad mini Landscape + Nexus 7 */
+@media screen and (min-width: 960px) {
+  .simulator { left: 50%; top: 165px; width: 400px; margin-left: -480px;}
+  .range { padding-top: 7px; }
+  .box-Simulator .subtitleBox { font-size: 16px; padding:12px 0; margin: 25px 0 10px; }
+  .box-Simulator .proposalSimulator li { font-size: 12px; padding: 0 5px; width: 100%; display: inline-block; }
+  .rangeslider--horizontal { margin: 15px 0 25px; }
+  .box-Simulator .proposalSimulator { line-height: 22px }
+  .dragdrop, .box-Simulator .informe, .go-down { display: block; }
+  header.masthead h1 { font-size: 55px; }
+  .tp-simpleresponsive ul { display: block !important }
+  .box-LogoTopo { display: block }
+  .funkyradio { width: 390px; }
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .box-Simulator .btnSimulator { margin: 0 auto 3px; }
+  .box-Simulator ul li { font-size: 35px; }
+}
+/* KindleFire portrait + Nexus 10 ... */
+@media screen and (min-width: 1200px) {
+  .simulator { left: 50%; top: 150px; width: 400px; margin-left: -500px;}
+  header.masthead h1 { font-size: 65px; }
+  .funkyradio { width: 390px; }
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .funkyradio-success label {padding: 0;}
+  .box-Simulator h3.titleSimulador {margin: 0 0 0 28px; }
+  .funkyradio-success input[type="radio"]:checked ~ label:before, .funkyradio-success input[type="checkbox"]:checked ~ label:before {top: 0;}
+  .box-Simulator .btnSimulator { padding: 5px 0;}
+  .box-Simulator .informe {padding-bottom: 15px;}
+  .box-Simulator ul li { font-size: 30px; }
+}
+/* KindleFire landscape ... */
+@media screen and (min-width: 1450px) {
+  .simulator { left: 50%; top: 160px; width: 400px; margin-left: -500px;}
+  .funkyradio { width: 390px; }
+  .funkyradio div:nth-child(odd) { margin-right: 2%; width: 48%; }
+  .funkyradio div:nth-child(even) { margin-right: 0; width: 48%; }
+  .box-Simulator .btnSimulator { margin: 0 auto 3px; }
+}
