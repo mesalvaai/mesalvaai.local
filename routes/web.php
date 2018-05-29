@@ -27,6 +27,10 @@ Route::get('/teste', function () {
     return view('teste');
 });
 
+Route::get('test', function(){
+    return 'Route de test';
+});
+
 Route::get('/hola-mundo', function () {
     return 'Hola sou desde o route';
 });
