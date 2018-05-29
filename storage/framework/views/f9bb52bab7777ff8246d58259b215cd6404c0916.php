@@ -1,0 +1,1 @@
+<h1>PAGINA DE CONTATO <?php echo e($nombre); ?> - <?php echo e($edad); ?></h1>
