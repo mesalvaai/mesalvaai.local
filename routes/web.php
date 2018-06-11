@@ -20,6 +20,7 @@ Route::get('/', 'HomeController@home');
 Route::get('/cursos', 'CursoController@curso');
 Route::get('/faculdade/id_curso', 'CursoController@faculdade');
 
+Route::get('/student', 'StudentController@index');
 Route::get('/teste', function () {
     return view('teste');
 });
