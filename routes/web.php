@@ -24,8 +24,15 @@ Route::get('/teste', function () {
     return view('teste');
 });
 
+//Categories
+Route::resource('categories', 'CategoryController');
 
 
 
 
 
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
