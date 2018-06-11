@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Students;
+use App\Student;
 use Illuminate\Http\Request;
 
-class StudentsController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,11 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        //
+         $students = Student::get();
+ 
+        // Repassando para a view
+        return view('students.index', compact('students'));
+
     }
 
     /**
@@ -41,10 +45,10 @@ class StudentsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Students  $students
+     * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Students $students)
+    public function show(Student $student)
     {
         //
     }
@@ -52,10 +56,10 @@ class StudentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Students  $students
+     * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Students $students)
+    public function edit(Student $student)
     {
         //
     }
@@ -64,10 +68,10 @@ class StudentsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Students  $students
+     * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Students $students)
+    public function update(Request $request, Student $student)
     {
         //
     }
@@ -75,10 +79,10 @@ class StudentsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Students  $students
+     * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Students $students)
+    public function destroy(Student $student)
     {
         //
     }

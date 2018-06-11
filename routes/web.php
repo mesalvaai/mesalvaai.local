@@ -22,7 +22,7 @@ Route::get('/cursos', 'CursoController@curso');
 Route::get('/faculdade/id_curso', 'CursoController@faculdade');
 
 Route::get('/lista', 'FrutasController@getSaveFruta');
-
+Route::get('/student', 'StudentController@index');
 Route::get('/teste', function () {
     return view('teste');
 });
