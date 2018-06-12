@@ -28,7 +28,7 @@
                                 {{-- <li class="nav-item"><a class="nav-link" href="#contact">CONTATO</a></li> --}}
                             </ul>
                             <div class="sing-up-button d-lg-none">
-                                <a href="#">ENTRAR</a>
+                                <a href="{{ url('ingresar') }}">ENTRAR</a>
                             </div>
                         </div>
                     </nav>
@@ -37,7 +37,7 @@
             <!-- Signup btn -->
             <div class="col-12 col-lg-2">
                 <div class="sing-up-button d-none d-lg-block">
-                    <a href="#">ENTRAR</a>
+                    <a href="{{ url('ingresar') }}">ENTRAR</a>
                 </div>
             </div>
         </div>
