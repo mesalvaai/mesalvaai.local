@@ -26,6 +26,7 @@ Route::get('/teste', function () {
 
 //Categories
 Route::resource('categories', 'CategoryController');
+Route::get('admin', 'Backend\AdminController@index');
 
 
 
