@@ -164,6 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -179,6 +180,9 @@ return [
 
         //Laravel collective
         Collective\Html\HtmlServiceProvider::class,
+
+        //Para modulo de usuarios
+        Caffeinated\Shinobi\ShinobiServiceProvider::class,
 
 
     ],
