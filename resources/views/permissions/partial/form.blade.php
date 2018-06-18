@@ -1,5 +1,5 @@
 <div class="form-group">
-	{{ Form::label('name', 'Rol') }}
+	{{ Form::label('name', 'Permiso') }}
 	{{ Form::text('name', null, ['class' => 'form-control']) }}
 </div>
 
@@ -13,7 +13,7 @@
 	{{ Form::text('description', null, ['class' => 'form-control']) }}
 </div>
 <hr>
-<h3>Permiso especial</h3>
+{{-- <h3>Permiso especial</h3>
 <div class="form-group">
 	<label>{{ Form::radio('special', 'all-access') }} Acesso total</label>
 	<label>{{ Form::radio('special', 'no-access') }} Nenhum acesso</label>
@@ -32,8 +32,8 @@
 			</li>
 		@endforeach
 	</ul>
-</div>
+</div> --}}
 
 <div class="form-group">
-	{{ Form::submit('Salvar', null, ['class' => 'btn btn-outline-success btn-sm']) }}
+	{{ Form::submit('Salvar', ['class' => 'btn btn-success float-right']) }}
 </div>

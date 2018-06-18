@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Produto</div>
+                <div class="card-header">Permisos</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,9 +14,9 @@
                         </div>
                     @endif
 
-                    <p><strong>Nome: </strong>{{ $role->name }}</p>
-                    <p><strong>Slug: </strong>{{ $role->slug }}</p>
-                    <p><strong>Descrição: </strong>{{ $role->description }}</p>
+                    <p><strong>Nome: </strong>{{ $permission->name }}</p>
+                    <p><strong>Slug: </strong>{{ $permission->slug }}</p>
+                    <p><strong>Descrição: </strong>{{ $permission->description }}</p>
                 </div>
             </div>
         </div>

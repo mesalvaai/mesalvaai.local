@@ -111,7 +111,27 @@ Route::middleware(['auth'])->group(function(){
 		->middleware('permission:users.edit');
 
 	//Categories
-	Route::resource('categories', 'CategoryController');
+	//Route::resource('categories', 'CategoryController');
+	Route::post('categories/store', 'CategoryController@store')->name('categories.store')
+		->middleware('permission:categories.create');
+
+	Route::get('categories', 'CategoryController@index')->name('categories.index')
+		->middleware('permission:categories.index');
+
+	Route::get('categories/create', 'CategoryController@create')->name('categories.create')
+		->middleware('permission:categories.create');
+
+	Route::put('categories/{category}', 'CategoryController@update')->name('categories.update')
+		->middleware('permission:categories.edit');
+
+	Route::get('categories/{category}', 'CategoryController@show')->name('categories.show')
+		->middleware('permission:categories.show');
+
+	Route::delete('categories/{category}', 'CategoryController@destroy')->name('categories.destroy')
+		->middleware('permission:categories.destroy');
+
+	Route::get('categories/{category}/edit', 'CategoryController@edit')->name('categories.edit')
+		->middleware('permission:categories.edit');
 
 	//Products
 	Route::post('products/store', 'ProductController@store')->name('products.store')
