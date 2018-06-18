@@ -49,6 +49,28 @@ Route::get('/cadastrar', 'Backend\PainelController@cadastrar')->name('cadastrar'
 //Rotas
 Route::middleware(['auth'])->group(function(){
 
+	//Permissions
+	Route::post('permissions/store', 'PermissionController@store')->name('permissions.store')
+		->middleware('permission:permissions.create');
+
+	Route::get('permissions', 'PermissionController@index')->name('permissions.index')
+		->middleware('permission:permissions.index');
+
+	Route::get('permissions/create', 'PermissionController@create')->name('permissions.create')
+		->middleware('permission:permissions.create');
+
+	Route::put('permissions/{permission}', 'PermissionController@update')->name('permissions.update')
+		->middleware('permission:permissions.edit');
+
+	Route::get('permissions/{permission}', 'PermissionController@show')->name('permissions.show')
+		->middleware('permission:permissions.show');
+
+	Route::delete('permissions/{permission}', 'PermissionController@destroy')->name('permissions.destroy')
+		->middleware('permission:permissions.destroy');
+
+	Route::get('permissions/{permission}/edit', 'PermissionController@edit')->name('permissions.edit')
+		->middleware('permission:permissions.edit');
+
 	//Roles
 	Route::post('roles/store', 'RoleController@store')->name('roles.store')
 		->middleware('permission:roles.create');
@@ -71,6 +93,26 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
 		->middleware('permission:roles.edit');
 
+	//Users
+
+	Route::get('users', 'UserController@index')->name('users.index')
+		->middleware('permission:users.index');
+
+	Route::put('users/{user}', 'UserController@update')->name('users.update')
+		->middleware('permission:users.edit');
+
+	Route::get('users/{user}', 'UserController@show')->name('users.show')
+		->middleware('permission:users.show');
+
+	Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy')
+		->middleware('permission:users.destroy');
+
+	Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
+		->middleware('permission:users.edit');
+
+	//Categories
+	Route::resource('categories', 'CategoryController');
+
 	//Products
 	Route::post('products/store', 'ProductController@store')->name('products.store')
 		->middleware('permission:products.create');
@@ -92,26 +134,5 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('products/{product}/edit', 'ProductController@edit')->name('products.edit')
 		->middleware('permission:products.edit');
-
-
-	//Users
-
-	Route::get('users', 'UserController@index')->name('users.index')
-		->middleware('permission:users.index');
-
-	Route::put('users/{user}', 'UserController@update')->name('users.update')
-		->middleware('permission:users.edit');
-
-	Route::get('users/{user}', 'UserController@show')->name('users.show')
-		->middleware('permission:users.show');
-
-	Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy')
-		->middleware('permission:users.destroy');
-
-	Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
-		->middleware('permission:users.edit');
-
-	//Categories
-	Route::resource('categories', 'CategoryController');
 
 });
