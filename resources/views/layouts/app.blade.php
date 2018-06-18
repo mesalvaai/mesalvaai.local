@@ -10,15 +10,19 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/fontawesome/css/fontawesome-all.min.css') }}">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]) !!};
+    </script>
 </head>
 <body>
     <div id="app">
@@ -34,7 +38,32 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @can('categories.index')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/categories') }}">Categorias</a>
+                            </li>
+                        @endcan
+                        
+                        @can('users.index')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/users') }}">Usuarios</a>
+                            </li>
+                        @endcan
+                        
+                        @can('roles.index')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/roles') }}">Roles</a>
+                            </li>
+                        @endcan
+                            {{-- <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/posts') }}">Posts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/categories') }}">Categorias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/tags') }}">Etiquetas</a>
+                            </li> --}}
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -75,5 +104,14 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('vendor/Bootstrap-Confirmation/src/popover.js') }}" defer></script> --}}
+    {{-- <script src="https://unpkg.com/popper.js/dist/umd/popper.min.js" type="text/javascript"></script>
+    <script src="{{ asset('vendor/Bootstrap-Confirmation/dist/bootstrap-confirmation.min.js') }}" defer></script> --}}
+    {{-- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.7/bootstrap-confirmation.min.js"></script> --}}
+    @yield('scripts')
 </body>
 </html>
