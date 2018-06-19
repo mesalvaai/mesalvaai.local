@@ -16,7 +16,7 @@
 
                     {!! Form::model($permission, ['route' => ['permissions.update', $permission->id], 'method' => 'PUT']) !!}
 
-                        @include('permissions.partial.form', ['some' => 'data'])
+                        @include('admins.permissions.partial.form', ['some' => 'data'])
 
                     {!! Form::close() !!}
                 </div>

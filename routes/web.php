@@ -108,25 +108,25 @@ Route::middleware(['auth'])->group(function(){
 
 	//Categories
 	//Route::resource('categories', 'CategoryController');
-	Route::post('categories/store', 'CategoryController@store')->name('categories.store')
+	Route::post('categories/store', 'Admin\CategoryController@store')->name('categories.store')
 		->middleware('permission:categories.create');
 
-	Route::get('categories', 'CategoryController@index')->name('categories.index')
+	Route::get('categories', 'Admin\CategoryController@index')->name('categories.index')
 		->middleware('permission:categories.index');
 
-	Route::get('categories/create', 'CategoryController@create')->name('categories.create')
+	Route::get('categories/create', 'Admin\CategoryController@create')->name('categories.create')
 		->middleware('permission:categories.create');
 
-	Route::put('categories/{category}', 'CategoryController@update')->name('categories.update')
+	Route::put('categories/{category}', 'Admin\CategoryController@update')->name('categories.update')
 		->middleware('permission:categories.edit');
 
-	Route::get('categories/{category}', 'CategoryController@show')->name('categories.show')
+	Route::get('categories/{category}', 'Admin\CategoryController@show')->name('categories.show')
 		->middleware('permission:categories.show');
 
-	Route::delete('categories/{category}', 'CategoryController@destroy')->name('categories.destroy')
+	Route::delete('categories/{category}', 'Admin\CategoryController@destroy')->name('categories.destroy')
 		->middleware('permission:categories.destroy');
 
-	Route::get('categories/{category}/edit', 'CategoryController@edit')->name('categories.edit')
+	Route::get('categories/{category}/edit', 'Admin\CategoryController@edit')->name('categories.edit')
 		->middleware('permission:categories.edit');
 
 

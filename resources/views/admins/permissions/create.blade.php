@@ -16,7 +16,7 @@
 
                     {!! Form::open(['route' => 'permissions.store']) !!}
 
-                        @include('permissions.partial.form', ['some' => 'data'])
+                        @include('admins.permissions.partial.form', ['some' => 'data'])
 
                     {!! Form::close() !!}
                 </div>

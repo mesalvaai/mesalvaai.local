@@ -17,7 +17,7 @@ class PermissionController extends Controller
     public function index()
     {
     	$permissions = Permission::paginate();
-    	return view('permissions.index', compact('permissions'));
+    	return view('admins.permissions.index', compact('permissions'));
     }
 
     /**
@@ -27,7 +27,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('permissions.create');
+        return view('admins.permissions.create');
     }
 
     /**
@@ -56,7 +56,7 @@ class PermissionController extends Controller
      */
     public function show(Permission $permission)
     {
-        return view('permissions.show', compact('permission'));
+        return view('admins.permissions.show', compact('permission'));
     }
 
     /**
@@ -68,7 +68,7 @@ class PermissionController extends Controller
     public function edit(Permission $permission)
     {
         $roles = Role::get();
-        return view('permissions.edit', compact('permission', 'roles'));
+        return view('admins.permissions.edit', compact('permission', 'roles'));
     }
 
     /**
