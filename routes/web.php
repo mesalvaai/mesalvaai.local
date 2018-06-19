@@ -30,10 +30,6 @@ Route::get('admin', 'Admin\AdminController@index');
 
 
 
-
-
-
-
 Auth::routes();
 
 Route::get('/home', 'Site\HomeController@index')->name('home');
@@ -111,7 +107,6 @@ Route::middleware(['auth'])->group(function(){
 		->middleware('permission:users.edit');
 
 	//Categories
-<<<<<<< HEAD
 	//Route::resource('categories', 'CategoryController');
 	Route::post('categories/store', 'CategoryController@store')->name('categories.store')
 		->middleware('permission:categories.create');
@@ -133,9 +128,7 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('categories/{category}/edit', 'CategoryController@edit')->name('categories.edit')
 		->middleware('permission:categories.edit');
-=======
-	Route::resource('categories', 'Admin\CategoryController');
->>>>>>> edfc167c181128153d954445df15efb0fb1cf5f4
+
 
 	//Products
 	// Route::post('products/store', 'ProductController@store')->name('products.store')
