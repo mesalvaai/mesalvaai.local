@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Student;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class StudentController extends Controller
 {
@@ -17,7 +18,7 @@ class StudentController extends Controller
          $students = Student::get();
  
         // Repassando para a view
-        return view('students.index', compact('students'));
+        return view('admins.students.index', compact('students'));
 
     }
 

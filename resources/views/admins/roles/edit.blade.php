@@ -16,7 +16,7 @@
 
                     {!! Form::model($role, ['route' => ['roles.update', $role->id], 'method' => 'PUT']) !!}
 
-                        @include('roles.partial.form', ['some' => 'data'])
+                        @include('admins.roles.partial.form', ['some' => 'data'])
 
                     {!! Form::close() !!}
                 </div>

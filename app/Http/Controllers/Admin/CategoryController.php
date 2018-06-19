@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -15,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate();
-        return view('categories.index', compact('categories'));
+        return view('admins.categories.index', compact('categories'));
     }
 
     /**
@@ -25,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        return view('admins.categories.create');
     }
 
     /**
@@ -50,7 +51,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('categories.show', compact('category'));
+        return view('admins.categories.show', compact('category'));
     }
 
     /**
@@ -61,7 +62,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('categories.edit', compact('category'));
+        return view('admins.categories.edit', compact('category'));
     }
 
     /**

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-	@include('cursos.faculdade')
+	@include('sites.cursos.faculdade')
 @endsection
 
 @section('footer')

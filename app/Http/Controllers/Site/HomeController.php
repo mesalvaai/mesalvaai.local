@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -23,11 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('sites.home');
     }
 
     public function home()
     {
-        return view('site');
+        return view('sites.site');
     }
 }

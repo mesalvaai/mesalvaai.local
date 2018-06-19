@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CursoController extends Controller
 {
     public function curso()
     {
-    	return view('curso');
+    	return view('sites.curso');
     }
 
     public function faculdade()
     {
-    	return view('faculdade');
+    	return view('sites.faculdade');
     }
 }
