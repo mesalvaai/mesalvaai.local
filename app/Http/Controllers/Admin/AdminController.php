@@ -1,39 +1,39 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PainelController extends Controller
+class AdminController extends Controller
 {
     public function index()
     {
-    	return view('backend.painel');
+    	return view('admins.painel');
     }
 
     public function forms()
     {
-    	return view('backend.forms');
+    	return view('admins.forms');
     }
 
     public function charts()
     {
-    	return view('backend.charts');
+    	return view('admins.charts');
     }
 
     public function tables()
     {
-    	return view('backend.tables');
+    	return view('admins.tables');
     }
 
     public function ingresar()
     {
-    	return view('backend.ingresar');
+    	return view('admins.ingresar');
     }
 
     public function cadastrar()
     {
-    	return view('backend.cadastrar');
+    	return view('admins.cadastrar');
     }
 }

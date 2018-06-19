@@ -55,10 +55,16 @@
                                 <a class="nav-link" href="{{ url('/roles') }}">Roles</a>
                             </li>
                         @endcan
+<<<<<<< HEAD
 
                         @can('permissions.index')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/permissions') }}">Permissions</a>
+=======
+                        @can('permissions.index')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/permissions') }}">Permisos</a>
+>>>>>>> edfc167c181128153d954445df15efb0fb1cf5f4
                             </li>
                         @endcan
                             {{-- <li class="nav-item">

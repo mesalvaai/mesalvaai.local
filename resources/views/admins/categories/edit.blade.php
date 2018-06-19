@@ -19,8 +19,8 @@
                         </div>
                     @endif
                     
-                    {!! Form::open(['route' => 'categories.store']) !!}
-                        @include('categories.partials.form')
+                    {!! Form::model($category, ['route' => ['categories.update', $category->id], 'method' => 'PUT']) !!}
+                        @include('admins.categories.partials.form')
                     {{ Form::close() }}
 
                                        

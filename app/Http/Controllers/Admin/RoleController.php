@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 
 class RoleController extends Controller
@@ -17,7 +18,7 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::paginate();
-        return view('roles.index', compact('roles'));
+        return view('admins.roles.index', compact('roles'));
     }
 
     /**
@@ -28,7 +29,7 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Permission::get();
-        return view('roles.create', compact('permissions'));
+        return view('admins.roles.create', compact('permissions'));
     }
 
     /**
@@ -57,7 +58,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        return view('roles.show', compact('role'));
+        return view('admins.roles.show', compact('role'));
     }
 
     /**
@@ -69,7 +70,7 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         $permissions = Permission::get();
-        return view('roles.edit', compact('role', 'permissions'));
+        return view('admins.roles.edit', compact('role', 'permissions'));
     }
 
     /**

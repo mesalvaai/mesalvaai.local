@@ -16,7 +16,7 @@
 
                     {!! Form::open(['route' => 'products.store']) !!}
 
-                        @include('products.partial.form', ['some' => 'data'])
+                        @include('admins.products.partial.form', ['some' => 'data'])
 
                     {!! Form::close() !!}
                 </div>

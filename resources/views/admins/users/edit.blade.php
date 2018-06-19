@@ -16,7 +16,7 @@
 
                     {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PUT']) !!}
 
-                        @include('users.partial.form', ['some' => 'data'])
+                        @include('admins.users.partial.form', ['some' => 'data'])
 
                     {!! Form::close() !!}
                 </div>

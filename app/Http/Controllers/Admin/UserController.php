@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\User;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -16,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::paginate();
-        return view('users.index', compact('users'));
+        return view('admins.users.index', compact('users'));
     }
 
 
@@ -28,7 +29,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        return view('admins.users.show', compact('user'));
     }
 
     /**
@@ -40,7 +41,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::get();
-        return view('users.edit', compact('user', 'roles'));
+        return view('admins.users.edit', compact('user', 'roles'));
     }
 
     /**
