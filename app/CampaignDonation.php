@@ -12,5 +12,6 @@ class CampaignDonation extends Model
 		'donation_amount',
 		'details'
 	];
+	
 	protected $table = 'campaign_donation';
 }

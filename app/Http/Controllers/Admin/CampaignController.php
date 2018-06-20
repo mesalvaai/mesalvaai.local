@@ -42,7 +42,7 @@ class CampaignController extends Controller
     public function store(Request $request)
     {
 
-        $campaign = Campaign::create($request->all()); 
+        //$campaign = Campaign::create($request->all()); 
 
         $campaign = Campaign::create($request->all());
         return redirect()->route('campaigns.edit', $campaign->id)

@@ -1,6 +1,6 @@
 <div class="form-group">
 	{!! Form::label('campaign_id', 'Campanha') !!}
-	{!! Form::select('campaign_id', [''=> '-- Selecione uma campanha --','5' => '5', '7' => '7'], null, ['class' => 'form-control']) !!}
+	{!! Form::select('campaign_id', [''=> '-- Selecione uma campanha --','3' => '3', '4' => '4'], null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

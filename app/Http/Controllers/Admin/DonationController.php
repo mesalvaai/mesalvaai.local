@@ -52,7 +52,6 @@ class DonationController extends Controller
 
 
       if($donation->anonymus != 1){
-
         $donation->anonymus  = 0;
       }
 
