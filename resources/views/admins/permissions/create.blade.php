@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Roles</div>
+                <div class="card-header">Permisos</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,9 +14,9 @@
                         </div>
                     @endif
 
-                    {!! Form::open(['route' => 'roles.store']) !!}
+                    {!! Form::open(['route' => 'permissions.store']) !!}
 
-                        @include('roles.partial.form', ['some' => 'data'])
+                        @include('admins.permissions.partial.form', ['some' => 'data'])
 
                     {!! Form::close() !!}
                 </div>

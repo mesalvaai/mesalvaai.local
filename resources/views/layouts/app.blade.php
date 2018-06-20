@@ -18,11 +18,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/fontawesome/css/fontawesome-all.min.css') }}">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
+
 </head>
 <body>
     <div id="app">
@@ -55,6 +51,7 @@
                                 <a class="nav-link" href="{{ url('/roles') }}">Roles</a>
                             </li>
                         @endcan
+
                         @can('permissions.index')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/permissions') }}">Permisos</a>

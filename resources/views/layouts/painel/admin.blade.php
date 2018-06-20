@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bootstrap Dashboard by Bootstrapious.com</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
     <meta name="robots" content="all,follow">
+
+    <!-- Google fonts - Roboto -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="{{ asset('backend/vendor/bootstrap/css/bootstrap.min.css') }}">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="{{ asset('backend/vendor/font-awesome/css/font-awesome.min.css') }}">
     <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="{{ asset('backend/css/fontastic.css') }}">
-    <!-- Google fonts - Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <!-- jQuery Circle-->
     <link rel="stylesheet" href="{{ asset('backend/css/grasp_mobile_progress_circle-1.0.0.min.css') }}">
     <!-- Custom Scrollbar-->
@@ -81,8 +87,8 @@
             <nav class="navbar">
               <div class="container-fluid">
                 <div class="navbar-holder d-flex align-items-center justify-content-between">
-                  <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.html" class="navbar-brand">
-                      <div class="brand-text d-none d-md-inline-block"><span>Bootstrap </span><strong class="text-primary">Dashboard</strong></div></a></div>
+                  <div class="navbar-header"><a id="toggle-btn" href="{{ url('/') }}" class="menu-btn"><i class="icon-bars"> </i></a><a href="{{ url('/') }}" class="navbar-brand">
+                      <div class="brand-text d-none d-md-inline-block"><span>SYSTEM </span><strong class="text-primary">{{ config('app.name', 'ME SALVA AI') }}</strong></div></a></div>
                   <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                     <!-- Notifications dropdown-->
                     <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
@@ -139,7 +145,34 @@
                       </ul>
                     </li>
                     <!-- Log out-->
-                    <li class="nav-item"><a href="{{ route('site') }}" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
+                    @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                        <i class="fa fa-sign-out"></i>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                        {{-- <li class="nav-item"><a href="{{ route('site') }}" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li> --}}
                   </ul>
                 </div>
               </div>

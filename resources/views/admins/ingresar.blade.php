@@ -1,4 +1,4 @@
-@extends('layouts.backend.access')
+@extends('layouts.painel.access')
 
 @section('content')
     <div class="container">
