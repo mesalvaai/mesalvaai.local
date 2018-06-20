@@ -29,11 +29,6 @@ Route::get('/teste', function () {
 Route::get('admin', 'Admin\AdminController@index');
 
 
-
-
-
-
-
 Auth::routes();
 
 Route::get('/home', 'Site\HomeController@index')->name('home');
