@@ -121,7 +121,6 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:categories.edit');
 
     //Campaigns
-   //Route::get('campaigns', 'Admin\CampaignController@index')->name('admin');
 	Route::post('campaigns/store', 'Admin\CampaignController@store')->name('campaigns.store')
 	->middleware('permission:campaigns.create');
 	Route::get('campaigns', 'Admin\CampaignController@index')->name('campaigns.index')
@@ -138,7 +137,6 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:campaigns.edit');
 
      //Donations
-	//Route::get('donations','Admin\DonationCOntroller@index')->name('admin');
 	Route::post('donations/store', 'Admin\DonationController@store')->name('donations.store')
 	->middleware('permission:donations.create');
 	Route::get('donations', 'Admin\DonationController@index')->name('donations.index')
@@ -153,5 +151,53 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:donations.destroy');
 	Route::get('donations/{donation}/edit', 'Admin\DonationController@edit')->name('donations.edit')
 	->middleware('permission:donations.edit');
+
+    //Countries	
+	Route::post('countries/store', 'Admin\CountryController@store')->name('countries.store')
+	->middleware('permission:countries.create');
+	Route::get('countries', 'Admin\CountryController@index')->name('countries.index')
+	->middleware('permission:countries.index');
+	Route::get('countries/create', 'Admin\CountryController@create')->name('countries.create')
+	->middleware('permission:countries.create');
+	Route::put('countries/{country}', 'Admin\CountryController@update')->name('countries.update')
+	->middleware('permission:countries.edit');
+	Route::get('countries/{country}', 'Admin\CountryController@show')->name('countries.show')
+	->middleware('permission:countries.show');
+	Route::delete('countries/{country}', 'Admin\CountryController@destroy')->name('countries.destroy')
+	->middleware('permission:countries.destroy');
+	Route::get('countries/{country}/edit', 'Admin\CountryController@edit')->name('countries.edit')
+	->middleware('permission:countries.edit');
+
+    //Cities
+	Route::post('cities/store', 'Admin\CityController@store')->name('cities.store')
+	->middleware('permission:cities.create');
+	Route::get('cities', 'Admin\CityController@index')->name('cities.index')
+	->middleware('permission:cities.index');
+	Route::get('cities/create', 'Admin\CityController@create')->name('cities.create')
+	->middleware('permission:cities.create');
+	Route::put('cities/{city}', 'Admin\CityController@update')->name('cities.update')
+	->middleware('permission:cities.edit');
+	Route::get('cities/{city}', 'Admin\CityController@show')->name('cities.show')
+	->middleware('permission:cities.show');
+	Route::delete('cities/{city}', 'Admin\CityController@destroy')->name('cities.destroy')
+	->middleware('permission:cities.destroy');
+	Route::get('cities/{city}/edit', 'Admin\CityController@edit')->name('cities.edit')
+	->middleware('permission:cities.edit');
+
+    //States
+	Route::post('states/store', 'Admin\StateController@store')->name('states.store')
+	->middleware('permission:states.create');
+	Route::get('states', 'Admin\StateController@index')->name('states.index')
+	->middleware('permission:states.index');
+	Route::get('states/create', 'Admin\StateController@create')->name('states.create')
+	->middleware('permission:states.create');
+	Route::put('states/{state}', 'Admin\StateController@update')->name('states.update')
+	->middleware('permission:states.edit');
+	Route::get('states/{state}', 'Admin\StateController@show')->name('states.show')
+	->middleware('permission:states.show');
+	Route::delete('states/{state}', 'Admin\StateController@destroy')->name('states.destroy')
+	->middleware('permission:states.destroy');
+	Route::get('states/{state}/edit', 'Admin\StateController@edit')->name('states.edit')
+	->middleware('permission:states.edit');
 
 });

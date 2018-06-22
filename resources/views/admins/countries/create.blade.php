@@ -6,8 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <strong>Categorias</strong>
-                    <a href="{{ route('categories.index') }}" class="btn btn-outline-info btn-sm float-right">Voltar</a>
+                    <strong>Países</strong>
+                    <a href="{{ route('countries.index') }}" class="btn btn-outline-info btn-sm float-right">Voltar</a>
                 </div>
 
                 <div class="card-body">
@@ -18,12 +18,11 @@
                             <span aria-hidden="true">&times;</span>
                         </div>
                         @endif
-                        
-                        {!! Form::model($category, ['route' => ['categories.update', $category->id], 'method' => 'PUT']) !!}
-                        @include('admins.categories.partials.form')
+
+                        {!! Form::open(['route' => 'countries.store']) !!}
+                        @include('admins.countries.partials.form')
                         {{ Form::close() }}
 
-                        
                     </div>
                 </div>
             </div>

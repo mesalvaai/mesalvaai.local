@@ -6,8 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
+                    <strong>Categoria - </strong>
                     <strong>{{$campaign->title}}</strong>
-                    <strong>Categorias</strong>
                     <a href="{{ route('campaigns.index') }}" class="btn btn-outline-info btn-sm float-right">Voltar</a>
                 </div>
 
@@ -28,7 +28,6 @@
                     <p><strong>Categoria: </strong>{{ $campaign->category_id }}</p>
                     <p><strong>Status: </strong>{{ ($campaign->status == 1) ? 'Ativo' : 'Inativo' }}</p>
 
-                    
                 </div>
             </div>
         </div>

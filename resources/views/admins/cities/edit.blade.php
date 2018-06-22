@@ -7,7 +7,7 @@
       <div class="card">
         <div class="card-header">
          Edite sua campanha
-         <a href="{{ route('campaigns.index') }}" class="btn btn-outline-info btn-sm float-right">Voltar</a>
+         <a href="{{ route('cities.index') }}" class="btn btn-outline-info btn-sm float-right">Voltar</a>
        </div>
 
        <div class="card-body">
@@ -19,9 +19,14 @@
           </div>
           @endif
 
-          {!! Form::model($campaign, ['route' => ['campaigns.update', $campaign->id], 'method' => 'PUT']) !!}
+          {!! Form::model($city, ['route' => ['cities.update', $city->id], 'method' => 'PUT']) !!}
 
-          @include('admins.campaigns.partials.form')
+          <div class="form-group">
+            {!! Form::label('state_id', 'Estado') !!}
+            {!! Form::select('state_id', $selectStates, null, ['class' => 'form-control']); !!}
+          </div>
+
+          @include('admins.cities.partials.form')
 
           {!! Form::close() !!}
         </div>
