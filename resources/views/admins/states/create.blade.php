@@ -20,12 +20,7 @@
             @endif
 
             {!! Form::open(['route' => 'states.store']) !!}
-
-            <div class="form-group">
-              {!! Form::label('country_id', 'País') !!}
-              {!! Form::select('country_id', $selectCountries,null,['class'=>'form-control']); !!}
-            </div>
-
+            
             @include('admins.states.partials.form')
 
             {{ Form::close() }}

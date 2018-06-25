@@ -1,4 +1,9 @@
 <div class="form-group">
+   {!! Form::label('country_id', 'País') !!}
+   {!! Form::select('country_id', $selectCountries,null,['class'=>'form-control']); !!}
+</div>
+
+<div class="form-group">
 	{!! Form::label('name', 'Nome do Estado') !!}
 	{!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>

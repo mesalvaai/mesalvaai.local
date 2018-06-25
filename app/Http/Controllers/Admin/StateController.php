@@ -47,10 +47,11 @@ class StateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, State $state)
     {
-     return redirect()->route('states.edit', $state->id)
-     ->with('status', 'Estado cadastrado com sucesso');
+        $state = State::create($request->all());
+        return redirect()->route('states.edit', $state->id)
+            ->with('status', 'Estado cadastrado com sucesso');
  }
 
     /**
