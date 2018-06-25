@@ -102,6 +102,22 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:users.destroy');
 	Route::get('users/{user}/edit', 'Admin\UserController@edit')->name('users.edit')
 	->middleware('permission:users.edit');
+        
+        //Students
+	Route::post('students/store', 'Admin\StudentController@store')->name('students.store')
+	->middleware('permission:students.create');
+	Route::get('students', 'Admin\StudentController@index')->name('students.index')
+	->middleware('permission:students.index');
+	Route::get('students/create', 'Admin\StudentController@create')->name('students.create')
+	->middleware('permission:students.create');
+	Route::put('students/{student}', 'Admin\StudentController@update')->name('students.update')
+	->middleware('permission:campaigns.edit');
+	Route::get('students/{student}', 'Admin\StudentController@show')->name('students.show')
+	->middleware('permission:students.show');
+	Route::delete('students/{student}', 'Admin\StudentController@destroy')->name('students.destroy')
+	->middleware('permission:students.destroy');
+	Route::get('students/{student}/edit', 'Admin\StudentController@edit')->name('students.edit')
+	->middleware('permission:students.edit');
 
 	//Categories
 	//Route::resource('categories', 'CategoryController');
