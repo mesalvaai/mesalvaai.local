@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <strong>Estudantes</strong>
@@ -26,35 +26,35 @@
                                     <th>Nome</th>
                                     <th>CPF</th>
                                     <th>Email</th>
-                                    <th>Data de Nascimento</th>
+                                    {{-- <th>Data de Nascimento</th> --}}
                                     <th>Telefone</th>
-                                    <th>CEP</th>
+                                    {{-- <th>CEP</th>
                                     <th>Estado</th>
                                     <th>Cidade</th>
                                     <th>Rua</th>
                                     <th>Número</th>
                                     <th>Bairro</th>
-                                    <th>Complemento</th>
+                                    <th>Complemento</th> --}}
                                      <th>Status</th>
                                     <th colspan="3">Opções</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($cities as $city)
+                                @foreach ($students as $student)
                                 <tr>
                                     <td>{{ $student->id }}</td>
                                     <td>{{ $student->name }}</td>
                                     <td>{{ $student->cpf }}</td>
                                     <td>{{ $student->email }}</td>
-                                    <td>{{ $student->data_of_birth }}</td>
+                                    {{-- <td>{{ $student->data_of_birth }}</td> --}}
                                     <td>{{ $student->phone }}</td>
-                                    <td>{{ $student->cep }}</td>
-                                    <td>{{ $student->state }}</td>
-                                    <td>{{ $student->city }}</td>
+                                    {{-- <td>{{ $student->cep }}</td>
+                                    <td>{{ $student->state->name }}</td>
+                                    <td>{{ $student->city->name }}</td>
                                     <td>{{ $student->street }}</td>
                                     <td>{{ $student->number }}</td>
                                     <td>{{ $student->neighborhood }}</td>
-                                    <td>{{ $student->complement }}</td>
+                                    <td>{{ $student->complement }}</td> --}}
                                      <td>{{ $student->status }}</td>
                                     <td>
                                         <a href="{{ route('students.show', $student->id) }}" class="btn btn-outline-info btn-sm">Ver</a>

@@ -16,7 +16,8 @@
 
 <div class="form-group">
 	{!! Form::label('data_of_birth', 'Data de Nascimento') !!}
-	{!! Form::date('data_of_birth', null, ['class' => 'form-control']) !!}
+	{{-- {!! Form::date('data_of_birth', null, ['class' => 'form-control']) !!} --}}
+	{!! Form::date('data_of_birth', \Carbon\Carbon::now(),['class' => 'form-control col-md-4']) !!}
 </div>
 
 <div class="form-group">
@@ -29,14 +30,25 @@
 	{!! Form::text('cep', null, ['class' => 'form-control']) !!}
 </div>
 
-<div class="form-group">
+{!! Form::text('user_id', auth()->user()->id, ['class' => 'form-control']) !!}
+
+{{-- <div class="form-group">
 	{!! Form::label('state', 'Estado') !!}
 	{!! Form::select('state',[''=> '-- Selecione o Estado --','3' => '3', '4' => '4'], null, ['class' => 'form-control']) !!}
+</div> --}}
+<div class="form-group">
+	{!! Form::label('state', 'Estado') !!}
+	{!! Form::select('state_id',$states, null, ['placeholder' => '-- Selecione um estado --', 'class' => 'form-control']) !!}
 </div>
 
-<div class="form-group">
+{{-- <div class="form-group">
 	{!! Form::label('city', 'Cidade') !!}
 	{!! Form::select('city',[''=> '-- Selecione a Cidade --','3' => '3', '4' => '4'], null, ['class' => 'form-control']) !!}
+</div> --}}
+
+<div class="form-group">
+	{!! Form::label('cidade_id', 'Cidade') !!}
+	{!! Form::select('city_id',$cities, null, ['placeholder' => '-- Selecione uma cidade --', 'class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

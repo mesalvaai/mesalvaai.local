@@ -16,6 +16,8 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->integer('state_id')->unsigned();
+            $table->integer('city_id')->unsigned();
             $table->string('name', 255);
             $table->string('cpf',14);
             $table->string('email', 255);
@@ -34,6 +36,12 @@ class CreateStudentsTable extends Migration
             //Relations
             //onDelete e onUpdate : sim nos excluimos um usuario, se excluem todos os dados relacionados com esse usuario
             $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('state_id')->references('id')->on('states')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

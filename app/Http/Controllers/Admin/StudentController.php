@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Student;
+use App\State;
+use App\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -29,7 +31,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('admins.students.create');
+        $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
+        $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
+        return view('admins.students.create', compact('states', 'cities'));
     }
 
     /**
@@ -64,7 +68,9 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        return view('admins.students.edit', compact('student'));
+        $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
+        $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
+        return view('admins.students.edit', compact('student', 'states', 'cities'));
     }
 
     /**
