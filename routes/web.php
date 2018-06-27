@@ -27,14 +27,22 @@ Route::get('/teste', function () {
 
 //Categories
 //Route::resource('categories', 'CategoryController');
-Route::get('admin', 'Admin\AdminController@index');
+//Route::get('admin', 'Admin\AdminController@index');
 
 Auth::routes();
 
 Route::get('/home', 'Site\HomeController@index')->name('home');
 
-//Layout Modelo
-Route::get('/painel', 'Admin\AdminController@index')->name('admin');
+//Layout Painel
+Route::get('/painel', 'Admin\PainelController@index')->name('painel');
+Route::get('/formss', 'Admin\PainelController@forms')->name('forms');
+Route::get('/chartss', 'Admin\PainelController@charts')->name('charts');
+Route::get('/tabless', 'Admin\PainelController@tables')->name('tables');
+Route::get('/ingresarr', 'Admin\PainelController@ingresar')->name('ingresar');
+Route::get('/cadastrarr', 'Admin\PainelController@cadastrar')->name('cadastrar');
+
+//Layout Modelo Admin
+Route::get('/admin', 'Admin\AdminController@index')->name('admin');
 Route::get('/forms', 'Admin\AdminController@forms')->name('forms');
 Route::get('/charts', 'Admin\AdminController@charts')->name('charts');
 Route::get('/tables', 'Admin\AdminController@tables')->name('tables');

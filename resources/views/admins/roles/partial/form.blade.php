@@ -12,26 +12,31 @@
 	{{ Form::label('description', 'Descrição') }}
 	{{ Form::text('description', null, ['class' => 'form-control']) }}
 </div>
-<hr>
+<br>
 <h3>Permiso especial</h3>
 <div class="form-group">
-	<label>{{ Form::radio('special', 'all-access') }} Acesso total</label>
-	<label>{{ Form::radio('special', 'no-access') }} Nenhum acesso</label>
+	<div class="i-checks">
+		{{ Form::radio('special', 'all-access',null,['class' => 'form-control-custom radio-custom', 'id' => 'radioCustom1']) }} 
+		<label for="radioCustom1">Acesso total</label>
+	
+		{{ Form::radio('special', 'no-access', null, ['class' => 'form-control-custom radio-custom', 'id' => 'radioCustom2']) }} <label for="radioCustom2">Nenhum acesso</label>
+
+		{{ Form::radio('special', '', null, ['class' => 'form-control-custom radio-custom', 'id' => 'radioCustom3']) }} <label for="radioCustom3">Ativar outros acessos</label>
+	</div>
 </div>
-<hr>
+
+<br>
 <h3>Lista de Permisos</h3>
 <div class="form-group">
-	<ul class="list-unstyled">
-		@foreach ($permissions as $permission)
-			<li>
-				<label>
-					{!! Form::checkbox('permissions[]', $permission->id, null) !!}
+		@foreach ($permissions as $key => $permission)
+			<div class="i-checks">
+				{!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'form-control-custom', 'id' => 'checkboxCustom'.$key ]) !!}
+				<label for="checkboxCustom{{ $key }}">
 					{{ $permission->name }}
 					<em>({{ $permission->description ?: 'N/A' }})</em>
 				</label>
-			</li>
+			</div>
 		@endforeach
-	</ul>
 </div>
 
 <div class="form-group">

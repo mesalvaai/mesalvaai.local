@@ -70,32 +70,32 @@ class PermissionsTableSeeder extends Seeder
 
         //Categories
         Permission::create([
-        	'name' => 'Navegar ctegories',
-        	'slug' => 'ctegories.index',
-        	'description' => 'Lista e navega todos os ctegories do sistema',
+        	'name' => 'Navegar categories',
+        	'slug' => 'categories.index',
+        	'description' => 'Lista e navega todos os categories do sistema',
         ]);
 
         Permission::create([
-        	'name' => 'Ver detalhes do ctegories',
-        	'slug' => 'ctegories.show',
+        	'name' => 'Ver detalhes do categories',
+        	'slug' => 'categories.show',
         	'description' => 'Ver em detalhe cada produto do sistema',
         ]);
 
         Permission::create([
-        	'name' => 'Alterar ctegories',
-        	'slug' => 'ctegories.create',
+        	'name' => 'Alterar categories',
+        	'slug' => 'categories.create',
         	'description' => 'Editar qualquer dado de um produto do sistema',
         ]);
 
         Permission::create([
-        	'name' => 'Alterar ctegories',
-        	'slug' => 'ctegories.edit',
+        	'name' => 'Alterar categories',
+        	'slug' => 'categories.edit',
         	'description' => 'Editar qualquer dado de um produto do sistema',
         ]);
 
         Permission::create([
-        	'name' => 'Excluir ctegories',
-        	'slug' => 'ctegories.destroy',
+        	'name' => 'Excluir categories',
+        	'slug' => 'categories.destroy',
         	'description' => 'Excluir qualquer produto do sistema',
         ]);
     }
