@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Campaign;
+use App\Student;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -30,7 +32,9 @@ class CampaignController extends Controller
      */
     public function create()
     {
-       return view('admins.campaigns.create');
+        $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
+        $students = Student::orderBy('name', 'ASC')->pluck('name', 'id');
+        return view('admins.campaigns.create', compact('students', 'categories'));
    }
 
     /**
@@ -68,7 +72,9 @@ class CampaignController extends Controller
      */
     public function edit(Campaign $campaign)
     {
-        return view('admins.campaigns.edit', compact('campaign'));
+        $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
+        $students = Student::orderBy('name', 'ASC')->pluck('name', 'id');
+        return view('admins.campaigns.edit', compact('campaign', 'categories', 'students'));
     }
 
     /**

@@ -58,21 +58,15 @@
                     <a href="#exampledropdownDropdown1" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Usuarios</a>
                     <ul id="exampledropdownDropdown1" class="collapse list-unstyled ">
                         @can('users.index')
-                        <li>
-                            <a href="{{ url('/users') }}">Usuarios</a>
-                        </li>
+                        <li><a href="{{ url('/users') }}">Usuarios</a></li>
                         @endcan
                         
                         @can('roles.index')
-                        <li>
-                            <a href="{{ url('/roles') }}">Roles</a>
-                        </li>
+                        <li><a href="{{ url('/roles') }}">Roles</a></li>
                         @endcan
 
                         @can('permissions.index')
-                        <li>
-                            <a href="{{ url('/permissions') }}">Permisos</a>
-                        </li>
+                        <li><a href="{{ url('/permissions') }}">Permisos</a></li>
                         @endcan
                     </ul>
                 </li>
@@ -80,21 +74,19 @@
                     <a href="#exampledropdownDropdown2" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Financiamento</a>
                     <ul id="exampledropdownDropdown2" class="collapse list-unstyled ">
                         @can('categories.index')
-                        <li>
-                            <a href="{{ url('/categories') }}">Categorias</a>
-                        </li>
+                        <li><a href="{{ url('/students') }}">Estudiantes</a></li>
+                        @endcan
+
+                        @can('categories.index')
+                        <li><a href="{{ url('/categories') }}">Categorias</a></li>
                         @endcan
                         
                         @can('campaigns.index')
-                        <li>
-                            <a href="{{ url('/campaigns') }}">Campanhas</a>
-                        </li>
+                        <li><a href="{{ url('/campaigns') }}">Campanhas</a></li>
                         @endcan
 
                         @can('donations.index')
-                        <li>
-                            <a href="{{ url('/donations') }}">Donações</a>
-                        </li>
+                        <li><a href="{{ url('/donations') }}">Donações</a></li>
                         @endcan
                     </ul>
                 </li>

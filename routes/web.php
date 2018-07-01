@@ -20,9 +20,6 @@ Route::get('/', 'Site\HomeController@home')->name('site');
 Route::get('/cursos', 'Site\CursoController@curso');
 Route::get('/faculdade/id_curso', 'Site\CursoController@faculdade');
 Route::get('/student', 'Admin\StudentController@index');
-Route::get('/teste', function () {
-	return view('teste');
-});
 
 
 //Categories
@@ -31,7 +28,7 @@ Route::get('/teste', function () {
 
 Auth::routes();
 
-Route::get('/home', 'Site\HomeController@index')->name('home');
+//Route::get('/home', 'Site\HomeController@index')->name('home');
 
 //Layout Painel
 Route::get('/painel', 'Admin\PainelController@index')->name('painel');

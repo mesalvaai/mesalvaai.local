@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.painel.master')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
 	<div class="row justify-content-center">
-		<div class="col-md-8">
+		<div class="col-md-12">
 			<div class="card">
 
 				<div class="card-header">
@@ -13,32 +13,31 @@
 
 				<div class="card-body">
 					@if (session('status'))
-					<div class="alert alert-success">
-						{{ session('status') }}
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<div class="alert alert-success">
+							{{ session('status') }}
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</div>
-						@endif
+					@endif
 
+					<div class="table-responsive">
 						<table class="table table-striped table-bordered table-sm">
-							<table class="table table-striped table-bordered">
-								<caption>Lista de doações</caption>
-								<thead>
-									<tr>
-										<th>Id</th>
-										<th>Nome</th>
-										<th>pais</th>
-										<th>email</th>
-										<th>detalhes</th>
-										<th>data da doação</th>
-										<th>cep</th>
-										<th>valor total</th>
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nome</th>
+									<th>pais</th>
+									<th>email</th>
+									<th>detalhes</th>
+									<th>data da doação</th>
+									<th>cep</th>
+									<th>valor total</th>
 
-										<th colspan="3">Opçōes</th>
-									</tr>
-								</thead>
-								<tbody>
-									@foreach ($donations as $donation)
+									<th colspan="3">Opçōes</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach ($donations as $donation)
 									<tr>
 										<td>{{ $donation->id }}</td>
 										<td>{{ $donation->full_name }}</td>
@@ -48,26 +47,26 @@
 										<td>{{ $donation->donation_date }}</td>
 										<td>{{ $donation->postal_code }}</td>
 										<td>{{ $donation->total_amount }}</td>
-										<td>
-											<a href="{{ route('donations.show', $donation->id) }}" class="btn btn-outline-info btn-sm">Ver</a>
-											
-											<td>
-												<a href="{{ route('donations.edit', $donation->id) }}" class="btn btn-outline-success btn-sm">Alterar</a>
-											</td>
-											<td>
-												{!! Form::open(['route' => ['donations.destroy', $donation->id] , 'method' => 'DELETE']) !!}
-												<button class="btn btn-outline-danger btn-sm">Excluir</button>
-												{!! Form::close() !!}
-											</td>
-										</tr>
-										@endforeach
-									</tbody>
-								</table>
-
-								{{ $donations->render() }}
-							</div>
-						</div>
+										<td class="float-right">
+											<a href="{{ route('donations.show', $donation->id) }}" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i></a>
+										</td>
+										<td class="float-right">
+											<a href="{{ route('donations.edit', $donation->id) }}" class="btn btn-outline-success btn-sm"><i class="fa fa-edit"></i></a>
+										</td>
+										<td class="float-right">
+											{!! Form::open(['route' => ['donations.destroy', $donation->id] , 'method' => 'DELETE']) !!}
+											<button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></button>
+											{!! Form::close() !!}
+										</td>
+									</tr>
+								@endforeach
+							</tbody>
+						</table>
 					</div>
+					{{ $donations->render() }}
 				</div>
 			</div>
-			@endsection
+		</div>
+	</div>
+</div>
+@endsection

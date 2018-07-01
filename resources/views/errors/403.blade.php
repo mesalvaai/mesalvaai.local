@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ route('home') }}">Ir para Home</a>
+                    <a href="{{ route('painel') }}">Voltar</a>
                 </div>
             </div>
         </div>

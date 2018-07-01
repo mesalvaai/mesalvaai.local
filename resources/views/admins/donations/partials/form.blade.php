@@ -10,7 +10,7 @@
 
 <div class="form-group">
 	{!! Form::label('donation_date', 'Data da doação') !!}
-	{!! Form::text('donation_date', null, ['class' => 'form-control']) !!}
+	{!! Form::date('donation_date', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -40,11 +40,11 @@
 
 <div class="form-group">
 	{!! Form::label('status', 'Satus da doação') !!}
-	{!! Form::select('status', [''=> '','0' => '0', '1' => '1'], null, ['class' => 'form-control']) !!}
+	{!! Form::select('status', [''=> 'Visibilidade','0' => 'Inativo', '1' => 'Ativo'], null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::checkbox('anonymus', '1', false,['class'=> 'form-group']) !!}	
+	{!! Form::checkbox('anonymus', 1, null ,['class'=> 'form-group']) !!}	
 	<a> &nbsp; &nbsp; Fazer esta doação anonimamente</a>
 
 <div class="form-group">
