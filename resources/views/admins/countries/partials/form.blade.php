@@ -10,7 +10,7 @@
 
 <div class="form-group">
 	{!! Form::label('status', 'status') !!}
-	{!! Form::text('status', null, ['class' => 'form-control']) !!}
+	{!! Form::select('status', ['' => 'Visibilidade', 0 => 'Inativo', 1 => 'Ativo'], null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

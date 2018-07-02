@@ -1,6 +1,6 @@
 <div class="form-group">
    {!! Form::label('country_id', 'País') !!}
-   {!! Form::select('country_id', $selectCountries,null,['class'=>'form-control']); !!}
+   {!!  Form::select('country_id', $selectCountries, null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -20,7 +20,7 @@
 
 <div class="form-group">
 	{!! Form::label('status', 'status') !!}
-	{!! Form::text('status', null, ['class' => 'form-control']) !!}
+	{!! Form::select('status', ['' => 'Visibilidade', 0 => 'Inativo', 1 => 'Ativo'], null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

@@ -31,13 +31,11 @@ class StateController extends Controller
         $countries = Country::paginate();
 
         $selectCountries = array();
-
         $selectCountries[0] = '-- Selecione um País --';
 
         foreach($countries as $country) {
             $selectCountries[$country->id] = $country->name;
         }
-
         return view('admins.states.create', compact('selectCountries'));
     }
 
@@ -86,17 +84,18 @@ class StateController extends Controller
      */
     public function edit(State $state)
     {
-       $countries = Country::paginate();
+        $countries = Country::paginate();
 
-       $selectCountries = array();
+        $selectCountries = array();
 
-       $selectCountries[0] = '-- Selecione um País --';
+        $selectCountries[0] = '-- Selecione um País --';
 
-       foreach($countries as $country)
-       {
-        $selectCountries[$country->id] = $country->name;
+        foreach($countries as $country)
+        {
+            $selectCountries[$country->id] = $country->name;
+        }
 
-    }
+        
     return view('admins.states.edit', compact('state','selectCountries'));
 }
 

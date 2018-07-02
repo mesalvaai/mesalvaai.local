@@ -43,7 +43,7 @@
         <div class="sidenav-header d-flex align-items-center justify-content-center">
           <!-- User Info-->
           <div class="sidenav-header-inner text-center"><img src="{{ asset('backend/img/avatar-1.jpg') }}" alt="person" class="img-fluid rounded-circle">
-            <h2 class="h5">Anderson Hardy</h2><span>Web Developer</span>
+            <h2 class="h5">{{ Auth::user()->name }}</h2><span>Web Developer</span>
           </div>
           <!-- Small Brand information, appears on minimized sidebar-->
           <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
@@ -55,7 +55,7 @@
             <ul id="side-main-menu" class="side-menu list-unstyled">                  
                 <li><a href="{{ url('painel') }}"> <i class="icon-home"></i>Home </a></li>
                 <li>
-                    <a href="#exampledropdownDropdown1" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Usuarios</a>
+                    <a href="#exampledropdownDropdown1" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-users"></i>Usuarios</a>
                     <ul id="exampledropdownDropdown1" class="collapse list-unstyled ">
                         @can('users.index')
                         <li><a href="{{ url('/users') }}">Usuarios</a></li>
@@ -71,8 +71,24 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#exampledropdownDropdown2" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Financiamento</a>
+                    <a href="#exampledropdownDropdown2" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Localização</a>
                     <ul id="exampledropdownDropdown2" class="collapse list-unstyled ">
+                        @can('contries.index')
+                        <li><a href="{{ url('/countries') }}">Paises</a></li>
+                        @endcan
+
+                        @can('states.index')
+                        <li><a href="{{ url('/states') }}">Estados</a></li>
+                        @endcan
+                        
+                        @can('cities.index')
+                        <li><a href="{{ url('/cities') }}">Cidades</a></li>
+                        @endcan
+                    </ul>
+                </li>
+                <li>
+                    <a href="#exampledropdownDropdown3" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-money"></i>Financiamento</a>
+                    <ul id="exampledropdownDropdown3" class="collapse list-unstyled ">
                         @can('categories.index')
                         <li><a href="{{ url('/students') }}">Estudiantes</a></li>
                         @endcan
@@ -90,7 +106,7 @@
                         @endcan
                     </ul>
                 </li>
-                <li><a href="{{ url('formss') }}"> <i class="icon-form"></i>Forms </a></li>
+                {{-- <li><a href="{{ url('formss') }}"> <i class="icon-form"></i>Forms </a></li>
                 <li><a href="{{ url('chartss') }}"> <i class="fa fa-bar-chart"></i>Charts </a></li>
                 <li><a href="{{ url('tabless') }}"> <i class="icon-grid"></i>Tables </a></li>
                 <li>
@@ -100,7 +116,7 @@
                         <li><a href="#">Page</a></li>
                         <li><a href="#">Page</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- <li><a href="{{ url('ingresarr') }}"> <i class="icon-interface-windows"></i>Login page</a></li>
                 <li><a href="{{ url('cadastrarr') }}"> <i class="icon-interface-windows"></i>Register page</a></li>
                 <li> 

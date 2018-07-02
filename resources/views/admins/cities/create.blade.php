@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.painel.master')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <strong>Cidades</strong>
@@ -20,11 +20,6 @@
                         @endif
 
                         {!! Form::open(['route' => 'cities.store']) !!}
-
-                        <div class="form-group">
-                          {!! Form::label('state_id', 'Estado') !!}
-                          {!! Form::select('state_id', $selectStates, null, ['class' => 'form-control']); !!}
-                      </div>
 
                       @include('admins.cities.partials.form')
 

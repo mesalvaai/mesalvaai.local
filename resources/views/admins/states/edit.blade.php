@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.painel.master')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <strong>Estados</strong>
@@ -21,10 +21,10 @@
                         
                         {!! Form::model($state, ['route' => ['states.update', $state->id], 'method' => 'PUT']) !!}
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                           {!! Form::label('country_id', 'País') !!}
                           {!! Form::select('country_id', $selectCountries,null,['class'=>'form-control']); !!}
-                      </div>
+                      </div> --}}
 
                       @include('admins.states.partials.form')
                       {{ Form::close() }}

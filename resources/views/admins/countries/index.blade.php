@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.painel.master')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <strong>Países</strong>
@@ -12,49 +12,50 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                    <div class="alert alert-success">
+                        <div class="alert alert-success">
                         {{ session('status') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </div>
-                        @endif
-
-                        <table class="table table-striped table-bordered">
+                    @endif
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
                             <thead>
                                 <tr>
                                     <th>Id</th>
                                     <th>Nome</th>
                                     <th>Slug</th>
-                                     <th>Status</th>
+                                    <th>Status</th>
                                     <th colspan="3">Opções</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($countries as $country)
-                                <tr>
-                                    <td>{{ $country->id }}</td>
-                                    <td>{{ $country->name }}</td>
-                                    <td>{{ $country->slug }}</td>
-                                     <td>{{ $country->status }}</td>
-                                    <td>
-                                        <a href="{{ route('countries.show', $country->id) }}" class="btn btn-outline-info btn-sm">Ver</a>
-
-                                        <td>
-                                            <a href="{{ route('countries.edit', $country->id) }}" class="btn btn-outline-success btn-sm">Alterar</a>
+                                    <tr>
+                                        <td>{{ $country->id }}</td>
+                                        <td>{{ $country->name }}</td>
+                                        <td>{{ $country->slug }}</td>
+                                         <td>{{ $country->status }}</td>
+                                        <td class="float-right">
+                                            <a href="{{ route('countries.show', $country->id) }}" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i></a>
                                         </td>
-                                        <td>
+                                        <td class="float-right">
+                                            <a href="{{ route('countries.edit', $country->id) }}" class="btn btn-outline-success btn-sm"><i class="fa fa-edit"></i></a>
+                                        </td>
+                                        <td class="float-right">
                                             {!! Form::open(['route' => ['countries.destroy', $country->id] , 'method' => 'DELETE']) !!}
-                                            <button class="btn btn-outline-danger btn-sm">Excluir</button>
+                                            <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></button>
                                             {!! Form::close() !!}
                                         </td>
 
                                     </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>                    
-                        </div>
-                    </div>
+                                @endforeach
+                            </tbody>
+                        </table> 
+                    </div>                   
                 </div>
             </div>
         </div>
-        @endsection
+    </div>
+</div>
+@endsection
