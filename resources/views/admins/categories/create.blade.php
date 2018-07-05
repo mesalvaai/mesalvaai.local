@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Categorias</strong>
+                    <strong>Categoria</strong>
                     <a href="{{ route('categories.index') }}" class="btn btn-outline-info btn-sm float-right">Voltar</a>
                 </div>
 

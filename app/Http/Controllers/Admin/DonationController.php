@@ -6,6 +6,7 @@ use App\Donation;
 
 use App\CampaignDonation;
 use App\Campaign;
+use App\Country;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -31,8 +32,9 @@ class DonationController extends Controller
      */
     public function create()
     {
-        //
-      return view('admins.donations.create');
+      $campaigns = Campaign::orderBy('title', 'ASC')->pluck('title', 'id');
+      $countries = Country::orderBy('name', 'ASC')->pluck('name');
+      return view('admins.donations.create',compact('campaigns', 'countries'));
     }
 
     /**
@@ -43,7 +45,25 @@ class DonationController extends Controller
      */
     public function store(Request $request)
     { 
+     $messages = [
+      'max' => 'Valor máximo de caracteres excedido!',
+    ];
 
+    $validator = \Validator::make($request->all(), [
+
+      'full_name' => 'max:255',
+      'email' => 'max:255',
+
+    ], $messages);
+
+    if ($validator->fails()) {
+
+      return redirect()->back()
+      ->withErrors($validator)
+      ->withInput();  
+
+
+    }else{
       $parameters = $request->all(); 
 
       $donation = new Donation($parameters);
@@ -71,9 +91,10 @@ class DonationController extends Controller
 
       $campaign->update();
 
-       return redirect()->route('donations.edit', $donation->id)
-      ->with('status', 'Doação cadastrada com sucesso');
+      return redirect()->route('donations.edit', $donation->id)
+      ->with('status', 'Doação cadastrada com sucesso!');
     }
+  }
     /**
      * Display the specified resource.
      *
@@ -93,7 +114,12 @@ class DonationController extends Controller
      */
     public function edit(Donation $donation)
     {
-      return view('admins.donations.edit', compact('donation'));
+      $campaigns = Campaign::orderBy('title', 'ASC')->pluck('title', 'id');
+      $countries = Country::orderBy('name', 'ASC')->pluck('name');
+
+      $campaign_donation = CampaignDonation::pluck('campaign_id')->where('donation_id', $donation->id);
+
+      return view('admins.donations.edit', compact('donation', 'campaigns', 'campaign_donation', 'countries'));
     }
 
     /**
@@ -105,11 +131,33 @@ class DonationController extends Controller
      */
     public function update(Request $request, Donation $donation)
     {
-        //
+
+     $messages = [
+      'max' => 'Valor máximo de caracteres excedido!',
+    ];
+
+    $validator = \Validator::make($request->all(), [
+
+      'full_name' => 'max:255',
+      'email' => 'max:255',
+
+    ], $messages);
+
+    if ($validator->fails()) {
+
+      return redirect()->back()
+      ->withErrors($validator)
+      ->withInput();  
+
+
+    }else{
+
       $donation->update($request->all());
+
       return redirect()->route('donations.edit', $donation->id)
-      ->with('status', 'Doação aeditada com sucesso');
+      ->with('status', 'Doação editada com sucesso!');
     }
+  }
 
     /**
      * Remove the specified resource from storage.
@@ -121,6 +169,6 @@ class DonationController extends Controller
     {
      $donation->delete();
 
-     return back()->with('status', 'Doação Excluída com sucesso');
+     return back()->with('status', 'Doação Excluída com sucesso!');
    }
  }

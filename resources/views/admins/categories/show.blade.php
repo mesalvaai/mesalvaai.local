@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Categorias</strong>
+                    <strong>Categoria</strong>
                     <a href="{{ route('categories.index') }}" class="btn btn-outline-info btn-sm float-right">Voltar</a>
                 </div>
 
@@ -18,7 +18,7 @@
                     @endif
                     
                     <p><strong>Categoria: </strong>{{ $category->name }}</p>
-                    <p><strong>Descrição: </strong>{{ $category->name }}</p>
+                    <p><strong>Descrição: </strong>{{ $category->description }}</p>
                     <p><strong>Status: </strong>{{ ($category->status == 1) ? 'Ativo' : 'Inativo' }}</p>
 
                                        

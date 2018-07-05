@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Categorias</strong>
+                    <strong>Doação</strong>
                     <a href="{{ route('donations.index') }}" class="btn btn-outline-info btn-sm float-right">Voltar</a>
                 </div>
 
@@ -24,10 +24,10 @@
                         @include('admins.donations.partials.form')
 
                         {!! Form::close() !!}
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection

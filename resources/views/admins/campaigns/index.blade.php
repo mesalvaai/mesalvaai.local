@@ -23,10 +23,11 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Titulo</th>
                                     <th>Objetivo</th>
                                     <th>Fundos recebidos</th>
                                     <th>Data de início</th>
-                                    <th>Data Fin</th>
+                                    <th>Data Final</th>
                                     <th scope="col" colspan="3" class="text-center">Opções</th>
                                 </tr>
                             </thead>
@@ -34,8 +35,9 @@
                                 @foreach ($campaigns as $campaign)
                                     <tr>
                                         <td>{{ $campaign->id }}</td>
+                                        <td>{{ $campaign->title }}</td>
                                         <td>{{ $campaign->goal }}</td>
-                                        <td>{{ $campaign->funds_received }}</td> 
+                                        <td>{{ ($campaign->funds_received == null) ? '0' : $campaign->funds_received }}</td> 
                                         <td>{{ $campaign->start_date }}</td> 
                                         <td>{{ $campaign->end_date }}</td> 
                                         <td class="float-right">

@@ -6,7 +6,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    Campanhas
+                    Campanha
                     <a href="{{ route('campaigns.index') }}" class="btn btn-outline-info btn-sm float-right">Voltar</a>
                 </div>
                 <div class="card-body">
@@ -26,4 +26,5 @@
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection

@@ -21,7 +21,7 @@
 					@endif
 
 					<div class="table-responsive">
-						<table class="table table-striped table-bordered table-sm">
+						<table class="table table-striped table-sm">
 							<thead>
 								<tr>
 									<th>Id</th>

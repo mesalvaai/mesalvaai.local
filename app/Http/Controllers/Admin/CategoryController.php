@@ -6,6 +6,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 class CategoryController extends Controller
 {
     /**
@@ -37,11 +38,33 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = Category::create($request->all());
+        $messages = [
+            'name.unique' => 'Já existe uma categoria com este nome!',
+            'max' => 'Valor máximo de caracteres excedido!',
+        ];
 
-        return redirect()->route('categories.edit', $category->id)
-            ->with('status', 'Categoria cadastrado com sucesso');
-    }
+        $validator = \Validator::make($request->all(), [
+
+            'name' => 'bail|unique:categories|max:255',
+            'description' => 'max:255',
+
+        ], $messages);
+
+        if ($validator->fails()) {
+
+            return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();  
+
+
+        }else{
+         $category = Category::create($request->all());
+
+         return redirect()->route('categories.edit', $category->id)
+         ->with('status', 'Categoria cadastrada com sucesso!');
+     }
+
+ }
 
     /**
      * Display the specified resource.
@@ -51,6 +74,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+
         return view('admins.categories.show', compact('category'));
     }
 
@@ -74,11 +98,45 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $category->update($request->all());
+       $messages = [
+        'name.unique' => 'Já existe uma categoria com este nome!',
+        'max' => 'Valor máximo de caracteres excedido!',
+    ];
 
-        return redirect()->route('categories.edit', $category->id)
-            ->with('status', 'Categoria alterada com sucesso');
-    }
+    $validator = \Validator::make($request->all(), [
+
+        'name' => 'bail|unique:categories|max:255',
+        'description' => 'max:255',
+
+    ], $messages);
+
+    if ($validator->fails()) {
+
+      $categorrySelect = Category::where('name', $request->input('name'))->first();
+
+
+      if($categorrySelect != null){
+
+
+        if($categorrySelect->name == $request->input('name') && $categorrySelect->id !=  $category->id) {
+
+
+          return redirect()->back()
+          ->withErrors($validator)
+          ->withInput();  
+
+      }
+  }else {
+    return redirect()->back()
+    ->withErrors($validator)
+    ->withInput();  
+}
+
+}
+ $category->update($request->all());
+return redirect()->route('categories.edit', $category->id)
+->with('status', 'Categoria alterada com sucesso!');
+}
 
     /**
      * Remove the specified resource from storage.
@@ -90,6 +148,6 @@ class CategoryController extends Controller
     {
         $category->delete();
         
-        return back()->with('status', 'A categoria foi excluido');
+        return back()->with('status', 'A categoria foi excluída!');
     }
 }

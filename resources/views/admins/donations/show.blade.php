@@ -6,17 +6,15 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-
-                    <strong>Doação de {{$donation->full_name}}</strong>
-                    <strong>Doações</strong>
+                    <strong>Doação</strong>
                     <a href="{{ route('donations.index') }}" class="btn btn-outline-info btn-sm float-right">Voltar</a>
                 </div>
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
                     @endif
                     
                     <p><strong>Id: </strong>{{ $donation->id }}</p>
@@ -28,8 +26,8 @@
                     <p><strong>Valor total: </strong>{{ $donation->total_amount }}</p>
                     <p><strong>Pais: </strong>{{ $donation->country }}</p>
                     <p><strong>Status: </strong>{{ ($donation->status == 1) ? 'Ativo' : 'Inativo' }}</p>
-
-                                       
+                    <p><strong> {{ ($donation->anonymus == 1) ? 'Doação anônima' : 'Doação afamada'}}</strong></p>
+                    
                 </div>
             </div>
         </div>
