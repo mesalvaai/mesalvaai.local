@@ -46,17 +46,21 @@ class DonationController extends Controller
     public function store(Request $request)
     { 
      $messages = [
-      'max' => 'Valor máximo de caracteres excedido!',
-    ];
+       'required' => 'Este campo é obrigatório!',
+       'max' => 'Valor máximo de caracteres excedido!',
+     ];
 
-    $validator = \Validator::make($request->all(), [
-
-      'full_name' => 'max:255',
-      'email' => 'max:255',
-
+     $validator = \Validator::make($request->all(), [
+      'total_amount' => 'required',
+      'details' => 'required',
+      'full_name' => 'bail|required|max:255',
+      'email' => 'bail|required|max:255',
+      'country' => 'bail|required|max:255',
+      'postal_code' => 'required',
+      'status' =>'bail|required|max:1',
     ], $messages);
 
-    if ($validator->fails()) {
+     if ($validator->fails()) {
 
       return redirect()->back()
       ->withErrors($validator)
@@ -133,17 +137,21 @@ class DonationController extends Controller
     {
 
      $messages = [
-      'max' => 'Valor máximo de caracteres excedido!',
-    ];
+       'required' => 'Este campo é obrigatório!',
+       'max' => 'Valor máximo de caracteres excedido!',
+     ];
 
-    $validator = \Validator::make($request->all(), [
-
-      'full_name' => 'max:255',
-      'email' => 'max:255',
-
+     $validator = \Validator::make($request->all(), [
+      'total_amount' => 'required',
+      'details' => 'required',
+      'full_name' => 'bail|required|max:255',
+      'email' => 'bail|required|max:255',
+      'country' => 'bail|required|max:255',
+      'postal_code' => 'required',
+      'status' =>'bail|required|max:1',
     ], $messages);
 
-    if ($validator->fails()) {
+     if ($validator->fails()) {
 
       return redirect()->back()
       ->withErrors($validator)

@@ -17,9 +17,9 @@ class CampaignController extends Controller
      */
     public function index()
     {
-        $campaigns = Campaign::paginate();
+      $campaigns = Campaign::paginate();
 
-        return view('admins.campaigns.index', compact('campaigns'));
+      return view('admins.campaigns.index', compact('campaigns'));
     }
 
 /*    public static function getStudents($id){
@@ -37,7 +37,7 @@ class CampaignController extends Controller
       $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
 
       return view('admins.campaigns.create', compact('students', 'categories'));
-  }
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -47,41 +47,38 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
-       $messages = [
-            //'required' => 'Este campo é obrigatório!',
-        'title.unique' => 'Já existe uma campanha com este título!',
-        'max' => 'Valor máximo de caracteres excedido!',
+     $messages = [
+      'required' => 'Este campo é obrigatório!',
+      'title.unique' => 'Já existe uma campanha com este título!',
+      'max' => 'Valor máximo de caracteres excedido!',
     ];
 
     $validator = \Validator::make($request->all(), [
-        'title' => 'bail|unique:campaigns|max:255',
-           /* 'goal' => 'required',
-            'start_date' => 'required',
-            'funds_received' => 'required',
-            'description' => 'required',
-            'location' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
-            'status' =>'required',
-            'category_id' => 'required',
-            'student_id' => 'required', */
-
-        ], $messages);
-
+      'title' => 'bail|unique:campaigns|max:255',
+      'goal' => 'required',
+      'funds_received' => 'required',
+      'start_date' => 'required',
+      'end_date' => 'required',
+      'description' => 'required',
+      'location' => 'bail|required|max:255',
+      'status' =>'bail|required|max:1',
+      'student_id' => 'required', 
+      'category_id' => 'required',
+    ], $messages);
 
     if ($validator->fails()){
 
       return redirect()->back()
       ->withErrors($validator)
       ->withInput();  
+    }
+
+    $campaign = Campaign::create($request->all());
+
+    return redirect()->route('campaigns.edit', $campaign->id)
+    ->with('status', 'Campanha salva com sucesso');
+
   }
-
-  $campaign = Campaign::create($request->all());
-
-  return redirect()->route('campaigns.edit', $campaign->id)
-  ->with('status', 'Campanha salva com sucesso');
-
-}
 
     /**
      * Display the specified resource.
@@ -91,10 +88,10 @@ class CampaignController extends Controller
      */
     public function show(Campaign $campaign)
     {
-        $studentName = \DB::table('students')->where('id', $campaign->student_id)->value('name');
-        $categoryName = \DB::table('categories')->where('id', $campaign->category_id)->value('name');
+      $studentName = \DB::table('students')->where('id', $campaign->student_id)->value('name');
+      $categoryName = \DB::table('categories')->where('id', $campaign->category_id)->value('name');
 
-        return view ('admins.campaigns.show',compact('campaign', 'studentName', 'categoryName'));
+      return view ('admins.campaigns.show',compact('campaign', 'studentName', 'categoryName'));
     }
 
     /**
@@ -109,7 +106,7 @@ class CampaignController extends Controller
      $students = Student::orderBy('name', 'ASC')->pluck('name', 'id');
 
      return view('admins.campaigns.edit', compact('campaign' ,'categories','students'));
- }
+   }
 
     /**
      * Update the specified resource in storage.
@@ -121,12 +118,22 @@ class CampaignController extends Controller
     public function update(Request $request, Campaign $campaign)
     {
      $messages = [
-        'title.unique' => 'Já existe uma campanha com este título!',
-        'max' => 'Valor máximo de caracteres excedido!',
+      'required' => 'Este campo é obrigatório!',
+      'title.unique' => 'Já existe uma campanha com este título!',
+      'max' => 'Valor máximo de caracteres excedido!',
     ];
 
     $validator = \Validator::make($request->all(), [
-        'title' => 'bail|unique:campaigns|max:255',
+      'title' => 'bail|unique:campaigns|max:255',
+      'goal' => 'required',
+      'funds_received' => 'required',
+      'start_date' => 'required',
+      'end_date' => 'required',
+      'description' => 'required',
+      'location' => 'bail|required|max:255',
+      'status' =>'bail|required|max:1',
+      'student_id' => 'required', 
+      'category_id' => 'required',
     ], $messages);
 
     if ($validator->fails()) {
@@ -135,25 +142,25 @@ class CampaignController extends Controller
 
       if($campaignSelect != null){
 
-          if($campaignSelect->title == $request->input('title') && $campaign->id !=  $campaignSelect->id) {
+        if($campaignSelect->title == $request->input('title') && $campaign->id !=  $campaignSelect->id) {
 
-              return redirect()->back()
-              ->withErrors($validator)
-              ->withInput(); 
-          }
-      }else{
           return redirect()->back()
           ->withErrors($validator)
-          ->withInput();
+          ->withInput(); 
+        }
+      }else{
+        return redirect()->back()
+        ->withErrors($validator)
+        ->withInput();
       }
+    }
+
+    $campaign->update($request->all());
+
+    return redirect()->route('campaigns.edit', $campaign->id)
+    ->with('status', 'Campanhas alterada com sucesso');
+
   }
-
-  $campaign->update($request->all());
-
-  return redirect()->route('campaigns.edit', $campaign->id)
-  ->with('status', 'Campanhas alterada com sucesso');
-
-}
     /**
      * Remove the specified resource from storage.
      *
@@ -162,8 +169,8 @@ class CampaignController extends Controller
      */
     public function destroy(Campaign $campaign)
     {
-        $campaign->delete();
+      $campaign->delete();
 
-        return back()->with('status', 'A campanha foi excluído');
+      return back()->with('status', 'A campanha foi excluído');
     }
-}
+  }

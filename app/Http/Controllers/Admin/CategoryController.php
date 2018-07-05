@@ -41,12 +41,14 @@ class CategoryController extends Controller
         $messages = [
             'name.unique' => 'Já existe uma categoria com este nome!',
             'max' => 'Valor máximo de caracteres excedido!',
+            'required' => 'Este campo é obrigatório!',
         ];
 
         $validator = \Validator::make($request->all(), [
 
-            'name' => 'bail|unique:categories|max:255',
-            'description' => 'max:255',
+            'name' => 'bail|required|unique:categories|max:255',
+            'description' => 'bail|required|max:255',
+            'status' => 'bail|required|max:1',
 
         ], $messages);
 
@@ -58,13 +60,13 @@ class CategoryController extends Controller
 
 
         }else{
-         $category = Category::create($request->all());
+           $category = Category::create($request->all());
 
-         return redirect()->route('categories.edit', $category->id)
-         ->with('status', 'Categoria cadastrada com sucesso!');
-     }
+           return redirect()->route('categories.edit', $category->id)
+           ->with('status', 'Categoria cadastrada com sucesso!');
+       }
 
- }
+   }
 
     /**
      * Display the specified resource.
@@ -98,15 +100,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-       $messages = [
+     $messages = [
         'name.unique' => 'Já existe uma categoria com este nome!',
         'max' => 'Valor máximo de caracteres excedido!',
+        'required' => 'Este campo é obrigatório!',
     ];
 
     $validator = \Validator::make($request->all(), [
 
-        'name' => 'bail|unique:categories|max:255',
-        'description' => 'max:255',
+        'name' => 'bail|required|unique:categories|max:255',
+        'description' => 'bail|required|max:255',
+        'status' => 'bail|required|max:1',
 
     ], $messages);
 
@@ -133,7 +137,7 @@ class CategoryController extends Controller
 }
 
 }
- $category->update($request->all());
+$category->update($request->all());
 return redirect()->route('categories.edit', $category->id)
 ->with('status', 'Categoria alterada com sucesso!');
 }
