@@ -19,7 +19,7 @@
                         </div>
                         @endif
                         
-                        {!! Form::model($student, ['route' => ['students.update', $student->id], 'method' => 'PUT']) !!}
+                        {{ Form::model($student, ['route' => ['students.update', $student->id], 'method' => 'PUT']) }}
                         @include('admins.students.partials.form')
                         {{ Form::close() }}
 

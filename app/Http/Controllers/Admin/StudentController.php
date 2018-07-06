@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\StudentFormRequest;
 use App\Student;
 use App\State;
 use App\City;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class StudentController extends Controller
@@ -34,6 +34,7 @@ class StudentController extends Controller
         $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
         $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
         return view('admins.students.create', compact('states', 'cities'));
+        
     }
 
     /**
@@ -42,9 +43,10 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentFormRequest $request)
     {
-        $student = Student::create($request->all());
+        
+        $$validated = $request->validated();
 
         return redirect()->route('students.edit', $student->id)->with('status', 'Estudante cadastrado com sucesso');
     }
@@ -80,9 +82,9 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(StudentFormRequest $request)
     {
-        $student->update($request->all());
+        $$validated = $request->validated();
 
         return redirect()->route('students.edit', $student->id)->with('status', 'Cadastro alterado com sucesso');
     }
