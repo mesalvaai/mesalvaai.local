@@ -16,6 +16,7 @@
 // });
 
 Route::get('/', 'Site\HomeController@home')->name('site');
+Route::get('/test', 'Site\HomeController@test')->name('test');
 
 Route::get('/cursos', 'Site\CursoController@curso');
 Route::get('/faculdade/id_curso', 'Site\CursoController@faculdade');

@@ -31,4 +31,9 @@ class HomeController extends Controller
     {
         return view('sites.site');
     }
+
+    public function test()
+    {
+        return view('sites.tests.test');
+    }
 }

@@ -1,13 +1,7 @@
-@extends('layouts/master', ['title' => 'ME SALVA AI'])
+@extends('layouts.site.app', ['title' => 'ME SALVA AI'])
 
-@section('header')
-	@include('layouts.header', ['some' => 'data'])
-@endsection
 
 @section('content')
-	@include('layouts.sections')
+	@include('layouts.site.partials.content')
 @endsection
 
-@section('footer')
-	@include('layouts.footer', ['some' => 'data'])
-@endsection
