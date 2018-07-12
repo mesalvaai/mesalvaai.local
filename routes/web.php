@@ -16,6 +16,7 @@
 // });
 
 Route::get('/', 'Site\HomeController@home')->name('site');
+Route::get('/financiamento', 'Site\FinancingController@index')->name('financing.index');
 Route::get('/test', 'Site\HomeController@test')->name('test');
 
 Route::get('/cursos', 'Site\CursoController@curso');
@@ -30,9 +31,15 @@ Route::get('/student', 'Admin\StudentController@index');
 Auth::routes();
 
 //Route::get('/home', 'Site\HomeController@index')->name('home');
+//
+
+
+
+
+
 
 //Layout Painel
-Route::get('/painel', 'Admin\PainelController@index')->name('painel');
+//Route::get('/painel', 'Admin\PainelController@index')->name('painel');
 Route::get('/formss', 'Admin\PainelController@forms')->name('forms');
 Route::get('/chartss', 'Admin\PainelController@charts')->name('charts');
 Route::get('/tabless', 'Admin\PainelController@tables')->name('tables');
@@ -62,8 +69,14 @@ Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
 // $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 // $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
+
+	//Painel para cadastrados no financiamento Colectivo
+	Route::get('/financing', 'Financing\AdminController@index')->name('financing.index');
+
 //Rotas
 Route::middleware(['auth'])->group(function(){
+
+	Route::get('/painel', 'Admin\PainelController@index')->name('painel');
 
 	//Permissions
 	Route::post('permissions/store', 'Admin\PermissionController@store')->name('permissions.store')

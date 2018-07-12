@@ -619,7 +619,9 @@
 #items-rodape .redes-sociais i:hover {
     color: rgba(74, 186, 167, 1);
 }
-/* Quem Somos Section
+
+/*------------------------------
+ Quem Somos Section
 --------------------------------*/
 #quem-somos {
   padding: 60px 0 60px 0;
@@ -746,7 +748,8 @@
   }
 }
 
-/* sub-footer Section
+/*------------------------------
+sub-footer Section
 --------------------------------*/
 #sub-footer {
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
@@ -815,5 +818,240 @@
   line-height: 28px;
   font-size: 14px;
 }
+
+/*------------------------------
+ Financing Section
+--------------------------------*/
+#financing{
+    padding: 0;
+    padding: 0;
+}
+.financing-bg{
+    background: url(/site/img/msa/financiamento-1.jpg);
+    background-size: cover;
+    background-position: center center;
+
+}
+.financing{
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.financing .box-title {
+    background-image: url(/site/img/msa/financiamento-1.jpg);
+}
+.box-title {
+    background-color: #999;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    padding-top: 150px;
+    padding-bottom: 120px;
+}
+.financing h1{
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing:0.05em;
+}
+.financing .content-img{
+    position: absolute;
+}
+
+/*------------------------------
+ Financing Section Two
+--------------------------------*/
+#financing-sec-two{
+    width: 100%;
+    padding-top: 200px;
+    padding-bottom: 60px;
+}
+.financing-sec-two{
+    background: #fafafa;
+}
+.financing-sec-two h3{
+    color: #5643B0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.btn-msa{
+    background: #5643B0;
+    display: inline-block;
+    padding: 6px 30px;
+    border-radius: 5px;
+    color: #fff;
+    transition: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+.btn-msa:hover{
+    background: #727272;
+}
+.btn-msa-white{
+    border: 1px solid #5643B0;
+    color: #5643B0;
+    background-color: #fff;
+    font-weight: 600;
+    max-width: 18rem;
+    width: 50vw;
+    height: 4.5rem;
+    outline: none;
+    border-radius: 3px;
+    position: relative;
+    padding: 20px 20px;
+}
+.btn-msa-white:hover{
+    background: #5643B0;
+    color: #fff;
+}
+
+/*------------------------------
+ Financing Section Tree
+--------------------------------*/
+#financing-sec-tree{
+    padding: 0;
+    padding: 0;
+}
+.financing-sec-tree{
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.financing-sec-tree .box-title {
+    background-image: url(/site/img/msa/financiamento-2.jpg);
+}
+.financing-sec-tree .box-title {
+    background-color: #5643B0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    padding-top: 110px;
+    padding-bottom: 60px;
+}
+.financing-sec-tree h1{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/*------------------------------
+ Financing campanha
+--------------------------------*/
+#financing-camping{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.financing-camping{
+    width: 100%; 
+}
+.financing-camping .box-img-left{
+    left: 0;
+    margin-left: -79px;
+}
+.financing-camping .box-img{
+    position: absolute;
+    display: block;
+    top: 20%;
+    left: 30%;
+}
+.financing-camping .box-camping-bg{
+    background: #5643B0;
+    width: 50%;
+    float: right;
+    display: block;
+    height: 101.5vh;
+}
+.financing-camping .box-two{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.financing-camping .box-two .fc-bg{
+    background: #5643B0;
+    height: 60vh;
+}
+.financing-camping .box-two .fc-img{
+    position: absolute;
+    display: block;
+    width: 105%;
+    top: 10%;
+    left: 70%;
+    z-index: 2;
+}
+.financing-camping .box-two .fc-two-text{
+    margin-top: 30%;
+    text-align: center;
+    width: 65%;
+}
+.financing-camping .box-two .fc-img-two{
+    margin-top: 50%;
+    margin-right: -15px!important;
+}
+
+#financing-contribution{
+    background-color: #fafafa;
+    margin-top:60px;
+    margin-bottom: 60px;
+}
+#financing-contribution .row-one-img{
+    margin-left: -15px;
+}
+
+#financing-project{
+    padding-top: 50PX;
+    padding-bottom: 50PX;
+}
+#financing-project h1{
+    font-size: 3rem;
+    font-weight: 700;
+}
+#financing-project h1>span{
+    color: #35d1b6;
+    font-size: 3rem;
+    font-weight: 700;
+}
+#financing-project .btn-msa{
+    background: #5643B0;
+    display: inline-block;
+    padding: 10px 50px;
+    border-radius: 20px;
+    color: #fff;
+    transition: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+#financing-project .btn-msa:hover{
+    background: #35d1b6;
+    color: #fff;
+}
+
+@media (max-width: 576px) {
+    .financing-camping h1{
+        font-size: 24px;
+    }
+    .financing-camping .box-two .fc-bg{
+        background: #5643B0;
+        height: 90vh;
+    }
+    .financing-camping .box-two .fc-img{
+        position: absolute;
+        display: block;
+        width: 105%;
+        top: 10%;
+        left: 70%;
+        z-index: 2;
+    }
+    .financing-camping .box-two .fc-two-text{
+        margin-top: 30%;
+        text-align: center;
+        width: 85%;
+    }
+    .financing-camping .box-two .fc-img-two{
+        margin-top: 10%;
+        margin-right: -15px!important;
+    }
+}
+
 
 

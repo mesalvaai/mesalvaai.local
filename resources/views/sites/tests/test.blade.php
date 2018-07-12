@@ -2,6 +2,18 @@
 
 @section('styles')
 	<link rel="stylesheet" type="text/css" href="{{ asset('site/css/grade-quebrados.css') }}">
+    <style>
+        .exemplo-row-flex-cols .row{
+            min-height: 10rem;
+            background-color: rgba(255,0,0,.1);
+        }
+        .exemplo-row .row>.col, .exemplo-row .row>[class^=col-]{
+            background-color: rgba(86,61,124,.15);
+            border: 1px solid rgba(86,61,124,.2);
+            padding-top: .75rem;
+            padding-bottom: .75rem;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -81,6 +93,180 @@
         </div>
       </div>
     </section>
+
+    <div class="container-fluid exemplo-row text-center">
+            <div class="row">
+                <div class="col-md">
+                    col-md-1
+                </div>
+                <div class="col-md">
+                    col-md-2
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md">
+                    col-md-1
+                </div>
+                <div class="col-md">
+                    col-md-2
+                </div>
+                <div class="col-md">
+                    col-md-3
+                </div>
+                <div class="col-md">
+                    col-md-4
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md">
+                    col-md-1
+                </div>
+                <div class="col-md-6">
+                    col-md-6
+                </div>
+                <div class="col-md">
+                    col-md-3
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    1 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    2 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    3 - col-md-2
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-center">
+                <div class="col-md-2">
+                    1 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    2 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    3 - col-md-2
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-start">
+                <div class="col-md-2">
+                    1 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    2 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    3 - col-md-2
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-end">
+                <div class="col-md-2">
+                    1 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    2 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    3 - col-md-2
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-between">
+                <div class="col-md-2">
+                    1 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    2 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    3 - col-md-2
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-md-2">
+                    1 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    2 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    3 - col-md-2
+                </div>
+            </div>
+        </div>
+        
+        <hr>
+        <div class="container exemplo-row-flex-cols exemplo-row text-center">
+            <div class="row align-items-start">
+                <div class="col">
+                    1 - col-align-items-start
+                </div>
+                <div class="col">
+                    2 - col-align-items-start
+                </div>
+                <div class="col">
+                    3 - col-align-items-start
+                </div>
+            </div>
+            <br>
+            <div class="row align-items-center">
+                <div class="col">
+                    1 - col-align-items-center
+                </div>
+                <div class="col">
+                    2 - col-align-items-center
+                </div>
+                <div class="col">
+                    3 - col-align-items-center
+                </div>
+            </div>
+            <br>
+            <div class="row align-items-end">
+                <div class="col">
+                    1 - col-align-items-end
+                </div>
+                <div class="col">
+                    2 - col-align-items-end
+                </div>
+                <div class="col">
+                    3 - col-align-items-end
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-8">
+                    1 - col-align-items-end
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row justify-content-end">
+                <div class="col-xs-12 col-md-6">
+                    <div class="position-absolute" style="z-index: 2">
+                        <h1 class="text-white text-center w-50" style="font-size: 5rem; padding-top: 30%;">Testes de text</h1>
+                    </div>
+                    <div class="row align-items-end justify-content-end bg-danger">
+                        <div class="col-xs-12 col-md-6">
+                            
+                            <div class="bg-dark">
+                                <img src="{{ asset('site/img/msa/financiamento-4.jpg') }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
 
 	<section class="footer"></section>
     
