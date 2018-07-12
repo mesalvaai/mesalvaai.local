@@ -17,12 +17,12 @@
 		{!! Form::label('total_amount', 'Valor total') !!}
 
 
-		@if(isset($campaign_donation))
+		@if(isset($donation))
 
 		{!! Form::text('total_amount', null, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'disabled' => 'disabled']) !!}
 
 		@else
-		{!! Form::text('total_amount', null, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'required']) !!}
+		{!! Form::text('total_amount', $reward->donation, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'required']) !!}
 
 
 		@endif

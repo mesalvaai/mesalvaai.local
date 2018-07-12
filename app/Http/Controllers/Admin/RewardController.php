@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Reward;
-use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Reward;
+use App\User;
+use App\Campaign;
+use Auth;
 
 class RewardController extends Controller
 {
@@ -19,6 +21,7 @@ class RewardController extends Controller
         $rewards = User::join('rewards' , 'users.id' , '=' , 'rewards.user_id' )->get();
 
         return view('admins.reward.index', compact('rewards'));
+
     }
 
     /**
@@ -41,24 +44,23 @@ class RewardController extends Controller
     public function store(Request $request)
     {
         //
-        try 
-        {
 
-            $reward = new Reward($request->all());
-            $reward->save();
-
-            return redirect()->route('rewards.index', $reward->id)
-            ->with('status', 'Recompensa cadastrada com sucesso');
-
-
-        } catch (\Exception $e) 
-        {
-
-            return redirect()->route('rewards.index', $reward->id)
-            ->with('status', 'ERRO: Recompensa não cadastrada');
-
-        }
         
+        $reward = new Reward($request->all());
+
+        if (Auth::check())
+       { //verifica se tem usuario logado
+             $usuario_id = Auth::User()->id;
+       }
+
+        $reward->user_id = $usuario_id;
+        
+        $campaign = Campaign::where('student_id', $usuario_id)->first();
+        $reward->campaign_id = $campaign->id;
+        $reward->save();
+
+        return redirect()->route('rewards.index', $reward->id)
+        ->with('status', 'Recompensa cadastrada com sucesso');
     }
 
     /**
@@ -74,18 +76,18 @@ class RewardController extends Controller
         {
 
 
-           $result = Reward::join('users' , 'rewards.user_id' , '=' , 'users.id' )->where('rewards.id', '=', $reward->id)->select('users.name', 'rewards.*')->first();
+         $result = Reward::join('users' , 'rewards.user_id' , '=' , 'users.id' )->where('rewards.id', '=', $reward->id)->select('users.name', 'rewards.*')->first();
 
-           $result->id = $reward->id;
-           $reward = $result;  
-           return view('admins.reward.show', compact('reward'));
+         $result->id = $reward->id;
+         $reward = $result;  
+         return view('admins.reward.show', compact('reward'));
         } 
         catch (\Exception $e) 
         {
-           return redirect()->route('rewards.index', $reward->id)
-            ->with('status', 'ERRO: ao visualizar');
+         return redirect()->route('rewards.index', $reward->id)
+         ->with('status', 'ERRO: ao visualizar');
         }
-   }
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -124,8 +126,8 @@ class RewardController extends Controller
     {
         //
 
-       $reward->delete();
+     $reward->delete();
 
-       return back()->with('status', 'Recompensa excluída com sucesso');
-   }
+     return back()->with('status', 'Recompensa excluída com sucesso');
+    }
 }

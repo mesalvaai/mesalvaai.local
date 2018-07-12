@@ -108,7 +108,7 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:users.destroy');
 	Route::get('users/{user}/edit', 'Admin\UserController@edit')->name('users.edit')
 	->middleware('permission:users.edit');
-        
+
         //Students
 	Route::post('students/store', 'Admin\StudentController@store')->name('students.store')
 	->middleware('permission:students.create');
@@ -159,20 +159,42 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:campaigns.edit');
 
      //Donations
-	Route::post('donations/store', 'Admin\DonationController@store')->name('donations.store')
+	Route::get('donations/{reward}', 'Admin\DonationController@confirmed')->name('donations.confirmed')
+	->middleware('permission:donation.confirmed');
+	Route::post('donations/store/{reward}', 'Admin\DonationController@store')->name('donations.store')
 	->middleware('permission:donations.create');
+	Route::get('donations/{donation}', 'Admin\DonationController@show')->name('donations.show')
+	->middleware('permission:donations.show');
 	Route::get('donations', 'Admin\DonationController@index')->name('donations.index')
 	->middleware('permission:donations.index');
 	Route::get('donations/create', 'Admin\DonationController@create')->name('donations.create')
 	->middleware('permission:donations.create');
 	Route::put('donations/{donation}', 'Admin\DonationController@update')->name('donations.update')
 	->middleware('permission:donations.edit');
-	Route::get('donations/{donation}', 'Admin\DonationController@show')->name('donations.show')
-	->middleware('permission:donations.show');
+
+	
+
 	Route::delete('donations/{donation}', 'Admin\DonationController@destroy')->name('donations.destroy')
 	->middleware('permission:donations.destroy');
 	Route::get('donations/{donation}/edit', 'Admin\DonationController@edit')->name('donations.edit')
 	->middleware('permission:donations.edit');
+
+	//rewards
+	Route::post('rewards/store', 'Admin\RewardController@store')->name('rewards.store')
+	->middleware('permission:rewards.create');
+	Route::get('rewards', 'Admin\RewardController@index')->name('rewards.index')
+	->middleware('permission:rewards.index');
+	Route::get('rewards/create','Admin\RewardController@create')->name('rewards.create')
+	->middleware('permission:rewards.create');
+	Route::put('rewards/{reward}','Admin\RewardController@update')->name('rewards.update')
+	->middleware('permission:rewards.edit');
+	Route::get('rewards/{reward}', 'Admin\RewardController@show')->name('rewards.show')
+	->middleware('permission:rewards.show');
+	Route::delete('rewards/{reward}','Admin\RewardController@destroy')->name('rewards.destroy')
+	->middleware('permission:rewards.destroy');
+	Route::get('rewards/{reward}/edit','Admin\RewardController@edit')->name('rewards.edit')
+	->middleware('permission:rewards.edit');
+	
 
     //Countries	
 	Route::post('countries/store', 'Admin\CountryController@store')->name('countries.store')

@@ -1,15 +1,4 @@
 <div class="form-group">
-	{!! Form::label('user_id', 'Id do usuario') !!}
-	{!! Form::text('user_id', null, ['class' => 'form-control']) !!}
-</div>
-
-<div class="form-group">
-	
-	{!! Form::label('campaign_id', 'Id da campanha') !!}
-	{!! Form::select('campaign_id', [''=> '-- Selecione uma campanha --','3' => '3', '4' => '4'], null, ['class' => 'form-control']) !!}
-</div>
-
-<div class="form-group">
 	{!! Form::label('title', 'Titulo') !!}
 	{!! Form::text('title', null, ['class' => 'form-control']) !!}
 </div>
@@ -17,6 +6,7 @@
 <div class="form-group">
 	{!! Form::label('donation', 'Doação') !!}
 	{!! Form::text('donation', null, ['class' => 'form-control']) !!}
+
 </div>
 
 <div class="form-group">

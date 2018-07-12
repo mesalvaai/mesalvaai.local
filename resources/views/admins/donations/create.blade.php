@@ -19,7 +19,7 @@
                     </div>
                     @endif
                     
-                    {!! Form::open(['route' => 'donations.store']) !!}
+                    {!! Form::open(['route' => ['donations.store', $reward->id]]) !!}
 
                     @include('admins.donations.partials.form', ['some' => 'data'])
                     
