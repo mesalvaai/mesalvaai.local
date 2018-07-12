@@ -23,13 +23,13 @@ class CreateStudentsTable extends Migration
             $table->string('email', 255);
             $table->date('data_of_birth');
             $table->string('phone', 14);
+            $table->string('institution', 255);
             $table->string('cep', 10);
-            $table->string('state', 255);
-            $table->string('city', 255);
             $table->string('street', 255);
             $table->string('number', 10);
             $table->string('neighborhood', 255);
             $table->string('complement', 45);
+            $table->string('how_met_us')->nullable();
             $table->enum('status', ['0', '1'])->default('0');
             $table->timestamps();
             

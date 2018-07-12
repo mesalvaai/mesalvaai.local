@@ -69,9 +69,13 @@ Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
 // $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 // $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
-
+Route::middleware(['auth'])->group(function(){
 	//Painel para cadastrados no financiamento Colectivo
-	Route::get('/financing', 'Financing\AdminController@index')->name('financing.index');
+	Route::get('/financing', 'Financing\AdminController@index')->name('financing.index')
+	->middleware('IsRoleAluno:role_fc');
+	Route::post('/financing/store', 'Financing\AdminController@store')->name('financing.store')
+	->middleware('IsRoleAluno:role_fc');
+});
 
 //Rotas
 Route::middleware(['auth'])->group(function(){

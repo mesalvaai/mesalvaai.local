@@ -46,7 +46,7 @@ class StudentController extends Controller
     public function store(StudentFormRequest $request)
     {
         
-        $$validated = $request->validated();
+        $validated = $request->validated();
 
         return redirect()->route('students.edit', $student->id)->with('status', 'Estudante cadastrado com sucesso');
     }
@@ -84,7 +84,7 @@ class StudentController extends Controller
      */
     public function update(StudentFormRequest $request)
     {
-        $$validated = $request->validated();
+        $validated = $request->validated();
 
         return redirect()->route('students.edit', $student->id)->with('status', 'Cadastro alterado com sucesso');
     }
