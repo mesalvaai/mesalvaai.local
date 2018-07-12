@@ -93,6 +93,10 @@ class DonationController extends Controller
       if($donation->anonymus != 1){
         $donation->anonymus  = 0;
       }
+      else{
+        $donation->full_name = 'Anônimo';
+        $donation->email = 'Anônimo';
+      }
 
       $donation->save();
 

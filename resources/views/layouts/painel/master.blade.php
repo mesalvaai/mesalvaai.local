@@ -104,6 +104,10 @@
                         @can('donations.index')
                         <li><a href="{{ url('/donations') }}">Donações</a></li>
                         @endcan
+
+                        @can('rewards.index')
+                        <li><a href="{{ url('/rewards') }}">Recompensas</a></li>
+                        @endcan
                     </ul>
                 </li>
                 {{-- <li><a href="{{ url('formss') }}"> <i class="icon-form"></i>Forms </a></li>
