@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Financing;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StudentFormRequest extends FormRequest
+class StoreFinancingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StudentFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,19 +24,12 @@ class StudentFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'    =>'required|min:3|max:100',
-            'cpf'     =>'required|unique:students|integer',
+            'name'    =>'required|min:7|max:100',
             'email'   =>'required|unique:students',
-            'data_of_birth' => 'required|date',
             'phone'   =>'required|integer',
-            'cep'     =>'required|integer',
-            'state'   =>'required',
-            'cidade_id' =>'required',
-            'street'  =>'required',
-            'number'  =>'required',
-            'neighborhood' =>'required',
-            'complement'   =>'required',
-            'status'  =>'required'
+            'how_met_us' => 'required',
+            'state_id'   =>'required',
+            'cidade_id' =>'required'
         ];
     }
     

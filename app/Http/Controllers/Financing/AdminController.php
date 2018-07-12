@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Financing;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\StudentFormRequest;
+use App\Http\Requests\Financing\StoreFinancingRequest;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Crypt;
@@ -36,14 +36,14 @@ class AdminController extends Controller
 
     	$states = State::orderBy('name', 'ASC')->pluck('name', 'id');
         $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
-        return view('adminfc.painelfc', compact('idUser', 'states', 'cities', 'encrypted', 'decrypted'));
+        return view('adminfc.create-student', compact('idUser', 'states', 'cities', 'encrypted', 'decrypted'));
     }
 
-    public function store(StudentFormRequest $request)
+    public function store(StoreFinancingRequest $request)
     {
         $request->user()->authorizeRoles(['user', 'role_fc']);
         $validated = $request->validated();
 
-        return redirect()->route('students.edit', $student->id)->with('status', 'Estudante cadastrado com sucesso');
+        return redirect()->route('adminfc.create-camping')->with('status', 'Estudante cadastrado com sucesso');
     }
 }

@@ -73,7 +73,7 @@ Route::middleware(['auth'])->group(function(){
 	//Painel para cadastrados no financiamento Colectivo
 	Route::get('/financing', 'Financing\AdminController@index')->name('financing.index')
 	->middleware('IsRoleAluno:role_fc');
-	Route::post('/financing/store', 'Financing\AdminController@store')->name('financing.store')
+	Route::post('/financing/store', 'Financing\AdminController@store')->name('student.store')
 	->middleware('IsRoleAluno:role_fc');
 });
 

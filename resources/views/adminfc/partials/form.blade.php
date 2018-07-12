@@ -58,17 +58,17 @@
 </div>
 
 <div class="row">
-	<div class="form-group col-xs-12 col-md">
+	{{-- <div class="form-group col-xs-12 col-md">
 		{!! Form::label('street', 'Rua') !!}
 		{!! Form::text('street', null, ['class' => 'form-control', 'required']) !!}
-	</div>
+	</div> --}}
 
 	{{-- <div class="form-group col-xs-12 col-md">
 		{!! Form::label('number', 'Número') !!}
 		{!! Form::text('number', null, ['class' => 'form-control', 'required']) !!}
 	</div> --}}
 
-	<div class="form-group col-xs-12 col-md">
+	{{-- <div class="form-group col-xs-12 col-md">
 		{!! Form::label('neighborhood', 'Bairro') !!}
 		{!! Form::text('neighborhood', null, ['class' => 'form-control', 'required']) !!}
 	</div>
@@ -76,7 +76,7 @@
 	<div class="form-group col-xs-12 col-md">
 		{!! Form::label('complement', 'Complemento') !!}
 		{!! Form::text('complement', null, ['class' => 'form-control', 'required']) !!}
-	</div>
+	</div> --}}
 	
 	{!! Form::hidden('status', 1) !!}
 	{{-- <div class="form-group col-md-2">
@@ -86,5 +86,5 @@
 </div>
 
 <div class="form-group">
-	{!! Form::submit('Salvar Dados', ['class' => 'btn btn-msa btn-sm float-left']) !!}
+	{!! Form::submit('Criar Campanha', ['class' => 'btn btn-msa btn-sm float-left']) !!}
 </div>
