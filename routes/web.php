@@ -16,7 +16,10 @@
 // });
 
 Route::get('/', 'Site\HomeController@home')->name('site');
+<<<<<<< HEAD
 Route::get('/financiamento', 'Site\FinancingController@index')->name('financing.index');
+=======
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 Route::get('/test', 'Site\HomeController@test')->name('test');
 
 Route::get('/cursos', 'Site\CursoController@curso');
@@ -31,6 +34,7 @@ Route::get('/student', 'Admin\StudentController@index');
 Auth::routes();
 
 //Route::get('/home', 'Site\HomeController@index')->name('home');
+<<<<<<< HEAD
 //
 
 
@@ -40,6 +44,11 @@ Auth::routes();
 
 //Layout Painel
 //Route::get('/painel', 'Admin\PainelController@index')->name('painel');
+=======
+
+//Layout Painel
+Route::get('/painel', 'Admin\PainelController@index')->name('painel');
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 Route::get('/formss', 'Admin\PainelController@forms')->name('forms');
 Route::get('/chartss', 'Admin\PainelController@charts')->name('charts');
 Route::get('/tabless', 'Admin\PainelController@tables')->name('tables');
@@ -69,6 +78,7 @@ Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
 // $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 // $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
+<<<<<<< HEAD
 Route::middleware(['auth'])->group(function(){
 	//Painel para cadastrados no financiamento Colectivo
 	Route::get('/financing', 'Financing\AdminController@index')->name('financing.index')
@@ -82,6 +92,11 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('/painel', 'Admin\PainelController@index')->name('painel');
 
+=======
+//Rotas
+Route::middleware(['auth'])->group(function(){
+
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 	//Permissions
 	Route::post('permissions/store', 'Admin\PermissionController@store')->name('permissions.store')
 	->middleware('permission:permissions.create');
@@ -125,7 +140,11 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:users.destroy');
 	Route::get('users/{user}/edit', 'Admin\UserController@edit')->name('users.edit')
 	->middleware('permission:users.edit');
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
         //Students
 	Route::post('students/store', 'Admin\StudentController@store')->name('students.store')
 	->middleware('permission:students.create');
@@ -176,7 +195,15 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:campaigns.edit');
 
      //Donations
+<<<<<<< HEAD
 	Route::post('donations/store', 'Admin\DonationController@store')->name('donations.store')
+=======
+	Route::get('donations/show/{donation}', 'Admin\DonationController@show')->name('donations.show')
+	->middleware('permission:donations.show');
+	Route::get('donations/{reward}', 'Admin\DonationController@confirmed')->name('donations.confirmed')
+	->middleware('permission:donation.confirmed');
+	Route::post('donations/store/{reward}', 'Admin\DonationController@store')->name('donations.store')
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 	->middleware('permission:donations.create');
 	Route::get('donations', 'Admin\DonationController@index')->name('donations.index')
 	->middleware('permission:donations.index');
@@ -184,13 +211,36 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:donations.create');
 	Route::put('donations/{donation}', 'Admin\DonationController@update')->name('donations.update')
 	->middleware('permission:donations.edit');
+<<<<<<< HEAD
 	Route::get('donations/{donation}', 'Admin\DonationController@show')->name('donations.show')
 	->middleware('permission:donations.show');
+=======
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 	Route::delete('donations/{donation}', 'Admin\DonationController@destroy')->name('donations.destroy')
 	->middleware('permission:donations.destroy');
 	Route::get('donations/{donation}/edit', 'Admin\DonationController@edit')->name('donations.edit')
 	->middleware('permission:donations.edit');
 
+<<<<<<< HEAD
+=======
+	//rewards
+	Route::post('rewards/store', 'Admin\RewardController@store')->name('rewards.store')
+	->middleware('permission:rewards.create');
+	Route::get('rewards', 'Admin\RewardController@index')->name('rewards.index')
+	->middleware('permission:rewards.index');
+	Route::get('rewards/create','Admin\RewardController@create')->name('rewards.create')
+	->middleware('permission:rewards.create');
+	Route::put('rewards/{reward}','Admin\RewardController@update')->name('rewards.update')
+	->middleware('permission:rewards.edit');
+	Route::get('rewards/show/{reward}', 'Admin\RewardController@show')->name('rewards.show')
+	->middleware('permission:rewards.show');
+	Route::delete('rewards/{reward}','Admin\RewardController@destroy')->name('rewards.destroy')
+	->middleware('permission:rewards.destroy');
+	Route::get('rewards/{reward}/edit','Admin\RewardController@edit')->name('rewards.edit')
+	->middleware('permission:rewards.edit');
+	
+
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     //Countries	
 	Route::post('countries/store', 'Admin\CountryController@store')->name('countries.store')
 	->middleware('permission:countries.create');

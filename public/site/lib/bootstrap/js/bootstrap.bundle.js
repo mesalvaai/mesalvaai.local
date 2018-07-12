@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
   * Bootstrap v4.1.1 (https://getbootstrap.com/)
+=======
+  * Bootstrap v4.1.0 (https://getbootstrap.com/)
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -69,7 +73,11 @@
 
   /**
    * --------------------------------------------------------------------------
+<<<<<<< HEAD
    * Bootstrap (v4.1.1): util.js
+=======
+   * Bootstrap (v4.1.0): util.js
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -202,7 +210,11 @@
 
   /**
    * --------------------------------------------------------------------------
+<<<<<<< HEAD
    * Bootstrap (v4.1.1): alert.js
+=======
+   * Bootstrap (v4.1.0): alert.js
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -214,7 +226,11 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'alert';
+<<<<<<< HEAD
     var VERSION = '4.1.1';
+=======
+    var VERSION = '4.1.0';
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     var DATA_KEY = 'bs.alert';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -251,11 +267,17 @@
 
       // Public
       _proto.close = function close(element) {
+<<<<<<< HEAD
         var rootElement = this._element;
 
         if (element) {
           rootElement = this._getRootElement(element);
         }
+=======
+        element = element || this._element;
+
+        var rootElement = this._getRootElement(element);
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 
         var customEvent = this._triggerCloseEvent(rootElement);
 
@@ -377,7 +399,11 @@
 
   /**
    * --------------------------------------------------------------------------
+<<<<<<< HEAD
    * Bootstrap (v4.1.1): button.js
+=======
+   * Bootstrap (v4.1.0): button.js
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -389,7 +415,11 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'button';
+<<<<<<< HEAD
     var VERSION = '4.1.1';
+=======
+    var VERSION = '4.1.0';
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     var DATA_KEY = 'bs.button';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -541,7 +571,11 @@
 
   /**
    * --------------------------------------------------------------------------
+<<<<<<< HEAD
    * Bootstrap (v4.1.1): carousel.js
+=======
+   * Bootstrap (v4.1.0): carousel.js
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -553,7 +587,11 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'carousel';
+<<<<<<< HEAD
     var VERSION = '4.1.1';
+=======
+    var VERSION = '4.1.0';
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     var DATA_KEY = 'bs.carousel';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -1042,7 +1080,11 @@
 
   /**
    * --------------------------------------------------------------------------
+<<<<<<< HEAD
    * Bootstrap (v4.1.1): collapse.js
+=======
+   * Bootstrap (v4.1.0): collapse.js
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -1054,7 +1096,11 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'collapse';
+<<<<<<< HEAD
     var VERSION = '4.1.1';
+=======
+    var VERSION = '4.1.0';
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     var DATA_KEY = 'bs.collapse';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -1325,7 +1371,11 @@
           var $this = $$$1(this);
           var data = $this.data(DATA_KEY);
 
+<<<<<<< HEAD
           var _config = _objectSpread({}, Default, $this.data(), typeof config === 'object' && config ? config : {});
+=======
+          var _config = _objectSpread({}, Default, $this.data(), typeof config === 'object' && config);
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 
           if (!data && _config.toggle && /show|hide/.test(config)) {
             _config.toggle = false;
@@ -1402,7 +1452,11 @@
 
   /**!
    * @fileOverview Kickass library to create and place poppers near their reference elements.
+<<<<<<< HEAD
    * @version 1.14.3
+=======
+   * @version 1.14.1
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
    * @license
    * Copyright (c) 2016 Federico Zivolo and contributors
    *
@@ -1425,7 +1479,10 @@
    * SOFTWARE.
    */
   var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
   var longerTimeoutBrowsers = ['Edge', 'Trident', 'Firefox'];
   var timeoutDuration = 0;
   for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
@@ -1552,6 +1609,7 @@
     return getScrollParent(getParentNode(element));
   }
 
+<<<<<<< HEAD
   var isIE11 = isBrowser && !!(window.MSInputMethodContext && document.documentMode);
   var isIE10 = isBrowser && /MSIE 10/.test(navigator.userAgent);
 
@@ -1571,6 +1629,42 @@
     }
     return isIE11 || isIE10;
   }
+=======
+  /**
+   * Tells if you are running Internet Explorer
+   * @method
+   * @memberof Popper.Utils
+   * @argument {number} version to check
+   * @returns {Boolean} isIE
+   */
+  var cache = {};
+
+  var isIE = function () {
+    var version = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'all';
+
+    version = version.toString();
+    if (cache.hasOwnProperty(version)) {
+      return cache[version];
+    }
+    switch (version) {
+      case '11':
+        cache[version] = navigator.userAgent.indexOf('Trident') !== -1;
+        break;
+      case '10':
+        cache[version] = navigator.appVersion.indexOf('MSIE 10') !== -1;
+        break;
+      case 'all':
+        cache[version] = navigator.userAgent.indexOf('Trident') !== -1 || navigator.userAgent.indexOf('MSIE') !== -1;
+        break;
+    }
+
+    //Set IE
+    cache.all = cache.all || Object.keys(cache).some(function (key) {
+      return cache[key];
+    });
+    return cache[version];
+  };
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 
   /**
    * Returns the offset parent of the given element
@@ -2323,7 +2417,10 @@
 
     // compute the popper offsets
     data.offsets.popper = getPopperOffsets(this.popper, data.offsets.reference, data.placement);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     data.offsets.popper.position = this.options.positionFixed ? 'fixed' : 'absolute';
 
     // run the modifiers
@@ -2629,6 +2726,7 @@
       position: popper.position
     };
 
+<<<<<<< HEAD
     // Avoid blurry text by using full pixel integers.
     // For pixel-perfect positioning, top/bottom prefers rounded
     // values, while left/right prefers floored values.
@@ -2636,6 +2734,13 @@
       left: Math.floor(popper.left),
       top: Math.round(popper.top),
       bottom: Math.round(popper.bottom),
+=======
+    // floor sides to avoid blurry text
+    var offsets = {
+      left: Math.floor(popper.left),
+      top: Math.floor(popper.top),
+      bottom: Math.floor(popper.bottom),
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
       right: Math.floor(popper.right)
     };
 
@@ -3191,6 +3296,7 @@
       boundariesElement = getOffsetParent(boundariesElement);
     }
 
+<<<<<<< HEAD
     // NOTE: DOM access here
     // resets the popper's position so that the document size can be calculated excluding
     // the size of the popper element itself
@@ -3212,6 +3318,9 @@
     popperStyles.left = left;
     popperStyles[transformProp] = transform;
 
+=======
+    var boundaries = getBoundaries(data.instance.popper, data.instance.reference, options.padding, boundariesElement, data.positionFixed);
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     options.boundaries = boundaries;
 
     var order = options.priority;
@@ -3920,7 +4029,11 @@
 
   /**
    * --------------------------------------------------------------------------
+<<<<<<< HEAD
    * Bootstrap (v4.1.1): dropdown.js
+=======
+   * Bootstrap (v4.1.0): dropdown.js
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -3932,7 +4045,11 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'dropdown';
+<<<<<<< HEAD
     var VERSION = '4.1.1';
+=======
+    var VERSION = '4.1.0';
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     var DATA_KEY = 'bs.dropdown';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -4402,7 +4519,11 @@
 
   /**
    * --------------------------------------------------------------------------
+<<<<<<< HEAD
    * Bootstrap (v4.1.1): modal.js
+=======
+   * Bootstrap (v4.1.0): modal.js
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -4414,7 +4535,11 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'modal';
+<<<<<<< HEAD
     var VERSION = '4.1.1';
+=======
+    var VERSION = '4.1.0';
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     var DATA_KEY = 'bs.modal';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -4890,7 +5015,11 @@
         return this.each(function () {
           var data = $$$1(this).data(DATA_KEY);
 
+<<<<<<< HEAD
           var _config = _objectSpread({}, Default, $$$1(this).data(), typeof config === 'object' && config ? config : {});
+=======
+          var _config = _objectSpread({}, Modal.Default, $$$1(this).data(), typeof config === 'object' && config);
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 
           if (!data) {
             data = new Modal(this, _config);
@@ -4980,7 +5109,11 @@
 
   /**
    * --------------------------------------------------------------------------
+<<<<<<< HEAD
    * Bootstrap (v4.1.1): tooltip.js
+=======
+   * Bootstrap (v4.1.0): tooltip.js
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -4992,7 +5125,11 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'tooltip';
+<<<<<<< HEAD
     var VERSION = '4.1.1';
+=======
+    var VERSION = '4.1.0';
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     var DATA_KEY = 'bs.tooltip';
     var EVENT_KEY = "." + DATA_KEY;
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
@@ -5497,7 +5634,11 @@
       };
 
       _proto._getConfig = function _getConfig(config) {
+<<<<<<< HEAD
         config = _objectSpread({}, this.constructor.Default, $$$1(this.element).data(), typeof config === 'object' && config ? config : {});
+=======
+        config = _objectSpread({}, this.constructor.Default, $$$1(this.element).data(), config);
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 
         if (typeof config.delay === 'number') {
           config.delay = {
@@ -5647,7 +5788,11 @@
 
   /**
    * --------------------------------------------------------------------------
+<<<<<<< HEAD
    * Bootstrap (v4.1.1): popover.js
+=======
+   * Bootstrap (v4.1.0): popover.js
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -5659,7 +5804,11 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'popover';
+<<<<<<< HEAD
     var VERSION = '4.1.1';
+=======
+    var VERSION = '4.1.0';
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     var DATA_KEY = 'bs.popover';
     var EVENT_KEY = "." + DATA_KEY;
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
@@ -5844,7 +5993,11 @@
 
   /**
    * --------------------------------------------------------------------------
+<<<<<<< HEAD
    * Bootstrap (v4.1.1): scrollspy.js
+=======
+   * Bootstrap (v4.1.0): scrollspy.js
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -5856,7 +6009,11 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'scrollspy';
+<<<<<<< HEAD
     var VERSION = '4.1.1';
+=======
+    var VERSION = '4.1.0';
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     var DATA_KEY = 'bs.scrollspy';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -5983,7 +6140,11 @@
 
 
       _proto._getConfig = function _getConfig(config) {
+<<<<<<< HEAD
         config = _objectSpread({}, Default, typeof config === 'object' && config ? config : {});
+=======
+        config = _objectSpread({}, Default, config);
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 
         if (typeof config.target !== 'string') {
           var id = $$$1(config.target).attr('id');
@@ -6156,7 +6317,11 @@
 
   /**
    * --------------------------------------------------------------------------
+<<<<<<< HEAD
    * Bootstrap (v4.1.1): tab.js
+=======
+   * Bootstrap (v4.1.0): tab.js
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -6168,7 +6333,11 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'tab';
+<<<<<<< HEAD
     var VERSION = '4.1.1';
+=======
+    var VERSION = '4.1.0';
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     var DATA_KEY = 'bs.tab';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -6404,7 +6573,11 @@
 
   /**
    * --------------------------------------------------------------------------
+<<<<<<< HEAD
    * Bootstrap (v4.1.1): index.js
+=======
+   * Bootstrap (v4.0.0): index.js
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */

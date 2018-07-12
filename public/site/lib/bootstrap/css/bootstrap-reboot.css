@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * Bootstrap Reboot v4.1.1 (https://getbootstrap.com/)
+=======
+ * Bootstrap Reboot v4.1.0 (https://getbootstrap.com/)
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -24,7 +28,11 @@ html {
   width: device-width;
 }
 
+<<<<<<< HEAD
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+=======
+article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
   display: block;
 }
 
@@ -160,7 +168,11 @@ pre,
 code,
 kbd,
 samp {
+<<<<<<< HEAD
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+=======
+  font-family: monospace, monospace;
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
   font-size: 1em;
 }
 

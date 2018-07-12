@@ -619,9 +619,13 @@
 #items-rodape .redes-sociais i:hover {
     color: rgba(74, 186, 167, 1);
 }
+<<<<<<< HEAD
 
 /*------------------------------
  Quem Somos Section
+=======
+/* Quem Somos Section
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 --------------------------------*/
 #quem-somos {
   padding: 60px 0 60px 0;
@@ -748,8 +752,12 @@
   }
 }
 
+<<<<<<< HEAD
 /*------------------------------
 sub-footer Section
+=======
+/* sub-footer Section
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 --------------------------------*/
 #sub-footer {
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
@@ -819,6 +827,7 @@ sub-footer Section
   font-size: 14px;
 }
 
+<<<<<<< HEAD
 /*------------------------------
  Financing Section
 --------------------------------*/
@@ -1097,4 +1106,6 @@ sub-footer Section
     padding-top: 30px;
     padding-bottom: 30px;
 }
+=======
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 

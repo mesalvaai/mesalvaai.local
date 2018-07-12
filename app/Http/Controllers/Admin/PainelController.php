@@ -5,21 +5,27 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 use App\User;
 use Auth;
+
 
 class PainelController extends Controller
 {
     public function __construct()
     {
+
         //$this->middleware('auth');
         $this->middleware('role:admin');
+        $this->middleware('auth');
     }
 
     public function index()
     {
+
         //dd(Auth::user()->roles[0]['slug'] );
         //dd(Auth::user()->isRole('admin')); //Retorna true
+
     	return view('admins.painels.painel');
     }
 
