@@ -19,11 +19,8 @@
                     </div>
                     @endif
                     
-<<<<<<< HEAD
+
                     {!! Form::open(['route' => 'donations.store']) !!}
-=======
-                    {!! Form::open(['route' => ['donations.store', $reward->id]]) !!}
->>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 
                     @include('admins.donations.partials.form', ['some' => 'data'])
                     
