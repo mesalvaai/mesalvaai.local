@@ -25,7 +25,7 @@ class AdminController extends Controller
 
     public function index(Request $request)
     {
-    	$request->user()->authorizeRoles(['user', 'role_fc']);
+    	$request->user()->authorizeRoles(['role_fc']);
     	$idUser = Auth::user()->id;
 
   		//$encrypted = Crypt::encryptString('Hello world.');
@@ -41,7 +41,8 @@ class AdminController extends Controller
 
     public function store(StoreFinancingRequest $request)
     {
-        $request->user()->authorizeRoles(['user', 'role_fc']);
+        dd('test');
+        $request->user()->authorizeRoles(['role_fc']);
         $validated = $request->validated();
 
         return redirect()->route('adminfc.create-camping')->with('status', 'Estudante cadastrado com sucesso');
