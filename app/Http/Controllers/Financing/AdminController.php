@@ -41,10 +41,26 @@ class AdminController extends Controller
 
     public function store(StoreFinancingRequest $request)
     {
-        dd('test');
         $request->user()->authorizeRoles(['role_fc']);
         $validated = $request->validated();
 
-        return redirect()->route('adminfc.create-camping')->with('status', 'Estudante cadastrado com sucesso');
+        return redirect()->route('create.camping')->with('status', 'Estudante cadastrado com sucesso');
+    }
+
+    public function createCamping(Request $request)
+    {
+        $request->user()->authorizeRoles(['role_fc']);
+        $idUser = Auth::user()->id;
+
+        //$encrypted = Crypt::encryptString('Hello world.');
+        // $decrypted = Crypt::decryptString($encrypted);
+        
+        $encrypted = Crypt::encrypt($idUser);
+        $decrypted = Crypt::decrypt($encrypted);
+
+        $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
+        $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
+
+        return view('adminfc.create-camping', compact('idUser', 'states', 'cities', 'encrypted', 'decrypted'));
     }
 }

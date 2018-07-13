@@ -74,6 +74,8 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('IsRoleAluno:role_fc');
 	Route::post('/financing/store', 'Financing\AdminController@store')->name('create.student')
 	->middleware('IsRoleAluno:role_fc');
+	Route::get('/financing/create', 'Financing\AdminController@createCamping')->name('create.camping')
+	->middleware('IsRoleAluno:role_fc');
 });
 
 //Rotas

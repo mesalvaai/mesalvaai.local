@@ -28,7 +28,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-<<<<<<< HEAD
+
     // public function roles()
     // {
     //     return $this
@@ -69,14 +69,9 @@ class User extends Authenticatable
         return false;
     }
 
-=======
->>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     public function students()
     {
         return $this->hasMany(Student::class);
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 }

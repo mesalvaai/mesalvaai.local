@@ -30,8 +30,8 @@ class StudentFormRequest extends FormRequest
             'data_of_birth' => 'required|date',
             'phone'   =>'required|integer',
             'cep'     =>'required|integer',
-            'state'   =>'required',
-            'cidade_id' =>'required',
+            'state_id'   =>'required',
+            'city_id' =>'required',
             'street'  =>'required',
             'number'  =>'required',
             'neighborhood' =>'required',
@@ -39,7 +39,7 @@ class StudentFormRequest extends FormRequest
             'status'  =>'required'
         ];
     }
-<<<<<<< HEAD
+
     
     public function messages(){
         return [
@@ -51,16 +51,5 @@ class StudentFormRequest extends FormRequest
             'unique' => 'Este ":attribute" já se encontra cadastrado no sistema!'
         ];
     }
-=======
-    public function messages(){
-    return [
-        'required' => 'O campo ":attribute" é obrigatório!',
-        'numeric' => 'O campo ":attribute" deve ser um número!',
-        'min' => 'O campo ":attribute" deve ter no mínimo :min caracteres!',
-        'max' => 'O campo ":attribute" deve ter no maximo :max caracteres!',
-        'type.required' => 'O campo "tipo" é obrigatório!',
-        'unique' => 'Este ":attribute" já se encontra cadastrado no sistema!'
-    ];
-}
->>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
+
 }

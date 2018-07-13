@@ -17,7 +17,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong class="text-msa">Sobre você</strong>
+                        <strong class="text-msa">Criar Campanha</strong>
                     </div>
 
                     <div class="card-body">
@@ -44,8 +44,8 @@
                         @endif
                         
                         
-                        {{ Form::open(['route' => 'financing.store']) }}
-                            @include('adminfc.partials.form')
+                        {{ Form::open(['route' => 'create.camping']) }}
+                            @include('adminfc.partials.form-camping')
                         {{ Form::close() }}
 
                                            

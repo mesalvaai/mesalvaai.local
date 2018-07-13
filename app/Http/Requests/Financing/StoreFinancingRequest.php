@@ -29,7 +29,7 @@ class StoreFinancingRequest extends FormRequest
             'phone'   =>'required|integer',
             'how_met_us' => 'required',
             'state_id'   =>'required',
-            'cidade_id' =>'required'
+            'city_id' =>'required'
         ];
     }
     
