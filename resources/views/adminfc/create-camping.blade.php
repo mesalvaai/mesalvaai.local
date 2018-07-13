@@ -6,7 +6,7 @@
 <section id="painel-fc" class="painel-fc">
     <div class="painel-fc-bg">
         <div class="container text-center">
-            <h1 class="text-white">INSCREVA SEU PROJETO</h1>
+            <h1 class="text-white">CRIAR SUA CAMPANHA</h1>
         </div>
     </div>
 </section>

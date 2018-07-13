@@ -17,25 +17,14 @@
 	<div class="form-group col">
 		{!! Form::label('total_amount', 'Valor total') !!}
 
-
 		@if(isset($campaign_donation))
-
-		{!! Form::text('total_amount', null, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'disabled' => 'disabled']) !!}
-
+			{!! Form::text('total_amount', null, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'disabled' => 'disabled']) !!}
 		@else
-
-
-		@if(isset($donation))
-
-		{!! Form::text('total_amount', null, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'required']) !!}
-
-
-		@else
-		
-		{!! Form::text('total_amount', $reward->donation, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'required']) !!}
-
-		@endif
-
+			@if(isset($donation))
+				{!! Form::text('total_amount', null, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'required']) !!}
+			@else
+				{!! Form::text('total_amount', @$reward->donation, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'required']) !!}
+			@endif
 		@endif
 	</div>
 
