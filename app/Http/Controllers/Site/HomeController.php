@@ -36,4 +36,9 @@ class HomeController extends Controller
     {
         return view('sites.tests.test');
     }
+
+     public function mimos()
+    {
+        return view('sites.mimos');
+    }
 }

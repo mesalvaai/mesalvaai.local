@@ -154,7 +154,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="col-lg-8 text-center">
-                        <h2>Os mimos agora é para todo mundo.</h2>
+                        <h2>Os mimos agora são para todo mundo.</h2>
                         <p>Conheça os mimos do Me Salva Aí</p>
                     </div>
                 </div>

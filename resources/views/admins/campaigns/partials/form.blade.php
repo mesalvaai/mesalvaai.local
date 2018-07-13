@@ -1,4 +1,5 @@
 <div class="form-group">
+
 	{!! Form::label('title', 'Titulo da campanha') !!}
 
 	@if ($errors->get('title'))

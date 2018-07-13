@@ -1,9 +1,10 @@
 <div class="form-group">
+
 	{!! Form::label('campaign_id', 'Campanha') !!}
 
 	@if(isset($campaign_donation))
 
-	{!! Form::select('campaign_id', $campaigns, $campaign_donation, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+	{!! Form::select('campaign_id', $campaigns, $campaign_donation->campaign_id, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
 
 	@else
 
@@ -17,21 +18,23 @@
 		{!! Form::label('total_amount', 'Valor total') !!}
 
 
-<<<<<<< HEAD
 		@if(isset($campaign_donation))
-=======
-		@if(isset($donation))
->>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 
 		{!! Form::text('total_amount', null, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'disabled' => 'disabled']) !!}
 
 		@else
-<<<<<<< HEAD
-		{!! Form::text('total_amount', null, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'required']) !!}
-=======
-		{!! Form::text('total_amount', $reward->donation, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'required']) !!}
->>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 
+
+		@if(isset($donation))
+
+		{!! Form::text('total_amount', null, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'required']) !!}
+
+
+		@else
+		
+		{!! Form::text('total_amount', $reward->donation, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'required']) !!}
+
+		@endif
 
 		@endif
 	</div>
@@ -77,13 +80,13 @@
 
 
 <div class="form-group">
+	{!! Form::label('full_name', 'Nome Completo') !!}
+	
 	@if(isset($campaign_donation))
 
 	{!! Form::text('full_name', null, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
 
 	@else 
-
-	{!! Form::label('full_name', 'Nome Completo') !!}
 
 	@if ($errors->get('full_name'))
 
@@ -107,19 +110,20 @@
 </div>
 
 <div class="form-group">
+	
+	{!! Form::label('email', 'Email') !!}
+
 	@if(isset($campaign_donation))
 
-	{!! Form::text('email', null, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+	{!! Form::email('email', null, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
 
 	@else
-
-	{!! Form::label('email', 'Email') !!}
 
 	@if ($errors->get('email'))
 
 	@foreach ($errors->get('email') as $error)
 
-	{!! Form::text('email', null, ['class' => 'form-control is-invalid', 'required']) !!}
+	{!! Form::email('email', null, ['class' => 'form-control is-invalid', 'required']) !!}
 
 	<div class="invalid-feedback">
 		{{ $error }}
@@ -129,7 +133,7 @@
 
 	@else
 
-	{!! Form::text('email', null, ['class' => 'form-control', 'required']) !!}
+	{!! Form::email('email', null, ['class' => 'form-control', 'required']) !!}
 
 	@endif
 
@@ -146,9 +150,9 @@
 		{!! Form::select('country', $countries, null, ['class' => 'form-control', 'placeholder' => '-- Selecione um País --', 'disabled' => 'disabled']) !!}
 
 		@else
-	
+
 		{!! Form::select('country', $countries, null, ['class' => 'form-control', 'placeholder' => '-- Selecione um País --', 'required']) !!}
-	
+
 		@endif
 	</div>
 
@@ -161,7 +165,7 @@
 
 		@else
 
-		{!! Form::text('postal_code', null, ['class' => 'form-control', 'required']) !!}
+		{!! Form::text('postal_code', null, ['class' => 'form-control', 'placeholder' => '00000-000', 'required']) !!}
 
 		@endif
 	</div>

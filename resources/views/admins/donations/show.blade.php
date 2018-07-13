@@ -16,8 +16,8 @@
                         {{ session('status') }}
                     </div>
                     @endif
-                    
-                    <p><strong>Id: </strong>{{ $donation->id }}</p>
+                 
+                    <p><strong>Campanha: </strong>{{ $campaign->title }}</p>
                     <p><strong>Nome: </strong>{{ $donation->full_name }}</p>
                     <p><strong>Email: </strong>{{ $donation->email }}</p>
                     <p><strong>Detalhes: </strong>{{ $donation->details }}</p>

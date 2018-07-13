@@ -1,0 +1,413 @@
+
+/*--------------------------------------------------------------
+# Mimos Section One
+--------------------------------------------------------------*/
+#mimos-sec-one{
+  width: 100%;
+  background: linear-gradient(45deg, #ffffff, #fafbfb);
+  position: relative;
+}
+#mimos-sec-one .mimos-sec-one-text {
+  padding-top: 150px;
+  padding-left:  calc((100% - 500px) * 0.5);
+  text-align: left;
+  vertical-align: top;
+}
+#mimos-sec-one h1 {
+  margin: 30px 0 10px 0;
+  font-size: 55px;
+  font-weight: 550;
+  line-height: 65px;
+  color: #5643B0;
+  line-height: 120%;
+}
+#mimos-sec-one .celular{
+  left: 700px;
+  position: absolute;
+  margin-left: calc((100% - 980px) * 0.5);
+  top: 160px;
+  width: 18%;
+  z-index: 2;
+}
+@media (max-width: 768px) {
+  #mimos-sec-one .mimos-sec-one-text {
+    padding-top: 150px;
+  }
+  #mimos-sec-one h1 {
+    font-size: 58px;
+    line-height: 56px;
+  }
+}
+@media (max-width: 700px) {
+ #mimos-sec-one .celular{
+  display:none
+}
+}
+@media (max-width: 468px) {
+  #mimos-sec-one h1 {
+    font-size: 38px;
+    line-height: 36px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Mimos Section Two
+--------------------------------------------------------------*/
+#mimos-sec-two{
+  padding: 50px 0;
+  background: #5643B0;
+  margin-top: 150px
+}
+#mimos-sec-two h2{
+  color: #fff;
+  font-size: 2.5em;
+  font-weight: 600;
+  line-height: 150%;
+}
+
+#mimos-sec-two p{
+  color: #fff;
+  font-size: 1.3em;
+  margin-top: 60px;
+}
+
+@media (max-width: 579px) {
+ #mimos-sec-two{
+   margin-top: 0;
+  }
+}
+/*--------------------------------------------------------------
+#Section Three
+--------------------------------------------------------------*/
+#mimos-sec-three {
+  padding-bottom: 60px;
+}
+.mimos-sec-three-bg{
+  background-size: 100%;
+  height: 75vh;
+  background-repeat: no-repeat;
+}
+
+#mimos-sec-three .img-effect {
+  margin-left: -15px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background: #700877;
+  background: -moz-linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
+  background: -webkit-linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
+  background: linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
+}
+
+#mimos-sec-three .img-effect img,
+#mimos-sec-three .img-effect:before,
+#mimos-sec-three .img-effect:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+#mimos-sec-three .img-effect img {
+  max-width: 100%;
+  backface-visibility: hidden;
+  vertical-align: top;
+}
+/*#mimos-sec-three .img-effect:hover img,
+#mimos-sec-three .img-effect.hover img {
+  zoom: 1;
+  filter: alpha(opacity=50);
+  -webkit-opacity: 0.5;
+  opacity: 0.5;
+  }*/
+/*
+#mimos-sec-three .img-effect:hover:before,
+#mimos-sec-three .img-effect.hover:before,
+#mimos-sec-three .img-effect:hover:after,
+#mimos-sec-three .img-effect.hover:after {
+  opacity: 1;
+  top: 50%;
+  left: 50%;
+  }*/
+  #mimos-sec-three .description{
+    margin-top: 60px;
+    margin-left: 20px;
+  }
+  #mimos-sec-three .description h4{
+    color: #5643b0;
+    font-weight: 550;
+  }
+  #mimos-sec-three .description p{
+    font-size: 1.3em;
+  }
+
+
+/*--------------------------------------------------------------
+# Mimos Section Four
+--------------------------------------------------------------*/
+#mimos-sec-four {
+  width: 100%;
+  height: 93vh;
+}
+.mimos-sec-four-bg {
+ background: #fafafa;
+}
+#mimos-sec-four .mimos-sec-four-img{
+  padding-top: 30px;
+}
+#mimos-sec-four h3{
+  color: #5643B0;
+  font-size: 2em;
+  font-weight: 530;
+  text-align: left;
+  line-height: 120%;
+}
+#mimos-sec-four .espaco-divs{
+  margin-top: 50px;
+}
+#mimos-sec-four .celular{
+  width: 50%;
+}
+
+@media (max-width: 1199px) {
+  #mimos-sec-four h3{
+    margin-top: 40px;
+  }
+}
+@media (max-width: 991px) {
+ #mimos-sec-four {
+  height: 120vh;
+}
+#mimos-sec-four .celular{
+  width: 30%;
+}
+}
+@media (max-width: 768px) {
+ #mimos-sec-four {
+  height: 120vh;
+}
+}
+
+/*--------------------------------------------------------------
+# Section five
+--------------------------------------------------------------*/
+#mimos-sec-five {
+  width: 100%;
+}
+.mimos-sec-five-bg {
+  background: #fff;
+}
+
+
+#mimos-sec-five .img-description {
+  font-size: 0.8em;
+  font-weight: bold;
+  margin: 20px 0;
+}
+#mimos-sec-five .mimos-sec-five-img{
+  padding-top: 30px;
+}
+#mimos-sec-five h2{
+  padding-top: 100px;
+  color: #5643B0;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+#mimos-sec-five .get-started-btn {
+  background: #5643B0;
+  display: inline-block;
+  padding: 6px 30px;
+  border-radius: 20px;
+  color: #fff;
+  transition: none;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+}
+#mimos-sec-five .get-started-btn:hover{
+  background: rgba(74, 186, 167, 1);
+}
+
+/*--------------------------------------------------------------
+# Mimos Section Six
+--------------------------------------------------------------*/
+#mimos-sec-six {
+  width: 100%;
+}
+#mimos-sec-six .container-child-bg {
+ background: #5643B0;
+ height: 83vh;
+}
+#mimos-sec-six .mimos-sec-six-img{
+  padding: 30px 0;
+}
+#mimos-sec-six h3{
+  font-size: 2em;
+  font-weight: 530;
+  text-align: left;
+  line-height: 130%;
+}
+#mimos-sec-six h4{
+  color: #5643B0;
+  font-size: 2em;
+  font-weight: 530;
+  text-align: left;
+  line-height: 130%;
+}
+#mimos-sec-six .celular{
+  width: 45%;
+}
+#mimos-sec-six .description{
+  margin-top: 60px;
+  margin-left: 20px;
+}
+#mimos-sec-six .description h4{
+  color: #5643b0;
+  font-weight: 550;
+}
+#mimos-sec-six .description p{
+  font-size: 1.3em;
+}
+@media (max-width: 1199px) {
+  #mimos-sec-six h3{
+    margin-top: 30px;
+  }
+  #mimos-sec-six .container-child-bg{
+    height: 70vh; 
+  }
+}
+@media (max-width: 991px) {
+ #mimos-sec-six .container-child-bg{
+  height: 105vh;
+}
+#mimos-sec-six .celular{
+  width: 30%;
+}
+#mimos-sec-six h3{
+  margin-top: 0;
+}
+}
+@media (max-width: 768px) {
+ #mimos-sec-six .container-child-bg {
+  height: 90vh;
+}
+}
+@media (max-width: 468px) {
+ #mimos-sec-six .container-child-bg {
+  height: 95vh;
+}
+}
+
+
+/*--------------------------------------------------------------
+# Mimos Section Seven
+-------------------------------------------------------------- */
+#mimos-sec-seven{
+  width: 100%;
+}
+.mimos-sec-seven-bg{
+  background: url(/site/img/msa/mimos-sec-7.jpg);
+  background-size: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+}
+#mimos-sec-seven .qs-child-bg{
+  border: 0px solid rgba(50, 65, 88, 1);
+  background-color: rgba(255, 255, 255, 0.82);
+  border-radius: 6px;
+  box-shadow: 0px -5px 24px 0px rgba(153, 153, 151, 0.42);
+  padding: 60px 60px;
+  border-radius: 6px;
+  height: 50vh;
+  position: absolute;
+  margin-top: 40%;
+}
+#mimos-sec-seven h3 {
+  margin-top: 20px;
+  font-weight: 550;
+  color: #5643B0;
+}
+#mimos-sec-seven p{
+  color: #292929;
+  padding: 15px 15px;
+  font-size: 16px;
+}
+#mimos-sec-seven .get-started-btn {
+  background: #5643B0;
+  display: inline-block;
+  padding: 10px 100px;
+  border-radius: 35px;
+  color: #fff;
+  transition: none;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 20px;
+}
+#mimos-sec-seven .get-started-btn:hover{
+  background: rgba(74, 186, 167, 1);
+}
+
+@media (max-width: 1199px) {
+  #mimos-sec-seven h3{
+    margin-top: 0;
+    font-size: 1.5em;
+  }
+  .mimos-sec-seven-bg{
+    height: 95vh;
+  }
+}
+@media (max-width: 991px) {
+  #mimos-sec-seven .qs-child-bg{
+
+    margin-top: 28%;
+  }
+  .mimos-sec-seven-bg{
+    height: 90vh;
+  }
+}
+@media (max-width: 768px) {
+ #mimos-sec-seven h3{
+  margin-top: 0;
+  font-size: 1.2em;
+}
+#mimos-sec-seven p{
+  color: #292929;
+  padding: 15px 15px;
+  font-size: 14px;
+}
+#mimos-sec-seven .get-started-btn {
+  color: #fff;
+  padding: 10px 90px;
+  font-size: 12px;
+  font-weight: 300;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 20px;
+}
+.mimos-sec-seven-bg{
+  height: 80vh;
+}
+}
+@media (max-width: 579px) {
+  #mimos-sec-seven .qs-child-bg{
+    margin-top: 23%;
+    margin-right: 20px;
+  }
+  .mimos-sec-seven-bg{
+    height: 75vh;
+  }
+}
+@media (max-width: 468px) {
+ #mimos-sec-seven .get-started-btn {
+    padding: 10px 60px;
+   font-size: 12px;
+  font-weight: 100;
+   margin-top: 10px;
+
+}
+#mimos-sec-seven p{
+  color: #292929;
+  padding: 0;
+  font-size: 14px;
+}
+}

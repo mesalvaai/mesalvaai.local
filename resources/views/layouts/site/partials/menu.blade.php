@@ -7,7 +7,7 @@
             <ul class="nav-menu">
                 <li class="menu-active"><a href="#home">Home</a></li>
                 <li><a href="#about">Como funciona</a></li>
-                <li><a href="#features">Mimos</a></li>
+                <li><a href="#mimos">Mimos</a></li>
                 <li><a href="#pricing">Financiamento coletivo</a></li>
                 <li class="menu-has-children"><a href="#"><i class="fa fa-user"></i></a>
                     <ul>
