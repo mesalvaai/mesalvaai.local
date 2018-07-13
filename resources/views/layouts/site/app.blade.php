@@ -28,6 +28,8 @@
   <!-- Main Stylesheet File -->
   <link href="{{ asset('site/css/style.css') }}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ asset('site/css/msa.css') }}">
+   <link rel="stylesheet" type="text/css" href="{{ asset('site/css/sty.css') }}">
+
 
   @yield('styles')
 </head>
@@ -36,37 +38,37 @@
 
   <!--==========================
     Header
-  ============================-->
-  @include('layouts.site.partials.menu', ['some' => 'data'])
-  <!-- #header -->
+    ============================-->
+    @include('layouts.site.partials.menu', ['some' => 'data'])
+    <!-- #header -->
 
-  
-  @yield('content')
+    
+    @yield('content')
 
   <!--==========================
     Footer
-  ============================-->
-  @include('layouts.site.partials.footer', ['some' => 'data'])
-  <!-- #footer -->
+    ============================-->
+    @include('layouts.site.partials.footer', ['some' => 'data'])
+    <!-- #footer -->
 
-  
+    
 
-  <!-- JavaScript Libraries -->
-  <script src="{{ asset('site/lib/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('site/lib/jquery/jquery-migrate.min.js') }}"></script>
-  <script src="{{ asset('site/lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('site/lib/easing/easing.min.js') }}"></script>
-  <script src="{{ asset('site/lib/aos/aos.js') }}"></script>
-  <script src="{{ asset('site/lib/superfish/hoverIntent.js') }}"></script>
-  <script src="{{ asset('site/lib/superfish/superfish.min.js') }}"></script>
-  <script src="{{ asset('site/lib/magnific-popup/magnific-popup.min.js') }}"></script>
+    <!-- JavaScript Libraries -->
+    <script src="{{ asset('site/lib/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('site/lib/jquery/jquery-migrate.min.js') }}"></script>
+    <script src="{{ asset('site/lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('site/lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('site/lib/aos/aos.js') }}"></script>
+    <script src="{{ asset('site/lib/superfish/hoverIntent.js') }}"></script>
+    <script src="{{ asset('site/lib/superfish/superfish.min.js') }}"></script>
+    <script src="{{ asset('site/lib/magnific-popup/magnific-popup.min.js') }}"></script>
 
-  <!-- Contact Form JavaScript File -->
-  <script src="{{ asset('site/contactform/contactform.js') }}"></script>
- 
-  <!-- Template Main Javascript File -->
-  <script src="{{ asset('site/js/main.js') }}"></script>
-  
+    <!-- Contact Form JavaScript File -->
+    <script src="{{ asset('site/contactform/contactform.js') }}"></script>
+    
+    <!-- Template Main Javascript File -->
+    <script src="{{ asset('site/js/main.js') }}"></script>
+    
     @yield('scripts')
-</body>
-</html>
+  </body>
+  </html>

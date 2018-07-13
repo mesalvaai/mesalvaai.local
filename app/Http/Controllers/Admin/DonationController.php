@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Donation;
-
 use App\CampaignDonation;
 use App\Campaign;
 use App\Country;
+use App\Reward;
+use App\DonationReward;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,9 +21,17 @@ class DonationController extends Controller
      */
     public function index()
     {
-        //
       $donations = Donation::paginate();
       return view('admins.donations.index',compact('donations'));
+    }
+
+    public function confirmed(Reward $reward)
+    {
+    // return view('admins.donations.create', compact('reward'));
+
+      $campaigns = Campaign::orderBy('title', 'ASC')->pluck('title', 'id');
+      $countries = Country::orderBy('name', 'ASC')->pluck('name');
+      return view('admins.donations.create',compact('campaigns', 'countries', 'reward'));
     }
 
     /**
@@ -32,10 +41,11 @@ class DonationController extends Controller
      */
     public function create()
     {
-      $campaigns = Campaign::orderBy('title', 'ASC')->pluck('title', 'id');
-      $countries = Country::orderBy('name', 'ASC')->pluck('name');
-      return view('admins.donations.create',compact('campaigns', 'countries'));
-    }
+     $campaigns = Campaign::orderBy('title', 'ASC')->pluck('title', 'id');
+     $countries = Country::orderBy('name', 'ASC')->pluck('name', 'name');
+
+     return view('admins.donations.create',compact('campaigns', 'countries'));
+   }
 
     /**
      * Store a newly created resource in storage.
@@ -43,18 +53,19 @@ class DonationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Reward $reward)
     { 
      $messages = [
-       'required' => 'Este campo é obrigatório!',
-       'max' => 'Valor máximo de caracteres excedido!',
+       'required' => 'Este campo é obrigatório.',
+       'max' => 'Valor máximo de caracteres excedido.',
+       'email'=> 'Este campo deve conter um endereço de e-mail válido.',
      ];
 
      $validator = \Validator::make($request->all(), [
       'total_amount' => 'required',
       'details' => 'required',
       'full_name' => 'bail|required|max:255',
-      'email' => 'bail|required|max:255',
+      'email' => 'bail|email|required|max:255',
       'country' => 'bail|required|max:255',
       'postal_code' => 'required',
       'status' =>'bail|required|max:1',
@@ -72,14 +83,24 @@ class DonationController extends Controller
 
       $donation = new Donation($parameters);
 
+      $donationReward = new DonationReward();
+      $donationReward->reward_id = $reward->id;
+
       $campaignDonation = new CampaignDonation();
 
 
       if($donation->anonymus != 1){
         $donation->anonymus  = 0;
       }
+      else{
+        $donation->full_name = 'Anônimo';
+        $donation->email = 'Anônimo';
+      }
 
       $donation->save();
+
+      $donationReward->donation_id = $donation->id;
+      $donationReward->save();
 
       $campaignDonation->campaign_id = $request->input('campaign_id');
       $campaignDonation->donation_id =$donation->id;
@@ -89,7 +110,7 @@ class DonationController extends Controller
       $campaignDonation->save();
 
 
-      $campaign = Campaign::where('id','=',$request->input('campaign_id'))->first();
+      $campaign = Campaign::where('id', $request->input('campaign_id'))->first();
 
       $campaign->funds_received = $campaign->funds_received + $request->input('total_amount');
 
@@ -107,7 +128,14 @@ class DonationController extends Controller
      */
     public function show(Donation $donation)
     {
-      return view('admins.donations.show', compact('donation'));
+
+      $campaign = \DB::table('campaigns')->join('campaign_donation', 'campaigns.id', '=', 'campaign_donation.campaign_id')
+      ->join('donations', 'donations.id', '=', 'campaign_donation.donation_id')
+      ->select('campaigns.title')->where('campaign_donation.donation_id',$donation->id)
+      ->first();
+
+      return view('admins.donations.show', compact('donation', 'campaign'));
+
     }
 
     /**
@@ -119,11 +147,13 @@ class DonationController extends Controller
     public function edit(Donation $donation)
     {
       $campaigns = Campaign::orderBy('title', 'ASC')->pluck('title', 'id');
-      $countries = Country::orderBy('name', 'ASC')->pluck('name');
 
-      $campaign_donation = CampaignDonation::pluck('campaign_id')->where('donation_id', $donation->id);
+      $countries = Country::orderBy('name', 'ASC')->pluck('name', 'name');
+
+      $campaign_donation = \DB::table('campaign_donation')->select('campaign_id')->where('donation_id', $donation->id)->first();
 
       return view('admins.donations.edit', compact('donation', 'campaigns', 'campaign_donation', 'countries'));
+
     }
 
     /**
@@ -135,17 +165,17 @@ class DonationController extends Controller
      */
     public function update(Request $request, Donation $donation)
     {
-
-     $messages = [
-       'required' => 'Este campo é obrigatório!',
-       'max' => 'Valor máximo de caracteres excedido!',
+      $messages = [
+       'required' => 'Este campo é obrigatório.',
+       'max' => 'Valor máximo de caracteres excedido.',
+       'email'=> 'Este campo deve conter um endereço de e-mail válido.',
      ];
 
      $validator = \Validator::make($request->all(), [
       'total_amount' => 'required',
       'details' => 'required',
       'full_name' => 'bail|required|max:255',
-      'email' => 'bail|required|max:255',
+      'email' => 'bail|email|required|max:255',
       'country' => 'bail|required|max:255',
       'postal_code' => 'required',
       'status' =>'bail|required|max:1',
