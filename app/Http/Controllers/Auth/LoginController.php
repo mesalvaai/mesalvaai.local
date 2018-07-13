@@ -25,7 +25,11 @@ class LoginController extends Controller
      *
      * @var string
      */
+<<<<<<< HEAD
     //protected $redirectTo = '/painel';
+=======
+    protected $redirectTo = '/painel';
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 
     /**
      * Create a new controller instance.
@@ -36,6 +40,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+<<<<<<< HEAD
 
     protected function authenticated($request, $user)
     {
@@ -48,4 +53,6 @@ class LoginController extends Controller
             return redirect('/painel');
         }
     }
+=======
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 }

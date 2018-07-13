@@ -8,7 +8,11 @@
 
 				<div class="card-header">
 					Doações
+<<<<<<< HEAD
 					<a href="{{ route('donations.create') }}" class="btn btn-outline-info btn-sm float-right">Nova doação</a>
+=======
+					<a href="{{ route('rewards.index') }}" class="btn btn-outline-info btn-sm float-right">Nova doação</a>
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 				</div>
 
 				<div class="card-body">

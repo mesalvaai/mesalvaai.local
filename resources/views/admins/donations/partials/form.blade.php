@@ -17,12 +17,20 @@
 		{!! Form::label('total_amount', 'Valor total') !!}
 
 
+<<<<<<< HEAD
 		@if(isset($campaign_donation))
+=======
+		@if(isset($donation))
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 
 		{!! Form::text('total_amount', null, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'disabled' => 'disabled']) !!}
 
 		@else
+<<<<<<< HEAD
 		{!! Form::text('total_amount', null, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'required']) !!}
+=======
+		{!! Form::text('total_amount', $reward->donation, ['class' => 'form-control', 'placeholder' =>'R$ 5000.00', 'required']) !!}
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 
 
 		@endif

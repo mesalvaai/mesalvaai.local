@@ -2,6 +2,7 @@
 
 @section('styles')
 	<link rel="stylesheet" type="text/css" href="{{ asset('site/css/grade-quebrados.css') }}">
+<<<<<<< HEAD
     <style>
         .exemplo-row-flex-cols .row{
             min-height: 10rem;
@@ -14,6 +15,8 @@
             padding-bottom: .75rem;
         }
     </style>
+=======
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 @endsection
 
 @section('content')
@@ -94,6 +97,7 @@
       </div>
     </section>
 
+<<<<<<< HEAD
     <div class="container-fluid exemplo-row text-center">
             <div class="row">
                 <div class="col-md">
@@ -268,6 +272,8 @@
             </div>
         </div>
 
+=======
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 	<section class="footer"></section>
     
 @endsection

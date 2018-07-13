@@ -2,27 +2,38 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Donation;
+use App\Http\Controllers\Controller;
 
+use App\Donation;
 use App\CampaignDonation;
 use App\Campaign;
 use App\Country;
-
+use App\Reward;
+use App\DonationReward;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+
+
+
 
 class DonationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+     
+     
+    
     public function index()
     {
-        //
-      $donations = Donation::paginate();
-      return view('admins.donations.index',compact('donations'));
+        
+       $donations = Donation::paginate();
+       return view('admins.donations.index',compact('donations'));
+    }
+
+    public function confirmed(Reward $reward)
+    {
+    // return view('admins.donations.create', compact('reward'));
+
+      $campaigns = Campaign::orderBy('title', 'ASC')->pluck('title', 'id');
+      $countries = Country::orderBy('name', 'ASC')->pluck('name');
+      return view('admins.donations.create',compact('campaigns', 'countries', 'reward'));
     }
 
     /**
@@ -43,7 +54,8 @@ class DonationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    public function store(Request $request, Reward $reward)
     { 
      $messages = [
        'required' => 'Este campo é obrigatório!',
@@ -68,9 +80,13 @@ class DonationController extends Controller
 
 
     }else{
-      $parameters = $request->all(); 
 
-      $donation = new Donation($parameters);
+
+      $donation = new Donation($request->all());
+      
+
+      $donationReward = new DonationReward();
+      $donationReward->reward_id = $reward->id;
 
       $campaignDonation = new CampaignDonation();
 
@@ -78,8 +94,15 @@ class DonationController extends Controller
       if($donation->anonymus != 1){
         $donation->anonymus  = 0;
       }
+      else{
+        $donation->full_name = 'Anônimo';
+        $donation->email = 'Anônimo';
+      }
 
       $donation->save();
+
+      $donationReward->donation_id = $donation->id;
+      $donationReward->save();
 
       $campaignDonation->campaign_id = $request->input('campaign_id');
       $campaignDonation->donation_id =$donation->id;
@@ -95,7 +118,8 @@ class DonationController extends Controller
 
       $campaign->update();
 
-      return redirect()->route('donations.edit', $donation->id)
+
+      return redirect()->route('donations.index', $donation->id)
       ->with('status', 'Doação cadastrada com sucesso!');
     }
   }
