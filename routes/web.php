@@ -78,7 +78,13 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('IsRoleAluno:role_fc');
 	Route::post('/financing/store', 'Financing\AdminController@store')->name('create.student')
 	->middleware('IsRoleAluno:role_fc');
-	Route::get('/financing/create', 'Financing\AdminController@createCamping')->name('create.camping')
+	Route::get('/financing/campanha', 'Financing\AdminController@createCamping')->name('create.camping')
+	->middleware('IsRoleAluno:role_fc');
+	Route::post('/financing/storeCamping', 'Financing\AdminController@storeCamping')->name('store.camping')
+	->middleware('IsRoleAluno:role_fc');
+	Route::get('/financing/rewards', 'Financing\AdminController@createRewards')->name('create.rewards')
+	->middleware('IsRoleAluno:role_fc');
+	Route::get('/financing/storeRewards', 'Financing\AdminController@storeRewards')->name('store.rewards')
 	->middleware('IsRoleAluno:role_fc');
 });
 

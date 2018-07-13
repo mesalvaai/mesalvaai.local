@@ -17,7 +17,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong class="text-msa">Criar Campanha {{ session()->get('student_id') }}</strong>
+                        <strong class="text-msa">Criar Reconpensas {{ session()->get('student_id') }}</strong>
                     </div>
 
                     <div class="card-body">
@@ -44,9 +44,9 @@
                         @endif --}}
                         
                         
-                        {{ Form::open(['route' => 'store.camping', 'novalidate']) }}
+                        {{-- {{ Form::open(['route' => 'store.camping', 'novalidate']) }}
                             @include('adminfc.partials.form-camping')
-                        {{ Form::close() }}
+                        {{ Form::close() }} --}}
 
                                            
                     </div>
