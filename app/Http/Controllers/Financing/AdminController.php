@@ -44,7 +44,7 @@ class AdminController extends Controller
         return view('adminfc.create-student', compact('idUser', 'states', 'cities', 'encrypted', 'decrypted'));
     }
 
-    public function store(StoreFinancingRequest $request)
+    public function store(StoreStudentRequest $request)
     {
         //dd($request['status']);
         $request->user()->authorizeRoles(['role_fc']);

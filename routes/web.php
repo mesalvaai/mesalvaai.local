@@ -18,6 +18,7 @@
 Route::get('/', 'Site\HomeController@home')->name('site');
 
 Route::get('/financiamento', 'Site\FinancingController@index')->name('financing.index');
+Route::get('/criar-campanha', 'Site\FinancingController@createCamping')->name('create.project');
 
 
 Route::get('/mimos', 'Site\HomeController@mimos')->name('mimos');

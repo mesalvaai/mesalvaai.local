@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use DB;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
 
 class RegisterController extends Controller
 {
@@ -27,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/painel';
+    //protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -62,10 +66,53 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        
+        //$_role = 'role_fc';
+        //$encrypted = Crypt::encrypt($_role);
+        
+        if (isset($data['_role'])) {
+            $decrypted = Crypt::decrypt($data['_role']);
+
+            $role = DB::table('roles')->where('slug', $decrypted)->first();
+            if ($role != null) {
+               $user = User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => bcrypt($data['password']),
+                ]); 
+
+                $insertRoleUser = DB::table('role_user')->insert(
+                    ['role_id' => $role->id, 'user_id' => $user->id]
+                );
+
+                return $user;
+            } 
+        } else {
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+            ]);
+        }
+        return redirect()->route('create.project')->with('status', 'O registro não foi criado!!');
+        
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        if($user->hasRole('role_fc')) {
+            return redirect('/financing');
+        } elseif ($user->hasRole('role_cursos')) {
+            return redirect('/cursos');
+        } else {
+            return redirect('/painel');
+        }
     }
 }

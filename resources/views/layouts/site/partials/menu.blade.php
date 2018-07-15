@@ -5,10 +5,10 @@
         </div>
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#home">Home</a></li>
-                <li><a href="#about">Como funciona</a></li>
-                <li><a href="#mimos">Mimos</a></li>
-                <li><a href="#pricing">Financiamento coletivo</a></li>
+                <li class="menu-active"><a href="/#home">Home</a></li>
+                <li><a href="/#call-sec-two">Como funciona</a></li>
+                <li><a href="{{ url('mimos') }}">Mimos</a></li>
+                <li><a href="{{ url('financiamento') }}">Financiamento coletivo</a></li>
                 <li class="menu-has-children"><a href="#"><i class="fa fa-user"></i></a>
                     <ul>
                         <li><a href="#">Entrar</a></li>
