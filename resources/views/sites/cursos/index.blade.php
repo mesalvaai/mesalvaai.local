@@ -1,17 +1,72 @@
-<!-- ***** Home Start ***** -->
-<section class="curso_area clearfix" id="home">
+<!-- Course Start -->
+<section id="home">
+    <div class="row">
+       
+        <div class="col-lg-6">
+        
+            <img src="{{ asset('site/img/msa/sec4-2.jpg') }}" alt="Cursos" class="img-fluid  img-responsivo" >
+        
+        </div>
+        
+    </div>
+    <div class="pb-5"></div>
+</section>
+<section  >
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12 col-md justify-content-center">
-                <div class="curso-heading col-12 justify-content-center text-center">
-                    <h3 class="text-center">CURSOS DE ADMINISTRAÇÃO</h3>
+                <div class=" col-12 justify-content-center text-center">
+                    <h2 id="home h1" class="text-center text-msa h1">Buscar Cursos</h2>
                 </div>    
+                <div class="row align-items-md-center">
+                <div class="col-lg-6 ">
+                    <h5 class="text-center">Me Salva Aí ajuda quem quer entrar na faculdade. Reunimos informações de todos as faculdades e cursos de graduação e pós-graduação para que você possa fazer a melhor escolha. E o melhor, depois de achar o curso ideal, você pode se inscrever para descontos pelo Me Salva Aí.</h5>
+                
+                </div>
+                    <div class="col-lg-6  text-left align-content-lg-start">
+                    <section id="section-five" class="section-five-bg align-self-start">
+        <div class="container">
+            <div class="row ">
+                
+                    <div class="child-bg">
+                        <h2 class="text-center">Viu como é simples</h2>
+                        <p class="text-center">Basta escolher seu curso, instituição e pagar a primeira mensalidade e vó alá, divista-se até o final do curso</p>
+                        <div class="row">
+	<div class="form-group col">
+		{!! Form::label('city', 'Cidade') !!}
+		{!! Form::text('city', null, ['class' => 'form-control', 'required']) !!}
+	</div>
+
+	<div class="form-group col">
+		{!! Form::label('course', 'Curso') !!}
+		{!! Form::text('course', null, ['class' => 'form-control',  'required']) !!}
+	</div>
+
+	
+</div>
+                        
+                        <div class="text-center">
+                            <a href="#" class="get-started-btn">Buscar bolsa</a>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </section>
+                </div>
+                </div>
+                
+            </div>
             </div>
         </div>
     </div>
+    
 </section>
-<!-- ***** Home End ***** -->
-<section class="cursos mt-30">
+
+            
+<br>       
+<!-- Course End -->
+<section class=" mt-30">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4">
@@ -82,70 +137,6 @@
 				</figure>
 			</div>
 		</div>
-		{{-- <div class="card-columns">
-			<div class="card">
-			    <img class="card-img-top" src="bootstrap/img/team-img/team-1.jpg" alt="Card image cap">
-			    <div class="card-body">
-			      	<h5 class="card-title">Card title that wraps to a new line</h5>
-			      	<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			    </div>
-			</div>
-			<div class="card">
-			    <img class="card-img-top" src="bootstrap/img/team-img/team-1.jpg" alt="Card image cap">
-			    <div class="card-body">
-			      	<h5 class="card-title">Card title that wraps to a new line</h5>
-			      	<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			    </div>
-			</div>
-			<div class="card">
-			    <img class="card-img-top" src="bootstrap/img/team-img/team-1.jpg" alt="Card image cap">
-			    <div class="card-body">
-			      	<h5 class="card-title">Card title that wraps to a new line</h5>
-			      	<p class="card-text">This is a longer card with </p>
-			    </div>
-			</div>
-			<div class="card">
-			    <img class="card-img-top" src="bootstrap/img/team-img/team-1.jpg" alt="Card image cap">
-			    <div class="card-body">
-			      	<h5 class="card-title">Card title that wraps to a new line</h5>
-			      	<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			    </div>
-			</div>
-			<div class="card">
-			    <img class="card-img-top" src="bootstrap/img/team-img/team-1.jpg" alt="Card image cap">
-			    <div class="card-body">
-			      	<h5 class="card-title">Card title that wraps to a new line</h5>
-			      	<p class="card-text">This is a longer card with supporting text below as a natural </p>
-			    </div>
-			</div>
-			<div class="card">
-			    <img class="card-img-top" src="bootstrap/img/team-img/team-1.jpg" alt="Card image cap">
-			    <div class="card-body">
-			      	<h5 class="card-title">Card title that wraps to a new line</h5>
-			      	<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			    </div>
-			</div>
-			<div class="card">
-			    <img class="card-img-top" src="bootstrap/img/team-img/team-1.jpg" alt="Card image cap">
-			    <div class="card-body">
-			      	<h5 class="card-title">Card title that wraps to a new line</h5>
-			      	<p class="card-text">This is </p>
-			    </div>
-			</div>
-			<div class="card">
-			    <img class="card-img-top" src="bootstrap/img/team-img/team-1.jpg" alt="Card image cap">
-			    <div class="card-body">
-			      	<h5 class="card-title">Card title that wraps to a new line</h5>
-			      	<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			    </div>
-			</div>
-			<div class="card">
-			    <img class="card-img-top" src="bootstrap/img/team-img/team-1.jpg" alt="Card image cap">
-			    <div class="card-body">
-			      	<h5 class="card-title">Card title that wraps to a new line</h5>
-			      	<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			    </div>
-			</div>
-		</div> --}}
+		
 	</div>		
 </section>
