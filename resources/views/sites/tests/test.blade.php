@@ -97,7 +97,6 @@
       </div>
     </section>
 
-<<<<<<< HEAD
     <div class="container-fluid exemplo-row text-center">
             <div class="row">
                 <div class="col-md">
@@ -272,8 +271,15 @@
             </div>
         </div>
 
-=======
->>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
+        @foreach ($campings as $camping)
+            <div class="card">
+                @if (Storage::disk('images')->has($camping->file))
+                    <img class="card-img-top" data-src="holder.js/100px160/" alt="100%x160" src="{{ url('/miniatura/'. $camping->file) }}" data-holder-rendered="true">
+                @endif
+            </div>
+        @endforeach
+
+        
 	<section class="footer"></section>
     
 @endsection

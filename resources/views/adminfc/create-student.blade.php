@@ -44,7 +44,7 @@
                         @endif
                         
                         
-                        {{ Form::open(['route' => 'create.student', 'novalidate']) }}
+                        {{ Form::open(['route' => 'store.student', 'novalidate']) }}
                             @include('adminfc.partials.form')
                         {{ Form::close() }}
                                            

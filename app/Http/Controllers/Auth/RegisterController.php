@@ -108,7 +108,7 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         if($user->hasRole('role_fc')) {
-            return redirect('/financing');
+            return redirect('/financing/create');
         } elseif ($user->hasRole('role_cursos')) {
             return redirect('/cursos');
         } else {

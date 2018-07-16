@@ -43,10 +43,10 @@
                     </div>
                 </div>
             </form>
-            <a href="{{ route('password.request') }}" class="forgot-pass">Forgot Password?</a><small>Do not have an account? </small><a href="{{ url('cadastrar') }}" class="signup">Signup</a>
+            <a href="{{ route('password.request') }}" class="forgot-pass">Esqueceu a senha?</a><small>Não possui uma conta? </small><a href="{{ url('cadastrar') }}" class="signup">Cadastre-se</a>
         </div>
         <div class="copyrights text-center">
-            <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
+            <p>Technology <a href="https://getbootstrap.com/" class="external">Bootstrap V4.*</a></p>
             <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
         </div>
     </div>

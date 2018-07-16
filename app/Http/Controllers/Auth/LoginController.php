@@ -42,7 +42,7 @@ class LoginController extends Controller
     {
 
         if($user->hasRole('role_fc')) {
-            return redirect('/financing');
+            return redirect('/financing/create');
         } elseif ($user->hasRole('role_cursos')) {
             return redirect('/cursos');
         } else {

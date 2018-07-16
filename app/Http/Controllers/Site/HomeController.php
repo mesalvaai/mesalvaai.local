@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Campaign;
+
 class HomeController extends Controller
 {
     /**
@@ -34,7 +36,8 @@ class HomeController extends Controller
 
     public function test()
     {
-        return view('sites.tests.test');
+        $campings = Campaign::get();
+        return view('sites.tests.test', compact('campings'));
     }
 
      public function mimos()

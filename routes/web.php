@@ -18,7 +18,8 @@
 Route::get('/', 'Site\HomeController@home')->name('site');
 
 Route::get('/financiamento', 'Site\FinancingController@index')->name('financing.index');
-Route::get('/criar-campanha', 'Site\FinancingController@createCamping')->name('create.project');
+Route::get('/financiamento/criar-campanha', 'Site\FinancingController@createCamping')->name('create.project');
+
 
 
 Route::get('/mimos', 'Site\HomeController@mimos')->name('mimos');
@@ -77,16 +78,22 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('/financing', 'Financing\AdminController@index')->name('financiamento.index')
 	->middleware('IsRoleAluno:role_fc');
-	Route::post('/financing/store', 'Financing\AdminController@store')->name('create.student')
+	Route::get('/financing/create', 'Financing\AdminController@createStudent')->name('create.student')
+	->middleware('IsRoleAluno:role_fc');
+	Route::post('/financing/store', 'Financing\AdminController@storeStudent')->name('store.student')
 	->middleware('IsRoleAluno:role_fc');
 	Route::get('/financing/campanha', 'Financing\AdminController@createCamping')->name('create.camping')
 	->middleware('IsRoleAluno:role_fc');
 	Route::post('/financing/storeCamping', 'Financing\AdminController@storeCamping')->name('store.camping')
 	->middleware('IsRoleAluno:role_fc');
-	Route::get('/financing/rewards', 'Financing\AdminController@createRewards')->name('create.rewards')
+	Route::get('/financing/rewards/{campingId?}', 'Financing\AdminController@createRewards')->name('create.rewards')
 	->middleware('IsRoleAluno:role_fc');
-	Route::get('/financing/storeRewards', 'Financing\AdminController@storeRewards')->name('store.rewards')
+	Route::post('/financing/storeRewards', 'Financing\AdminController@storeRewards')->name('store.rewards')
 	->middleware('IsRoleAluno:role_fc');
+	Route::get('/miniatura/{filename}', array(
+		'as' => 'imageVideo',
+		'uses' => 'Financing\AdminController@getFile'
+	))->middleware('IsRoleAluno:role_fc');
 });
 
 //Rotas

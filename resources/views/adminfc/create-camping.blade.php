@@ -44,7 +44,7 @@
                         @endif --}}
                         
                         
-                        {{ Form::open(['route' => 'store.camping', 'novalidate']) }}
+                        {{ Form::open(['route' => 'store.camping', 'enctype' => 'multipart/form-data', 'novalidate']) }}
                             @include('adminfc.partials.form-camping')
                         {{ Form::close() }}
 

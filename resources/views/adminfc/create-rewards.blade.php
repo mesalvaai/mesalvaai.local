@@ -6,7 +6,7 @@
 <section id="painel-fc" class="painel-fc">
     <div class="painel-fc-bg">
         <div class="container text-center">
-            <h1 class="text-white">CRIAR SUA CAMPANHA</h1>
+            <h1 class="text-white">CRIAR SUAS RECOMPENSAS</h1>
         </div>
     </div>
 </section>
@@ -17,7 +17,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong class="text-msa">Criar Reconpensas {{ session()->get('student_id') }}</strong>
+                        <strong class="text-msa">Criar Reconpensas {{ session()->get('camping_id') }}</strong>
                     </div>
 
                     <div class="card-body">
@@ -44,10 +44,10 @@
                         @endif --}}
                         
                         
-                        {{-- {{ Form::open(['route' => 'store.camping', 'novalidate']) }}
-                            @include('adminfc.partials.form-camping')
-                        {{ Form::close() }} --}}
-
+                        {{ Form::open(['route' => 'store.rewards']) }}
+                            @include('adminfc.partials.form-rewards')
+                        {{ Form::close() }}
+                        
                                            
                     </div>
                 </div>

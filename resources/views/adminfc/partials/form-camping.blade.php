@@ -97,53 +97,8 @@
     @endif
 </div>
 
-{!! Form::hidden('student_id', session()->get('student_id'), ['readonly']) !!}
+{!! Form::hidden('student_id', (session()->has('student_id')) ? session()->get('student_id') : $student_id, ['readonly']) !!}
 {!! Form::hidden('status', 0,  ['readonly']) !!}
-
-{{-- <div class="form-group">
-	{!! Form::label('location', 'Localização da campanha') !!}
-	@if ($errors->get('location'))
-		@foreach ($errors->get('location') as $error)
-			{!! Form::text('location', null, ['class' => 'form-control is-invalid']) !!}
-			<div class="invalid-feedback">
-				{{ $error }}
-			</div>
-		@endforeach
-	@else
-		{!! Form::text('location', null, ['class' => $errors->has('abstract') ? 'form-control is-invalid']) !!}
-	@endif
-</div> --}}
-
-{{-- <div class="row">
-
-	<div class="form-group col">
-		{!! Form::label('student_id', 'Estudante da campanha') !!}
-		@if ($errors->get('student_id'))
-			@foreach ($errors->get('student_id') as $error)
-				{!! Form::text('student_id', session()->get('student_id'), ['class' => 'form-control is-invalid', 'placeholder' =>'-- Selecione um Estudante --', 'required']) !!}
-				<div class="invalid-feedback">
-					{{ $error }}
-				</div>
-			@endforeach
-		@else
-			{!! Form::text('student_id', session()->get('student_id'), ['class' => $errors->has('abstract') ? 'form-control is-invalid', 'placeholder' =>'--Selecione um Estudante--', 'required']) !!}
-		@endif
-	</div>
-
-	<div class="form-group col">
-		{!! Form::label('status', 'Estado') !!}
-		@if ($errors->get('status'))
-			@foreach ($errors->get('status') as $error)
-				{!! Form::select('status', [ '1' => 'Ativo','0' => 'Inativo'], null, ['class' => 'form-control is-invalid']) !!}
-				<div class="invalid-feedback">
-					{{ $error }}
-				</div>
-			@endforeach
-		@else
-			{!! Form::select('status', [ '1' => 'Ativo','0' => 'Inativo'], null, ['class' => $errors->has('abstract') ? 'form-control is-invalid']) !!}
-		@endif	
-	</div>
-</div> --}}
 
 <div class="form-group text-center pt-5">
 	{!! Form::submit('Criar Campanha', ['class' => 'btn btn-msa btn-sm']) !!}
