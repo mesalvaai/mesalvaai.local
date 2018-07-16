@@ -1,22 +1,36 @@
+<style>
+    #course{
+         padding: 0;
+    }
+    .course {
+        width: 100%;
+        height: 80vh;
+    }
+   
+}
+</style>
 <!-- Course Start -->
-<section id="home">
+<section id="course">
     <div class="row">
        
-        <div class="col-lg-6">
-        
-            <img src="{{ asset('site/img/msa/sec4-2.jpg') }}" alt="Cursos" class="img-fluid  img-responsivo" >
+        <div id="course" class="course">
+            <img src="{{ asset('site/img/msa/qs-1.jpg') }}" alt="Cursos" class="course img-effect">
+           
+				
+        </div>
+           
         
         </div>
         
     </div>
     <div class="pb-5"></div>
 </section>
-<section  >
+<section  id="course">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12 col-md justify-content-center">
                 <div class=" col-12 justify-content-center text-center">
-                    <h2 id="home h1" class="text-center text-msa h1">Buscar Cursos</h2>
+                    <h2  class="text-center text-msa h1">Buscar Cursos</h2>
                 </div>    
                 <div class="row align-items-md-center">
                 <div class="col-lg-6 ">
@@ -28,22 +42,22 @@
         <div class="container">
             <div class="row ">
                 
-                    <div class="child-bg">
+                    <div class="child-bg ">
                         <h2 class="text-center">Viu como é simples</h2>
                         <p class="text-center">Basta escolher seu curso, instituição e pagar a primeira mensalidade e vó alá, divista-se até o final do curso</p>
                         <div class="row">
-	<div class="form-group col">
-		{!! Form::label('city', 'Cidade') !!}
-		{!! Form::text('city', null, ['class' => 'form-control', 'required']) !!}
-	</div>
+                                <div class="form-group col">
+                                        {!! Form::label('city', 'Cidade') !!}
+                                        {!! Form::text('city', null, ['class' => 'form-control', 'required']) !!}
+                                </div>
 
-	<div class="form-group col">
-		{!! Form::label('course', 'Curso') !!}
-		{!! Form::text('course', null, ['class' => 'form-control',  'required']) !!}
-	</div>
+                                <div class="form-group col">
+                                        {!! Form::label('course', 'Curso') !!}
+                                        {!! Form::text('course', null, ['class' => 'form-control',  'required']) !!}
+                                </div>
 
-	
-</div>
+
+                        </div>
                         
                         <div class="text-center">
                             <a href="#" class="get-started-btn">Buscar bolsa</a>
@@ -71,7 +85,7 @@
 		<div class="row">
 			<div class="col-md-4">
 				<figure class="figure">
-				  	<img src="bootstrap/img/logos/fadba-logo.png" class="figure-img img-fluid rounded w-50 text-center" alt="A generic square placeholder image with rounded corners in a figure.">
+				  	<img src="" class="figure-img img-fluid rounded w-50 text-center" alt="">
 				  	<h5 class="text-center color-blue">Administracao de Empressa</h5>
 				  	<figcaption class="figure-caption">Graduação / Bacharelado</figcaption>
 				  	<figcaption class="figure-caption">Presencial</figcaption>
@@ -93,7 +107,7 @@
 			</div>
 			<div class="col-md-4">
 				<figure class="figure">
-				  	<img src="bootstrap/img/logos/logo-fadminas1.png" class="figure-img img-fluid rounded w-50 mx-auto" alt="A generic square placeholder image with rounded corners in a figure.">
+				  	<img src="" class="figure-img img-fluid rounded w-50 mx-auto" alt="">
 				  	<h5 class="text-center color-blue">Administracao de Empressa</h5>
 				  	<figcaption class="figure-caption">Graduação / Bacharelado</figcaption>
 				  	<figcaption class="figure-caption">Presencial</figcaption>
@@ -116,7 +130,7 @@
 			</div>
 			<div class="col-md-4">
 				<figure class="figure">
-				  	<img src="bootstrap/img/logos/unasp1.png" class="figure-img img-fluid rounded w-50 mx-auto" alt="A generic square placeholder image with rounded corners in a figure.">
+				  	<img src="" class="figure-img img-fluid rounded w-50 mx-auto" alt="">
 				  	<h5 class="text-center color-blue">Administração de Empressa</h5>
 				  	<figcaption class="figure-caption">Graduação / Bacharelado</figcaption>
 				  	<figcaption class="figure-caption">Presencial</figcaption>
