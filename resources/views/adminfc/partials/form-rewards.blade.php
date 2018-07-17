@@ -105,7 +105,7 @@
 	</div>
 </div>
 
-{!! Form::hidden('campaign_id', (session()->has('campaign_id')) ? session()->get('campaign_id') : $campingId, ['readonly']) !!}
+{!! Form::hidden('campaign_id', ($campingId) ? $campingId : session()->get('campaign_id'), ['readonly']) !!}
 
 <div class="form-group text-center pt-5">
 	{!! Form::submit('Criar Recompensa', ['class' => 'btn btn-msa btn-sm']) !!}

@@ -78,6 +78,8 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('/financing', 'Financing\AdminController@index')->name('financiamento.index')
 	->middleware('IsRoleAluno:role_fc');
+	Route::get('/financing/rewards', 'Financing\AdminController@listRewards')->name('list.rewards')
+	->middleware('IsRoleAluno:role_fc');
 	Route::get('/financing/create', 'Financing\AdminController@createStudent')->name('create.student')
 	->middleware('IsRoleAluno:role_fc');
 	Route::post('/financing/store', 'Financing\AdminController@storeStudent')->name('store.student')

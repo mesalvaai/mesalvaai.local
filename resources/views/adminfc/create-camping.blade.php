@@ -3,13 +3,13 @@
  
 @section('content')
 
-<section id="painel-fc" class="painel-fc">
+{{-- <section id="painel-fc" class="painel-fc">
     <div class="painel-fc-bg">
         <div class="container text-center">
             <h1 class="text-white">CRIAR SUA CAMPANHA</h1>
         </div>
     </div>
-</section>
+</section> --}}
 
 <section class="painel-form">
     <div class="container">

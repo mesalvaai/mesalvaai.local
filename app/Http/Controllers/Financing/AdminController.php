@@ -45,6 +45,18 @@ class AdminController extends Controller
         return view('adminfc.index', compact('idUser', 'campings'));
     }
 
+    public function listRewards(Request $request)
+    {
+        $request->user()->authorizeRoles(['role_fc']);
+        $idUser = Auth::user()->id;
+        $campings = Campaign::where('student_id', $idUser)->orderBy('id', 'ASC')->paginate();
+        
+        $encrypted = Crypt::encrypt($idUser);
+        $decrypted = Crypt::decrypt($encrypted);
+
+        return view('adminfc.rewards', compact('idUser', 'campings'));
+    }
+
     public function createStudent(Request $request)
     {
         $request->user()->authorizeRoles(['role_fc']);
