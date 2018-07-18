@@ -33,7 +33,8 @@ class AdminController extends Controller
     public function index(Request $request)
     {
     	$request->user()->authorizeRoles(['role_fc']);
-    	$idUser = Auth::user()->id;
+    	$idUser = Auth::user()->students[0]['id'];
+        //dd(Auth::user()->students[0]['id']);
         $campings = Campaign::where('student_id', $idUser)->orderBy('id', 'ASC')->paginate();
 		
 		$encrypted = Crypt::encrypt($idUser);
@@ -87,7 +88,7 @@ class AdminController extends Controller
     {
         $request->user()->authorizeRoles(['role_fc']);
         $idUser = Auth::user()->id;
-        $studentId = Student::where('user_id', $idUser)->pluck('user_id');
+        $studentId = Student::where('user_id', $idUser)->pluck('id');
         if (empty($studentId[0]) == true){
             return redirect()->route('create.student')->with('status', 'Complete seu cadastro para criar sua campanha');
         } else {
@@ -138,11 +139,11 @@ class AdminController extends Controller
 
     public function showCamping($idCamping)
     {
-        $camping = Campaign::where('id', $idCamping)->where('student_id', Auth::user()->id)->first();
+        $camping = Campaign::where('id', $idCamping)->where('student_id', Auth::user()->students[0]['id'])->first();
         if ($camping == null) {
             abort(404, 'Aurl não existe');
         }
-        if (Auth::user()->id != $camping->student_id) {
+        if (Auth::user()->students[0]['id'] != $camping->student_id) {
             abort(403, 'Não autorizado');
         }
         return view('adminfc.show-camping', compact('camping'));
@@ -152,7 +153,7 @@ class AdminController extends Controller
     {
         $request->user()->authorizeRoles(['role_fc']);
         $idUser = Auth::user()->id;
-        $studentId = Student::where('user_id', $idUser)->pluck('user_id');
+        $studentId = Student::where('user_id', $idUser)->pluck('id');
         $student_id = $studentId[0];
         
         $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
@@ -212,7 +213,7 @@ class AdminController extends Controller
     public function listRewards(Request $request)
     {
         $request->user()->authorizeRoles(['role_fc']);
-        $idUser = Auth::user()->id;
+        $idUser = Auth::user()->students[0]['id'];
         $campings = Campaign::where('student_id', $idUser)->orderBy('id', 'ASC')->paginate();
         
         $encrypted = Crypt::encrypt($idUser);
