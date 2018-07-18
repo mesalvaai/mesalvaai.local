@@ -35,17 +35,23 @@
 
 {!! Form::hidden('user_id', auth()->user()->id, ['class' => 'form-control', 'required']) !!}
 
-
-
-
 <div class="row">
 	<div class="form-group col">
 		{!! Form::label('state', 'Estado') !!}
 		{!! Form::select('state_id',$states, null, ['placeholder' => '-- Selecione um estado --', 'class' => 'form-control', 'required']) !!}
 	</div>
 	<div class="form-group col">
+		@if(isset($student))
+
 		{!! Form::label('cidade_id', 'Cidade') !!}
-		{!! Form::select('city_id',$cities, null, ['placeholder' => '-- Selecione uma cidade --', 'class' => 'form-control', 'required']) !!}
+		{!! Form::select('city_id', $cities, null, ['placeholder' => '-- Antes selecione um estado --', 'class' => 'form-control', 'required']) !!}
+
+		@else
+
+		{!! Form::label('cidade_id', 'Cidade') !!}
+		{!! Form::select('city_id', [], null, ['placeholder' => '-- Antes selecione um estado --', 'class' => 'form-control', 'required']) !!}
+
+		@endif
 	</div>
 
 	<div class="form-group col">
@@ -76,9 +82,34 @@
 	</div>
 </div>
 
-
-
-
 <div class="form-group">
 	{!! Form::submit('Salvar', ['class' => 'btn btn-success btn-sm float-left']) !!}
 </div>
+
+
+@section('scripts')
+
+<script type="text/javascript">
+
+	$('select[name=state_id]').change(function(){
+
+		var idEstado = $(this).val();
+
+		$.get('/get-cidades/' + idEstado , function(cities){
+
+			// $('select[name=city_id]').prop("disabled", false);
+
+			$('select[name=city_id]').empty();
+
+			$('select[name=city_id]').append('<option placeholder> -- Selecione uma Cidade -- </option>');
+
+			$.each(cities, function(key, value) {
+
+				$('select[name=city_id]').append('<option value = ' + key + '>' + value + '</option>');
+			});
+		});
+	});
+
+</script>
+
+@endsection

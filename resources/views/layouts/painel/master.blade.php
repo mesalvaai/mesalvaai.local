@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,19 +34,19 @@
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-  </head>
-  <body>
-    <!-- Side Navbar -->
-    <nav class="side-navbar">
-      <div class="side-navbar-wrapper">
-        <!-- Sidebar Header    -->
-        <div class="sidenav-header d-flex align-items-center justify-content-center">
-          <!-- User Info-->
-          <div class="sidenav-header-inner text-center"><img src="{{ asset('backend/img/avatar-1.jpg') }}" alt="person" class="img-fluid rounded-circle">
-            <h2 class="h5">{{ Auth::user()->name }}</h2><span>Web Developer</span>
-          </div>
-          <!-- Small Brand information, appears on minimized sidebar-->
-          <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
+    </head>
+    <body>
+        <!-- Side Navbar -->
+        <nav class="side-navbar">
+          <div class="side-navbar-wrapper">
+            <!-- Sidebar Header    -->
+            <div class="sidenav-header d-flex align-items-center justify-content-center">
+              <!-- User Info-->
+              <div class="sidenav-header-inner text-center"><img src="{{ asset('backend/img/avatar-1.jpg') }}" alt="person" class="img-fluid rounded-circle">
+                <h2 class="h5">{{ Auth::user()->name }}</h2><span>Web Developer</span>
+            </div>
+            <!-- Small Brand information, appears on minimized sidebar-->
+            <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
         </div>
 
         <!-- Sidebar Navigation Menus-->
@@ -138,11 +138,11 @@
                 <li> <a href="#"> <i class="icon-screen"> </i>Demo</a></li>
                 <li> <a href="#"> <i class="icon-flask"> </i>Demo
                     <div class="badge badge-info">Special</div></a></li>
-                <li> <a href=""> <i class="icon-flask"> </i>Demo</a></li>
-                <li> <a href=""> <i class="icon-picture"> </i>Demo</a></li>
-            </ul>
-        </div> --}}
-      </div>
+                    <li> <a href=""> <i class="icon-flask"> </i>Demo</a></li>
+                    <li> <a href=""> <i class="icon-picture"> </i>Demo</a></li>
+                </ul>
+            </div> --}}
+        </div>
     </nav>
     <div class="page">
         <!-- navbar-->
@@ -152,148 +152,148 @@
                     <div class="navbar-holder d-flex align-items-center justify-content-between">
                       <div class="navbar-header"><a id="toggle-btn" href="{{ url('/') }}" class="menu-btn"><i class="icon-bars"> </i></a><a href="{{ url('/') }}" class="navbar-brand">
                           <div class="brand-text d-none d-md-inline-block"><span>SYSTEM </span><strong class="text-primary">{{ config('app.name', 'ME SALVA AI') }}</strong></div></a></div>
-                      <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                        <!-- Notifications dropdown-->
-                        <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
-                          <ul aria-labelledby="notifications" class="dropdown-menu">
-                            <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                                <div class="notification d-flex justify-content-between">
-                                  <div class="notification-content"><i class="fa fa-envelope"></i>You have 6 new messages </div>
-                                  <div class="notification-time"><small>4 minutes ago</small></div>
-                                </div></a></li>
-                            <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                                <div class="notification d-flex justify-content-between">
-                                  <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
-                                  <div class="notification-time"><small>4 minutes ago</small></div>
-                                </div></a></li>
-                            <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                                <div class="notification d-flex justify-content-between">
-                                  <div class="notification-content"><i class="fa fa-upload"></i>Server Rebooted</div>
-                                  <div class="notification-time"><small>4 minutes ago</small></div>
-                                </div></a></li>
-                            <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                                <div class="notification d-flex justify-content-between">
-                                  <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
-                                  <div class="notification-time"><small>10 minutes ago</small></div>
-                                </div></a></li>
-                            <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-bell"></i>view all notifications                                            </strong></a></li>
-                          </ul>
-                        </li>
-                        <!-- Messages dropdown-->
-                        <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
-                          <ul aria-labelledby="notifications" class="dropdown-menu">
-                            <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                                <div class="msg-profile"> <img src="{{ asset('backend/img/avatar-1.jpg') }}" alt="..." class="img-fluid rounded-circle"></div>
-                                <div class="msg-body">
-                                  <h3 class="h5">Jason Doe</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                                </div></a></li>
-                            <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                                <div class="msg-profile"> <img src="{{ asset('backend/img/avatar-2.jpg') }}" alt="..." class="img-fluid rounded-circle"></div>
-                                <div class="msg-body">
-                                  <h3 class="h5">Frank Williams</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                                </div></a></li>
-                            <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                                <div class="msg-profile"> <img src="{{ asset('backend/img/avatar-3.jpg') }}" alt="..." class="img-fluid rounded-circle"></div>
-                                <div class="msg-body">
-                                  <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                                </div></a></li>
-                            <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Read all messages</strong></a></li>
-                          </ul>
-                        </li>
-                        <!-- Languages dropdown    -->
-                        <li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="{{ asset('backend/img/flags/16/GB.png') }}" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
-                          <ul aria-labelledby="languages" class="dropdown-menu">
-                            <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="{{ asset('backend/img/flags/16/DE.png') }}" alt="English" class="mr-2"><span>German</span></a></li>
-                            <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="{{ asset('backend/img/flags/16/FR.png') }}" alt="English" class="mr-2"><span>French                                                         </span></a></li>
-                          </ul>
+                          <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                            <!-- Notifications dropdown-->
+                            <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
+                              <ul aria-labelledby="notifications" class="dropdown-menu">
+                                <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                                    <div class="notification d-flex justify-content-between">
+                                      <div class="notification-content"><i class="fa fa-envelope"></i>You have 6 new messages </div>
+                                      <div class="notification-time"><small>4 minutes ago</small></div>
+                                  </div></a></li>
+                                  <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                                    <div class="notification d-flex justify-content-between">
+                                      <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
+                                      <div class="notification-time"><small>4 minutes ago</small></div>
+                                  </div></a></li>
+                                  <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                                    <div class="notification d-flex justify-content-between">
+                                      <div class="notification-content"><i class="fa fa-upload"></i>Server Rebooted</div>
+                                      <div class="notification-time"><small>4 minutes ago</small></div>
+                                  </div></a></li>
+                                  <li><a rel="nofollow" href="#" class="dropdown-item"> 
+                                    <div class="notification d-flex justify-content-between">
+                                      <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
+                                      <div class="notification-time"><small>10 minutes ago</small></div>
+                                  </div></a></li>
+                                  <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-bell"></i>view all notifications                                            </strong></a></li>
+                              </ul>
+                          </li>
+                          <!-- Messages dropdown-->
+                          <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
+                              <ul aria-labelledby="notifications" class="dropdown-menu">
+                                <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                                    <div class="msg-profile"> <img src="{{ asset('backend/img/avatar-1.jpg') }}" alt="..." class="img-fluid rounded-circle"></div>
+                                    <div class="msg-body">
+                                      <h3 class="h5">Jason Doe</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
+                                  </div></a></li>
+                                  <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                                    <div class="msg-profile"> <img src="{{ asset('backend/img/avatar-2.jpg') }}" alt="..." class="img-fluid rounded-circle"></div>
+                                    <div class="msg-body">
+                                      <h3 class="h5">Frank Williams</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
+                                  </div></a></li>
+                                  <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                                    <div class="msg-profile"> <img src="{{ asset('backend/img/avatar-3.jpg') }}" alt="..." class="img-fluid rounded-circle"></div>
+                                    <div class="msg-body">
+                                      <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
+                                  </div></a></li>
+                                  <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Read all messages</strong></a></li>
+                              </ul>
+                          </li>
+                          <!-- Languages dropdown    -->
+                          <li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="{{ asset('backend/img/flags/16/GB.png') }}" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
+                              <ul aria-labelledby="languages" class="dropdown-menu">
+                                <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="{{ asset('backend/img/flags/16/DE.png') }}" alt="English" class="mr-2"><span>German</span></a></li>
+                                <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="{{ asset('backend/img/flags/16/FR.png') }}" alt="English" class="mr-2"><span>French                                                         </span></a></li>
+                            </ul>
                         </li>
                         <!-- Log out-->
                         @guest
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @else
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }} <span class="caret"></span>
-                                    </a>
-
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                            <i class="fa fa-sign-out"></i>
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
-                            @endguest
-                            {{-- <li class="nav-item"><a href="{{ route('site') }}" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li> --}}
-                      </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
-        <div class="breadcrumb-holder">
-            <div class="container-fluid">
-                <ul class="breadcrumb">
-                    {{-- <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Forms</li> --}}
-                    <li>
-                      {{-- <i class="fa fa-home"></i> --}}
-                      <a href="{{url('painel')}}">Home</a>
-                      {{-- <i class="fa fa-angle-right"></i> --}}
-                    </li>
-                    @for($i = 0; $i <= count(Request::segments()); $i++)
-                        <li class="breadcrumb-item">
-                          <a href="">{{Request::segment($i)}}</a>
-                          @if($i < count(Request::segments()) & $i > 0)
-                            {{-- {!!'<i class="fa fa-angle-right"></i>'!!} --}}
-                          @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
-                    @endfor
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                                <i class="fa fa-sign-out"></i>
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
+                    {{-- <li class="nav-item"><a href="{{ route('site') }}" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li> --}}
                 </ul>
             </div>
         </div>
-        
-        <!--content-->
-        @yield('content')
+    </nav>
+</header>
+<div class="breadcrumb-holder">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            {{-- <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Forms</li> --}}
+            <li>
+              {{-- <i class="fa fa-home"></i> --}}
+              <a href="{{url('painel')}}">Home</a>
+              {{-- <i class="fa fa-angle-right"></i> --}}
+          </li>
+          @for($i = 0; $i <= count(Request::segments()); $i++)
+          <li class="breadcrumb-item">
+              <a href="">{{Request::segment($i)}}</a>
+              @if($i < count(Request::segments()) & $i > 0)
+              {{-- {!!'<i class="fa fa-angle-right"></i>'!!} --}}
+              @endif
+          </li>
+          @endfor
+      </ul>
+  </div>
+</div>
 
-        <footer class="main-footer">
-            <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-6">
-              <p>Your company &copy; 2017-2019</p>
-            </div>
-            <div class="col-sm-6 text-right">
-              <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
-              <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions and it helps me to run Bootstrapious. Thank you for understanding :)-->
-            </div>
-          </div>
-            </div>
-        </footer>
-    </div>
-    <!-- JavaScript files-->
-    <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('backend/vendor/popper.js/umd/popper.min.js') }}"> </script>
-    <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('backend/js/grasp_mobile_progress_circle-1.0.0.min.js') }}"></script>
-    <script src="{{ asset('backend/vendor/jquery.cookie/jquery.cookie.js') }}"> </script>
-    <script src="{{ asset('backend/vendor/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset('backend/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('backend/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
-    {{-- <script src="{{ asset('backend/js/charts-home.js') }}"></script> --}}
-    <!-- Main File-->
-    <script src="{{ asset('backend/js/front.js') }}"></script>
+<!--content-->
+@yield('content')
 
-    @yield('scripts')
+<footer class="main-footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <p>Your company &copy; 2017-2019</p>
+      </div>
+      <div class="col-sm-6 text-right">
+          <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
+          <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions and it helps me to run Bootstrapious. Thank you for understanding :)-->
+      </div>
+  </div>
+</div>
+</footer>
+</div>
+<!-- JavaScript files-->
+<script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('backend/vendor/popper.js/umd/popper.min.js') }}"> </script>
+<script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('backend/js/grasp_mobile_progress_circle-1.0.0.min.js') }}"></script>
+<script src="{{ asset('backend/vendor/jquery.cookie/jquery.cookie.js') }}"> </script>
+<script src="{{ asset('backend/vendor/chart.js/Chart.min.js') }}"></script>
+<script src="{{ asset('backend/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('backend/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+{{-- <script src="{{ asset('backend/js/charts-home.js') }}"></script> --}}
+<!-- Main File-->
+<script src="{{ asset('backend/js/front.js') }}"></script>
 
-  </body>
+@yield('scripts')
+
+</body>
 </html>

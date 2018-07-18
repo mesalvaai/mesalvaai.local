@@ -24,8 +24,8 @@
                     <p><strong>Data de Nascimento: </strong>{{ $student->data_of_birth }}</p>
                     <p><strong>Telefone: </strong>{{ $student->phone }}</p>
                     <p><strong>CEP: </strong>{{ $student->cep }}</p>
-                    <p><strong>Estado: </strong>{{ $student->state->name }}</p>
-                    <p><strong>Cidade: </strong>{{ $student->city->name }}</p>
+                    <p><strong>Estado: </strong>{{ $stateName }}</p>
+                    <p><strong>Cidade: </strong>{{ $cityName }}</p>
                     <p><strong>Rua: </strong>{{ $student->street }}</p>
                     <p><strong>Número: </strong>{{ $student->number }}</p>
                     <p><strong>Bairro: </strong>{{ $student->neighborhood }}</p>

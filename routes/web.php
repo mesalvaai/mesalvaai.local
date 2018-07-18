@@ -15,6 +15,8 @@
 //     return view('welcome');
 // });
 
+Route::get('get-cidades/{idEstado}', 'Admin\StudentController@getCidades');
+
 Route::get('/', 'Site\HomeController@home')->name('site');
 
 Route::get('/financiamento', 'Site\FinancingController@index')->name('financing.index');
@@ -156,7 +158,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('students/create', 'Admin\StudentController@create')->name('students.create')
 	->middleware('permission:students.create');
 	Route::put('students/{student}', 'Admin\StudentController@update')->name('students.update')
-	->middleware('permission:campaigns.edit');
+	->middleware('permission:students.edit');
 	Route::get('students/{student}', 'Admin\StudentController@show')->name('students.show')
 	->middleware('permission:students.show');
 	Route::delete('students/{student}', 'Admin\StudentController@destroy')->name('students.destroy')
