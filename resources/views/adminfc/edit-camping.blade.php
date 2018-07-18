@@ -29,7 +29,7 @@
                             </div>
                         @endif
                         
-                         {{-- @if ($errors->any())
+                         @if ($errors->any())
                             <div class="alert alert-danger alert-dismissable fade show" role="alert">
                                 
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -41,11 +41,13 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif --}}
+                        @endif
                         
                         
-                        {{ Form::open(['route' => 'store.camping', 'enctype' => 'multipart/form-data', 'novalidate']) }}
-                            @include('adminfc.partials.form-camping')
+                        {{-- {{ Form::open(['route' => 'store.camping', 'enctype' => 'multipart/form-data', 'novalidate']) }} --}}
+                        
+                        {!! Form::model($campaign, ['route' => ['update.camping', $campaign->id], 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
+                            @include('adminfc.partials.edit-camping')
                         {{ Form::close() }}
 
                                            

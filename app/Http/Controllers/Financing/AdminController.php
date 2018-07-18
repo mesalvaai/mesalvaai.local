@@ -8,10 +8,9 @@ use App\Http\Requests\Financing\StoreCampingRequest;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Crypt;
+//use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
-
-//use Illuminate\Contracts\Encryption\DecryptException;
 
 use Auth;
 use App\Category;
@@ -21,8 +20,6 @@ use App\State;
 use App\Student;
 use App\Reward;
 use App\User;
-
-
 
 class AdminController extends Controller
 {
@@ -43,18 +40,6 @@ class AdminController extends Controller
 		$decrypted = Crypt::decrypt($encrypted);
 
         return view('adminfc.index', compact('idUser', 'campings'));
-    }
-
-    public function listRewards(Request $request)
-    {
-        $request->user()->authorizeRoles(['role_fc']);
-        $idUser = Auth::user()->id;
-        $campings = Campaign::where('student_id', $idUser)->orderBy('id', 'ASC')->paginate();
-        
-        $encrypted = Crypt::encrypt($idUser);
-        $decrypted = Crypt::decrypt($encrypted);
-
-        return view('adminfc.rewards', compact('idUser', 'campings'));
     }
 
     public function createStudent(Request $request)
@@ -79,7 +64,6 @@ class AdminController extends Controller
 
     public function storeStudent(StoreStudentRequest $request)
     {
-        //dd($request['status']);
         $request->user()->authorizeRoles(['role_fc']);
         $validated = $request->validated();
 
@@ -94,34 +78,34 @@ class AdminController extends Controller
         $student->save();
         $request->session()->put('student_id', $student->id);
         return redirect()->route('create.camping')->with('status', 'Estudante cadastrado com sucesso');
-        // return redirect()->action(
-        //     'Financing\AdminController@createCamping', ['student_id' => $student->id]
-        // )->with('status', 'Estudante cadastrado com sucesso');
     }
 
+    /**
+     * [Inicio Modulo de criação de campanhas]
+     */
     public function createCamping(Request $request)
     {
-        //dd($request->session()->get('student_id'));
         $request->user()->authorizeRoles(['role_fc']);
         $idUser = Auth::user()->id;
         $studentId = Student::where('user_id', $idUser)->pluck('user_id');
-        $student_id = $studentId[0];
+        if (empty($studentId[0]) == true){
+            return redirect()->route('create.student')->with('status', 'Complete seu cadastro para criar sua campanha');
+        } else {
+            $student_id = $studentId[0];
+            $encrypted = Crypt::encrypt($idUser);
+            $decrypted = Crypt::decrypt($encrypted);
+            $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
+            $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
+            $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
 
-        //$encrypted = Crypt::encryptString('Hello world.');
-        // $decrypted = Crypt::decryptString($encrypted);
+            return view('adminfc.create-camping', compact('idUser', 'student_id', 'states', 'cities', 'encrypted', 'decrypted','categories'));
+        }
         
-        $encrypted = Crypt::encrypt($idUser);
-        $decrypted = Crypt::decrypt($encrypted);
-        $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
-        $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
-        $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
-
-        return view('adminfc.create-camping', compact('idUser', 'student_id', 'states', 'cities', 'encrypted', 'decrypted','categories'));
+        
     }
 
     public function storeCamping(StoreCampingRequest $request)
     {
-        //dd($request['student_id']);
         $request->user()->authorizeRoles(['role_fc']);
         $validated = $request->validated();
 
@@ -137,26 +121,83 @@ class AdminController extends Controller
         $camping->goal = $request['goal'];
 
         //Subida de la miniatura
-        $image = $request->file('file');
+        $image = $request->file('file_path');
         if ($image) {
             $image_path = time().$image->getClientOriginalName();
             \Storage::disk('images')->put($image_path, \File::get($image));
-            $camping->file = $image_path;
+            $camping->file_path = $image_path;
         }
 
-        //Subida de la miniatura
-        // $video_file = $request->file('video');
-        // if ($video_file) {
-        //     $video_path = time() . $video_file->getClientOriginalName();
-        //     \Storage::disk('videos')->put($video_path, \File::get($video_file));
-        //     $camping->video_path = $video_path;
-        // }
-
         $camping->save();
+
         // Deletando uma sessão específica:
         $request->session()->put('campaign_id', $camping->id);
         //$request->session()->forget('student_id');
         return redirect()->route('create.rewards')->with('status', 'Sua campanha foi criado com sucesso');
+    }
+
+    public function showCamping($idCamping)
+    {
+        $camping = Campaign::where('id', $idCamping)->where('student_id', Auth::user()->id)->first();
+        if ($camping == null) {
+            abort(404, 'Aurl não existe');
+        }
+        if (Auth::user()->id != $camping->student_id) {
+            abort(403, 'Não autorizado');
+        }
+        return view('adminfc.show-camping', compact('camping'));
+    }
+
+    public function editCamping(Request $request, $idCamping)
+    {
+        $request->user()->authorizeRoles(['role_fc']);
+        $idUser = Auth::user()->id;
+        $studentId = Student::where('user_id', $idUser)->pluck('user_id');
+        $student_id = $studentId[0];
+        
+        $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
+        $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
+        $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
+
+        $campaign = Campaign::where('id', $idCamping)->first();
+        //dd($campaign);
+        return view('adminfc.edit-camping', compact('campaign','idUser', 'student_id', 'states', 'cities', 'encrypted', 'decrypted','categories'));
+    }
+
+    public function updateCamping(StoreCampingRequest $request, $idCamping)
+    {
+        $request->user()->authorizeRoles(['role_fc']);
+        $validated = $request->validated();
+
+        $camping = Campaign::find($idCamping);
+        $camping->student_id = $request['student_id'];
+        $camping->category_id = $request['category_id'];
+        $camping->title = $request['title'];
+        $camping->abstract = $request['abstract'];
+        $camping->description = $request['description'];
+        $camping->start_date = $request['start_date'];
+        $camping->end_date = $request['end_date'];
+        $camping->goal = $request['goal'];
+        $camping->institution = $request['institution'];
+        $camping->course = $request['course'];
+        $camping->period = $request['period'];
+        $camping->location = $request['location'];
+        $camping->status = $request['status'];
+
+        //Subida de la miniatura
+        $image = $request->file('file_path');
+        if ($image) {
+            $image_path = time().$image->getClientOriginalName();
+            \Storage::disk('images')->put($image_path, \File::get($image));
+            $camping->file_path = $image_path;
+        }
+ 
+        $camping->save();
+
+        // Deletando uma sessão específica:
+        $request->session()->put('campaign_id', $camping->id);
+        //$request->session()->forget('student_id');
+        return redirect()->route('create.rewards')->with('status', 'Sua campanha foi atualizado com sucesso');
     }
 
     public function getFile($filename)
@@ -165,9 +206,23 @@ class AdminController extends Controller
         return new Response($file, 200);
     }
 
+    /**
+     * [Inicio Modulo de Recompensas]
+     */
+    public function listRewards(Request $request)
+    {
+        $request->user()->authorizeRoles(['role_fc']);
+        $idUser = Auth::user()->id;
+        $campings = Campaign::where('student_id', $idUser)->orderBy('id', 'ASC')->paginate();
+        
+        $encrypted = Crypt::encrypt($idUser);
+        $decrypted = Crypt::decrypt($encrypted);
+
+        return view('adminfc.rewards', compact('idUser', 'campings'));
+    }
+
     public function createRewards($campingId = null)
     {
-        //dd(Auth::user()->id);
         if (session()->get('campaign_id') || $campingId !== null) {
             return view('adminfc.create-rewards', compact('campingId'));
         } else {
@@ -178,10 +233,8 @@ class AdminController extends Controller
 
     public function storeRewards(Request $request)
     {
-        //dd($request['student_id']);
         $request->user()->authorizeRoles(['role_fc']);
         //$validated = $request->validated();
-
         
         $rewards = new Reward();
         $rewards->user_id = Auth::user()->id;
@@ -204,5 +257,46 @@ class AdminController extends Controller
         $request->session()->forget('campaign_id');
 
         return redirect()->route('financiamento.index')->with('status', 'Sua cmpanha esta pronta!!');
+    }
+
+    public function showReward($idReward)
+    {
+        $reward = Reward::where('id', $idReward)->first();
+        return view('adminfc.show-reward', compact('reward'));
+    }
+
+    public function editReward($idReward)
+    {
+        $reward = Reward::where('id', $idReward)->first();
+        $campingId = $reward->campaing_id;
+        return view('adminfc.edit-rewards', compact('reward', 'campingId'));
+    }
+
+    public function updateReward(Request $request, $idReward)
+    {
+        $request->user()->authorizeRoles(['role_fc']);
+        //$validated = $request->validated();
+        
+        $rewards = Reward::find($idReward);
+        $rewards->user_id = Auth::user()->id;
+        $rewards->campaign_id = $request['campaign_id'];
+        $rewards->title = $request['title'];
+        $rewards->donation = $request['donation'];
+        $rewards->quantity = $request['quantity'];
+        $rewards->description = $request['description'];
+        $rewards->unlimited = $request['unlimited'];
+        $rewards->delivery_date = $request['delivery_date'];
+        $rewards->delivery_mode = $request['delivery_mode'];
+        $rewards->variations = $request['variations'];
+        $rewards->thanks = $request['thanks'];
+        $rewards->status = $request['status'];
+
+        $rewards->save();
+
+        // Deletando uma sessão específica:
+        $request->session()->forget('student_id');
+        $request->session()->forget('campaign_id');
+
+        return redirect()->route('edit.reward', $idReward)->with('status', 'Dados Atualizados!!');
     }
 }

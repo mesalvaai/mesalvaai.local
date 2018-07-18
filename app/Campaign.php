@@ -13,4 +13,9 @@ class Campaign extends Model
         return $this->hasMany('App\Reward');
     }
 
+    public function category()
+    {
+    	return $this->belongsTo('App\Category');
+    }
+
 }

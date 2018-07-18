@@ -29,7 +29,7 @@
                             </div>
                         @endif
                         
-                         {{-- @if ($errors->any())
+                         @if ($errors->any())
                             <div class="alert alert-danger alert-dismissable fade show" role="alert">
                                 
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -41,11 +41,13 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif --}}
+                        @endif
                         
                         
-                        {{ Form::open(['route' => 'store.camping', 'enctype' => 'multipart/form-data', 'novalidate']) }}
-                            @include('adminfc.partials.form-camping')
+                        {{-- {{ Form::open(['route' => 'store.camping', 'enctype' => 'multipart/form-data', 'novalidate']) }} --}}
+                        
+                        {!! Form::model($reward, ['route' => ['update.reward', $reward->id], 'method' => 'PUT']) !!}
+                            @include('adminfc.partials.form-rewards')
                         {{ Form::close() }}
 
                                            
@@ -57,13 +59,4 @@
     </div>
 </section>
 
-@endsection
-
-@section('scripts')
-    <script>
-        $('.custom-file-input').on('change', function() { 
-           let fileName = $(this).val().split('\\').pop(); 
-           $(this).next('.custom-file-label').addClass("selected").html(fileName); 
-        });
-    </script>
 @endsection
