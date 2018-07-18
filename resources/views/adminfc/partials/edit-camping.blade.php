@@ -1,6 +1,3 @@
-{!! Form::hidden('user_id', $encrypted) !!}
-{!! Form::hidden('user_id', $decrypted) !!}
-
 <div class="form-group">
 	{!! Form::label('title', 'Nome da Campanha*') !!}
 	{!! Form::text('title', null, ['class' => $errors->has('title') ? 'form-control is-invalid' : 'form-control' , 'required']) !!}
@@ -55,7 +52,7 @@
 </div>
 
 <div class="row">
-	<div class="form-group col-md-4">
+	<div class="form-group col-md-3">
 		{!! Form::label('category_id', 'Modelo de projeto*') !!}
 		{!! Form::select('category_id', $categories, null, ['class' => $errors->has('category_id') ? 'form-control is-invalid' : 'form-control', 'placeholder' =>'-- Selecione uma Categoria --', 'required']) !!}
 		@if ($errors->has('category_id'))
@@ -64,14 +61,16 @@
 	        </span>
 	    @endif
 	</div>
+	
 	<div class="form-group col-md">
 		{!! Form::label('file_path', 'Escolha uma imagem ou video para ilustrar seu projeto') !!}
 		<div class="input-group mb-3">
 	        <div class="custom-file">
 	            {{-- <input type="file" class="custom-file-input" id="inputGroupFile02"/> --}}
-	            {!! Form::file('file_path', ['class' => $errors->has('file_path') ? 'custom-file-input is-invalid' : 'custom-file-input', 'id' =>'inputGroupFile02']) !!}
+	            {!! Form::file('file_path', ['class' => $errors->has('file_path') ? 'custom-file-input is-invalid' : 'custom-file-input', 'id' =>'inputGroupFile02', 'value' =>'test']) !!}
 	            	<label class="custom-file-label" for="inputGroupFile02">Procurar arquivo</label>
 	        </div>
+
 	    </div>
 	    <small class="form-text text-muted">Arquivo devem ter menos que 1 MB. Tipos de arquivos permitidos: png,gif,jpg,jpeg, mp4.</small>
 	    @if ($errors->has('file_path'))
@@ -80,20 +79,11 @@
 	        </span>
 	    @endif
 	</div>
-    {{-- <div class="custom-file">
-	   <input id="logo" type="file" class="custom-file-input">
-	   <label for="logo" class="custom-file-label text-truncate">Choose file...</label>
-	</div> --}}
-	{{-- <div class="form-group col-md">
-		{!! Form::label('file_path', 'Escolha uma imagem ou video para ilustrar seu projeto') !!}
-		{!! Form::file('file_path', null, ['class' => $errors->has('file_path') ? 'form-control-file is-invalid' : 'form-control-file', 'placeholder' =>'-- Selecione uma Categoria --', 'required']) !!}
-		<small class="form-text text-muted">Arquivo devem ter menos que 1 MB. Tipos de arquivos permitidos: png,gifjpg,jpeg, mp4.</small>
-		@if ($errors->has('file_path'))
-	        <span class="invalid-feedback">
-	            <strong>{{ $errors->first('file_path') }}</strong>
-	        </span>
-	    @endif
-	</div> --}}
+	<div class="form-group col-md-2">
+		@if (Storage::disk('images')->has($campaign->file_path))
+            <img class="card-img-top w-100" src="{{ url('/miniatura/'. $campaign->file_path) }}" data-holder-rendered="true" >
+        @endif
+	</div>
 </div>
 <div class="form-group">
 	<div class="text-center">
@@ -116,11 +106,59 @@
         </span>
     @endif
 </div>
+<div class="row">
+	<div class="form-group col-md">
+		{!! Form::label('institution', 'Instituição') !!}
+		{!! Form::text('institution', null, ['class' => $errors->has('institution') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+		@if ($errors->has('institution'))
+	        <span class="invalid-feedback">
+	            <strong>{{ $errors->first('institution') }}</strong>
+	        </span>
+	    @endif
+	</div>
+	<div class="form-group col-md">
+		{!! Form::label('course', 'Curso') !!}
+		{!! Form::text('course', null, ['class' => $errors->has('course') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+		@if ($errors->has('course'))
+	        <span class="invalid-feedback">
+	            <strong>{{ $errors->first('course') }}</strong>
+	        </span>
+	    @endif
+	</div>
+	<div class="form-group col-md">
+		{!! Form::label('period', 'Periodo') !!}
+		{!! Form::text('period', null, ['class' => $errors->has('period') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+		@if ($errors->has('period'))
+	        <span class="invalid-feedback">
+	            <strong>{{ $errors->first('period') }}</strong>
+	        </span>
+	    @endif
+	</div>
+</div>
+<div class="row">
+	<div class="form-group col-md">
+		{!! Form::label('location', 'Localizaçāo') !!}
+		{!! Form::text('location', null, ['class' => $errors->has('location') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+		@if ($errors->has('location'))
+	        <span class="invalid-feedback">
+	            <strong>{{ $errors->first('location') }}</strong>
+	        </span>
+	    @endif
+	</div>
+	<div class="form-group col-md-2">
+		{!! Form::label('status', 'Situaçāo') !!}
+		{!! Form::select('status', [1 => 'Ativo', 0 => 'Inativo'],null, ['class' => $errors->has('status') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+		@if ($errors->has('status'))
+	        <span class="invalid-feedback">
+	            <strong>{{ $errors->first('status') }}</strong>
+	        </span>
+	    @endif
+	</div>
+</div>
 
 {!! Form::hidden('student_id', (session()->has('student_id')) ? session()->get('student_id') : $student_id, ['readonly']) !!}
-{!! Form::hidden('status', 0,  ['readonly']) !!}
 
 <div class="form-group text-center pt-5">
-	{!! Form::submit('Criar Campanha', ['class' => 'btn btn-msa btn-sm']) !!}
+	{!! Form::submit('Alterar campanha', ['class' => 'btn btn-msa btn-sm']) !!}
 </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Financing;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCampingRequest extends FormRequest
@@ -18,7 +19,7 @@ class StoreCampingRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
+     * 'document.*' => 'required|file|mimes:ppt,pptx,doc,docx,pdf,xls,xlsx|max:204800',
      * @return array
      */
     public function rules()
@@ -29,7 +30,7 @@ class StoreCampingRequest extends FormRequest
             'description'   =>'required',
             'start_date'   =>'required',
             'end_date'   =>'required',
-            'file' => 'required',
+            'file_path' => 'file|mimes:png,gif,jpg,jpeg,mp4',
             'goal' => 'required',
             'student_id'   =>'required|integer',
             'category_id' =>'required|integer'
@@ -43,7 +44,8 @@ class StoreCampingRequest extends FormRequest
             'min' => 'O campo ":attribute" deve ter no mínimo :min caracteres!',
             'max' => 'O campo ":attribute" deve ter no maximo :max caracteres!',
             'title.required' => 'O nome da campanha é obrigatório!',
-            'unique' => 'Este ":attribute" já se encontra cadastrado no sistema!'
+            'unique' => 'Este ":attribute" já se encontra cadastrado no sistema!',
+            'mimes' => 'A extensão do arquivo deve ser do tipo: png, gif, jpg, jpeg, mp4.',
         ];
     }
 }

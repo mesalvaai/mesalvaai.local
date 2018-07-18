@@ -15,8 +15,8 @@
 			<div class="card-columns">
 				@foreach ($campings as $camping)
 					<div class="card" style="max-width: 319px;">
-					    @if (Storage::disk('images')->has($camping->file))
-		                    <img class="card-img-top" data-src="holder.js/100px160/" alt="{{ $camping->title }}" src="{{ url('/miniatura/'. $camping->file) }}" data-holder-rendered="true">
+					    @if (Storage::disk('images')->has($camping->file_path))
+		                    <img class="card-img-top" data-src="holder.js/100px160/" alt="{{ $camping->title }}" src="{{ url('/miniatura/'. $camping->file_path) }}" data-holder-rendered="true">
 		                @endif
 					    <div class="card-body">
 					      	<h5 class="card-title">{{ $camping->title }}</h5>
@@ -24,8 +24,9 @@
 					      	<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 					    </div>
 					    <div class="card-footer">
-					    	<a class="btn btn-outline-info btn-sm w-100 mb-2" href="{{ route('create.rewards', $camping->id ) }}" title="Criar recompensa">Criar Recompensas</a>
-					    	<a class="btn btn-outline-info btn-sm w-100" href="{{ route('create.rewards', $camping->id ) }}" title="Criar recompensa">Ver Campanha</a>
+					    	<a class="btn btn-success btn-sm w-100 mb-2" href="{{ route('create.rewards', $camping->id ) }}" title="Criar recompensa">Criar Recompensas</a>
+					    	<a class="btn btn-outline-info btn-sm" href="{{ route('show.camping', $camping->id ) }}" title="Criar recompensa"><i class="fas fa-edit"></i> Ver</a>
+					    	<a class="btn btn-outline-danger btn-sm float-right" href="{{ route('edit.camping', $camping->id ) }}" title="Criar recompensa"><i class="fas fa-edit"></i> Alterar</a>
 					    </div>
 					</div>
 				@endforeach
