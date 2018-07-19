@@ -4,7 +4,7 @@ namespace App\Http\Requests\Financing;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreStudentRequest extends FormRequest
+class StudentUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,14 +18,15 @@ class StoreStudentRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
+     *'email'   =>'required|unique:students,email,'. $this->students,
+     *'phone'   =>'required|unique:students,phone,'. $this->students,
      * @return array
      */
     public function rules()
     {
         return [
             'name'    =>'required|min:7|max:100',
-            'email'   =>'required|unique:students,email,'. $this->student,
+            'email'   =>'required',
             'phone'   =>'required',
             'how_met_us' => 'required',
             'state_id'   =>'required',

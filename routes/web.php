@@ -79,8 +79,11 @@ Route::middleware(['auth', 'IsRoleAluno:role_fc'])->group(function(){
 	
 	Route::get('/financing', 'Financing\AdminController@index')->name('financiamento.index');
 	
+	Route::get('/financing/student', 'Financing\AdminController@listStudent')->name('list.student');
 	Route::get('/financing/create', 'Financing\AdminController@createStudent')->name('create.student');
 	Route::post('/financing/store', 'Financing\AdminController@storeStudent')->name('store.student');
+	Route::get('/financing/edit-student/{idStudent}', 'Financing\AdminController@editStudent')->name('edit.student');
+	Route::put('/financing/update-student/{idStudent}', 'Financing\AdminController@updateStudent')->name('update.student');
 
 	Route::get('/financing/campanha', 'Financing\AdminController@createCamping')->name('create.camping');
 	Route::post('/financing/store-camping', 'Financing\AdminController@storeCamping')->name('store.camping');

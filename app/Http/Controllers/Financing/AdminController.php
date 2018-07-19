@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Financing;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\Financing\StoreStudentRequest;
+use App\Http\Requests\Financing\StudentUpdateRequest;
 use App\Http\Requests\Financing\StoreCampingRequest;
 use App\Http\Controllers\Controller;
 
@@ -43,6 +44,12 @@ class AdminController extends Controller
         return view('adminfc.index', compact('idUser', 'campings'));
     }
 
+    public function listStudent()
+    {
+        $students = Student::where('user_id', Auth::user()->id)->first();
+        return view('adminfc.list-student', compact('students'));
+    }
+
     public function createStudent(Request $request)
     {
         $request->user()->authorizeRoles(['role_fc']);
@@ -79,6 +86,48 @@ class AdminController extends Controller
         $student->save();
         $request->session()->put('student_id', $student->id);
         return redirect()->route('create.camping')->with('status', 'Estudante cadastrado com sucesso');
+    }
+
+    public function editStudent(Request $request, $idStudent)
+    {
+        $request->user()->authorizeRoles(['role_fc']);
+        $idUser = Auth::user()->id;
+        $student = Student::where('id', $idStudent)->first();
+
+        $encrypted = Crypt::encrypt($idUser);
+        $decrypted = Crypt::decrypt($encrypted);
+
+        $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
+        $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
+        return view('adminfc.edit-student', compact('student', 'states', 'cities', 'encrypted', 'decrypted'));
+        
+        
+    }
+
+    public function updateStudent(StudentUpdateRequest $request, $idStudent)
+    {
+        $request->user()->authorizeRoles(['role_fc']);
+        $validated = $request->validated();
+
+        $student = Student::find($idStudent);
+        //$student->fill($request->all())->save();
+        $student->user_id = Auth::user()->id;
+        $student->name = $request->input('name');
+        $student->email = $request->input('email');
+        $student->cpf = $request->input('cpf');
+        $student->phone = $request->input('phone');
+        $student->data_of_birth = $request->input('data_of_birth');
+        $student->how_met_us = $request->input('how_met_us');
+        $student->cep = $request->input('cep');
+        $student->state_id = $request->input('state_id');
+        $student->city_id = $request->input('city_id');
+        $student->street = $request->input('street');
+        $student->number = $request->input('number');
+        $student->neighborhood = $request->input('neighborhood');
+        $student->complement = $request->input('complement');
+        $student->status = $request->input('status');
+        $student->save();
+        return redirect()->route('edit.student', $idStudent)->with('status', 'Dados atualizados com sucesso');
     }
 
     /**
