@@ -1102,5 +1102,10 @@ sub-footer Section
   padding-top: 92px;
 }
 
+/*campanhas ativas*/
+.campanhas-ativas{
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
 
 

@@ -18,9 +18,12 @@
 Route::get('get-cidades/{idEstado}', 'Admin\StudentController@getCidades');
 
 Route::get('/', 'Site\HomeController@home')->name('site');
+Route::get('/campanhas/{idCamping}', 'Site\HomeController@campanha')->name('show.campanha');
 
 Route::get('/financiamento', 'Site\FinancingController@index')->name('financing.index');
-Route::get('/financiamento/criar-campanha', 'Site\FinancingController@createCamping')->name('create.project');
+Route::get('/financiamento/criar-campanha', 'Site\HomeController@createCamping')->name('create.project');
+
+
 
 
 
@@ -75,6 +78,10 @@ Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
 // $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 //Painel para cadastrados no financiamento Colectivo
+Route::get('/miniatura/{filename}', array(
+		'as' => 'imageVideo',
+		'uses' => 'Financing\AdminController@getFile'
+	));
 Route::middleware(['auth', 'IsRoleAluno:role_fc'])->group(function(){
 	
 	Route::get('/financing', 'Financing\AdminController@index')->name('financiamento.index');
@@ -97,11 +104,6 @@ Route::middleware(['auth', 'IsRoleAluno:role_fc'])->group(function(){
 	Route::get('/financing/show-redwards/{idReward}', 'Financing\AdminController@showReward')->name('show.reward');
 	Route::get('/financing/edit-redwards/{idReward}/edit', 'Financing\AdminController@editReward')->name('edit.reward');
 	Route::put('/financing/update-redwards/{idReward}', 'Financing\AdminController@updateReward')->name('update.reward');
-
-	Route::get('/miniatura/{filename}', array(
-		'as' => 'imageVideo',
-		'uses' => 'Financing\AdminController@getFile'
-	));
 });
 
 //Rotas

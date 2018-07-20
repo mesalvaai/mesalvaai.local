@@ -174,7 +174,7 @@
                         <p>Uma nova forma de financiar <br> seu estudo e ainda construir <br> comunidade</p>
                     </div>
                     <div class="text-center">
-                        <a href="#" class="get-started-btn">Buscar bolsa</a>
+                        <a href="{{ route('financing.index') }}" class="get-started-btn">Criar Campanha</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -193,10 +193,50 @@
         <div class="container juros-bg">
             <div class="row ljustify-content-md-center">
                 <div class="col-lg-6 offset-lg-3">
-                    <h3 class="text-center">Chega de pagar juros altos, não faz sentido vivermos como nossos pais, por que usaríamos o mesmo métodos de financiamentos que eles?</h3>
+                    <h3 class="text-center">Chega de pagar juros altos, não faz sentido vivermos como nossos país, por que usaríamos o mesmo métodos de financiamentos que eles?</h3>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!--==========================
+      Campanhas Ativas
+    ============================-->
+    <section class="campanhas-ativas pt-5 pb-5">
+        <div class="container-fluid">
+            <div class="row">
+                @foreach ($campanhas as $campanha)
+                    <div class="col-md-3">
+                        <div class="card mb-3">
+                            <img class="card-img-top" src="{{ url('/miniatura/'. $campanha->file_path) }}" alt="Card image cap">
+                            <div class="card-body">
+                                <a href="{{ route('show.campanha', $campanha->slug) }}"><h5 class="card-title">{{ $campanha->title }}</h5></a>
+                                <p class="card-text">{{ $campanha->abstract }}</p>
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="badge badge-pill badge-secondary mb-2 float-left">$R {{ $campanha->funds_received }}</span>
+                                        <span class="badge badge-pill badge-info mb-2 float-right">$R {{ $campanha->goal }}</span>
+                                    </div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{ \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}</div>
+                                </div>
+                                {{-- <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: {{ \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}</div>
+                                </div> --}}
+                                <p class="card-text pt-2">
+                                    <small class="text-muted float-left">10 Dias restantes</small>
+                                    <small class="text-muted float-right"><a href="{{ route('show.campanha', $campanha->slug) }}">Doar</a></small>
+                                </p>
+                                <p class="card-text float-right"><small class="text-muted">{{ \FormatTime::LongTimeFilter($campanha->created_at) }}</small></p>
+                            </div> 
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            {{ $campanhas->links() }}
+        </div>
+        
     </section>
 
     <!--==========================
@@ -210,13 +250,14 @@
                         <h2 class="text-center">Viu como é simples</h2>
                         <p class="text-center">Basta escolher seu curso, instituição e pagar a primeira mensalidade e vó alá, divista-se até o final do curso</p>
                         <div class="text-center">
-                            <a href="#" class="get-started-btn">Buscar bolsa</a>
+                            <a href="#" class="get-started-btn">Encontre sua bolsa</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!--==========================
       Section relacionamento
@@ -338,7 +379,7 @@
     <!--==========================
       Quem Somos Section
     ============================-->
-    <section id="quem-somos">
+    {{-- <section id="quem-somos">
         <div class="container">
             <div class="quem-somos-bg">
                 <div class="row">
@@ -348,7 +389,6 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-6">
-                        {{-- <img class="advanced-feature-img-left" src="site/img/advanced-feature-2.jpg" alt=""> --}}
                         <div data-aos="fade-right">
                             <div class="qs-child-bg">
                                 <div class="p-5">
@@ -365,7 +405,8 @@
                 </div>
             </div>
         </div>
-    </section><!-- #quem-somos -->
+    </section> --}}
+    <!-- #quem-somos -->
 
     <!--==========================
       Call To Action Section

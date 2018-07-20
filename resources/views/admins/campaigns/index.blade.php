@@ -28,6 +28,7 @@
                                     <th>Fundos recebidos</th>
                                     <th>Data de início</th>
                                     <th>Data Final</th>
+                                    <th>Situação</th>
                                     <th scope="col" colspan="3" class="text-center">Opções</th>
                                 </tr>
                             </thead>
@@ -39,7 +40,8 @@
                                         <td>{{ $campaign->goal }}</td>
                                         <td>{{ ($campaign->funds_received == null) ? '0' : $campaign->funds_received }}</td> 
                                         <td>{{ $campaign->start_date }}</td> 
-                                        <td>{{ $campaign->end_date }}</td> 
+                                        <td>{{ $campaign->end_date }}</td>
+                                        <td>{{ ($campaign->status) ? 'Ativo' : 'Inativo' }}</td> 
                                         <td class="float-right">
                                             <a href="{{ route('campaigns.show', $campaign->id) }}" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i></a>
                                         </td>

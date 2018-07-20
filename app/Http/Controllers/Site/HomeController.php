@@ -31,7 +31,9 @@ class HomeController extends Controller
 
     public function home()
     {
-        return view('sites.site');
+        //$campanhas = Campaign::where('status', 1)->paginate();
+        $campanhas = Campaign::where('status', 1)->paginate(4);
+        return view('sites.site', compact('campanhas', 'progress'));
     }
 
     public function test()
@@ -43,5 +45,17 @@ class HomeController extends Controller
      public function mimos()
     {
         return view('sites.mimos');
+    }
+
+    public function campanha($slug)
+    {
+        //$campanha = Campaign::where('slug', $slug)->first();
+        $campanha = Campaign::where('slug', $slug)->first();
+        if ($campanha) {
+            return view('sites.campanha', compact('slug', 'campanha'));
+        } else {
+            abort(404, 'Aurl não existe');
+        }
+        
     }
 }
