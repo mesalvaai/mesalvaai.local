@@ -15,7 +15,11 @@
 //     return view('welcome');
 // });
 
-Route::get('get-cidades/{idEstado}', 'Admin\StudentController@getCidades');
+// Route::get('get-paises-restantes/{countries}', 'Admin\StudentController@getPaisesRestantes')->name('get-paises-restantes');
+
+Route::get('get-estados/{idPais}', 'Admin\StudentController@getEstados')->name('get-estados');
+
+Route::get('get-cidades/{idPais}/{idEstado}', 'Admin\StudentController@getCidades')->name('get-cidades');
 
 Route::get('/', 'Site\HomeController@home')->name('site');
 Route::get('/campanhas/{idCamping}', 'Site\HomeController@campanha')->name('show.campanha');
@@ -79,9 +83,9 @@ Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
 
 //Painel para cadastrados no financiamento Colectivo
 Route::get('/miniatura/{filename}', array(
-		'as' => 'imageVideo',
-		'uses' => 'Financing\AdminController@getFile'
-	));
+	'as' => 'imageVideo',
+	'uses' => 'Financing\AdminController@getFile'
+));
 Route::middleware(['auth', 'IsRoleAluno:role_fc'])->group(function(){
 	
 	Route::get('/financing', 'Financing\AdminController@index')->name('financiamento.index');
