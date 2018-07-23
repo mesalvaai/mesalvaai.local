@@ -6,7 +6,7 @@ use App\Http\Requests\Admin\StudentFormRequest;
 use App\Student;
 use App\State;
 use App\City;
-use App\Geonames;
+use App\Location;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -27,17 +27,17 @@ class StudentController extends Controller
 
    }
 
-   public function getPaisesRestantes($countries)
-   {
-     $countries = Geonames::getPaisesRestantes($countries);
+   // public function getPaises()
+   // {
+   //   $countries = Location::getPaisesRestantes();
 
-     return $countries;
-   }
+   //   return $countries;
+   // }
 
 
    public function getEstados($idPais)
    {
-    $states = Geonames::getEstados($idPais);
+    $states = Location::getEstados($idPais);
 
     return $states;
   }
@@ -46,7 +46,7 @@ class StudentController extends Controller
   {
 
 
-   $cities = Geonames::getCidades($idPais, $idEstado);
+   $cities = Location::getCidades($idPais, $idEstado);
 
    return $cities;
  }
@@ -59,15 +59,14 @@ class StudentController extends Controller
     public function create()
     {
 
-      //$idContinenteAS = 6255150;
 
-      $countries = Geonames::getPaises();
+      $countries = Location::getPaises();
 
-//Add ID do pais do usuário
+   //Add ID do pais do usuário
    //Brasil id = 3469034
       $idPais = 3469034;
 
-      $states = Geonames::getEstados($idPais);
+      $states = Location::getEstados($idPais);
 
       return view('admins.students.create', compact('states','countries', 'idPais'));
 
@@ -97,7 +96,7 @@ class StudentController extends Controller
     public function show(Student $student)
     {
 
-      $returns =  Geonames::getLocationInfo($student->country_id, $student->state_id, $student->city_id);
+      $returns =  Location::getLocationInfo($student->country_id, $student->state_id, $student->city_id);
 
       $countryName =  $returns["countryName"];
       $stateName =  $returns["stateName"];
@@ -115,16 +114,15 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-
    //Add ID do pais do usuário
    //Brasil id = 3469034
       $idPais = 3469034;
 
-      $countries = Geonames::getPaises();
+      $countries = Location::getPaises();
 
-      $states = Geonames::getEstados($student->country_id);
+      $states = Location::getEstados($student->country_id);
 
-      $cities = Geonames::getCidades($student->country_id, $student->state_id);
+      $cities = Location::getCidades($student->country_id, $student->state_id);
 
       return view('admins.students.edit', compact('student', 'countries', 'states', 'cities'));
     }
