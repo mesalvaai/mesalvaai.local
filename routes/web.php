@@ -15,6 +15,11 @@
 //     return view('welcome');
 // });
 
+Route::get('/info',function(){
+   return view('sites.info-cursos');
+   //return view('layouts.painel.access');
+});
+
 Route::get('/', 'Site\HomeController@home')->name('site');
 Route::get('/test', 'Site\HomeController@test')->name('test');
 

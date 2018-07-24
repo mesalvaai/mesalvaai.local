@@ -1,0 +1,118 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+
+
+#DivLateral{
+    position:relative;
+    border-width:2px;
+    width:100px;
+    height: 100px;
+    
+    float: left;
+}
+#DivA{
+    position: relative;
+    border-width:2px;
+    width: 100px;
+    height: 100px;
+    left: 0px;
+    padding-top: 20px;
+    background-color: white;
+    
+    float: left;
+}
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+} 
+.group:after {
+    clear: both;
+}
+.group {
+     zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+
+body {
+padding-top: 60px;
+}
+.div-quadrado {
+    padding: 20px;
+    margin: 0px;
+}
+
+.img2 {
+    float: right;
+    
+}
+
+.rbgacinza {
+    background-color:rgba(250, 250, 250, 1);
+}
+
+.sombra {
+-webkit-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
+                    0 -6px 30px 5px rgba(0, 0, 0, 0.12), 
+                    0 8px 10px -7px rgba(0, 0, 0, 0.2);
+   
+box-shadow: 0 -10px 24px 2px rgba(0, 0, 0, 0.14), 
+            0 6px 30px 5px rgba(0, 0, 0, 0.12),
+            0 8px 10px -7px rgba(0, 0, 0, 0.2); 
+}
+
+.div-flo {
+ padding: 10px;
+ float: left;
+ 
+}
+
+
+p {
+    line-height: 2rem;
+}
+
+
+.parallax-container1 {
+    min-height: 380px;
+    line-height: 0;
+    height: auto;
+    color: rgba(255,255,255,.9);
+}
+.parallax-container1 .section {
+    width: 100%;
+}
+
+@media only screen and (max-width : 992px) {
+    .parallax-container1 .section {
+        position: absolute;
+        top: 40%;
+    }
+    #index-banner .section {
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    #index-banner .section {
+        top: 0;
+    }
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+footer.page-footer {
+    margin: 0;
+}
