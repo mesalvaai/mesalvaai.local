@@ -15,12 +15,29 @@
 //     return view('welcome');
 // });
 
+
 Route::get('/info',function(){
    return view('sites.info-cursos');
    //return view('layouts.painel.access');
 });
+ Route::get('get-paises-restantes', 'Admin\StudentController@getPaises')->name('get-paises-restantes');
+
+Route::get('get-estados/{idPais}', 'Admin\StudentController@getEstados')->name('get-estados');
+
+Route::get('get-cidades/{idPais}/{idEstado}', 'Admin\StudentController@getCidades')->name('get-cidades');
 
 Route::get('/', 'Site\HomeController@home')->name('site');
+Route::get('/campanhas/{idCamping}', 'Site\HomeController@campanha')->name('show.campanha');
+
+Route::get('/financiamento', 'Site\FinancingController@index')->name('financing.index');
+Route::get('/financiamento/criar-campanha', 'Site\FinancingController@createCamping')->name('create.project');
+
+
+
+
+
+Route::get('/mimos', 'Site\HomeController@mimos')->name('mimos');
+
 Route::get('/test', 'Site\HomeController@test')->name('test');
 
 Route::get('/cursos', 'Site\CursoController@curso');
@@ -36,8 +53,10 @@ Auth::routes();
 
 //Route::get('/home', 'Site\HomeController@index')->name('home');
 
+
+
 //Layout Painel
-Route::get('/painel', 'Admin\PainelController@index')->name('painel');
+//Route::get('/painel', 'Admin\PainelController@index')->name('painel');
 Route::get('/formss', 'Admin\PainelController@forms')->name('forms');
 Route::get('/chartss', 'Admin\PainelController@charts')->name('charts');
 Route::get('/tabless', 'Admin\PainelController@tables')->name('tables');
@@ -67,8 +86,39 @@ Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
 // $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 // $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
+//Painel para cadastrados no financiamento Colectivo
+Route::get('/miniatura/{filename}', array(
+	'as' => 'imageVideo',
+	'uses' => 'Financing\AdminController@getFile'
+));
+Route::middleware(['auth', 'IsRoleAluno:role_fc'])->group(function(){
+	
+	Route::get('/financing', 'Financing\AdminController@index')->name('financiamento.index');
+	
+	Route::get('/financing/student', 'Financing\AdminController@listStudent')->name('list.student');
+	Route::get('/financing/create', 'Financing\AdminController@createStudent')->name('create.student');
+	Route::post('/financing/store', 'Financing\AdminController@storeStudent')->name('store.student');
+	Route::get('/financing/edit-student/{idStudent}', 'Financing\AdminController@editStudent')->name('edit.student');
+	Route::put('/financing/update-student/{idStudent}', 'Financing\AdminController@updateStudent')->name('update.student');
+
+	Route::get('/financing/campanha', 'Financing\AdminController@createCamping')->name('create.camping');
+	Route::post('/financing/store-camping', 'Financing\AdminController@storeCamping')->name('store.camping');
+	Route::get('/financing/show-camping/{idCamping}', 'Financing\AdminController@showCamping')->name('show.camping');
+	Route::get('/financing/{idCamping}/edit', 'Financing\AdminController@editCamping')->name('edit.camping');
+	Route::put('/financing/update/{idCamping}', 'Financing\AdminController@updateCamping')->name('update.camping');
+
+	Route::get('/financing/rewards', 'Financing\AdminController@listRewards')->name('list.rewards');
+	Route::get('/financing/rewards/{campingId?}', 'Financing\AdminController@createRewards')->name('create.rewards');
+	Route::post('/financing/store-rewards', 'Financing\AdminController@storeRewards')->name('store.rewards');
+	Route::get('/financing/show-redwards/{idReward}', 'Financing\AdminController@showReward')->name('show.reward');
+	Route::get('/financing/edit-redwards/{idReward}/edit', 'Financing\AdminController@editReward')->name('edit.reward');
+	Route::put('/financing/update-redwards/{idReward}', 'Financing\AdminController@updateReward')->name('update.reward');
+});
+
 //Rotas
 Route::middleware(['auth'])->group(function(){
+
+	Route::get('/painel', 'Admin\PainelController@index')->name('painel');
 
 	//Permissions
 	Route::post('permissions/store', 'Admin\PermissionController@store')->name('permissions.store')
@@ -122,7 +172,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('students/create', 'Admin\StudentController@create')->name('students.create')
 	->middleware('permission:students.create');
 	Route::put('students/{student}', 'Admin\StudentController@update')->name('students.update')
-	->middleware('permission:campaigns.edit');
+	->middleware('permission:students.edit');
 	Route::get('students/{student}', 'Admin\StudentController@show')->name('students.show')
 	->middleware('permission:students.show');
 	Route::delete('students/{student}', 'Admin\StudentController@destroy')->name('students.destroy')
@@ -164,6 +214,9 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:campaigns.edit');
 
      //Donations
+
+	Route::post('donations/store', 'Admin\DonationController@store')->name('donations.store')
+	->middleware('permission:donations.store');
 	Route::get('donations/show/{donation}', 'Admin\DonationController@show')->name('donations.show')
 	->middleware('permission:donations.show');
 	Route::get('donations/{reward}', 'Admin\DonationController@confirmed')->name('donations.confirmed')
@@ -176,6 +229,9 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:donations.create');
 	Route::put('donations/{donation}', 'Admin\DonationController@update')->name('donations.update')
 	->middleware('permission:donations.edit');
+
+	Route::get('donations/{donation}', 'Admin\DonationController@show')->name('donations.show')
+	->middleware('permission:donations.show');
 	Route::delete('donations/{donation}', 'Admin\DonationController@destroy')->name('donations.destroy')
 	->middleware('permission:donations.destroy');
 	Route::get('donations/{donation}/edit', 'Admin\DonationController@edit')->name('donations.edit')

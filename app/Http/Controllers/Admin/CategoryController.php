@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 
 class CategoryController extends Controller
@@ -16,9 +17,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate();
-        return view('admins.categories.index', compact('categories'));
-    }
+     $categories = Category::paginate();
+     return view('admins.categories.index', compact('categories'));
+ }
 
     /**
      * Show the form for creating a new resource.
@@ -39,9 +40,9 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'name.unique' => 'Já existe uma categoria com este nome!',
-            'max' => 'Valor máximo de caracteres excedido!',
-            'required' => 'Este campo é obrigatório!',
+            'name.unique' => 'Já existe uma categoria com este nome.',
+            'max' => 'Valor máximo de caracteres excedido.',
+            'required' => 'Este campo é obrigatório.',
         ];
 
         $validator = \Validator::make($request->all(), [
@@ -63,7 +64,7 @@ class CategoryController extends Controller
            $category = Category::create($request->all());
 
            return redirect()->route('categories.edit', $category->id)
-           ->with('status', 'Categoria cadastrada com sucesso!');
+           ->with('status', 'Categoria cadastrada com sucesso.');
        }
 
    }
@@ -100,47 +101,38 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-     $messages = [
-        'name.unique' => 'Já existe uma categoria com este nome!',
-        'max' => 'Valor máximo de caracteres excedido!',
-        'required' => 'Este campo é obrigatório!',
-    ];
 
-    $validator = \Validator::make($request->all(), [
+        $id = $category->id;
+        $messages = [
+            'name.unique' => 'Já existe uma categoria com este nome.',
+            'max' => 'Valor máximo de caracteres excedido.',
+            'required' => 'Este campo é obrigatório.',
+        ];
 
-        'name' => 'bail|required|unique:categories|max:255',
-        'description' => 'bail|required|max:255',
-        'status' => 'bail|required|max:1',
+        $validator = \Validator::make($request->all(), [
 
-    ], $messages);
+            'name' => [
+                'bail',
+                'required',
+                'max:255',
+                Rule::unique('categories')->ignore($category->id),
+            ],
+            'description' => 'bail|required|max:255',
+            'status' => 'bail|required|max:1',
 
-    if ($validator->fails()) {
+        ], $messages);
 
-      $categorrySelect = Category::where('name', $request->input('name'))->first();
-
-
-      if($categorrySelect != null){
-
-
-        if($categorrySelect->name == $request->input('name') && $categorrySelect->id !=  $category->id) {
-
+        if ($validator->fails()) {
 
           return redirect()->back()
           ->withErrors($validator)
           ->withInput();  
 
       }
-  }else {
-    return redirect()->back()
-    ->withErrors($validator)
-    ->withInput();  
-}
-
-}
-$category->update($request->all());
-return redirect()->route('categories.edit', $category->id)
-->with('status', 'Categoria alterada com sucesso!');
-}
+      $category->update($request->all());
+      return redirect()->route('categories.edit', $category->id)
+      ->with('status', 'Categoria alterada com sucesso.');
+  }
 
     /**
      * Remove the specified resource from storage.
@@ -152,6 +144,6 @@ return redirect()->route('categories.edit', $category->id)
     {
         $category->delete();
         
-        return back()->with('status', 'A categoria foi excluída!');
+        return back()->with('status', 'A categoria foi excluída.');
     }
 }

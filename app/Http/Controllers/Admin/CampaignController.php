@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Student;
 use App\Category;
+use Illuminate\Validation\Rule;
 
 class CampaignController extends Controller
 {
@@ -51,11 +52,13 @@ class CampaignController extends Controller
       'required' => 'Este campo é obrigatório!',
       'title.unique' => 'Já existe uma campanha com este título!',
       'max' => 'Valor máximo de caracteres excedido!',
+      'numeric' => 'Este valor deve conter apenas números!',
     ];
+
 
     $validator = \Validator::make($request->all(), [
       'title' => 'bail|unique:campaigns|max:255',
-      'goal' => 'required',
+      'goal' => 'bail|numeric|required',
       'funds_received' => 'required',
       'start_date' => 'required',
       'end_date' => 'required',
@@ -67,7 +70,6 @@ class CampaignController extends Controller
     ], $messages);
 
     if ($validator->fails()){
-
       return redirect()->back()
       ->withErrors($validator)
       ->withInput();  
@@ -121,11 +123,16 @@ class CampaignController extends Controller
       'required' => 'Este campo é obrigatório!',
       'title.unique' => 'Já existe uma campanha com este título!',
       'max' => 'Valor máximo de caracteres excedido!',
+      'numeric'=> 'Este valor deve conter apenas números!'
     ];
 
     $validator = \Validator::make($request->all(), [
-      'title' => 'bail|unique:campaigns|max:255',
-      'goal' => 'required',
+      'title' => [
+        'bail',
+        'required',
+        'max:255',
+        Rule::unique('campaigns')->ignore($campaign->id),
+      ], 
       'funds_received' => 'required',
       'start_date' => 'required',
       'end_date' => 'required',
@@ -138,21 +145,10 @@ class CampaignController extends Controller
 
     if ($validator->fails()) {
 
-      $campaignSelect = Campaign::where('title', $request->input('title'))->first();
-
-      if($campaignSelect != null){
-
-        if($campaignSelect->title == $request->input('title') && $campaign->id !=  $campaignSelect->id) {
-
-          return redirect()->back()
-          ->withErrors($validator)
-          ->withInput(); 
-        }
-      }else{
-        return redirect()->back()
-        ->withErrors($validator)
-        ->withInput();
-      }
+      return redirect()->back()
+      ->withErrors($validator)
+      ->withInput();
+      
     }
 
     $campaign->update($request->all());

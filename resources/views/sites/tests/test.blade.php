@@ -2,6 +2,19 @@
 
 @section('styles')
 	<link rel="stylesheet" type="text/css" href="{{ asset('site/css/grade-quebrados.css') }}">
+
+    <style>
+        .exemplo-row-flex-cols .row{
+            min-height: 10rem;
+            background-color: rgba(255,0,0,.1);
+        }
+        .exemplo-row .row>.col, .exemplo-row .row>[class^=col-]{
+            background-color: rgba(86,61,124,.15);
+            border: 1px solid rgba(86,61,124,.2);
+            padding-top: .75rem;
+            padding-bottom: .75rem;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -82,6 +95,218 @@
       </div>
     </section>
 
+    <div class="container-fluid exemplo-row text-center">
+            <div class="row">
+                <div class="col-md">
+                    col-md-1
+                </div>
+                <div class="col-md">
+                    col-md-2
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md">
+                    col-md-1
+                </div>
+                <div class="col-md">
+                    col-md-2
+                </div>
+                <div class="col-md">
+                    col-md-3
+                </div>
+                <div class="col-md">
+                    col-md-4
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md">
+                    col-md-1
+                </div>
+                <div class="col-md-6">
+                    col-md-6
+                </div>
+                <div class="col-md">
+                    col-md-3
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-2">
+                    1 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    2 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    3 - col-md-2
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-center">
+                <div class="col-md-2">
+                    1 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    2 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    3 - col-md-2
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-start">
+                <div class="col-md-2">
+                    1 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    2 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    3 - col-md-2
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-end">
+                <div class="col-md-2">
+                    1 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    2 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    3 - col-md-2
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-between">
+                <div class="col-md-2">
+                    1 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    2 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    3 - col-md-2
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-md-2">
+                    1 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    2 - col-md-2
+                </div>
+                <div class="col-md-2">
+                    3 - col-md-2
+                </div>
+            </div>
+        </div>
+        
+        <hr>
+        <div class="container exemplo-row-flex-cols exemplo-row text-center">
+            <div class="row align-items-start">
+                <div class="col">
+                    1 - col-align-items-start
+                </div>
+                <div class="col">
+                    2 - col-align-items-start
+                </div>
+                <div class="col">
+                    3 - col-align-items-start
+                </div>
+            </div>
+            <br>
+            <div class="row align-items-center">
+                <div class="col">
+                    1 - col-align-items-center
+                </div>
+                <div class="col">
+                    2 - col-align-items-center
+                </div>
+                <div class="col">
+                    3 - col-align-items-center
+                </div>
+            </div>
+            <br>
+            <div class="row align-items-end">
+                <div class="col">
+                    1 - col-align-items-end
+                </div>
+                <div class="col">
+                    2 - col-align-items-end
+                </div>
+                <div class="col">
+                    3 - col-align-items-end
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-8">
+                    1 - col-align-items-end
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row justify-content-end">
+                <div class="col-xs-12 col-md-6">
+                    <div class="position-absolute" style="z-index: 2">
+                        <h1 class="text-white text-center w-50" style="font-size: 5rem; padding-top: 30%;">Testes de text</h1>
+                    </div>
+                    <div class="row align-items-end justify-content-end bg-danger">
+                        <div class="col-xs-12 col-md-6">
+                            
+                            <div class="bg-dark">
+                                <img src="{{ asset('site/img/msa/financiamento-4.jpg') }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        @foreach ($campings as $camping)
+            <div class="card">
+                @if (Storage::disk('images')->has($camping->file_path))
+                    <img class="card-img-top" data-src="holder.js/100px160/" alt="100%x160" src="{{ url('/miniatura/'. $camping->file_path) }}" data-holder-rendered="true">
+                @endif
+            </div>
+        @endforeach
+
+        <section class="pt-5">
+            @php
+                // Define os valores a serem usados
+            $data_inicial = '22/06/2018';
+            $data_final = '22/07/2018';
+            // Cria uma função que retorna o timestamp de uma data no formato DD/MM/AAAA
+            function geraTimestamp($data) {
+                $partes = explode('/', $data);
+                return mktime(0, 0, 0, $partes[1], $partes[0], $partes[2]);
+            }
+            // Usa a função criada e pega o timestamp das duas datas:
+            $time_inicial = geraTimestamp($data_inicial);
+            $time_final = geraTimestamp($data_final);
+            // Calcula a diferença de segundos entre as duas datas:
+            $diferenca = $time_final - $time_inicial; // 19522800 segundos
+            // Calcula a diferença de dias
+            $dias = (int)floor( $diferenca / (60 * 60 * 24)); // 225 dias
+            // Exibe uma mensagem de resultado:
+            echo "A diferença entre as datas ".$data_inicial." e ".$data_final." é de <strong>".$dias."</strong> dias";
+            // A diferença entre as datas 23/03/2009 e 04/11/2009 é de 225 dias
+            echo $end_at = date('Y-m-d H:i:s', strtotime('+30 days'));
+            echo "<br>";
+            $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', '2018-07-20 00:00:00');
+            $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', '2018-08-20 00:00:00');
+            $diff_in_days = $to->diffInDays($from);
+            print_r($diff_in_days); // Output: 1
+            @endphp
+        </section>
+
+        
 	<section class="footer"></section>
     
 @endsection

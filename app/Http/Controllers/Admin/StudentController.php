@@ -6,7 +6,10 @@ use App\Http\Requests\Admin\StudentFormRequest;
 use App\Student;
 use App\State;
 use App\City;
+use App\Location;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class StudentController extends Controller
 {
@@ -17,12 +20,36 @@ class StudentController extends Controller
      */
     public function index()
     {
-         $students = Student::paginate();
- 
-        // Repassando para a view
-        return view('admins.students.index', compact('students'));
+     $students = Student::paginate();
 
-    }
+        // Repassando para a view
+     return view('admins.students.index', compact('students'));
+
+   }
+
+   // public function getPaises()
+   // {
+   //   $countries = Location::getPaisesRestantes();
+
+   //   return $countries;
+   // }
+
+
+   public function getEstados($idPais)
+   {
+    $states = Location::getEstados($idPais);
+
+    return $states;
+  }
+
+  public function getCidades($idPais, $idEstado)
+  {
+
+
+   $cities = Location::getCidades($idPais, $idEstado);
+
+   return $cities;
+ }
 
     /**
      * Show the form for creating a new resource.
@@ -31,10 +58,18 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
-        $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
-        return view('admins.students.create', compact('states', 'cities'));
-        
+
+
+      $countries = Location::getPaises();
+
+   //Add ID do pais do usuário
+   //Brasil id = 3469034
+      $idPais = 3469034;
+
+      $states = Location::getEstados($idPais);
+
+      return view('admins.students.create', compact('states','countries', 'idPais'));
+
     }
 
     /**
@@ -45,10 +80,11 @@ class StudentController extends Controller
      */
     public function store(StudentFormRequest $request)
     {
-        
-        $$validated = $request->validated();
+      $validated = $request->validated();
 
-        return redirect()->route('students.edit', $student->id)->with('status', 'Estudante cadastrado com sucesso');
+      $student = Student::create($request->all());
+
+      return redirect()->route('students.edit', $student->id)->with('status', 'Estudante cadastrado com sucesso');
     }
 
     /**
@@ -59,7 +95,15 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return view('admins.students.show', compact('student'));
+
+      $returns =  Location::getLocationInfo($student->country_id, $student->state_id, $student->city_id);
+
+      $countryName =  $returns["countryName"];
+      $stateName =  $returns["stateName"];
+      $cityName =  $returns["cityName"];
+
+
+      return view('admins.students.show', compact('student', 'countryName','stateName', 'cityName'));
     }
 
     /**
@@ -70,9 +114,17 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
-        $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
-        return view('admins.students.edit', compact('student', 'states', 'cities'));
+   //Add ID do pais do usuário
+   //Brasil id = 3469034
+      $idPais = 3469034;
+
+      $countries = Location::getPaises();
+
+      $states = Location::getEstados($student->country_id);
+
+      $cities = Location::getCidades($student->country_id, $student->state_id);
+
+      return view('admins.students.edit', compact('student', 'countries', 'states', 'cities'));
     }
 
     /**
@@ -82,12 +134,60 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(StudentFormRequest $request)
+    public function update(Request $request, Student $student)
     {
-        $$validated = $request->validated();
 
-        return redirect()->route('students.edit', $student->id)->with('status', 'Cadastro alterado com sucesso');
+       // $validated = $request->validated();
+
+      $messages = [
+       'required' => 'O campo ":attribute" é obrigatório!',
+       'email.unique' => 'Já existe estudante cadastrado com este email!',
+       'cpf.unique' => 'Já existe estudante cadastrado com este CPF!',
+       'numeric' => 'O campo ":attribute" deve ser um número!',
+       'min' => 'O campo ":attribute" deve ter no mínimo :min caracteres!',
+       'max' => 'O campo ":attribute" deve ter no maximo :max caracteres!',
+       'type.required' => 'O campo "tipo" é obrigatório!',
+       'unique' => 'Este ":attribute" já se encontra cadastrado no sistema!'
+     ];
+
+     $validator = \Validator::make($request->all(), [
+      'email' => [
+        'bail',
+        'required',
+        'max:255',
+        Rule::unique('students')->ignore($student->id),
+      ], 
+      'cpf' => [
+        'bail',
+        'required',
+        'max:255',
+        Rule::unique('students')->ignore($student->id),
+      ], 
+      'name'    =>'required|min:3|max:100',           
+      'data_of_birth' => 'required|date',
+      'phone'   =>'required|integer',
+      'cep'     =>'required|integer',
+      'state_id'   =>'required',
+      'city_id' =>'required',
+      'street'  =>'required',
+      'number'  =>'required',
+      'neighborhood' =>'required',
+      'complement'   =>'required',
+      'status'  =>'required'
+    ], $messages);
+
+     if ($validator->fails()) {
+
+      return redirect()->back()
+      ->withErrors($validator)
+      ->withInput();
+
     }
+
+    $student->update($request->all());
+
+    return redirect()->route('students.edit', $student->id)->with('status', 'Atualizado alterado com sucesso');
+  }
 
     /**
      * Remove the specified resource from storage.
@@ -97,8 +197,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        $student->delete();
-        
-        return back()->with('status', 'Esse cadastro foi excluido');
+      $student->delete();
+
+      return back()->with('status', 'Esse cadastro foi excluido');
     }
-}
+  }

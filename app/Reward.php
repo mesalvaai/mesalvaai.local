@@ -22,4 +22,10 @@ class Reward extends Model
 		'created_at',
 		'updated_at', 
 	];
+
+
+	public function campaign()
+	{
+	    return $this->belongsTo('App\Campaign');
+	}
 }

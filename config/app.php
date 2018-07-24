@@ -177,6 +177,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        //Novos providers
+        App\Providers\FormatTimeServiceProvider::class,
 
         //Laravel collective
         Collective\Html\HtmlServiceProvider::class,
@@ -235,6 +237,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'FormatTime' => App\Helpers\FormatTime::class,
+        'ProgressBar' => App\Helpers\ProgressBar::class,
 
     ],
 

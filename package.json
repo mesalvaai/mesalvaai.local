@@ -19,6 +19,11 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+<<<<<<< HEAD
+        "@fortawesome/fontawesome-free": "^5.1.0",
+        "bootstrap": "^4.1.1"
+=======
         "@fortawesome/fontawesome-free": "^5.1.0"
+>>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
     }
 }
