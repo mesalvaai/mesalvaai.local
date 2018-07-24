@@ -2,7 +2,7 @@
 
 @section('styles')
 	<link rel="stylesheet" type="text/css" href="{{ asset('site/css/grade-quebrados.css') }}">
-<<<<<<< HEAD
+
     <style>
         .exemplo-row-flex-cols .row{
             min-height: 10rem;
@@ -15,8 +15,6 @@
             padding-bottom: .75rem;
         }
     </style>
-=======
->>>>>>> 0ae3c23096ea6432cf9e357590306b60c7da0d78
 @endsection
 
 @section('content')
@@ -273,11 +271,34 @@
 
         @foreach ($campings as $camping)
             <div class="card">
-                @if (Storage::disk('images')->has($camping->file))
-                    <img class="card-img-top" data-src="holder.js/100px160/" alt="100%x160" src="{{ url('/miniatura/'. $camping->file) }}" data-holder-rendered="true">
+                @if (Storage::disk('images')->has($camping->file_path))
+                    <img class="card-img-top" data-src="holder.js/100px160/" alt="100%x160" src="{{ url('/miniatura/'. $camping->file_path) }}" data-holder-rendered="true">
                 @endif
             </div>
         @endforeach
+
+        <section class="pt-5">
+            @php
+                // Define os valores a serem usados
+            $data_inicial = '22/06/2018';
+            $data_final = '22/07/2018';
+            // Cria uma função que retorna o timestamp de uma data no formato DD/MM/AAAA
+            function geraTimestamp($data) {
+                $partes = explode('/', $data);
+                return mktime(0, 0, 0, $partes[1], $partes[0], $partes[2]);
+            }
+            // Usa a função criada e pega o timestamp das duas datas:
+            $time_inicial = geraTimestamp($data_inicial);
+            $time_final = geraTimestamp($data_final);
+            // Calcula a diferença de segundos entre as duas datas:
+            $diferenca = $time_final - $time_inicial; // 19522800 segundos
+            // Calcula a diferença de dias
+            $dias = (int)floor( $diferenca / (60 * 60 * 24)); // 225 dias
+            // Exibe uma mensagem de resultado:
+            echo "A diferença entre as datas ".$data_inicial." e ".$data_final." é de <strong>".$dias."</strong> dias";
+            // A diferença entre as datas 23/03/2009 e 04/11/2009 é de 225 dias
+            @endphp
+        </section>
 
         
 	<section class="footer"></section>

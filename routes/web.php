@@ -21,7 +21,7 @@ Route::get('/', 'Site\HomeController@home')->name('site');
 Route::get('/campanhas/{idCamping}', 'Site\HomeController@campanha')->name('show.campanha');
 
 Route::get('/financiamento', 'Site\FinancingController@index')->name('financing.index');
-Route::get('/financiamento/criar-campanha', 'Site\HomeController@createCamping')->name('create.project');
+Route::get('/financiamento/criar-campanha', 'Site\FinancingController@createCamping')->name('create.project');
 
 
 
