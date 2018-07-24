@@ -297,6 +297,12 @@
             // Exibe uma mensagem de resultado:
             echo "A diferença entre as datas ".$data_inicial." e ".$data_final." é de <strong>".$dias."</strong> dias";
             // A diferença entre as datas 23/03/2009 e 04/11/2009 é de 225 dias
+            echo $end_at = date('Y-m-d H:i:s', strtotime('+30 days'));
+            echo "<br>";
+            $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', '2018-07-20 00:00:00');
+            $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', '2018-08-20 00:00:00');
+            $diff_in_days = $to->diffInDays($from);
+            print_r($diff_in_days); // Output: 1
             @endphp
         </section>
 

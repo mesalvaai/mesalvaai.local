@@ -225,7 +225,7 @@
                                     <div class="progress-bar" role="progressbar" style="width: {{ \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}</div>
                                 </div> --}}
                                 <p class="card-text pt-2">
-                                    <small class="text-muted float-left">10 Dias restantes</small>
+                                    <small class="text-muted float-left">{{ FormatTime::diasRestantes($campanha->start_date, $campanha->end_date) }} Dias restantes</small>
                                     <small class="text-muted float-right"><a href="{{ route('show.campanha', $campanha->slug) }}">Doar</a></small>
                                 </p>
                                 <p class="card-text float-right"><small class="text-muted">{{ \FormatTime::LongTimeFilter($campanha->created_at) }}</small></p>

@@ -2,6 +2,7 @@
 namespace App\Helpers;
   
 use Illuminate\Support\Facades\DB;
+use \Carbon\Carbon;
   
 class FormatTime {
  
@@ -64,5 +65,14 @@ class FormatTime {
         }
  
         return "faz " . $result;
+    }
+
+    public static function diasRestantes($start_date, $end_date)
+    {
+        $to = Carbon::createFromFormat('Y-m-d H:s:i', $start_date);
+        $from = Carbon::createFromFormat('Y-m-d H:s:i', $end_date);
+        $diff_in_days = $to->diffInDays($from);
+        return $diff_in_days;
+        //print_r($diff_in_days); // Output: 1
     }
 }
