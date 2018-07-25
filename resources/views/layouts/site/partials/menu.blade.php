@@ -1,6 +1,6 @@
 <header id="header">
     <div class="container">
-        <div id="logo" class="pull-left">
+        <div id="logo" class="">
             <h1><a href="#intro" class="scrollto"><strong>Me Salva Ai</strong></a></h1>
         </div>
         <nav id="nav-menu-container">

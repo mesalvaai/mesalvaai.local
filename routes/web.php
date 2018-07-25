@@ -15,6 +15,11 @@
 //     return view('welcome');
 // });
 
+
+Route::get('/info',function(){
+   return view('sites.info-cursos');
+   //return view('layouts.painel.access');
+});
  Route::get('get-paises-restantes', 'Admin\StudentController@getPaises')->name('get-paises-restantes');
 
 Route::get('get-estados/{idPais}', 'Admin\StudentController@getEstados')->name('get-estados');
