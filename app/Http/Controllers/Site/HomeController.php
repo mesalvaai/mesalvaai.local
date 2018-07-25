@@ -47,15 +47,21 @@ class HomeController extends Controller
         return view('sites.mimos');
     }
 
-    public function campanha($slug)
+    public function campanha($slug = null)
     {
         //$campanha = Campaign::where('slug', $slug)->first();
-        $campanha = Campaign::where('slug', $slug)->first();
-        if ($campanha) {
-            return view('sites.campanha', compact('slug', 'campanha'));
+        
+        if ($slug == null) {
+            abort(404, 'A url não existe');
         } else {
-            abort(404, 'Aurl não existe');
+            $campanha = Campaign::where('slug', $slug)->first();
+            if ($campanha) {
+                return view('sites.campanha', compact('slug', 'campanha'));
+            } else {
+                abort(404, 'A url não existe');
+            }
         }
+        
         
     }
 }

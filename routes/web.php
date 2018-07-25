@@ -14,7 +14,7 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+Route::get('/', 'Site\HomeController@home')->name('site');
 
 Route::get('/info',function(){
    return view('sites.info-cursos');
@@ -26,8 +26,8 @@ Route::get('get-estados/{idPais}', 'Admin\StudentController@getEstados')->name('
 
 Route::get('get-cidades/{idPais}/{idEstado}', 'Admin\StudentController@getCidades')->name('get-cidades');
 
-Route::get('/', 'Site\HomeController@home')->name('site');
-Route::get('/campanhas/{idCamping}', 'Site\HomeController@campanha')->name('show.campanha');
+
+Route::get('/campanhas/{idCamping?}', 'Site\HomeController@campanha')->name('show.campanha');
 
 Route::get('/financiamento', 'Site\FinancingController@index')->name('financing.index');
 Route::get('/financiamento/criar-campanha', 'Site\FinancingController@createCamping')->name('create.project');
