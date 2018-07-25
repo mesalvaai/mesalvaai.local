@@ -69,6 +69,7 @@ class FormatTime {
 
     public static function diasRestantes($start_date, $end_date)
     {
+        $start_date = Carbon::now('America/Sao_Paulo');
         $to = Carbon::createFromFormat('Y-m-d H:s:i', $start_date);
         $from = Carbon::createFromFormat('Y-m-d H:s:i', $end_date);
         $diff_in_days = $to->diffInDays($from);

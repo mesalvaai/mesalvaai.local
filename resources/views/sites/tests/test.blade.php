@@ -303,6 +303,9 @@
             $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', '2018-08-20 00:00:00');
             $diff_in_days = $to->diffInDays($from);
             print_r($diff_in_days); // Output: 1
+
+            echo "<br>";
+            echo \Carbon\Carbon::now('America/Sao_Paulo');
             @endphp
         </section>
 
