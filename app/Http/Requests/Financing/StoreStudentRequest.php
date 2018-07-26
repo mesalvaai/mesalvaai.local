@@ -28,6 +28,7 @@ class StoreStudentRequest extends FormRequest
             'email'   =>'required|unique:students,email,'. $this->student,
             'phone'   =>'required',
             'how_met_us' => 'required',
+            'country_id' => 'required',
             'state_id'   =>'required',
             'city_id' =>'required'
         ];

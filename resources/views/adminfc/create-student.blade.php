@@ -16,8 +16,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <strong class="text-msa">Sobre você</strong>
+                    <div class="card-header bg-success text-center">
+                        <strong class="text-white">COMPLETE O CADASTRO SOBRE VOCÊ</strong>
                     </div>
 
                     <div class="card-body">
@@ -44,7 +44,7 @@
                         @endif
                         
                         
-                        {{ Form::open(['route' => 'store.student', 'novalidate']) }}
+                        {{ Form::open(['route' => 'store.student']) }}
                             @include('adminfc.partials.form')
                         {{ Form::close() }}
                                            
@@ -56,4 +56,100 @@
     </div>
 </section>
 
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('site/js/jquery.mask.min.js') }}" type="text/javascript" charset="utf-8" async defer></script>
+    <script src="{{ asset('site/js/validacoes.js') }}" type="text/javascript" charset="utf-8" async defer></script>
+    <script type="text/javascript">
+        
+        //Caso dê erro no cadastro e a página retorne ao form e caso não exista uma variável student pois ai estrá na pagina de edit
+
+        var studentName = "<?php isset($student) ? print "ok" : print "erro" ?>";
+
+        if($('select[name=state_id]').val() != null && studentName == "erro"){
+            
+            var idEstado = $('select[name=state_id]').val();
+
+            var idPais = $('select[name=country_id]').val();
+
+            $.get('/get-cidades/'  + idPais + '/' +  idEstado, function(cities){
+
+                // $('select[name=city_id]').prop("disabled", false);
+                
+                $('select[name=city_id]').empty();
+
+                $('select[name=city_id]').append('<option placeholder> -- Selecione uma Cidade -- </option>');
+
+                $.each(cities, function(key, value) {
+
+                    $('select[name=city_id]').append('<option value = ' + key + '>' + value + '</option>');
+                });
+            });
+        }
+    //
+
+
+    // $(document).ready(function() {
+
+    //  $.get('/get-paises-restantes', function(countries){
+
+    //      $.each(countries, function(key, value) {
+
+    //          $('select[name=country_id]').append('<option value = ' + key + '>' + value + '</option>');
+    //      });
+    //  });
+    // })
+
+
+    $('select[name=state_id]').change(function(){
+
+        var idEstado = $(this).val();
+
+        var idPais = $('select[name=country_id]').val();
+
+        $('select[name=city_id]').empty();
+
+        $('select[name=city_id]').append('<option placeholder> Carregando... </option>');
+
+        $.get('/get-cidades/'  + idPais + '/' +  idEstado, function(cities){
+
+                // $('select[name=city_id]').prop("disabled", false);
+
+                $('select[name=city_id]').empty();
+
+                $('select[name=city_id]').append('<option placeholder> -- Selecione uma Cidade -- </option>');
+
+                $.each(cities, function(key, value) {
+
+                    $('select[name=city_id]').append('<option value = ' + key + '>' + value + '</option>');
+                });
+            });
+    });
+
+
+    $('select[name=country_id]').change(function(){
+
+        var idPais = $(this).val();
+
+        $('select[name=state_id]').empty();
+        $('select[name=city_id]').empty();
+
+        $('select[name=state_id]').append('<option placeholder> Carregando... </option>');
+        $('select[name=city_id]').append('<option placeholder> -- Antes selecione um estado -- </option>');
+
+        $.get('/get-estados/' + idPais, function(states){
+
+            $('select[name=state_id]').empty();
+
+            $('select[name=state_id]').append('<option placeholder> -- Selecione um estado -- </option>');
+
+            $.each(states, function(key, value) {
+
+                $('select[name=state_id]').append('<option value = ' + key + '>' + value + '</option>');
+            });
+        });
+    });
+
+</script>
 @endsection

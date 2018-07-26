@@ -16,8 +16,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <strong class="text-msa">Criar Campanha {{ session()->get('student_id') }}</strong>
+                    <div class="card-header bg-info text-center pt-3">
+                        <strong class="text-white"><h1>Defina o perfil de seu projeto</h1></strong>
                     </div>
 
                     <div class="card-body">

@@ -5,7 +5,7 @@
 {{-- {!! Form::text('user_id', $idUser) !!} --}}
 <div class="row">
 	<div class="form-group col-xs-12 col-md">
-		{!! Form::label('name', 'Nome Completo') !!}
+		{!! Form::label('name', 'Confira seu nome Completo') !!}
 		{!! Form::text('name', Auth::user()->name, ['class' => 'form-control', 'required']) !!}
 	</div>
 
@@ -15,14 +15,9 @@
 	</div> --}}
 
 	<div class="form-group col-xs-12 col-md">
-		{!! Form::label('email', 'Email') !!}
+		{!! Form::label('email', 'Confira seu E-mail') !!}
 		{!! Form::email('email', Auth::user()->email, ['class' => 'form-control', 'required']) !!}
 		<small id="emailHelp" class="form-text text-muted">As notificações de sua campanha serão enviadas para este e-mail. Se quiser pode alterar o e-mail cadastrado <a href="#" title="Alterar E-mail">aqui</a>.</small>
-	</div>
-
-	<div class="form-group col-xs-12 col-md col-lg-3">
-		{!! Form::label('phone', 'Telefone') !!}
-		{!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => '(75) 00000-0000', 'required']) !!}
 	</div>
 </div>
 
@@ -44,18 +39,59 @@
  --}}
 <div class="row">
 	<div class="form-group col-xs-12 col-md">
+		{!! Form::label('phone', 'Telefone') !!}
+		{!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => '(75) 00000-0000', 'required']) !!}
+	</div>
+
+	<div class="form-group col-xs-12 col-md">
 		{!! Form::label('how_met_us', 'Como conheceu a Me Salva Aí? *') !!}
 		{!! Form::select('how_met_us', [''=> 'Selecione','google' => 'Google', 'facebook' => 'Facebook', 'e-mail' => 'E-mail', 'amigos' => 'Um amigo', 'outros' => 'Outros'], null, ['class' => 'form-control', 'required']) !!}
 	</div>
-	<div class="form-group col-xs-12 col-md">
+	{{-- <div class="form-group col-xs-12 col-md">
 		{!! Form::label('state', 'Estado') !!}
 		{!! Form::select('state_id',$states, null, ['placeholder' => '-- Selecione um estado --', 'class' => 'form-control', 'required']) !!}
 	</div>
 	<div class="form-group col-xs-12 col-md">
 		{!! Form::label('cidade_id', 'Cidade') !!}
 		{!! Form::select('city_id',$cities, null, ['placeholder' => '-- Selecione uma cidade --', 'class' => 'form-control', 'required']) !!}
+	</div> --}}
+</div>
+
+<div class="row">
+	<div class="form-group col">
+		@if(isset($student))
+
+		{!! Form::label('country_id', 'País') !!}
+		{!! Form::select('country_id', $countries, null, ['placeholder' => '-- Selecione um Pais --', 'class' => 'form-control', 'required']) !!}
+
+		@else
+
+		{!! Form::label('country_id', 'País') !!}
+		{!! Form::select('country_id', $countries, $idPais, ['placeholder' => '-- Selecione um Pais --', 'class' => 'form-control', 'required']) !!}
+
+		@endif
+	</div>
+
+	<div class="form-group col">
+		{!! Form::label('state_id', 'Estado') !!}
+		{!! Form::select('state_id',$states, null, ['placeholder' => '-- Selecione um estado --', 'class' => 'form-control', 'required']) !!}
+	</div>
+	
+	<div class="form-group col">
+		@if(isset($student))
+
+		{!! Form::label('city_id', 'Cidade') !!}
+		{!! Form::select('city_id', $cities, null, ['placeholder' => '-- Antes selecione um estado --', 'class' => 'form-control', 'required']) !!}
+
+		@else
+
+		{!! Form::label('city_id', 'Cidade') !!}
+		{!! Form::select('city_id', [], null, ['placeholder' => '-- Antes selecione um estado --', 'class' => 'form-control', 'required']) !!}
+
+		@endif
 	</div>
 </div>
+
 
 <div class="row">
 	{{-- <div class="form-group col-xs-12 col-md">
@@ -85,6 +121,6 @@
 	</div> --}}
 </div>
 
-<div class="form-group">
-	{!! Form::submit('Criar Campanha', ['class' => 'btn btn-msa btn-sm float-left']) !!}
+<div class="form-group text-center pt-5">
+	{!! Form::submit('Continuar criando minha campanha', ['class' => 'btn btn-success btn-lg']) !!}
 </div>

@@ -17,10 +17,12 @@ use Auth;
 use App\Category;
 use App\Campaign;
 use App\City;
+use App\Location;
 use App\State;
 use App\Student;
 use App\Reward;
 use App\User;
+
 
 class AdminController extends Controller
 {
@@ -63,9 +65,16 @@ class AdminController extends Controller
             $encrypted = Crypt::encrypt($idUser);
             $decrypted = Crypt::decrypt($encrypted);
 
-            $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
-            $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
-            return view('adminfc.create-student', compact('idUser', 'states', 'cities', 'encrypted', 'decrypted'));
+            // $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
+            // $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
+            $countries = Location::getPaises();
+
+           //Add ID do pais do usuário
+           //Brasil id = 3469034
+              $idPais = 3469034;
+
+              $states = Location::getEstados($idPais);
+            return view('adminfc.create-student', compact('idUser','states','countries', 'idPais', 'encrypted', 'decrypted'));
         }
         
     }
@@ -85,7 +94,7 @@ class AdminController extends Controller
         $student->status = $request->input('status');
         $student->save();
         $request->session()->put('student_id', $student->id);
-        return redirect()->route('create.camping')->with('status', 'Estudante cadastrado com sucesso');
+        return redirect()->route('create.camping')->with('status', 'O cadastro foi completado, falta pouco para criar sua campanha <strong>GRATUITAMENTE</strong>');
     }
 
     public function editStudent(Request $request, $idStudent)
@@ -97,9 +106,27 @@ class AdminController extends Controller
         $encrypted = Crypt::encrypt($idUser);
         $decrypted = Crypt::decrypt($encrypted);
 
-        $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
-        $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
-        return view('adminfc.edit-student', compact('student', 'states', 'cities', 'encrypted', 'decrypted'));
+        // $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
+        // $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
+        //Add ID do pais do usuário
+      //Brasil id = 3469034
+      $idPais = 3469034;
+      $countries = Location::getPaises();
+
+      if ($student->country_id == null) {
+        $countries = Location::getPaises();
+        //Add ID do pais do usuário
+        //Brasil id = 3469034
+        $idPais = 3469034;
+        $states = Location::getEstados($idPais);
+        $idEstado = 29; //Bahia
+        $cities = Location::getCidades($idPais, $idEstado);
+      } else {
+        $states = Location::getEstados($student->country_id);
+        $cities = Location::getCidades($student->country_id, $student->state_id);
+      }
+
+        return view('adminfc.edit-student', compact('student', 'countries', 'states', 'cities', 'idPais', 'encrypted', 'decrypted'));
         
         
     }

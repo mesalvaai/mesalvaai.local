@@ -114,17 +114,25 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-   //Add ID do pais do usuário
-   //Brasil id = 3469034
+      //Add ID do pais do usuário
+      //Brasil id = 3469034
       $idPais = 3469034;
-
       $countries = Location::getPaises();
 
-      $states = Location::getEstados($student->country_id);
+      if ($student->country_id == null) {
+        $countries = Location::getPaises();
+        //Add ID do pais do usuário
+        //Brasil id = 3469034
+        $idPais = 3469034;
+        $states = Location::getEstados($idPais);
+        $idEstado = 29; //Bahia
+        $cities = Location::getCidades($idPais, $idEstado);
+      } else {
+        $states = Location::getEstados($student->country_id);
+        $cities = Location::getCidades($student->country_id, $student->state_id);
+      }
 
-      $cities = Location::getCidades($student->country_id, $student->state_id);
-
-      return view('admins.students.edit', compact('student', 'countries', 'states', 'cities'));
+      return view('admins.students.edit', compact('student', 'countries', 'states', 'cities', 'idPais'));
     }
 
     /**
