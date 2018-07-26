@@ -1,72 +1,94 @@
 <style>
     #course{
-         padding: 0;
-    }
-    .course {
-        width: 100%;
-        height: 80vh;
-    }
-   
+    padding: 0;
+    padding: 0;
+    
+}
+
+.course1{
+    background-size: cover;
+    width: 100%;
+    height: 80vh;
+    background-repeat: no-repeat;
+}
+#course2{
+    width: 100%;
+    padding-top: 200px;
+    padding-bottom: 60px;
+}
+.course2{
+    background: #fafafa;
+}
+
+.hr{
+    width: 60%;
+}
+h2{
+    margin-top: -17%;
+}
+.sectwo{
+    margin-top: 15%;
+}
+.pho{
+    margin-left:35%;
 }
 </style>
 <!-- Course Start -->
 <section id="course">
     <div class="row">
        
-        <div id="course" class="course">
-            <img src="{{ asset('site/img/msa/qs-1.jpg') }}" alt="Cursos" class="course img-effect">
-           
-				
+        <div id="course" class="course1">
+            <img src="{{ asset('site/img/msa/qs-1.jpg') }}" alt="Cursos" class="course1 img-effect">
         </div>
-           
-        
         </div>
         
-    </div>
-    <div class="pb-5"></div>
+    </div><br><br>
 </section>
-<section  id="course">
-    <div class="container h-100">
+<section  id="course2">
+    <div class="course2 container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12 col-md justify-content-center">
                 <div class=" col-12 justify-content-center text-center">
                     <h2  class="text-center text-msa h1">Buscar Cursos</h2>
-                </div>    
+                </div>   
+                <div class="linea"></div>
                 <div class="row align-items-md-center">
-                <div class="col-lg-6 ">
+                <div class="col-lg-6 sectwo">
                     <h5 class="text-center">Me Salva Aí ajuda quem quer entrar na faculdade. Reunimos informações de todos as faculdades e cursos de graduação e pós-graduação para que você possa fazer a melhor escolha. E o melhor, depois de achar o curso ideal, você pode se inscrever para descontos pelo Me Salva Aí.</h5>
-                
+                    <img src="{{ asset('site/img/msa/celular.png') }}" alt="Cursos" width="25%" class="pho">
+
                 </div>
                     <div class="col-lg-6  text-left align-content-lg-start">
                     <section id="section-five" class="section-five-bg align-self-start">
-        <div class="container">
-            <div class="row ">
-                
-                    <div class="child-bg ">
-                        <h2 class="text-center">Viu como é simples</h2>
-                        <p class="text-center">Basta escolher seu curso, instituição e pagar a primeira mensalidade e vó alá, divista-se até o final do curso</p>
-                        <div class="row">
-                                <div class="form-group col">
-                                        {!! Form::label('city', 'Cidade') !!}
-                                        {!! Form::text('city', null, ['class' => 'form-control', 'required']) !!}
+                    <div class="container">
+                        <div class="row ">
+
+                                <div class="child-bg ">
+                                    <h2 class="text-center">Viu como é simples</h2>
+                                    <p class="text-center">Basta escolher seu curso, instituição e pagar a primeira mensalidade e vó alá, divirta-se até o final do curso</p>
+                                    <div class="row">
+                                            <div class="form-group col">
+                                                    {!! Form::label('city', 'Cidade') !!}
+                                                    <select type='' name="city" class='form-control'></select>
+                                                    
+                                            </div>
+
+                                            <div class="form-group col">
+                                                    {!! Form::label('course', 'Curso') !!}
+                                                    <select type='' name="course" class='form-control'></select>
+                                            </div>
+
+
+                                    </div>
+
+                                    <div class="text-center">
+                                        <a href="#" class="get-started-btn">Buscar bolsa</a>
+                                    </div>
                                 </div>
 
-                                <div class="form-group col">
-                                        {!! Form::label('course', 'Curso') !!}
-                                        {!! Form::text('course', null, ['class' => 'form-control',  'required']) !!}
-                                </div>
-
-
-                        </div>
-                        
-                        <div class="text-center">
-                            <a href="#" class="get-started-btn">Buscar bolsa</a>
                         </div>
                     </div>
-                
-            </div>
-        </div>
-    </section>
+                    </section>
                 </div>
                 </div>
                 
@@ -77,8 +99,10 @@
     
 </section>
 
+<hr class="hr">
             
-<br>       
+<br>  
+
 <!-- Course End -->
 <section class=" mt-30">
 	<div class="container">
@@ -154,3 +178,13 @@
 		
 	</div>		
 </section>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#).filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
