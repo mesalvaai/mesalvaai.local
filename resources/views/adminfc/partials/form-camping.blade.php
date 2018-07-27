@@ -112,7 +112,7 @@
 	  	</div>
 		{!! Form::text('goal', null, ['class' => $errors->has('goal') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 	</div>
-	<small class="text-muted">(mínimo de R$500,00) </small><br>
+	<small class="text-muted">(mínimo de R$500.00) </small><br>
 		<em><a href="#" title="Click aqui">Ainda não sabe o quanto arrecadar?</a></em>
 		@if ($errors->has('goal'))
 	        <span class="invalid-feedback">
@@ -163,8 +163,14 @@
 		</div>
     </div>
     <div class="form-check form-check-inline">
-	  	{{ Form::checkbox('checkbox', 1, null, ['class' => 'form-check-input']) }}
-	  	<label class="form-check-label" for="inlineCheckbox1">Eu li e estou de acordo com os Termos de Uso, Políticas de Privacidade e Termos de uso *</label>
+	  	{{-- {{ Form::checkbox('terms_of_use', old('terms_of_use') ? 'checked' : '', null, ['class' => 'form-check-input']) }} --}}
+	  	{!! Form::checkbox('terms_of_use',1, null,['class' => $errors->has('terms_of_use') ? 'form-check-input is-invalid' : 'form-check-input', 'required' => 'required'])!!}
+	  	<label class="form-check-label" for="inlineCheckbox1">Eu li e estou de acordo com os Termos de Uso, Políticas de Privacidade e Termos de uso *</label>	
+	  	@if ($errors->has('terms_of_use'))
+	        <span class="invalid-feedback">
+	            <strong>{{ $errors->first('terms_of_use') }}</strong>
+	        </span>
+	    @endif
 	</div>
 </div>
 

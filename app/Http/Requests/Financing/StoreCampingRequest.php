@@ -33,7 +33,8 @@ class StoreCampingRequest extends FormRequest
             'file_path' => 'file|mimes:png,gif,jpg,jpeg,mp4',
             'goal' => 'required',
             'student_id'   =>'required|integer',
-            'category_id' =>'required|integer'
+            'category_id' =>'required|integer',
+            'terms_of_use' => 'required|integer'
         ];
     }
     
