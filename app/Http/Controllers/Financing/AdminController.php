@@ -59,8 +59,7 @@ class AdminController extends Controller
         $studentId = Student::where('user_id', $idUser)->pluck('user_id');
 
         if ($studentId->count() > 0) {
-
-            return redirect()->route('create.camping')->with('status', 'Crie sua campanha');
+            return redirect()->route('create.camping')->with('status', 'Você ainda não crio sua campanha, esta na hora de començar!!');
         } else {
             $encrypted = Crypt::encrypt($idUser);
             $decrypted = Crypt::decrypt($encrypted);
