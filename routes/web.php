@@ -301,5 +301,39 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:states.destroy');
 	Route::get('states/{state}/edit', 'Admin\StateController@edit')->name('states.edit')
 	->middleware('permission:states.edit');
+        
+    //Levels
+	Route::post('levels/store', 'Admin\LevelController@store')->name('levels.store')
+	->middleware('permission:levels.create');
+	Route::get('levels', 'Admin\LevelController@index')->name('levels.index')
+	->middleware('permission:levels.index');
+	Route::get('levels/create', 'Admin\LevelController@create')->name('levels.create')
+	->middleware('permission:levels.create');
+	Route::put('levels/{level}', 'Admin\LevelController@update')->name('levels.update')
+	->middleware('permission:roles.edit');
+	Route::get('levels/{level}', 'Admin\LevelController@show')->name('levels.show')
+	->middleware('permission:levels.show');
+	Route::delete('levels/{level}', 'Admin\LevelController@destroy')->name('levels.destroy')
+	->middleware('permission:levels.destroy');
+	Route::get('levels/{level}/edit', 'Admin\LevelController@edit')->name('levels.edit')
+	->middleware('permission:levels.edit');
+        
+    //Turns
+	Route::post('turns/store', 'Admin\TurnController@store')->name('turns.store')
+	->middleware('permission:turns.create');
+	Route::get('turns', 'Admin\TurnController@index')->name('turns.index')
+	->middleware('permission:turns.index');
+	Route::get('turns/create', 'Admin\TurnController@create')->name('turns.create')
+	->middleware('permission:turns.create');
+	Route::put('turns/{turn}', 'Admin\TurnController@update')->name('turns.update')
+	->middleware('permission:turns.edit');
+	Route::get('turns/{turn}', 'Admin\TurnController@show')->name('turns.show')
+	->middleware('permission:turns.show');
+	Route::delete('turns/{turn}', 'Admin\TurnController@destroy')->name('turns.destroy')
+	->middleware('permission:turns.destroy');
+	Route::get('turns/{turn}/edit', 'Admin\TurnController@edit')->name('turns.edit')
+	->middleware('permission:turns.edit');
+        
+        
 
 });
