@@ -153,6 +153,7 @@ class AdminController extends Controller
         $student->data_of_birth = $request->input('data_of_birth');
         $student->how_met_us = $request->input('how_met_us');
         $student->cep = $request->input('cep');
+        $student->country_id = $request->input('country_id');
         $student->state_id = $request->input('state_id');
         $student->city_id = $request->input('city_id');
         $student->street = $request->input('street');
@@ -194,7 +195,6 @@ class AdminController extends Controller
         $request->user()->authorizeRoles(['role_fc']);
         $validated = $request->validated();
 
-
         $camping = new Campaign();
         $camping->student_id = $request['student_id'];
         $camping->category_id = $request['category_id'];
@@ -204,7 +204,8 @@ class AdminController extends Controller
         $camping->description = $request['description'];
         $camping->start_date = $request['start_date'];
         $camping->end_date = $request['end_date'];
-        $camping->goal = $request['goal'];
+        $camping->goal = str_replace(',','.',str_replace('.','',$request['goal']));
+        //$camping->goal = str_replace(',','.',str_replace('.','',$request['goal']));
         $camping->terms_of_use = $request['terms_of_use'];
 
         $existSlug = $camping::where('slug', $camping->slug)->pluck('slug');
@@ -285,7 +286,7 @@ class AdminController extends Controller
         $camping->description = $request['description'];
         $camping->start_date = $request['start_date'];
         $camping->end_date = $request['end_date'];
-        $camping->goal = $request['goal'];
+        $camping->goal = str_replace(',','.',str_replace('.','',$request['goal']));
         $camping->institution = $request['institution'];
         $camping->course = $request['course'];
         $camping->period = $request['period'];

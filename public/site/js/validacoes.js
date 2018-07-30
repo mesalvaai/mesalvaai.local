@@ -1,7 +1,7 @@
 (function( $ ) {
     $(function() {
         $("#phone").mask("(00) 0000-00009");
-        $("#goal").mask("0000.00");
+        //$("#goal").mask("0000.00");
         //$("#date").mask("99/99/9999");
         //$("#phone").mask("(99) 999-9999");
         $("#cep").mask("99.999-999");
@@ -19,4 +19,10 @@
         		}
 		    });
         });
+
+        //Validar Money
+        //$("#goal").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});
+        //$("#goal").maskMoney();
+        $("#goal").maskMoney({thousands:".", decimal:",", symbol:"R$", showSymbol:true, symbolStay:true});
+        $("#demo4").maskMoney();
 })(jQuery);

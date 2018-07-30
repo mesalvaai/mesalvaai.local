@@ -169,6 +169,7 @@ return [
          * Package Service Providers...
          */
 
+
         /*
          * Application Service Providers...
          */
@@ -179,12 +180,19 @@ return [
         App\Providers\RouteServiceProvider::class,
         //Novos providers
         App\Providers\FormatTimeServiceProvider::class,
+        //Para file manager
+        //Unisharp\Ckeditor\ServiceProvider::class,
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         //Laravel collective
         Collective\Html\HtmlServiceProvider::class,
 
         //Para modulo de usuarios
         Caffeinated\Shinobi\ShinobiServiceProvider::class,
+        
+
+        
 
 
     ],
@@ -239,6 +247,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'FormatTime' => App\Helpers\FormatTime::class,
         'ProgressBar' => App\Helpers\ProgressBar::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

@@ -59,8 +59,6 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('site/js/jquery.mask.min.js') }}" type="text/javascript" charset="utf-8" async defer></script>
-    <script src="{{ asset('site/js/validacoes.js') }}" type="text/javascript" charset="utf-8" async defer></script>
     <script type="text/javascript">
         
         //Caso dê erro no cadastro e a página retorne ao form e caso não exista uma variável student pois ai estrá na pagina de edit

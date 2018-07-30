@@ -40,11 +40,12 @@ class StoreCampingRequest extends FormRequest
     
     public function messages(){
         return [
-            'required' => 'Este campo é obrigatório!',
+            'required' => 'Este campo ":attribute" é obrigatório!',
             'numeric' => 'O campo ":attribute" deve ser um número!',
             'min' => 'O campo ":attribute" deve ter no mínimo :min caracteres!',
             'max' => 'O campo ":attribute" deve ter no maximo :max caracteres!',
             'title.required' => 'O nome da campanha é obrigatório!',
+            'terms_of_use.required' => 'Você não aceito os terminos',
             'unique' => 'Este ":attribute" já se encontra cadastrado no sistema!',
             'mimes' => 'A extensão do arquivo deve ser do tipo: png, gif, jpg, jpeg, mp4.',
         ];

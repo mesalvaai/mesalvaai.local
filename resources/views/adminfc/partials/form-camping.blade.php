@@ -108,11 +108,11 @@
 	<div class="input-group">
 	  	<div class="input-group-prepend">
 	    	<span class="input-group-text">$R</span>
-	    	<span class="input-group-text">0.00</span>
+	    	<span class="input-group-text">0,00</span>
 	  	</div>
-		{!! Form::text('goal', null, ['class' => $errors->has('goal') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+		{!! Form::text('goal', null, ['class' => $errors->has('goal') ? 'form-control is-invalid' : 'form-control', 'data-thousands' => '.', 'data-decimal' => ',', 'required']) !!}
 	</div>
-	<small class="text-muted">(mínimo de R$500.00) </small><br>
+	<small class="text-muted">(mínimo de R$500,00) </small><br>
 		<em><a href="#" title="Click aqui">Ainda não sabe o quanto arrecadar?</a></em>
 		@if ($errors->has('goal'))
 	        <span class="invalid-feedback">
@@ -190,4 +190,14 @@
 	<hr>
 	<b><strong class="text-msa">NOVIDADE!</strong></b> Ao clicar em qualquer um destes botões, o seu rascunho estará salvo para edição ou lançamento imediato e futuro.
 </div>
+
+@section('scripts')
+	{{-- <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+	<script>
+		CKEDITOR.replace( 'description', options );
+	</script> --}}
+	{{-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script> --}}
+	<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fkczcxnlv53w329ddjwk4zeikgwenyay0wc1qlzy4bhlfunt"></script>
+  	<script>tinymce.init({ selector:'textarea' });</script>
+@endsection
 

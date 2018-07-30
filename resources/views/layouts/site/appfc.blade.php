@@ -63,9 +63,12 @@
   <script src="{{ asset('site/lib/magnific-popup/magnific-popup.min.js') }}"></script>
 
   <!-- Contact Form JavaScript File -->
+  <script src="{{ asset('site/js/jquery.mask.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('site//lib/maskMoney/jquery.maskMoney.min.js') }}" type="text/javascript"></script>
   <script src="{{ asset('site/contactform/contactform.js') }}"></script>
  
   <!-- Template Main Javascript File -->
+  <script src="{{ asset('site/js/validacoes.js') }}" type="text/javascript" charset="utf-8" async defer></script>
   <script src="{{ asset('site/js/main.js') }}"></script>
   
     @yield('scripts')

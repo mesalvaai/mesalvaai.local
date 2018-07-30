@@ -69,9 +69,20 @@ class HomeController extends Controller
         echo "<hr>";
         $collection = collect([1, 2, 3, 4, 5]);
         echo $collection->random();
-        dd('');
+        echo "<hr>";
+        $string='1.500.050,00'; 
+        $number = str_replace(',','.',str_replace('.','',$string)); 
+        echo $number;
+        echo "<hr>";
+        //echo $replaced = str_replace_array(',', '.', str_replace_array('.','',$string));
+        echo "<hr>";
+        echo $replaced = str_replace_first(',', '.', str_replace_first('.','',$string));
+        echo "<hr>";
+        echo "<hr>";
+        echo number_format($number,2,',','.');
+        //dd('');
         $campings = Campaign::get();
-        return view('sites.tests.test', compact('campings'));
+        return view('sites.tests.tinymce', compact('campings'));
     }
 
      public function mimos()

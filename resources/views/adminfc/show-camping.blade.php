@@ -2,6 +2,13 @@
 
 @section('content')
 	<div class="container pt-4 pb-4">
+		@if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </div>
+        @endif
 		<div class="row">
 			<div class="col-xs-12 col-sm-8 col-md-8">
 				<div class="card">
