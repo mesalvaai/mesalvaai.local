@@ -11,12 +11,7 @@
     @endif
 </div>
 
-{{-- <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  <div class="input-group-append">
-    <span class="input-group-text" id="basic-addon2"><a href="#" title="">Veja alguns exemplos</a></span>
-  </div>
-</div> --}}
+
 <div class="form-group pb-4">
 	<h4 class="font-weight-bold">{!! Form::label('category_id', '2. Qual é o modelo do projeto?') !!}</h4>
 	<div class="input-group mb-3">
@@ -32,25 +27,10 @@
 	</div>
 </div>
 
-{{-- <div class="form-group pb-4">
-	<h4 class="font-weight-bold">{!! Form::label('file_path', '3. Escolha uma imagem para ilustrar a sua campanha') !!}</h4>
-	<div class="input-group">
-		<div class="custom-file">
-		    <input type="file" class="custom-file-input" id="inputGroupFile04">
-		    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-		</div>
-		<div class="input-group-append">
-		    <button class="btn btn-outline-secondary" type="button">Button</button>
-		</div>
-	</div>
-</div> --}}
-
-
 <div class="form-group pb-4">
 	<h4 class="font-weight-bold">{!! Form::label('file_path', '3. Escolha uma imagem para ilustrar a sua campanha') !!}</h4>
 	<div class="input-group mb-3">
         <div class="custom-file">
-            {{-- <input type="file" class="custom-file-input" id="inputGroupFile02"/> --}}
             {!! Form::file('file_path', ['class' => $errors->has('file_path') ? 'custom-file-input is-invalid' : 'custom-file-input', 'id' =>'inputGroupFile02']) !!}
             	<label class="custom-file-label" for="inputGroupFile02">Procurar arquivo</label>
         </div>
@@ -163,7 +143,6 @@
 		</div>
     </div>
     <div class="form-check form-check-inline">
-	  	{{-- {{ Form::checkbox('terms_of_use', old('terms_of_use') ? 'checked' : '', null, ['class' => 'form-check-input']) }} --}}
 	  	{!! Form::checkbox('terms_of_use',1, null,['class' => $errors->has('terms_of_use') ? 'form-check-input is-invalid' : 'form-check-input', 'required' => 'required'])!!}
 	  	<label class="form-check-label" for="inlineCheckbox1">Eu li e estou de acordo com os Termos de Uso, Políticas de Privacidade e Termos de uso *</label>	
 	  	@if ($errors->has('terms_of_use'))
