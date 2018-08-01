@@ -93,9 +93,12 @@ Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
 // $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 //File Manager
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-     \UniSharp\LaravelFilemanager\Lfm::routes();
-});
+// Route::group(array('before' => 'auth'), function ()
+// {
+//     Route::get('/laravel-filemanager', '\Unisharp\Laravelfilemanager\controllers\LfmController@show');
+//     Route::post('/laravel-filemanager/upload', '\Unisharp\Laravelfilemanager\controllers\LfmController@upload');
+   
+// });
 
 
 //Painel para cadastrados no financiamento Colectivo
@@ -125,6 +128,10 @@ Route::middleware(['auth', 'IsRoleAluno:role_fc'])->group(function(){
 	Route::get('/financing/show-redwards/{idReward}', 'Financing\AdminController@showReward')->name('show.reward');
 	Route::get('/financing/edit-redwards/{idReward}/edit', 'Financing\AdminController@editReward')->name('edit.reward');
 	Route::put('/financing/update-redwards/{idReward}', 'Financing\AdminController@updateReward')->name('update.reward');
+});
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
+     UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
 //Rotas

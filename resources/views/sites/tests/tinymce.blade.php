@@ -1,6 +1,10 @@
+{{ public_path() . '/uploads' }}
+{{ env('APP_URL') }}
 {{-- <script src="//cdn.tinymce.com/4/tinymce.min.js"></script> --}}
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+{{-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script> --}}
 <textarea name="content" class="form-control my-editor"></textarea>
+<script src="{{ asset('vendor/tinymce/tinymce.min.js') }}" type="text/javascript"></script>
+
 <script>
   var editor_config = {
     path_absolute : "",

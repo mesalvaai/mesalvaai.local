@@ -18,11 +18,11 @@
 				    	{{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
 
 				  	</div>
-				  	@if (Storage::disk('images')->has($camping->file_path))
+				  	{{-- @if (Storage::disk('images')->has($camping->file_path))
 	                    <img class="card-img-bottom" alt="{{ $camping->title }}" src="{{ url('/miniatura/'. $camping->file_path) }}">
-	                @endif
+	                @endif --}}
 	                <div class="card-body">
-				    	<p class="card-title text-justify">{{ $camping->description }}</p>
+				    	<p class="card-title text-justify">{!! $camping->description !!}</p>
 				  	</div>
 				</div>
 			</div>

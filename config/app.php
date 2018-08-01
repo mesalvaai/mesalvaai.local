@@ -168,7 +168,10 @@ return [
         /*
          * Package Service Providers...
          */
-
+        //Para file manager
+        //Unisharp\Ckeditor\ServiceProvider::class,
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -180,10 +183,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         //Novos providers
         App\Providers\FormatTimeServiceProvider::class,
-        //Para file manager
-        //Unisharp\Ckeditor\ServiceProvider::class,
-        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
 
         //Laravel collective
         Collective\Html\HtmlServiceProvider::class,
