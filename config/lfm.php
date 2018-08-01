@@ -18,13 +18,13 @@ return [
     'use_package_routes' => false,
 
     //'middlewares' => ['web', 'auth'],
-    'middlewares' => ['web', 'auth'],
+    'middlewares' => ['web'],
 
     // The url to this package. Change it if necessary.
     'url_prefix' => 'laravel-filemanager',
 
     // Use relative paths (without domain)
-    'relative_paths' => true,
+    'relative_paths' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -33,7 +33,7 @@ return [
     */
 
     //'allow_multi_user'   => true,
-    'allow_multi_user'   => true,
+    'allow_multi_user'   => false,
 
     'allow_share_folder' => true,
 
@@ -94,7 +94,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'disk' => 'public',
+    'disk' => 'uploads',
 
     'rename_file' => false,
 
