@@ -1,11 +1,76 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "58bac2c46607d303eb12aa2401f741af",
+    "content-hash": "3893369f49d53086e1e757f97d3177cc",
     "packages": [
+        {
+            "name": "artesaos/moip",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artesaos/moip.git",
+                "reference": "5d2f93ff5fbc88e05529304d140339161a95570d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artesaos/moip/zipball/5d2f93ff5fbc88e05529304d140339161a95570d",
+                "reference": "5d2f93ff5fbc88e05529304d140339161a95570d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "~5.1 || ~5.2 || ~5.3 || ~5.4",
+                "illuminate/support": "~5.1 || ~5.2 || ~5.3 || ~5.4",
+                "moip/moip-sdk-php": "2.2.*",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "~4.8.35"
+            },
+            "type": "libraries",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Artesaos\\Moip\\Providers\\MoipServiceProvider"
+                    ],
+                    "aliases": {
+                        "Moip": "Artesaos\\Moip\\Facades\\Moip"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Artesaos\\Moip\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jean Cesar Garcia",
+                    "email": "jeancesargarcia@gmail.com"
+                }
+            ],
+            "description": "Integration of MoIP payment intermediary with Laravel 5",
+            "homepage": "http://dev.moip.com.br",
+            "keywords": [
+                "checkout",
+                "gateway",
+                "intermediary",
+                "laravel",
+                "moip",
+                "payment"
+            ],
+            "time": "2018-01-13T22:06:52+00:00"
+        },
         {
             "name": "caffeinated/shinobi",
             "version": "v3.2.1",
@@ -1009,6 +1074,79 @@
             "time": "2018-05-07T08:44:23+00:00"
         },
         {
+            "name": "moip/moip-sdk-php",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moip/moip-sdk-php.git",
+                "reference": "dc88cad3a240f16426526697a057c47b2320aebd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moip/moip-sdk-php/zipball/dc88cad3a240f16426526697a057c47b2320aebd",
+                "reference": "dc88cad3a240f16426526697a057c47b2320aebd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5",
+                "rmccue/requests": ">=1.0"
+            },
+            "require-dev": {
+                "codacy/coverage": "dev-master",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "libraries",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Moip\\": "src/"
+                },
+                "files": [
+                    "src/Helper/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jean Cesar Garcia",
+                    "email": "jeancesargarcia@gmail.com"
+                },
+                {
+                    "name": "Joao Batista Neto",
+                    "email": "neto.joaobatista@gmail.com"
+                },
+                {
+                    "name": "Caio Gaspar",
+                    "email": "caio.gaspar@moip.com.br"
+                },
+                {
+                    "name": "João Lucas Lucchetta",
+                    "email": "joao.lucchetta@moip.com.br"
+                },
+                {
+                    "name": "Matheus Nakaya",
+                    "email": "matheus.nakaya@moip.com.br"
+                }
+            ],
+            "description": "Cliente em PHP para integração server-side com APIs Moip v2",
+            "homepage": "http://dev.moip.com.br",
+            "keywords": [
+                "checkout",
+                "intermediary",
+                "libraries",
+                "marketplace",
+                "moip"
+            ],
+            "time": "2017-11-06T11:19:46+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.23.0",
             "source": {
@@ -1582,6 +1720,55 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "rmccue/requests",
+            "version": "v1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rmccue/Requests.git",
+                "reference": "87932f52ffad70504d93f04f15690cf16a089546"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rmccue/Requests/zipball/87932f52ffad70504d93f04f15690cf16a089546",
+                "reference": "87932f52ffad70504d93f04f15690cf16a089546",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "requests/test-server": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Requests": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan McCue",
+                    "homepage": "http://ryanmccue.info"
+                }
+            ],
+            "description": "A HTTP library written in PHP, for human beings.",
+            "homepage": "http://github.com/rmccue/Requests",
+            "keywords": [
+                "curl",
+                "fsockopen",
+                "http",
+                "idna",
+                "ipv6",
+                "iri",
+                "sockets"
+            ],
+            "time": "2016-10-13T00:11:37+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2635,16 +2822,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v2.5.0",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "6ae3e2e6494bb5e58c2decadafc3de7f1453f70a"
+                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/6ae3e2e6494bb5e58c2decadafc3de7f1453f70a",
-                "reference": "6ae3e2e6494bb5e58c2decadafc3de7f1453f70a",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
+                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
                 "shasum": ""
             },
             "require": {
@@ -2681,7 +2868,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2018-07-01T10:25:50+00:00"
+            "time": "2018-07-29T20:33:41+00:00"
         }
     ],
     "packages-dev": [

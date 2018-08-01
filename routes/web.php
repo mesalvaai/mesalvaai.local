@@ -14,6 +14,12 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Route::get('/passa-hash/{hash}', 'MoipCreditCardController@passaHash')->name('passa-hash');
+
+Route::get('/moip', 'MoipCreditCardController@test')->name('moip');
+
+
 Route::get('/', 'Site\HomeController@home')->name('site');
 
 Route::get('/info',function(){
