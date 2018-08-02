@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use App\Http\Requests\Financing\StoreCampingRequest;
 use App\Http\Requests\Financing\StoreStudentRequest;
 use App\Http\Requests\Financing\StudentUpdateRequest;
+use App\Http\Requests\Financing\StoreRewardRequest;
+
 
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
@@ -340,7 +342,7 @@ class AdminController extends Controller
         
     }
 
-    public function storeRewards(Request $request)
+    public function storeRewards(StoreRewardRequest $request)
     {
         $request->user()->authorizeRoles(['role_fc']);
         //$validated = $request->validated();
@@ -349,16 +351,18 @@ class AdminController extends Controller
         $rewards->user_id = Auth::user()->id;
         $rewards->campaign_id = $request['campaign_id'];
         $rewards->title = $request['title'];
-        $rewards->donation = $request['donation'];
-        $rewards->quantity = $request['quantity'];
+        $rewards->donation = str_replace(',','.',str_replace('.','',$request['donation']));
         $rewards->description = $request['description'];
+        $rewards->quantity = $request['quantity'];
         $rewards->unlimited = $request['unlimited'];
         $rewards->delivery_date = $request['delivery_date'];
         $rewards->delivery_mode = $request['delivery_mode'];
         $rewards->variations = $request['variations'];
         $rewards->thanks = $request['thanks'];
         $rewards->status = $request['status'];
-
+        if (($rewards->quantity == null) and ($rewards->unlimited == null)) {
+            return back()->with('error', 'Precissa prencher uma quantidade ou selecionar ilimitado');
+        } 
         $rewards->save();
 
         // Deletando uma sessão específica:

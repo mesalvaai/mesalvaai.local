@@ -24,5 +24,5 @@
         //$("#goal").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});
         //$("#goal").maskMoney();
         $("#goal").maskMoney({thousands:".", decimal:",", symbol:"R$", showSymbol:true, symbolStay:true});
-        $("#demo4").maskMoney();
+        $("#donation").maskMoney();
 })(jQuery);

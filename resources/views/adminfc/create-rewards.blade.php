@@ -21,6 +21,14 @@
                     </div>
 
                     <div class="card-body">
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </div>
+                        @endif
+                        
                         @if (session('status'))
                             <div class="alert alert-success">
                                 {{ session('status') }}
@@ -44,7 +52,7 @@
                         @endif --}}
                         
                         
-                        {{ Form::open(['route' => 'store.rewards']) }}
+                        {{ Form::open(['route' => 'store.rewards', 'novalidate']) }}
                             @include('adminfc.partials.form-rewards')
                         {{ Form::close() }}
                         

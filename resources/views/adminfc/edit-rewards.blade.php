@@ -16,8 +16,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <strong class="text-msa">Criar Campanha {{ session()->get('student_id') }}</strong>
+                    <div class="card-header msa-bg">
+                        <strong class="text-white">ATUALIZAR DADOS </strong>
                     </div>
 
                     <div class="card-body">

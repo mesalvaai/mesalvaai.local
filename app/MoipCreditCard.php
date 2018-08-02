@@ -13,8 +13,7 @@ class MoipCreditCard extends Model
 	{
 
 
-$hash = base64_decode($hash);
-
+		$hash = base64_decode($hash);
 		$moip = Moip::start();
 
 		try {

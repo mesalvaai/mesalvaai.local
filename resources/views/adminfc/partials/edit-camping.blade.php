@@ -192,7 +192,7 @@
 	        </span>
 	    @endif
 	</div>
-	<div class="form-group col-md-2">
+	<div class="form-group col-md-3">
 		{!! Form::label('status', 'Situaçāo') !!}
 		{!! Form::select('status', [1 => 'Ativo', 0 => 'Inativo'],null, ['class' => $errors->has('status') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 		@if ($errors->has('status'))
@@ -205,18 +205,20 @@
 
 {!! Form::hidden('student_id', (session()->has('student_id')) ? session()->get('student_id') : $student_id, ['readonly']) !!}
 
-
-<div class="form-group text-center pt-5">
-	<b>Você está quase lá! Pode continuar e lançar sua campanha só quando quiser.</b><br><br>
-	{{ Form::button('dicionar recompensas (opcional)', ['type' => 'submit', 'name' =>'op', 'value' => 'add_r', 'class' => 'btn btn-success btn-sm'] )  }}
-	{{ Form::button('Salvar', ['type' => 'submit', 'name' =>'op', 'value' => 'add', 'class' => 'btn btn-primary btn-sm'] )  }}
-	{{ Form::button('Visualizar e lançar seu campanha', ['type' => 'submit', 'name' =>'op', 'value' => 'show_c', 'class' => 'btn btn-info btn-sm'] )  }}
-	{{-- {!! Form::submit('Adicionar recompensas (opcional)', ['class' => 'btn btn-success btn-sm']) !!}
-	{!! Form::submit('Salvar', ['class' => 'btn btn-primary btn-sm']) !!}
-	{!! Form::submit('Visualizar e lançar seu campanha', ['class' => 'btn btn-info btn-sm']) !!} --}}
-	<hr>
-	<b><strong class="text-msa">NOVIDADE!</strong></b> Ao clicar em qualquer um destes botões, o seu rascunho estará salvo para edição ou lançamento imediato e futuro.
+<b>Você está quase lá! Pode continuar e lançar sua campanha só quando quiser.</b><br><br>
+<div class="row">
+	<div class="col-md">
+		{{ Form::button('Aicionar recompensas (opcional)', ['type' => 'submit', 'name' =>'op', 'value' => 'add_r', 'class' => 'btn btn-success btn-sm w-100'] )  }}
+	</div>
+	<div class="col-md">
+		{{ Form::button('Salvar', ['type' => 'submit', 'name' =>'op', 'value' => 'add', 'class' => 'btn btn-msa btn-sm w-100'] )  }}
+	</div>
+	<div class="col-md">
+		{{ Form::button('Visualizar e lançar seu campanha', ['type' => 'submit', 'name' =>'op', 'value' => 'show_c', 'class' => 'btn btn-info btn-sm w-100'] )  }}
+	</div>
 </div>
+<hr>
+<b><strong class="text-msa">NOVIDADE!</strong></b> Ao clicar em qualquer um destes botões, o seu rascunho estará salvo para 
 
 @section('scripts')
 	<script src="{{ asset('vendor/tinymce/tinymce.min.js') }}" type="text/javascript"></script>

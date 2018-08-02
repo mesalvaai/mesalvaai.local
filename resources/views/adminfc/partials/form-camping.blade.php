@@ -11,12 +11,7 @@
     @endif
 </div>
 
-{{-- <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  <div class="input-group-append">
-    <span class="input-group-text" id="basic-addon2"><a href="#" title="">Veja alguns exemplos</a></span>
-  </div>
-</div> --}}
+
 <div class="form-group pb-4">
 	<h4 class="font-weight-bold">{!! Form::label('category_id', '2. Qual é o modelo do projeto?') !!}</h4>
 	<div class="input-group mb-3">
@@ -31,19 +26,6 @@
 	    @endif
 	</div>
 </div>
-
-{{-- <div class="form-group pb-4">
-	<h4 class="font-weight-bold">{!! Form::label('file_path', '3. Escolha uma imagem para ilustrar a sua campanha') !!}</h4>
-	<div class="input-group">
-		<div class="custom-file">
-		    <input type="file" class="custom-file-input" id="inputGroupFile04">
-		    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-		</div>
-		<div class="input-group-append">
-		    <button class="btn btn-outline-secondary" type="button">Button</button>
-		</div>
-	</div>
-</div> --}}
 
 
 <div class="form-group pb-4">
@@ -174,23 +156,23 @@
 	</div>
 </div>
 
-
-
 {!! Form::hidden('student_id', (session()->has('student_id')) ? session()->get('student_id') : $student_id, ['readonly']) !!}
 {!! Form::hidden('status', 0,  ['readonly']) !!}
 
-<div class="form-group text-center pt-5">
-	<b>Você está quase lá! Pode continuar e lançar sua campanha só quando quiser.</b><br><br>
-	{{ Form::button('dicionar recompensas (opcional)', ['type' => 'submit', 'name' =>'op', 'value' => 'add_r', 'class' => 'btn btn-success btn-sm'] )  }}
-	{{ Form::button('Salvar', ['type' => 'submit', 'name' =>'op', 'value' => 'add', 'class' => 'btn btn-primary btn-sm'] )  }}
-	{{ Form::button('Visualizar e lançar seu campanha', ['type' => 'submit', 'name' =>'op', 'value' => 'show_c', 'class' => 'btn btn-info btn-sm'] )  }}
-	{{-- {!! Form::submit('Adicionar recompensas (opcional)', ['class' => 'btn btn-success btn-sm']) !!}
-	{!! Form::submit('Salvar', ['class' => 'btn btn-primary btn-sm']) !!}
-	{!! Form::submit('Visualizar e lançar seu campanha', ['class' => 'btn btn-info btn-sm']) !!} --}}
-	<hr>
-	<b><strong class="text-msa">NOVIDADE!</strong></b> Ao clicar em qualquer um destes botões, o seu rascunho estará salvo para edição ou lançamento imediato e futuro.
+<b>Você está quase lá! Pode continuar e lançar sua campanha só quando quiser.</b><br><br>
+<div class="row">
+	<div class="col-md">
+		{{ Form::button('Aicionar recompensas (opcional)', ['type' => 'submit', 'name' =>'op', 'value' => 'add_r', 'class' => 'btn btn-success btn-sm w-100'] )  }}
+	</div>
+	<div class="col-md">
+		{{ Form::button('Salvar', ['type' => 'submit', 'name' =>'op', 'value' => 'add', 'class' => 'btn btn-msa btn-sm w-100'] )  }}
+	</div>
+	<div class="col-md">
+		{{ Form::button('Visualizar e lançar seu campanha', ['type' => 'submit', 'name' =>'op', 'value' => 'show_c', 'class' => 'btn btn-info btn-sm w-100'] )  }}
+	</div>
 </div>
-
+<hr>
+<b><strong class="text-msa">NOVIDADE!</strong></b> Ao clicar em qualquer um destes botões, o seu rascunho estará salvo para edição ou lançamento imediato e futuro.
 @section('scripts')
 	<script src="{{ asset('vendor/tinymce/tinymce.min.js') }}" type="text/javascript"></script>
     <script>
