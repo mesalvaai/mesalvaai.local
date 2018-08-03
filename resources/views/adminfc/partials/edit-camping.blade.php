@@ -101,7 +101,7 @@
 	    @endif
 </div>
 <br>
-<h3 class="font-weight-bold">6. Qual será a duração da sua campanha?</h3><br>
+<h4 class="font-weight-bold">6. Qual será a duração da sua campanha?</h4><br>
 <div class="row">
 
 	<div class="form-group col-md">
@@ -126,33 +126,7 @@
 	</div>
 
 </div>
-
-<div class="row pt-5 justify-content-center text-center">
-    <div class="col-4">
-    	<div class="card bg-light mb-3" style="max-width: 18rem;">
-		  	<div class="card-body">
-		    <h5 class="card-title"><a href="#" title=""><strong>POLÍTICA DE PRIVACIDADE</strong></a></h5>
-		  	</div>
-		</div>
-    </div>
-    <div class="col-4">
-    	<div class="card bg-light mb-3" style="max-width: 18rem;">
-		  	<div class="card-body">
-		    <h5 class="card-title"><a href="#" title=""><strong>TERMOS DE <br> USO</a></strong></h5>
-		  	</div>
-		</div>
-    </div>
-    <div class="form-check form-check-inline">
-	  	{!! Form::checkbox('terms_of_use',1, null,['class' => $errors->has('terms_of_use') ? 'form-check-input is-invalid' : 'form-check-input', 'required' => 'required'])!!}
-	  	<label class="form-check-label" for="inlineCheckbox1">Eu li e estou de acordo com os Termos de Uso, Políticas de Privacidade e Termos de uso *</label>	
-	  	@if ($errors->has('terms_of_use'))
-	        <span class="invalid-feedback">
-	            <strong>{{ $errors->first('terms_of_use') }}</strong>
-	        </span>
-	    @endif
-	</div>
-</div>
-
+<h4 class="font-weight-bold">7. Adicione sua localização</h4><br>
 <div class="row">
 	<div class="form-group col-md">
 		{!! Form::label('institution', 'Instituição') !!}
@@ -198,6 +172,55 @@
 		@if ($errors->has('status'))
 	        <span class="invalid-feedback">
 	            <strong>{{ $errors->first('status') }}</strong>
+	        </span>
+	    @endif
+	</div>
+</div>
+<br>
+<h3 class="font-weight-bold">8. Adicione suas redes sociais para promover sua campanha (opcional)</h3><br>
+<div class="row">
+
+	<div class="form-group col-md">
+		{!! Form::label('facebook', 'Inicio da Campamna') !!}
+		{!! Form::text('facebook', 'https://www.facebook.com/', ['class' => 'form-control']) !!}
+		<small class="text-warning">(Ex: https://www.facebook.com/<b>nome-de-usuario</b>)</small>
+	</div>
+
+	<div class="form-group col-md">
+		{!! Form::label('twitter', 'Inicio da Campamna') !!}
+		{!! Form::text('twitter', 'https://twitter.com/', ['class' => 'form-control']) !!}
+		<small class="text-warning">(Ex: https://twitter.com/<b>nome-de-usuario</b>)</small>
+	</div>
+
+	<div class="form-group col-md">
+		{!! Form::label('instagram', 'Inicio da Campamna') !!}
+		{!! Form::text('instagram', 'https://www.instagram.com/', ['class' => 'form-control']) !!}
+		<small class="text-warning">(Ex: https://www.instagram.com/<b>nome-de-usuario</b>)</small>
+	</div>
+
+</div>
+
+<div class="row pt-5 justify-content-center text-center">
+    <div class="col-4">
+    	<div class="card bg-light mb-3" style="max-width: 18rem;">
+		  	<div class="card-body">
+		    <h5 class="card-title"><a href="#" title=""><strong>POLÍTICA DE PRIVACIDADE</strong></a></h5>
+		  	</div>
+		</div>
+    </div>
+    <div class="col-4">
+    	<div class="card bg-light mb-3" style="max-width: 18rem;">
+		  	<div class="card-body">
+		    <h5 class="card-title"><a href="#" title=""><strong>TERMOS DE <br> USO</a></strong></h5>
+		  	</div>
+		</div>
+    </div>
+    <div class="form-check form-check-inline">
+	  	{!! Form::checkbox('terms_of_use',1, null,['class' => $errors->has('terms_of_use') ? 'form-check-input is-invalid' : 'form-check-input', 'required' => 'required'])!!}
+	  	<label class="form-check-label" for="inlineCheckbox1">Eu li e estou de acordo com os Termos de Uso, Políticas de Privacidade e Termos de uso *</label>	
+	  	@if ($errors->has('terms_of_use'))
+	        <span class="invalid-feedback">
+	            <strong>{{ $errors->first('terms_of_use') }}</strong>
 	        </span>
 	    @endif
 	</div>

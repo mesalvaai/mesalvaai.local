@@ -118,6 +118,8 @@ Route::middleware(['auth', 'IsRoleAluno:role_fc'])->group(function(){
 	Route::get('/financing/campanha', 'Financing\AdminController@createCamping')->name('create.camping');
 	Route::post('/financing/store-camping', 'Financing\AdminController@storeCamping')->name('store.camping');
 	Route::get('/financing/show-camping/{idCamping}', 'Financing\AdminController@showCamping')->name('show.camping');
+	Route::get('/financing/view-camping/{idCamping}', 'Financing\AdminController@viewCamping')->name('view.camping');
+	Route::get('/financing/publish-camping/{idCamping}', 'Financing\AdminController@publishCamping')->name('publish.camping');
 	Route::get('/financing/{idCamping}/edit', 'Financing\AdminController@editCamping')->name('edit.camping');
 	Route::put('/financing/update/{idCamping}', 'Financing\AdminController@updateCamping')->name('update.camping');
 

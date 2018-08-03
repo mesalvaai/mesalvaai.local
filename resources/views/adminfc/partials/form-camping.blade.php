@@ -75,7 +75,7 @@
 
 <div class="form-group">
 	<div class="text-center">
-		<h3 class="text-msa font-weight-bold">5. Meta: Quanto você quer arrecadar com a sua campanha?</h3>
+		<h4 class="text-msa font-weight-bold">5. Meta: Quanto você quer arrecadar com a sua campanha?</h4>
 		<p>Quanto você precisa arrecadar?</p>
 		<p><strong>Defina ao menos uma meta, lembrando de considerar nesse valor os itens abaixo:</strong></p>
 		<p>- Taxa de serviço da integradora financeira (4,5% do valor total arrecadado); <br>
@@ -103,7 +103,7 @@
 	    @endif
 </div>
 <br>
-<h3 class="font-weight-bold">6. Qual será a duração da sua campanha?</h3><br>
+<h4 class="font-weight-bold">6. Qual será a duração da sua campanha?</h4><br>
 <div class="row">
 
 	<div class="form-group col-md">
@@ -128,7 +128,29 @@
 	</div>
 
 </div>
+<br>
+<h4 class="font-weight-bold">7. Adicione suas redes sociais para promover sua campanha (opcional)</h4><br>
+<div class="row">
 
+	<div class="form-group col-md">
+		{!! Form::label('facebook', 'Inicio da Campamna') !!}
+		{!! Form::text('facebook', 'https://www.facebook.com/', ['class' => 'form-control']) !!}
+		<small class="text-warning">(Ex: https://www.facebook.com/<b>nome-de-usuario</b>)</small>
+	</div>
+
+	<div class="form-group col-md">
+		{!! Form::label('twitter', 'Inicio da Campamna') !!}
+		{!! Form::text('twitter', 'https://twitter.com/', ['class' => 'form-control']) !!}
+		<small class="text-warning">(Ex: https://twitter.com/<b>nome-de-usuario</b>)</small>
+	</div>
+
+	<div class="form-group col-md">
+		{!! Form::label('instagram', 'Inicio da Campamna') !!}
+		{!! Form::text('instagram', 'https://www.instagram.com/', ['class' => 'form-control']) !!}
+		<small class="text-warning">(Ex: https://www.instagram.com/<b>nome-de-usuario</b>)</small>
+	</div>
+
+</div>
 <div class="row pt-5 justify-content-center text-center">
     <div class="col-4">
     	<div class="card bg-light mb-3" style="max-width: 18rem;">

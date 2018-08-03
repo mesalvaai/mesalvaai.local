@@ -118,26 +118,24 @@ class AdminController extends Controller
         // $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
         // $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
         //Add ID do pais do usuário
-      //Brasil id = 3469034
-      $idPais = 3469034;
-      $countries = Location::getPaises();
-
-      if ($student->country_id == null) {
-        $countries = Location::getPaises();
-        //Add ID do pais do usuário
         //Brasil id = 3469034
         $idPais = 3469034;
-        $states = Location::getEstados($idPais);
-        $idEstado = 29; //Bahia
-        $cities = Location::getCidades($idPais, $idEstado);
-      } else {
-        $states = Location::getEstados($student->country_id);
-        $cities = Location::getCidades($student->country_id, $student->state_id);
-      }
+        $countries = Location::getPaises();
 
-        return view('adminfc.edit-student', compact('student', 'countries', 'states', 'cities', 'idPais', 'encrypted', 'decrypted'));
-        
-        
+        if ($student->country_id == null) {
+            $countries = Location::getPaises();
+            //Add ID do pais do usuário
+            //Brasil id = 3469034
+            $idPais = 3469034;
+            $states = Location::getEstados($idPais);
+            $idEstado = 29; //Bahia
+            $cities = Location::getCidades($idPais, $idEstado);
+        } else {
+            $states = Location::getEstados($student->country_id);
+            $cities = Location::getCidades($student->country_id, $student->state_id);
+        }
+
+        return view('adminfc.edit-student', compact('student', 'countries', 'states', 'cities', 'idPais', 'encrypted', 'decrypted'));        
     }
 
     public function updateStudent(StudentUpdateRequest $request, $idStudent)
@@ -187,9 +185,7 @@ class AdminController extends Controller
             $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
 
             return view('adminfc.create-camping', compact('idUser', 'student_id', 'states', 'cities', 'encrypted', 'decrypted','categories'));
-        }
-        
-        
+        }     
     }
 
     public function storeCamping(StoreCampingRequest $request)
@@ -207,7 +203,9 @@ class AdminController extends Controller
         $camping->start_date = $request['start_date'];
         $camping->end_date = $request['end_date'];
         $camping->goal = str_replace(',','.',str_replace('.','',$request['goal']));
-        //$camping->goal = str_replace(',','.',str_replace('.','',$request['goal']));
+        $camping->facebook = $request['facebook'];
+        $camping->twitter = $request['twitter'];
+        $camping->instagram = $request['instagram'];
         $camping->terms_of_use = $request['terms_of_use'];
 
         $existSlug = $camping::where('slug', $camping->slug)->pluck('slug');
@@ -230,13 +228,12 @@ class AdminController extends Controller
         if ($request['op'] == 'add_r') {
             return redirect()->route('create.rewards', $camping->id)->with('status', 'Vamos lá, crie suas recompensas');
         } elseif ($request['op'] == 'add') {
-            return redirect()->route('show.camping', $camping->id)->with('status', 'Sua campanha foi criada, pode lançar quando quiser');
+            return redirect()->route('view.camping', $camping->id)->with('status', 'Sua campanha foi criada, pode lançar quando quiser');
         } elseif ($request['op'] == 'show_c') {
-            return redirect()->route('show.camping', $camping->id)->with('status', 'Olha como esta ficando, pode lançar sua campanha ou alterar sim você quiser');
+            return redirect()->route('view.camping', $camping->id)->with('status', 'Olha como esta ficando, pode lançar sua campanha ou alterar sim você quiser');
         } else { 
             return redirect()->route('financiamento.index')->with('status', 'Sua campanha foi criada, pode lançar quando quiser');
-        }
-        
+        } 
     }
 
     public function showCamping($idCamping)
@@ -293,7 +290,11 @@ class AdminController extends Controller
         $camping->course = $request['course'];
         $camping->period = $request['period'];
         $camping->location = $request['location'];
+        $camping->facebook = $request['facebook'];
+        $camping->twitter = $request['twitter'];
+        $camping->instagram = $request['instagram'];
         $camping->status = $request['status'];
+        $camping->terms_of_use = $request['terms_of_use'];
 
         //Subida de la miniatura
         $image = $request->file('file_path');
@@ -308,13 +309,39 @@ class AdminController extends Controller
         // Deletando uma sessão específica:
         $request->session()->put('campaign_id', $camping->id);
         //$request->session()->forget('student_id');
-        return redirect()->route('create.rewards')->with('status', 'Sua campanha foi atualizado com sucesso');
+        //return redirect()->route('create.rewards')->with('status', 'Sua campanha foi atualizado com sucesso');
+        if ($request['op'] == 'add_r') {
+            return redirect()->route('create.rewards', $camping->id)->with('status', 'Vamos lá, crie suas recompensas');
+        } elseif ($request['op'] == 'add') {
+            return redirect()->route('view.camping', $camping->id)->with('status', 'Sua campanha foi criada, pode lançar quando quiser');
+        } elseif ($request['op'] == 'show_c') {
+            return redirect()->route('view.camping', $camping->id)->with('status', 'Olha como esta ficando, pode lançar sua campanha ou alterar sim você quiser');
+        } else { 
+            return redirect()->route('financiamento.index')->with('status', 'Sua campanha foi criada, pode lançar quando quiser');
+        }
     }
 
     public function getFile($filename)
     {
         $file = Storage::disk('images')->get($filename);
         return new Response($file, 200);
+    }
+
+    public function viewCamping($idCamping)
+    {
+
+        $camping = Campaign::where('id', $idCamping)->where('student_id', Auth::user()->students[0]['id'])->first();
+
+        if ($camping == null) {
+            abort(404, 'Aurl não existe');
+        }
+
+        if (Auth::user()->students[0]['id'] != $camping->student_id) {
+
+            abort(403, 'Não autorizado');
+        }
+
+        return view('adminfc.view-camping', compact('camping'));
     }
 
     /**
@@ -338,8 +365,7 @@ class AdminController extends Controller
             return view('adminfc.create-rewards', compact('campingId'));
         } else {
             return redirect('/financing');
-        }
-        
+        }   
     }
 
     public function storeRewards(StoreRewardRequest $request)
@@ -410,6 +436,17 @@ class AdminController extends Controller
         $request->session()->forget('student_id');
         $request->session()->forget('campaign_id');
 
-        return redirect()->route('edit.reward', $idReward)->with('status', 'Dados Atualizados!!');
+        //return redirect()->route('edit.reward', $idReward)->with('status', 'Dados Atualizados!!');
+
+        if ($request['op'] == 'add_r') {
+            return redirect()->route('create.rewards', $rewards->campaign_id)->with('status', 'Vamos lá, crie mais uma recompensas');
+        } elseif ($request['op'] == 'add') {
+            return redirect()->route('view.camping', $rewards->campaign_id)->with('status', 'Sua campanha foi criada, pode lançar quando quiser');
+        } elseif ($request['op'] == 'show_c') {
+            return redirect()->route('view.camping', $rewards->campaign_id)->with('status', 'Olha como esta ficando, pode lançar sua campanha ou alterar sim você quiser');
+        } else { 
+            return redirect()->route('financiamento.index')->with('status', 'Sua campanha foi criada, pode lançar quando quiser');
+        }
     }
+
 }
