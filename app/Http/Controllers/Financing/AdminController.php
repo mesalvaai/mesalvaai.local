@@ -344,6 +344,21 @@ class AdminController extends Controller
         return view('adminfc.view-camping', compact('camping'));
     }
 
+    public function publishCamping(Request $request, $id)
+    {
+        $camping = Campaign::find($id);
+        $user_id = Student::where('id', $camping->student_id)->pluck('user_id');
+        if ($user_id[0] == Auth::user()->id) {
+            $camping->published = 1;
+            $camping->save();
+
+            return redirect()->route('view.camping', $camping->id)->with('status', 'Sua campanha foi lançada');
+        } else {
+            return redirect()->route('view.camping', $camping->id)->with('erro', 'Ocurreu algum erro');
+        }
+        
+    }
+
     /**
      * [Inicio Modulo de Recompensas]
      */

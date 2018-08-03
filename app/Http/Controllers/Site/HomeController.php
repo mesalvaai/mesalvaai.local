@@ -34,7 +34,7 @@ class HomeController extends Controller
     public function home()
     {
         //$campanhas = Campaign::where('status', 1)->paginate();
-        $campanhas = Campaign::where('status', 1)->paginate(4);
+        $campanhas = Campaign::where('published', 1)->paginate(4);
         return view('sites.site', compact('campanhas', 'progress'));
     }
 
