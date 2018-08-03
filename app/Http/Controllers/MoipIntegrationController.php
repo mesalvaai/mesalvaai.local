@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\MoipCreditCard;
+use App\MoipIntegration;
 use Illuminate\Http\Request;
 
-class MoipCreditCardController extends Controller
+class MoipIntegrationController extends Controller
 {
-
-   public function test()
+ 
+   public function pagamentoCreditCard($hash)
    {
+     $retorno = MoipIntegration::pagamentoCreditCard($hash);
 
-      return view('moip');
-      
-  }
+     return $retorno;
+ }
 
-  public function passaHash($hash)
-  {
-     $retorno = MoipCreditCard::test($hash);
+ public function PagamentoBoleto()
+ {
+     $retorno = MoipIntegration::PagamentoBoleto();
 
      return $retorno;
  }
@@ -29,8 +29,8 @@ class MoipCreditCardController extends Controller
      */
     public function index()
     {
-        //
-    }
+       return view('moip');
+   }
 
     /**
      * Show the form for creating a new resource.
@@ -56,10 +56,10 @@ class MoipCreditCardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\MoipCreditCard  $moipCreditCard
+     * @param  \App\MoipIntegration  $moipIntegration
      * @return \Illuminate\Http\Response
      */
-    public function show(MoipCreditCard $moipCreditCard)
+    public function show(MoipIntegration $moipIntegration)
     {
         //
     }
@@ -67,10 +67,10 @@ class MoipCreditCardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\MoipCreditCard  $moipCreditCard
+     * @param  \App\MoipIntegration  $moipIntegration
      * @return \Illuminate\Http\Response
      */
-    public function edit(MoipCreditCard $moipCreditCard)
+    public function edit(MoipIntegration $moipIntegration)
     {
         //
     }
@@ -79,10 +79,10 @@ class MoipCreditCardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\MoipCreditCard  $moipCreditCard
+     * @param  \App\MoipIntegration  $moipIntegration
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MoipCreditCard $moipCreditCard)
+    public function update(Request $request, MoipIntegration $moipIntegration)
     {
         //
     }
@@ -90,10 +90,10 @@ class MoipCreditCardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\MoipCreditCard  $moipCreditCard
+     * @param  \App\MoipIntegration  $moipIntegration
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MoipCreditCard $moipCreditCard)
+    public function destroy(MoipIntegration $moipIntegration)
     {
         //
     }

@@ -16,16 +16,17 @@
 // });
 Route::get('/', 'Site\HomeController@home')->name('site');
 
-Route::get('/passa-hash/{hash}', 'MoipCreditCardController@passaHash')->name('passa-hash');
+Route::get('/pagamento-credit-card/{base64}', 'MoipIntegrationController@pagamentoCreditCard')->name('pagamento-credit-card');
 
-Route::get('/moip', 'MoipCreditCardController@test')->name('moip');
+Route::get('/moip', 'MoipIntegrationController@index')->name('moip');
+Route::get('/boleto', 'MoipIntegrationController@PagamentoBoleto')->name('boleto');
 
 
 Route::get('/info',function(){
-   return view('sites.info-cursos');
+	return view('sites.info-cursos');
    //return view('layouts.painel.access');
 });
- Route::get('get-paises-restantes', 'Admin\StudentController@getPaises')->name('get-paises-restantes');
+Route::get('get-paises-restantes', 'Admin\StudentController@getPaises')->name('get-paises-restantes');
 
 Route::get('get-estados/{idPais}', 'Admin\StudentController@getEstados')->name('get-estados');
 
@@ -96,7 +97,7 @@ Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
 // {
 //     Route::get('/laravel-filemanager', '\Unisharp\Laravelfilemanager\controllers\LfmController@show');
 //     Route::post('/laravel-filemanager/upload', '\Unisharp\Laravelfilemanager\controllers\LfmController@upload');
-   
+
 // });
 
 
@@ -130,7 +131,7 @@ Route::middleware(['auth', 'IsRoleAluno:role_fc'])->group(function(){
 });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
-     UniSharp\LaravelFilemanager\Lfm::routes();
+	UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
 //Rotas
@@ -319,7 +320,7 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:states.destroy');
 	Route::get('states/{state}/edit', 'Admin\StateController@edit')->name('states.edit')
 	->middleware('permission:states.edit');
-        
+
     //Levels
 	Route::post('levels/store', 'Admin\LevelController@store')->name('levels.store')
 	->middleware('permission:levels.create');
@@ -335,7 +336,7 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:levels.destroy');
 	Route::get('levels/{level}/edit', 'Admin\LevelController@edit')->name('levels.edit')
 	->middleware('permission:levels.edit');
-        
+
     //Turns
 	Route::post('turns/store', 'Admin\TurnController@store')->name('turns.store')
 	->middleware('permission:turns.create');
@@ -351,7 +352,7 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:turns.destroy');
 	Route::get('turns/{turn}/edit', 'Admin\TurnController@edit')->name('turns.edit')
 	->middleware('permission:turns.edit');
-        
-        
+
+
 
 });
