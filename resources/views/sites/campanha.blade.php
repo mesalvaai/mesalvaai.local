@@ -1,3 +1,4 @@
+
 @extends('layouts.site.app', ['title' => 'ME SALVA AI'])
 
 
@@ -17,11 +18,7 @@
 							<div class="card-body">
 								<h5 class="card-title">{{ $campanha->title }}</h5>
 								<p class="card-text">{{ $campanha->abstract }}</p>
-								{{-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
 							</div>
-				  	{{-- @if (Storage::disk('images')->has($campanha->file_path))
-	                    <img class="card-img-bottom" alt="{{ $campanha->title }}" src="{{ url('/miniatura/'. $campanha->file_path) }}">
-	                    @endif --}}
 	                    <div class="card-body">
 	                    	<p class="card-title text-justify">{!! $campanha->description !!}</p>
 	                    </div>
@@ -41,7 +38,7 @@
 	            			<p class="text-center pt-3">Arrecadados da meta de <br> $R {{ number_format($campanha->goal,2,',','.') }} </p>
 	            		</div>
 	            		<div class="card-footer text-center">
-	            			<a href="#" title="Alterar" class="btn btn-success w-100">Quero doar!</a>
+	            			<a href="{{ route('donate.campanha', $campanha->slug) }}" title="Donar" class="btn btn-success w-100">Quero doar!</a>
 	            		</div>
 	            	</div>
 
@@ -69,4 +66,3 @@
 	    </div>
 	</section>
 @endsection
-

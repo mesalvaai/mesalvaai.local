@@ -21,11 +21,6 @@ class HomeController extends Controller
         //$this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('sites.home');
@@ -93,7 +88,6 @@ class HomeController extends Controller
     public function campanha($slug = null)
     {
         //$campanha = Campaign::where('slug', $slug)->first();
-        
         if ($slug == null) {
             abort(404, 'A url não existe');
         } else {
@@ -103,8 +97,26 @@ class HomeController extends Controller
             } else {
                 abort(404, 'A url não existe');
             }
+        } 
+    }
+
+    public function donate($slug)
+    {
+        if ($slug == null) {
+            abort(404, 'A url não existe');
+        } else {
+            $campanha = Campaign::where('slug', $slug)->first();
+            if ($campanha) {
+                return view('sites.donations.create', compact('slug', 'campanha'));
+            } else {
+                abort(404, 'A url não existe');
+            }
         }
         
-        
+    }
+
+    public function donateProcess(Request $request)
+    {
+        dd($request);
     }
 }

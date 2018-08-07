@@ -25,4 +25,5 @@
         //$("#goal").maskMoney();
         $("#goal").maskMoney({thousands:".", decimal:",", symbol:"R$", showSymbol:true, symbolStay:true});
         $("#donation").maskMoney();
+        $("#total_amount").maskMoney();
 })(jQuery);

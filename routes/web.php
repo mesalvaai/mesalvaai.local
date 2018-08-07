@@ -11,58 +11,37 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/', 'Site\HomeController@home')->name('site');
 
 Route::get('/pagamento-credit-card/{base64}', 'MoipIntegrationController@pagamentoCreditCard')->name('pagamento-credit-card');
-
 Route::get('/moip', 'MoipIntegrationController@index')->name('moip');
 Route::get('/boleto', 'MoipIntegrationController@PagamentoBoleto')->name('boleto');
 
-
 Route::get('/info',function(){
 	return view('sites.info-cursos');
-   //return view('layouts.painel.access');
 });
 Route::get('get-paises-restantes', 'Admin\StudentController@getPaises')->name('get-paises-restantes');
-
 Route::get('get-estados/{idPais}', 'Admin\StudentController@getEstados')->name('get-estados');
-
 Route::get('get-cidades/{idPais}/{idEstado}', 'Admin\StudentController@getCidades')->name('get-cidades');
 
-
 Route::get('/campanhas/{idCamping?}', 'Site\HomeController@campanha')->name('show.campanha');
+Route::get('/campanhas/{slugCamping}/donate', 'Site\HomeController@donate')->name('donate.campanha');
+Route::post('/campanhas/processar-donacao', 'Site\HomeController@donateProcess')->name('donate.process');
 
 Route::get('/financiamento', 'Site\FinancingController@index')->name('financing.index');
 Route::get('/financiamento/criar-campanha', 'Site\FinancingController@createCamping')->name('create.project');
-
-
-
-
-
 Route::get('/mimos', 'Site\HomeController@mimos')->name('mimos');
-
 Route::get('/test', 'Site\HomeController@test')->name('test');
-
 Route::get('/cursos', 'Site\CursoController@curso');
 Route::get('/faculdade/id_curso', 'Site\CursoController@faculdade');
 Route::get('/student', 'Admin\StudentController@index');
 
 
-//Categories
-//Route::resource('categories', 'CategoryController');
-//Route::get('admin', 'Admin\AdminController@index');
-
 Auth::routes();
 
 //Route::get('/home', 'Site\HomeController@index')->name('home');
 
-
-
 //Layout Painel
-//Route::get('/painel', 'Admin\PainelController@index')->name('painel');
 Route::get('/formss', 'Admin\PainelController@forms')->name('forms');
 Route::get('/chartss', 'Admin\PainelController@charts')->name('charts');
 Route::get('/tabless', 'Admin\PainelController@tables')->name('tables');
@@ -354,7 +333,4 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:turns.destroy');
 	Route::get('turns/{turn}/edit', 'Admin\TurnController@edit')->name('turns.edit')
 	->middleware('permission:turns.edit');
-
-
-
 });
