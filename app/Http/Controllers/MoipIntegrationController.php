@@ -7,20 +7,33 @@ use Illuminate\Http\Request;
 
 class MoipIntegrationController extends Controller
 {
- 
-   public function pagamentoCreditCard($hash)
-   {
-     $retorno = MoipIntegration::pagamentoCreditCard($hash);
-
-     return $retorno;
- }
-
- public function PagamentoBoleto()
+   
+ public function pagamentoCreditCard($hash)
  {
-     $retorno = MoipIntegration::PagamentoBoleto();
+   $retorno = MoipIntegration::pagamentoCreditCard($hash);
 
-     return $retorno;
- }
+   return $retorno;
+}
+
+public function PagamentoBoleto()
+{
+   $print = MoipIntegration::PagamentoBoleto();
+
+   return view('visualizarBoleto', compact('print'));
+}
+
+public function test()
+{
+   $retorno = MoipIntegration::test();
+
+}
+public function testt()
+{
+   $print = MoipIntegration::testt();
+
+   return view('visualizarBoleto', compact('print'));
+}
+
 
     /**
      * Display a listing of the resource.
@@ -29,8 +42,8 @@ class MoipIntegrationController extends Controller
      */
     public function index()
     {
-       return view('moip');
-   }
+     return view('moip');
+ }
 
     /**
      * Show the form for creating a new resource.

@@ -13,9 +13,14 @@
 
 Route::get('/', 'Site\HomeController@home')->name('site');
 
+
 Route::get('/pagamento-credit-card/{base64}', 'MoipIntegrationController@pagamentoCreditCard')->name('pagamento-credit-card');
+
 Route::get('/moip', 'MoipIntegrationController@index')->name('moip');
 Route::get('/boleto', 'MoipIntegrationController@PagamentoBoleto')->name('boleto');
+
+Route::get('/moipt', 'MoipIntegrationController@test')->name('moipt');
+Route::get('/testt', 'MoipIntegrationController@testt')->name('testt');
 
 Route::get('/info',function(){
 	return view('sites.info-cursos');

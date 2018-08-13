@@ -1,7 +1,6 @@
 @php
 
-echo $print
-
+echo $print;
 
 @endphp
 
