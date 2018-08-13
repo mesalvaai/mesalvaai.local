@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\TurnFormRequest;
 use App\Turn;
 use App\Location;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class TurnController extends Controller
 {
@@ -41,7 +43,7 @@ class TurnController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FormRequest $request)
+    public function store(TurnFormRequest $request)
     {
       $validated = $request->validated();
 
@@ -79,8 +81,10 @@ class TurnController extends Controller
      * @param  \App\Turn  $turn
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(TurnFormRequest $request, Request $turn )
     {
+    
+     
     
     $turn->update($request->all());
 

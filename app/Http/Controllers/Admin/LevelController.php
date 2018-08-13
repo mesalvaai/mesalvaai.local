@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Turn;
+use App\Http\Requests\Admin\LevelFormRequest;
+use App\Level;
 use App\Location;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class LevelController extends Controller
 {
@@ -41,7 +43,7 @@ class LevelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FormRequest $request)
+    public function store(LevelFormRequest $request)
     {
       $validated = $request->validated();
 
@@ -79,7 +81,7 @@ class LevelController extends Controller
      * @param  \App\Level  $level
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(LevelFormRequest $request, Request $level)
     {
     
     $level->update($request->all());
