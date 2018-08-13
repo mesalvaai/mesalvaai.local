@@ -24,6 +24,7 @@ use App\Location;
 use App\State;
 use App\Student;
 use App\Reward;
+use App\Period;
 use App\User;
 
 
@@ -55,6 +56,11 @@ class AdminController extends Controller
     public function listStudent()
     {
         $students = Student::where('user_id', Auth::user()->id)->first();
+        
+
+        if ($students == null) {
+            return redirect()->route('create.student')->with('status', 'Ainda não cadastrou seus dados!!');
+        }
         return view('adminfc.list-student', compact('students'));
     }
 
@@ -83,27 +89,42 @@ class AdminController extends Controller
               $idPais = 3469034;
 
               $states = Location::getEstados($idPais);
-            return view('adminfc.create-student', compact('idUser','states','countries', 'idPais', 'encrypted', 'decrypted'));
+              $periodo = Period::get()->pluck('name', 'slug');
+            return view('adminfc.create-student', compact('idUser','states','countries', 'idPais', 'encrypted', 'decrypted', 'periodo'));
         }
         
     }
 
     public function storeStudent(StoreStudentRequest $request)
     {
+
         $request->user()->authorizeRoles(['role_fc']);
         $validated = $request->validated();
 
         $student = new Student();
-        $student->user_id = $request->input('user_id');
+        $student->user_id = Auth::user()->id;
         $student->name = $request->input('name');
         $student->email = $request->input('email');
+        $student->cpf = $request->input('cpf');
         $student->phone = $request->input('phone');
+        $student->data_of_birth = $request->input('data_of_birth');
+        $student->how_met_us = $request->input('how_met_us');
+        $student->cep = $request->input('cep');
+        $student->institution = $request->input('institution');
+        $student->course = $request->input('course_id');
+        $student->period = $request->input('period_id');
+        $student->country_id = $request->input('country_id');
         $student->state_id = $request->input('state_id');
         $student->city_id = $request->input('city_id');
+        $student->street = $request->input('street');
+        $student->number = $request->input('number');
+        $student->neighborhood = $request->input('neighborhood');
+        $student->complement = $request->input('complement');
         $student->status = $request->input('status');
         $student->save();
+
         $request->session()->put('student_id', $student->id);
-        return redirect()->route('create.camping')->with('status', 'O cadastro foi completado, falta pouco para criar sua campanha <strong>GRATUITAMENTE</strong>');
+        return redirect()->route('create.camping')->with('status', 'O cadastro foi completado, falta pouco para criar sua campanha RATUITAMENTE');
     }
 
     public function editStudent(Request $request, $idStudent)

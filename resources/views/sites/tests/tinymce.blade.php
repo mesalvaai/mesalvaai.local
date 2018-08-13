@@ -1,3 +1,11 @@
+
+<br>
+<br>
+<input type="text" name="name" value="" placeholder="Nome"><br>
+<input type="text" name="slug" value="" placeholder="Url"><br>
+<input type="text" name="description" value="" placeholder="Descrição"><br><hr>
+
+
 {{ public_path() . '/uploads' }}
 {{ env('APP_URL') }}
 {{-- <script src="//cdn.tinymce.com/4/tinymce.min.js"></script> --}}

@@ -35,8 +35,12 @@ class HomeController extends Controller
 
     public function test()
     {
+
         // rebuilding-stillatcom
-        echo Str::slug('Reàáâãäåābuilding stillat.com');
+        $nome = 'TECNOLOGIA DE INFORMAÇÃO';
+        echo Str::slug($nome);
+
+        echo "<br>";
         // rebuilding-stillatcom
         echo Str::slug('Rebuilding stillat.com');
 
