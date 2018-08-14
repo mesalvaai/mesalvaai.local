@@ -338,4 +338,19 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:turns.destroy');
 	Route::get('turns/{turn}/edit', 'Admin\TurnController@edit')->name('turns.edit')
 	->middleware('permission:turns.edit');
+    //areas
+	Route::post('areas/store', 'Admin\AreaController@store')->name('areas.store')
+	->middleware('permission:areas.create');
+	Route::get('areas', 'Admin\AreaController@index')->name('areas.index')
+	->middleware('permission:areas.index');
+	Route::get('areas/create', 'Admin\AreaController@create')->name('areas.create')
+	->middleware('permission:areas.create');
+	Route::put('areas/{area}', 'Admin\AreaController@update')->name('areas.update')
+	->middleware('permission:areas.edit');
+	Route::get('areas/{area}', 'Admin\AreaController@show')->name('areas.show')
+	->middleware('permission:areas.show');
+	Route::delete('areas/{area}', 'Admin\AreaController@destroy')->name('areas.destroy')
+	->middleware('permission:areas.destroy');
+	Route::get('areas/{area}/edit', 'Admin\AreaController@edit')->name('areas.edit')
+	->middleware('permission:areas.edit');
 });

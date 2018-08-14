@@ -6,7 +6,7 @@
                     &copy; Copyright <strong class="text-msa">Me Salva Ai</strong>. All Rights Reserved
                 </div>
                 <div class="credits">
-                    Designed by <a href="http:://mesalvaai.com" class="text-msa">developers Me Salva Ai</a> using bootstrap technology
+                    Designed by <a href="http:://mesalvaai.com" class="text-msa">developers Me Salva Aí</a> using bootstrap technology
                 </div>
             </div>
             <div class="col-lg-6">

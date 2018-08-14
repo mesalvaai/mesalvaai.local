@@ -11,6 +11,11 @@ use App\Campaign;
 
 class HomeController extends Controller
 {
+    public static function slug(
+        $title,
+        $separator = '-',
+        $language  = 'en'
+    );
     /**
      * Create a new controller instance.
      *

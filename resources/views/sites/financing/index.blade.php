@@ -12,6 +12,12 @@
             padding-top: .75rem;
             padding-bottom: .75rem;
         }*/
+        .btncomeçar{
+        	border-radius: 25px;
+        	width: 200px; 
+        	height: 50px; 
+        	padding-top: 13px;
+        }
 	</style>
 @endsection
 
@@ -38,23 +44,23 @@
 			<div class="row" data-aos="fade-up">
 				<div class="col text-center">
 					<h3>Modelo de campanha</h3>
-					<p>Escolha o modelo de campanha, defina sua meta financeira e um prazo de (1 a 60 dias) Nós fazemos a primeira contribuição para sua campanha! Campanhas "Flexíveis" (leve o que arrecadar, independente da sua meta)!</p>
+					<p>Escolha o modelo de campanha, defina sua meta financeira e um prazo de (1 a 60 dias). Nós fazemos a primeira contribuição para sua campanha! Campanhas "Flexíveis" (leve o que arrecadar, independente da sua meta)!</p>
 				</div>
 				<div class="col text-center">
 					<h3>Mais fácil do que usar o facebook</h3>
 					<p>Preencha nosso passo-a-passo online e lance sua campanha de crowdfunding em minutos! </p>
 				</div>
 				<div class="col text-center">
-					<h3>Acompanhar</h3>
+					<h3>Acompanhe</h3>
 					<p>Divulgue sua campanha e compartilhes nas redes sociais e acompanhe as colaborações recebidas.</p>
 				</div>
 				<div class="col text-center">
 					<h3>A gente só ganha se você ganhar</h3>
-					<p>amais cobramos pela sua postagem e ainda somos a única plataforma que passamos 50% do valor mesmo que a campanha não esteja finalizadas.</p>
+					<p>Não cobramos pela sua postagem e ainda somos a única plataforma que passamos 50% do valor mesmo que a campanha não esteja finalizadas.</p>
 				</div>
 			</div>
 			<div class="text-center">
-				<a href="{{ url('/financiamento/criar-campanha') }}" title="Comença projetos" class="btn-msa-white">Comença projetos</a>
+				<a href="{{ url('/financiamento/criar-campanha') }}" title="Comença projetos" class="btn-msa btncomeçar">Começar projetos</a>
 				<h4 class="pt-5 text-msa font-weight-bold">A tecnologia a seu favor.</h4>
 			</div>
 		</div>
@@ -79,7 +85,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-6">
-					<h1 class="text-center text-msa font-weight-bold">Que tal criar sua campanha pra fazer aquele intercâmbio com os amigos.</h1>
+					<h1 class="text-center text-msa font-weight-bold">Que tal criar sua campanha para fazer aquele intercâmbio com os amigos.</h1>
 					<div class="pt-2 w-50 mr-0 m-auto">
 						<p>Quer ter mais experiência no currículo? No Me Salva Aí você tem a oportunidade de fazer um intercâmbio (sozinho) ou com (amigos) em uma só campanha!</p>
 					</div>
@@ -108,9 +114,9 @@
 						<div class="row">
 							<div class="col-xs-12 col-md-6">
 								<div class="text-center text-white fc-two-text float-right">
-									<h3>Masadinha do me salva Aí</h3>
-									<p>Acabou o sofoco com o financiamento contínuo é para estudantes
-									que já tenham bolsa mas precisa de uma ajuda para se manter
+									<h3>Mesadinha do me salva Aí</h3>
+									<p>Acabou o sofoco com o financiamento contínuo, e para estudantes
+									que já tenham bolsas de estudos, mas precisam de uma ajudinha para se manter enquanto estudam.
 									enquanto estuda</p>
 								</div>
 						
@@ -136,11 +142,11 @@
 					</div>
 				</div>
 				<div class="col-md-4">
-					<h2 class="text-msa font-weight-bold pt-5">campanhas</h2>
+					<h2 class="text-msa font-weight-bold pt-5">Campanhas</h2>
 					<h4 class="text-gray-dark">Colabore com estudantes de diversas instituições de ensino.</h4>
 					<p>Faça parte de um grupo seleto de pessoas que ajudam estudantes a terminarem seu curso, tornando o mundo melhor e fazendo o bem.</p>
 					<h4 class="text-gray-dark">Recompensas de arrepiar!</h4>
-					<p>Para cada contribuição, receba uma recompensa relacionada. Tem jogos, CDs, arte e muito mais! Além de fazer o bem, você tem acesso a produtos e serviços exclusivos.</p>
+					<p>Para cada contribuição, receba uma recompensa relacionada. Tem jogos, objetos personalizados, arte e muito mais! Além de fazer o bem, você tem acesso a produtos e serviços exclusivos.</p>
 					<h4 class="text-gray-dark">Facilidades na sua contribuição</h4>
 					<p>Patrocine um projeto com boleto ou cartão de crédito (podendo parcelar em até 6x)!</p>
 				</div>
@@ -158,8 +164,8 @@
 	                <h1>Tudo isso de graça? <span>Sim.</span></h1>
 	                <p class="text-justify w-50 pl-5 ml-3">Basta criar personalizar e vu alá sua campanha em segundos. Então somos eficientes para você não ter que pagar nada.</p>
 	                <div class="text-center">
-	                	{{-- <a href="#" title="Começa Projetos" class="btn-msa" data-toggle="modal" data-target="#LoginFinancing">Começa Projetos</a> --}}
-	                	<a href="{{ url('/financiamento/criar-campanha') }}" title="Começa Projetos" class="btn-msa" >Começa Projetos</a>
+	                	{{-- <a href="#" title="Começa Projetos" class="btn-msa" data-toggle="modal" data-target="#LoginFinancing">Começar Projetos</a> --}}
+	                	<a href="{{ url('/financiamento/criar-campanha') }}" title="Começa Projetos" class="btn-msa" >Começar Projetos</a>
 	                </div>
 	            </div>
 	        </div>
