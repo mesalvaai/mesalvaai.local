@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="form-group col">
 		{!! Form::label('name', 'Nome') !!}
-		{!! Form::text('name', null, ['class' => 'form-control', 'required']) !!}
+		{!! Form::text('name', null, ['class' => 'form-control']) !!}
 	</div>
 
 	

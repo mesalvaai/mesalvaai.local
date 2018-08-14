@@ -34,9 +34,9 @@
                         @endif
 
 
-                        {{ Form::open(['route' => 'levels.store']) }}
+                        {!!Form::open(['route' => 'levels.store']) !!}
                         @include('admins.levels.partials.form')
-                        {{ Form::close() }} 
+                        {!! Form::close() !!} 
 
 
                     </div>

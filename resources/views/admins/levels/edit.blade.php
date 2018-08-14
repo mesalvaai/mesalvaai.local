@@ -33,9 +33,9 @@
                         </div>
                         @endif
                         
-                        {{ Form::model($student, ['route' => ['levels.update', $student->id], 'method' => 'PUT']) }}
+                        {!! Form::model($level, ['route' => ['levels.update', $level->id], 'method' => 'PUT']) !!}
                         @include('admins.levels.partials.form')
-                        {{ Form::close() }}
+                        {!! Form::close() !!}
                         
                     </div>
                 </div>

@@ -34,9 +34,9 @@
                         @endif
 
 
-                        {{ Form::open(['route' => 'turns.store']) }}
+                        {!! Form::open(['route' => 'turns.store']) !!}
                         @include('admins.turns.partials.form')
-                        {{ Form::close() }}
+                        {!! Form::close() !!}
 
 
                     </div>

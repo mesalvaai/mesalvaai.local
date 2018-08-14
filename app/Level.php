@@ -9,5 +9,5 @@ class Level extends Model
     protected $fillable = ['name'];
     protected $guarded = ['id'];
     protected $table = 'levels';
-
+    public $timestamps = false;
 }
