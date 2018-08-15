@@ -1,9 +1,69 @@
 {{-- {!! Form::hidden('user_id', $encrypted) !!}
 {!! Form::hidden('user_id', $decrypted) !!} --}}
+<div class="form-group row">
+    {!! Form::label('full_name', 'Nome completo', ['class' => 'col-sm-3 col-form-label'] ) !!}
+    <div class="col-sm-9">
+      	{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control']) !!}
+      	@if ($errors->has('full_name'))
+        	<span class="invalid-feedback" style="display: block;">
+            	<strong>{{ $errors->first('full_name') }}</strong>
+        	</span>
+    	@endif
+    </div>
+</div>
+
+<div class="form-group row">
+    {!! Form::label('email', 'E-mail', ['class' => 'col-sm-3 col-form-label'] ) !!}
+    <div class="col-sm-9">
+      	{!! Form::email('email', null, ['class' => $errors->has('email') ? 'form-control is-invalid' : 'form-control']) !!}
+      	@if ($errors->has('email'))
+        	<span class="invalid-feedback" style="display: block;">
+            	<strong>{{ $errors->first('email') }}</strong>
+        	</span>
+    	@endif
+    </div>
+</div>
+
+<div class="form-group row">
+    {!! Form::label('data_of_birth', 'E-mail', ['class' => 'col-sm-3 col-form-label'] ) !!}
+    <div class="col-sm-4">
+      	{!! Form::date('data_of_birth', null, ['class' => $errors->has('data_of_birth') ? 'form-control is-invalid' : 'form-control']) !!}
+      	@if ($errors->has('data_of_birth'))
+        	<span class="invalid-feedback" style="display: block;">
+            	<strong>{{ $errors->first('data_of_birth') }}</strong>
+        	</span>
+    	@endif
+    </div>
+</div>
+
+<div class="form-group row">
+    {!! Form::label('celular', 'Celular', ['class' => 'col-sm-3 col-form-label'] ) !!}
+    <div class="col-sm-4">
+      	{!! Form::text('celular', null, ['class' => $errors->has('celular') ? 'form-control is-invalid' : 'form-control']) !!}
+      	@if ($errors->has('celular'))
+        	<span class="invalid-feedback" style="display: block;">
+            	<strong>{{ $errors->first('celular') }}</strong>
+        	</span>
+    	@endif
+    </div>
+</div>
+
+<div class="form-group row">
+    {!! Form::label('cpf', 'CPF', ['class' => 'col-sm-3 col-form-label'] ) !!}
+    <div class="col-sm-4">
+      	{!! Form::text('cpf', null, ['class' => $errors->has('cpf') ? 'form-control is-invalid' : 'form-control']) !!}
+      	@if ($errors->has('cpf'))
+        	<span class="invalid-feedback" style="display: block;">
+            	<strong>{{ $errors->first('cpf') }}</strong>
+        	</span>
+    	@endif
+    </div>
+</div>
+
 
 <div class="form-group pb-4">
 	<h2 class="font-weight-normal">{!! Form::label('title', 'Indique a quantia da Doação') !!}</h2>
-	<div class="input-group">
+	<div class="input-group col-md-6">
 	  	<div class="input-group-prepend">
 	    	<span class="input-group-text">$R</span>
 	    	<span class="input-group-text">0,00</span>
