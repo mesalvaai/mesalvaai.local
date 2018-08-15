@@ -17,11 +17,7 @@ class AreaController extends Controller
      * @return \Illuminate\Http\Response
      */
    
-    public function test()
-    {
 
-
-    }
 
     public function index()
     {
@@ -77,9 +73,10 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Area $area)
     {
         //
+        return view ('admins.areas.edit',compact('area'));
     }
 
     /**
@@ -89,9 +86,12 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Area $area)
     {
         //
+        $area->update($request->all());
+        return redirect()->route('areas.index', $area->id)
+        ->with('status', 'editada com sucesso');
     }
 
     /**
@@ -100,8 +100,11 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Area $area)
     {
         //
+        $area->delete();
+
+     return back()->with('status', 'excluída com sucesso');
     }
 }

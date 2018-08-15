@@ -60,9 +60,7 @@
 
 	<div class="input-group mb-3">
 		{!! Form::select('category_id', $categories, null, ['class' => $errors->has('category_id') ? 'form-control is-invalid' : 'form-control', 'placeholder' =>'-- Selecione uma Categoria --', 'required']) !!}
-		<div class="input-group-append">
-			<a class="btn btn-outline-success" href="#">Veja alguns exemplos</a>
-		</div>
+		
 		@if ($errors->has('category_id'))
 		<span class="invalid-feedback">
 			<strong>{{ $errors->first('category_id') }}</strong>
@@ -82,11 +80,9 @@
 			{!! Form::file('file_path', ['class' => $errors->has('file_path') ? 'custom-file-input is-invalid' : 'custom-file-input', 'id' =>'inputGroupFile02']) !!}
 			<label class="custom-file-label" for="inputGroupFile02">Procurar arquivo</label>
 		</div>
-		<div class="input-group-append">
-			<button class="btn btn-outline-success" type="button">Veja exemplos de imagens de campanhas de sucesso</button>
-		</div>
+		
 	</div>
-	<small class="form-text text-muted">Arquivo devem ter menos que 1 MB. Tipos de arquivos permitidos: png,gif,jpg,jpeg, mp4.</small>
+	<small class="form-text text-muted">Arquivos devem ter menos que 1 MB. Tipos de arquivos permitidos: png,gif,jpg,jpeg, mp4.</small>
 	@if ($errors->has('file_path'))
 	<span class="invalid-feedback" style="display: block;">
 		<strong>{{ $errors->first('file_path') }}</strong>
@@ -105,7 +101,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				Uma imagem que represente bem sua graduação ou mestrado.... Procure uma imagem que identifique sua profissão e fique com a cara de sua campanha. 
+				Uma imagem que represente bem sua graduação ou mestrado... Procure uma imagem que identifique sua profissão e fique com a cara de sua campanha. 
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -162,7 +158,7 @@
 
 
 	<small class="text-muted">Fale porque seu projeto é tão relevante e merece a contribuição de todos.</small>
-	<p>Para dicas de como contar sua historia, <a href="#" title="">veja essas dicas aqui</a>.</p>
+	<p>Dicas de como contar sua história. <a href="#" title="">Veja essas dicas aqui</a>.</p>
 	@if ($errors->has('description'))
 	<span class="invalid-feedback">
 		<strong>{{ $errors->first('description') }}</strong>
@@ -197,10 +193,9 @@
 		<p><strong>Defina ao menos uma meta, lembrando de considerar nesse valor os itens abaixo:</strong></p>
 		<p>	- Taxa de serviço da plataforma (nossa sugestão é destinar 10% do valor total arrecadado);<br>
 			- Custo de produção e envio das recompensas. <br>
-			​
-			Quer ajuda para calcular sua meta? <a href="" data-toggle="modal" data-target="#explication" title="">Veja dicas aqui </a></p>
+		</p>
 
-
+           	Quer ajuda para calcular sua meta? <a href="" data-toggle="modal" data-target="#explication" title="">Veja dicas aqui </a></p>
 			<!-- Modal -->
 			<div class="modal fade bd-example-modal-lg" id="explication" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 				<div class="modal-dialog modal-lg">
@@ -233,13 +228,14 @@
 		{!! Form::label('goal', 'Valor da meta*:') !!}
 		<div class="input-group">
 			<div class="input-group-prepend">
-				<span class="input-group-text">$R</span>
+				<span class="input-group-text">R$</span>
 				<span class="input-group-text">0,00</span>
 			</div>
 			{!! Form::text('goal', null, ['class' => $errors->has('goal') ? 'form-control is-invalid' : 'form-control', 'data-thousands' => '.', 'data-decimal' => ',', 'required']) !!}
 		</div>
 		<small class="text-muted">(mínimo de R$500,00) </small><br>
-		<em><a href="#" title="Click aqui">Ainda não sabe o quanto arrecadar?</a></em>
+		
+		
 		@if ($errors->has('goal'))
 		<span class="invalid-feedback">
 			<strong>{{ $errors->first('goal') }}</strong>
@@ -251,7 +247,7 @@
 	<div class="row">
 
 		<div class="form-group col-md">
-			{!! Form::label('start_date', 'Inicio da Campamna') !!}
+			{!! Form::label('start_date', 'Início da Campamna') !!}
 			{!! Form::date('start_date', \Carbon\Carbon::now(), ['class' => $errors->has('start_date') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 			<small class="text-muted">(máximo de 60 dias e mínimo 1 dia)</small>
 			@if ($errors->has('start_date'))
@@ -262,7 +258,7 @@
 		</div>
 
 		<div class="form-group col-md">
-			{!! Form::label('end_date', 'Fin da Campanha') !!}
+			{!! Form::label('end_date', 'Fim da Campanha') !!}
 			{!! Form::date('end_date', \Carbon\Carbon::now(), ['class' => $errors->has('end_date') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 			@if ($errors->has('end_date'))
 			<span class="invalid-feedback">
@@ -277,19 +273,19 @@
 	<div class="row">
 
 		<div class="form-group col-md">
-			{!! Form::label('facebook', 'Inicio da Campamna') !!}
+			{!! Form::label('facebook', 'Início da Campamna') !!}
 			{!! Form::text('facebook', 'https://www.facebook.com/', ['class' => 'form-control']) !!}
 			<small class="text-warning">(Ex: https://www.facebook.com/<b>nome-de-usuario</b>)</small>
 		</div>
 
 		<div class="form-group col-md">
-			{!! Form::label('twitter', 'Inicio da Campamna') !!}
+			{!! Form::label('twitter', 'Início da Campanha') !!}
 			{!! Form::text('twitter', 'https://twitter.com/', ['class' => 'form-control']) !!}
 			<small class="text-warning">(Ex: https://twitter.com/<b>nome-de-usuario</b>)</small>
 		</div>
 
 		<div class="form-group col-md">
-			{!! Form::label('instagram', 'Inicio da Campamna') !!}
+			{!! Form::label('instagram', 'Início da Campanha') !!}
 			{!! Form::text('instagram', 'https://www.instagram.com/', ['class' => 'form-control']) !!}
 			<small class="text-warning">(Ex: https://www.instagram.com/<b>nome-de-usuario</b>)</small>
 		</div>

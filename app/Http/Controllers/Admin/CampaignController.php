@@ -36,7 +36,7 @@ class CampaignController extends Controller
     {
       $students = Student::orderBy('name', 'ASC')->pluck('name', 'id');
       $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
-
+ 
       return view('admins.campaigns.create', compact('students', 'categories'));
     }
 
