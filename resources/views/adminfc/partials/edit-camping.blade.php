@@ -127,7 +127,7 @@
 
 </div>
 <h4 class="font-weight-bold">7. Adicione sua localização</h4><br>
-<div class="row">
+{{-- <div class="row">
 	<div class="form-group col-md">
 		{!! Form::label('institution', 'Instituição') !!}
 		{!! Form::text('institution', null, ['class' => $errors->has('institution') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
@@ -155,7 +155,7 @@
 	        </span>
 	    @endif
 	</div>
-</div>
+</div> --}}
 <div class="row">
 	<div class="form-group col-md">
 		{!! Form::label('location', 'Localizaçāo') !!}
