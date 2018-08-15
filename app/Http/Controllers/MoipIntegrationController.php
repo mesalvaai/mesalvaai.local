@@ -7,7 +7,13 @@ use Illuminate\Http\Request;
 
 class MoipIntegrationController extends Controller
 {
-   
+  
+public function t()
+{
+
+   return view('t');
+}
+
  public function pagamentoCreditCard($hash)
  {
    $retorno = MoipIntegration::pagamentoCreditCard($hash);

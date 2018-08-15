@@ -9,5 +9,5 @@ class Turn extends Model
     protected $fillable = ['name'];
     protected $guarded = ['id'];
     protected $table = 'turns';
-
+    public $timestamps = false;
 }

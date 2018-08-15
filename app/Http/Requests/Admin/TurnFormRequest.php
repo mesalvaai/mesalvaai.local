@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class TurnFormRequest extends FormRequest
 {
     /**
@@ -24,7 +25,7 @@ class TurnFormRequest extends FormRequest
     public function rules()
     {
         return [
-             'name'    =>'required|min:3|max:100',
+             'name'    =>'required|min:3|max:255',
             
         ];
     }

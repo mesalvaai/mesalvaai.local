@@ -10,5 +10,5 @@ class Level extends Model
     protected $guarded = ['id'];
     public $timestamps = false;
     protected $table = 'levels';
-
+    public $timestamps = false;
 }

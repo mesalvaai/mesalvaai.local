@@ -32,7 +32,7 @@ class LevelController extends Controller
      */
     public function create()
     {
-
+     
       return view('admins.levels.create', compact('levels'));
 
     }
@@ -43,24 +43,41 @@ class LevelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LevelFormRequest $request)
+    public function store(Request $request)
     {
-      $validated = $request->validated();
+      $messages = [
+      'required' => 'Este campo é obrigatório!',
+      'name.unique' => 'Já existe um level com este título!',
+      'max' => 'Valor máximo de caracteres excedido!',
+     
+    ];
 
-      $level = Level::create($request->all());
 
-      return redirect()->route('levels.edit', $level->id);
+    $validator = \Validator::make($request->all(), [
+      'name' => 'required|unique:levels|max:255',
+      
+    ], $messages);
+
+    if ($validator->fails()){
+      return redirect()->back()
+      ->withErrors($validator)
+      ->withInput();  
+    }
+
+      $levels = Level::create($request->all());
+
+      return redirect()->route('levels.edit', $levels->id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Level  $level
+     * @param  \App\Level  $levels
      * @return \Illuminate\Http\Response
      */
     public function show(Level $level)
     {
-      return view('admins.levels.show', compact('levels'));
+      return view('admins.levels.show', compact('level'));
     }
 
     /**
@@ -71,7 +88,8 @@ class LevelController extends Controller
      */
     public function edit(Level $level)
     {
-      return view('admins.levels.edit', compact('levels'));
+        
+      return view('admins.levels.edit', compact('level'));
     }
 
     /**
@@ -81,8 +99,27 @@ class LevelController extends Controller
      * @param  \App\Level  $level
      * @return \Illuminate\Http\Response
      */
-    public function update(LevelFormRequest $request, Request $level)
+    public function update(Request $request, Level $level)
     {
+         $messages = [
+      'required' => 'Este campo é obrigatório!',
+      'name.unique' => 'Já existe um level com este título!',
+      'max' => 'Valor máximo de caracteres excedido!',
+     
+    ];
+
+
+    $validator = \Validator::make($request->all(), [
+      'name' => 'required|unique:levels|max:255',
+      
+    ], $messages);
+
+    if ($validator->fails()){
+      return redirect()->back()
+      ->withErrors($validator)
+      ->withInput();  
+    }
+
     
     $level->update($request->all());
 

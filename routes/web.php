@@ -21,6 +21,7 @@ Route::get('/boleto', 'MoipIntegrationController@PagamentoBoleto')->name('boleto
 
 Route::get('/moipt', 'MoipIntegrationController@test')->name('moipt');
 Route::get('/testt', 'MoipIntegrationController@testt')->name('testt');
+Route::get('/t', 'MoipIntegrationController@t')->name('t');
 
 Route::get('/info',function(){
 	return view('sites.info-cursos');

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\Admin\TurnFormRequest;
 use App\Turn;
 use App\Location;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
 
 class TurnController extends Controller
 {
@@ -43,13 +44,31 @@ class TurnController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TurnFormRequest $request)
+    public function store(Request $request)
     {
-      $validated = $request->validated();
+       $messages = [
+      'required' => 'Este campo é obrigatório!',
+      'name.unique' => 'Já existe um turn com este título!',
+      'max' => 'Valor máximo de caracteres excedido!',
+     
+    ];
 
-      $turn = Turn::create($request->all());
 
-      return redirect()->route('turns.edit', $turn->id);
+    $validator = \Validator::make($request->all(), [
+      'name' => 'required|unique:turns|max:255',
+      
+    ], $messages);
+
+    if ($validator->fails()){
+      return redirect()->back()
+      ->withErrors($validator)
+      ->withInput();  
+    }
+
+
+      $turns = Turn::create($request->all());
+
+      return redirect()->route('turns.edit', $turns->id);
     }
 
     /**
@@ -81,9 +100,26 @@ class TurnController extends Controller
      * @param  \App\Turn  $turn
      * @return \Illuminate\Http\Response
      */
-    public function update(TurnFormRequest $request, Request $turn )
+    public function update(Request $request, Turn $turn)
     {
-    
+     $messages = [
+      'required' => 'Este campo é obrigatório!',
+      'name.unique' => 'Já existe um turn com este título!',
+      'max' => 'Valor máximo de caracteres excedido!',
+     
+    ];
+
+
+    $validator = \Validator::make($request->all(), [
+      'name' => 'required|unique:levels|max:255',
+      
+    ], $messages);
+
+    if ($validator->fails()){
+      return redirect()->back()
+      ->withErrors($validator)
+      ->withInput();  
+    }
      
     
     $turn->update($request->all());

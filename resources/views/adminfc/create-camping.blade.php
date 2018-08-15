@@ -17,7 +17,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header bg-info text-center pt-3">
-                        <strong class="text-white"><h1>Defina o perfil de seu campanha</h1></strong>
+                        <strong class="text-white"><h1>Defina o perfil de sua campanha</h1></strong>
                     </div>
 
                     <div class="card-body">

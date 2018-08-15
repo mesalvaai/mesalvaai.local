@@ -12,11 +12,13 @@
             padding-top: .75rem;
             padding-bottom: .75rem;
         }*/
+      
         .btncomeçar{
         	border-radius: 25px;
         	width: 200px; 
         	height: 50px; 
         	padding-top: 13px;
+
         }
 	</style>
 @endsection
@@ -166,6 +168,7 @@
 	                <div class="text-center">
 	                	{{-- <a href="#" title="Começa Projetos" class="btn-msa" data-toggle="modal" data-target="#LoginFinancing">Começar Projetos</a> --}}
 	                	<a href="{{ url('/financiamento/criar-campanha') }}" title="Começa Projetos" class="btn-msa" >Começar Projetos</a>
+	                	
 	                </div>
 	            </div>
 	        </div>
