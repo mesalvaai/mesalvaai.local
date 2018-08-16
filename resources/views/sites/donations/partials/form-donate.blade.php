@@ -211,6 +211,7 @@
 
 </div>
 <div class="row" >
+	<h1>Meios de Pagamentos</h1>
 	<div class="col-6" align="center" >
 		
 		{!! Form::radio('tipo-pagamento',null, null, ['onclick' => 'openCity(event, "cred-card")']) !!}
