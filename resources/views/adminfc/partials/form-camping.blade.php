@@ -273,7 +273,7 @@
 	<div class="row">
 
 		<div class="form-group col-md">
-			{!! Form::label('facebook', 'Início da Campamna') !!}
+			{!! Form::label('facebook', 'Início da Campanha') !!}
 			{!! Form::text('facebook', 'https://www.facebook.com/', ['class' => 'form-control']) !!}
 			<small class="text-warning">(Ex: https://www.facebook.com/<b>nome-de-usuario</b>)</small>
 		</div>
