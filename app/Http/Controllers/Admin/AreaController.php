@@ -71,6 +71,9 @@ class AreaController extends Controller
         }
         else
         {
+
+
+       
          $slug = str_slug($request->input('name'));
          $area = new Area();
          $area->name = $request->input('name');

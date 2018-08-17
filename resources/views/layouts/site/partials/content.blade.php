@@ -101,7 +101,7 @@
                         {{-- <h4><sup></sup>03<span></span></h4> --}}
                         <div class="pulse-item"><span class="mask"><i class="fab fa-reddit"></i></span></div>
                         <h3>Mimos</h3>
-                        <p>Depois de completar todas as etapas está na hora de se diverti com os Mimos do Me Salva Aí</p>
+                        <p>Depois de completar todas as etapas está na hora de se divertir com os Mimos do Me Salva Aí</p>
                     </div>
                 </div>
             </div>
@@ -134,7 +134,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 text-center">
-                   <p>Acabou o sufoco de conversões complexas, de pontos que expiram toda hora. Agora, você pode acumular pontos em tempo real para usar de um jeito fácil com o que você realmente quer. E no Me Salva Aí, você só ganhar.</p> 
+                   <p>Acabou o sufoco de conversões complexas, de pontos que expiram toda hora. Agora, você pode acumular pontos em tempo real para usar de um jeito fácil com o que você realmente quer. No Me Salva Aí, você só tem a ganhar.</p> 
                 </div>
             </div>
         </div>
@@ -193,7 +193,7 @@
         <div class="container juros-bg">
             <div class="row ljustify-content-md-center">
                 <div class="col-lg-6 offset-lg-3">
-                    <h3 class="text-center">Chega de pagar juros altos, não faz sentido vivermos como nossos país, por que usaríamos o mesmo métodos de financiamentos que eles?</h3>
+                    <h3 class="text-center">Chega de pagar juros altos, não faz sentido vivermos como nossos pais, por que usaríamos o mesmo métodos de financiamentos que eles?</h3>
                 </div>
             </div>
         </div>
@@ -248,7 +248,7 @@
                 <div class="col-lg-8 offset-lg-2">
                     <div class="child-bg">
                         <h2 class="text-center">Viu como é simples</h2>
-                        <p class="text-center">Basta escolher seu curso, instituição e pagar a primeira mensalidade e vó alá, divista-se até o final do curso</p>
+                        <p class="text-center">Basta escolher seu curso, instituição e pagar a primeira mensalidade e vó alá, divirta-se até o final do curso</p>
                         <div class="text-center">
                             <a href="#" class="get-started-btn">Encontre sua bolsa</a>
                         </div>

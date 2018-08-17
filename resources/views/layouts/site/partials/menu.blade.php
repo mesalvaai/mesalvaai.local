@@ -3,14 +3,14 @@
         <div id="logo" class="">
             <h1><a href="#intro" class="scrollto"><strong>Me Salva Aí</strong></a></h1>
         </div>
-        <nav id="nav-menu-container">
+        <nav id="nav-menu-container"> 
             <ul class="nav-menu">
                 <li class="menu-active"><a href="/#home">Home</a></li>
                 <li><a href="/#call-sec-two">Como funciona</a></li>
                 <li><a href="{{ url('mimos') }}">Mimos</a></li>
                 <li><a href="{{ url('financiamento') }}">Financiamento coletivo</a></li>
                 @guest
-                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                    <li><a class="nav-link" href="{{ url('/financiamento/criar-campanha') }}">{{ __('Login') }}</a></li>
                     {{-- <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li> --}}
                 @else
                     <li class="menu-has-children"><a href="#"><i class="fas fa-user"></i> {{ Auth::user()->name }}</a>
@@ -34,3 +34,5 @@
         </nav>
     </div>
 </header>
+
+<!--<li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>-->
