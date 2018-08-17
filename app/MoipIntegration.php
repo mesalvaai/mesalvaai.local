@@ -11,6 +11,9 @@ class MoipIntegration extends Model
 	public static function pagamentoCreditCard($base64)
 	{
 
+
+		dd($base64);
+
 		$moip = Moip::start();
 
 		$hash = base64_decode($base64);
@@ -21,8 +24,8 @@ class MoipIntegration extends Model
 			->setFullname('Fulano de Tal')
 			->setEmail('fulano@email.com')
 			->setBirthDate('1988-12-30')
-			->setTaxDocument('22222222222')
 			->setPhone(11, 66778899)
+			->setTaxDocument('22222222222')
 			->addAddress('SHIPPING',
 				'Rua de teste do SHIPPING', 123,
 				'Bairro do SHIPPING', 'Sao Paulo', 'SP',

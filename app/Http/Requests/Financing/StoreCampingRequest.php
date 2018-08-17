@@ -27,7 +27,7 @@ class StoreCampingRequest extends FormRequest
         return [
             'title'    =>'required|min:5|max:250',
             'abstract'    =>'required|min:5|max:160',
-            'description'   =>'required',
+            'description'   =>'required|min:5|max:300',
             'start_date'   =>'required',
             'end_date'   =>'required',
             'file_path' => 'file|mimes:png,gif,jpg,jpeg,mp4',
@@ -40,13 +40,24 @@ class StoreCampingRequest extends FormRequest
     
     public function messages(){
         return [
-            'required' => 'Este campo ":attribute" é obrigatório!',
-            'numeric' => 'O campo ":attribute" deve ser um número!',
-            'min' => 'O campo ":attribute" deve ter no mínimo :min caracteres!',
-            'max' => 'O campo ":attribute" deve ter no maximo :max caracteres!',
-            'title.required' => 'O nome da campanha é obrigatório!',
-            'terms_of_use.required' => 'Você não aceito os terminos',
-            'unique' => 'Este ":attribute" já se encontra cadastrado no sistema!',
+            'numeric' => 'O campo ":attribute" deve ser um número.',
+          
+            'title.min' => 'O título da sua campanha deve ter no mínimo :min caracteres.',
+            'abstract.min' => 'O resumo da sua campanha deve ter no mínimo :min caracteres.',
+            'description.min' => 'A descrição da sua campanha deve ter no mínimo :min caracteres.',
+          
+            'title.max' => 'O título da sua campanha deve ter no máximo :max caracteres.',
+            'abstract.max' => 'O resumo da sua campanha deve ter no máximo :max caracteres.',
+            'description.max' => 'A descrição da sua campanha deve ter no máximo :max caracteres.',
+
+            'category_id.required' => 'Você deve selecionar uma categoria para a sua campanha.',
+            'title.required' => 'O campo de titulo da campanha é obrigatório.',
+            'abstract.required' => 'O campo de resumo é obrigatório.',
+            'description.required' => 'O campo de descrição é obrigatório.',
+            'goal.required' => 'O campo de meta deve ser preenchido.',
+
+            'terms_of_use.required' => 'Você deve aceitar os termos de uso.',
+            'unique' => 'Este ":attribute" já se encontra cadastrado no sistema.',
             'mimes' => 'A extensão do arquivo deve ser do tipo: png, gif, jpg, jpeg, mp4.',
         ];
     }
