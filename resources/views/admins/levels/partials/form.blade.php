@@ -3,8 +3,6 @@
 		{!! Form::label('name', 'Nome') !!}
 		{!! Form::text('name', null, ['class' => 'form-control']) !!}
 	</div>
-
-	
 </div>
 
 <div class="form-group">

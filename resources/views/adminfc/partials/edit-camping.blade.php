@@ -229,7 +229,6 @@
 			</span>
 			@endif
 		</div>
-
 	</div>
 	<h4 class="font-weight-bold">7. Adicione sua localização</h4><br>
 	<div class="row">
