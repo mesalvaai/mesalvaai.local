@@ -106,8 +106,8 @@ return [
         'name' => [
             'required' => 'O campo nome é obrigatório!',
         ],
-        'name' => [
-            'unique' => 'Já existe um campo com esse nome',
+        'email' => [
+            'unique' => 'Já existe um email com esse nome',
         ],
         'description' => [
             'required' => 'O campo descrição é obrigatório!',
