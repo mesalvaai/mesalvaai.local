@@ -295,14 +295,14 @@
 	<div class="col-4">
 		<div class="card bg-light mb-3" style="max-width: 18rem;">
 			<div class="card-body">
-				<h5 class="card-title"><a href="#" title=""><strong>POLÍTICA DE PRIVACIDADE</strong></a></h5>
+				<a href="#" title=""><strong>POLÍTICA DE PRIVACIDADE</strong></a>
 			</div>
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="card bg-light mb-3" style="max-width: 18rem;">
 			<div class="card-body">
-				<h5 class="card-title"><a href="#" title=""><strong>TERMOS DE <br> USO</a></strong></h5>
+				<a href="#" title=""><strong>TERMOS DE USO</a></strong>
 			</div>
 		</div>
 	</div>

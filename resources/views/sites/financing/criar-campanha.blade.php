@@ -9,8 +9,11 @@
 	</div>
 </section>
 
+<section  id="texto">
+
+</section>
 <section class="pt-5 pb-5">
-	<div class="container" align="center">
+	<div class="container" align="center">	
 		<div class="col-md-6" align="left">
 			<div class="card">
 				<div class="card-header">
@@ -21,8 +24,6 @@
 						@csrf
 
 						<div class="form-group row">
-							<small><p>Já pensou em fazer sua graduação perto de você e com desconto? E ser mimado enquanto está na faculdade? Ou ainda ter seu curso 100% pago? Com a Me Salva Aí tudo ficou mais fácil, Comece sua trajetória com propósito! Busque sua bolsa de estudo. <a href="/" title="">Ver Mais</a></p></small>
-
 							<label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
 							<div class="col-md-6">
@@ -76,6 +77,11 @@
 							</div>
 						</div>
 					</form>
+				</div>
+			</div>
+			<div class="col-md-12" >
+				<div style="margin-top: 15px;">
+					<small><p>Já pensou em fazer sua graduação perto de você e com desconto? E ser mimado enquanto está na faculdade? Ou ainda ter seu curso 100% pago? Com a Me Salva Aí tudo ficou mais fácil, Comece sua trajetória com propósito! Busque sua bolsa de estudo. <a href="/" title="">Ver Mais</a></p></small>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,5 @@
-
 @extends('layouts.site.appfc')
- 
+
 @section('content')
 
 {{-- <section id="painel-fc" class="painel-fc">
@@ -22,18 +21,18 @@
 
                     <div class="card-body">
                         @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </div>
-                        @endif
-                        
-                         @if ($errors->any())
+                            @endif
+
+                            @if ($errors->any())
                             <div class="alert alert-danger alert-dismissable fade show" role="alert">
-                                
+
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                    <span aria-hidden="true">&times;</span>
                                 </button>
                                 <ul>
                                     @foreach($errors->all() as $error)
@@ -41,32 +40,32 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif
-                        
-                        
-                        {{ Form::open(['route' => 'store.student']) }}
+                            @endif
+
+
+                            {{ Form::open(['route' => 'store.student']) }}
                             @include('adminfc.partials.form')
-                        {{ Form::close() }}
-                                           
+                            {{ Form::close() }}
+
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
-        
-    </div>
-</section>
+    </section>
 
-@endsection
+    @endsection
 
-@section('scripts')
+    @section('scripts')
     <script type="text/javascript">
-        
+
         //Caso dê erro no cadastro e a página retorne ao form e caso não exista uma variável student pois ai estrá na pagina de edit
 
         var studentName = "<?php isset($student) ? print "ok" : print "erro" ?>";
 
         if($('select[name=state_id]').val() != null && studentName == "erro"){
-            
+
             var idEstado = $('select[name=state_id]').val();
 
             var idPais = $('select[name=country_id]').val();
@@ -149,5 +148,19 @@
         });
     });
 
+    function validarCPF() {
+        var strCPF =  $('input[name=cpf]').cleanVal();
+        
+
+        if (strCPF.length != 11 || strCPF == "00000000000" || strCPF == "11111111111" || strCPF == "22222222222" || strCPF == "33333333333" || strCPF == "44444444444" || strCPF == "55555555555" || strCPF == "66666666666" || strCPF == "77777777777" || strCPF == "88888888888" || strCPF == "99999999999" || strCPF == empty()) {
+           $('input[name=cpf]').addClass('is-invalid'); 
+       }
+       else
+       {
+          
+        $('input[name=cpf]').removeClass('is-invalid');
+    }
+}
 </script>
+
 @endsection

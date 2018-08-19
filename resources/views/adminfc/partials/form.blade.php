@@ -11,7 +11,12 @@
 
 	<div class="form-group col-xs-12 col-md">
 		{!! Form::label('cpf', 'CPF') !!}
-		{!! Form::text('cpf', null, ['class' => 'form-control', 'placeholder' => '000.000.000-00', 'required']) !!}
+		{!! Form::text('cpf', null, ['class' => 'form-control', 'placeholder' => '000.000.000-00', 'required', 'onblur' => 'validarCPF()']) !!}
+
+		<span class="invalid-feedback">
+			<strong>CPF inválido!</strong>
+		</span>
+
 	</div>
 
 	<div class="form-group col-xs-12 col-md">
