@@ -18,29 +18,6 @@
 
 	@endif
 </div>
-
-<div class="form-group">
-	{!! Form::label('description', 'Descrição') !!}
-
-	@if ($errors->get('description'))
-
-	@foreach ($errors->get('description') as $error)
-	
-	{!! Form::textarea('description', null, ['class' => 'form-control is-invalid', 'required']) !!}
-	
-
-	<div class="invalid-feedback">
-		{{ $error }}
-	</div>
-
-	@endforeach
-
-	@else
-
-	{!! Form::textarea('description', null, ['class' => 'form-control', 'required']) !!}
-
-	@endif 
-</div>
 <div class="form-group">
 	{!! Form::submit('Salvar', ['class' => 'btn btn-success btn-sm float-left']) !!}
 </div>

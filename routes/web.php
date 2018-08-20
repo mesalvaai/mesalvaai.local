@@ -355,4 +355,20 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:areas.destroy');
 	Route::get('areas/{area}/edit', 'Admin\AreaController@edit')->name('areas.edit')
 	->middleware('permission:areas.edit');
+
+	  //periods
+	Route::post('periods/store', 'Admin\PeriodController@store')->name('periods.store')
+	->middleware('permission:periods.create');
+	Route::get('periods', 'Admin\PeriodController@index')->name('periods.index')
+	->middleware('permission:periods.index');
+	Route::get('periods/create', 'Admin\PeriodController@create')->name('periods.create')
+	->middleware('permission:periods.create');
+	Route::put('periods/{period}', 'Admin\PeriodController@update')->name('periods.update')
+	->middleware('permission:periods.edit');
+	Route::get('periods/{period}', 'Admin\PeriodController@show')->name('periods.show')
+	->middleware('permission:periods.show');
+	Route::delete('periods/{period}', 'Admin\PeriodController@destroy')->name('periods.destroy')
+	->middleware('permission:periods.destroy');
+	Route::get('periods/{period}/edit', 'Admin\PeriodController@edit')->name('periods.edit')
+	->middleware('permission:periods.edit');
 });

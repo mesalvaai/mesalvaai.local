@@ -4,28 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Str;
+use App\period;
 
-
-use App\Area;
-
-class AreaController extends Controller
+class PeriodController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-
-
     public function index()
     {
         //
-
-        $areas = Area::Paginate();
-        return view('admins.areas.index',compact('areas'));
-
+        $periods = Period::Paginate();
+        return view('admins.periods.index',compact('periods'));
     }
 
     /**
@@ -35,7 +27,8 @@ class AreaController extends Controller
      */
     public function create()
     {
-        return view('admins.areas.create');
+        //
+        return view('admins.periods.create');
     }
 
     /**
@@ -47,7 +40,7 @@ class AreaController extends Controller
     public function store(Request $request)
     {
         //
-        $messages = [
+         $messages = [
             
             'max' => 'Valor máximo de caracteres excedido.',
             'required' => 'Este campo é obrigatório.',
@@ -56,7 +49,7 @@ class AreaController extends Controller
         $validator = \Validator::make($request->all(), [
 
             'name' => 'required|max:255',
-            'description' => 'required|max:255',
+            
             
 
         ], $messages);
@@ -75,13 +68,12 @@ class AreaController extends Controller
 
        
          $slug = str_slug($request->input('name'));
-         $area = new Area();
-         $area->name = $request->input('name');
-         $area->description = $request->input('description');
-         $area->slug = $slug;
-         $area->save();
+         $period = new Period();
+         $period->name = $request->input('name');
+         $period->slug = $slug;
+         $period->save();
 
-         return redirect()->route('areas.edit', $area->id)
+         return redirect()->route('periods.edit', $period->id)
          ->with('status', 'salva com sucesso');
         }
     }
@@ -103,10 +95,10 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Area $area)
+    public function edit(Period $period)
     {
         //
-        return view ('admins.areas.edit',compact('area'));
+        return view ('admins.periods.edit',compact('period'));
     }
 
     /**
@@ -116,11 +108,11 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Area $area)
+    public function update(Request $request, Period $Period)
     {
         //
-        $area->update($request->all());
-        return redirect()->route('areas.index', $area->id)
+        $period->update($request->all());
+        return redirect()->route('periods.index', $period->id)
         ->with('status', 'editada com sucesso');
     }
 
@@ -130,7 +122,7 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Area $area)
+    public function destroy(Period $period)
     {
         //
         $area->delete();
