@@ -1111,5 +1111,18 @@ sub-footer Section
   width: 100%;
   padding-top: 6em;
 }
-
+.campanhas-ativas .get-started-btn {
+  background: #5643B0;
+  display: inline-block;
+  padding: 6px 30px;
+  border-radius: 20px;
+  color: #fff;
+  transition: none;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+}
+.campanhas-ativas .get-started-btn:hover{
+  background: rgba(74, 186, 167, 1);
+}
 
