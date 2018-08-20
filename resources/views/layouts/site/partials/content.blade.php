@@ -134,12 +134,12 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-center">
-                     <p>Acabou o sufoco de conversões complexas, de pontos que expiram toda hora. Agora, você pode acumular pontos em tempo real para usar de um jeito fácil com o que você realmente quer. No Me Salva Aí, você só tem a ganhar.</p> 
-                 </div>
-             </div>
-         </div>
-     </div>
- </section><!-- #section-four -->
+                       <p>Acabou o sufoco de conversões complexas, de pontos que expiram toda hora. Agora, você pode acumular pontos em tempo real para usar de um jeito fácil com o que você realmente quer. No Me Salva Aí, você só tem a ganhar.</p> 
+                   </div>
+               </div>
+           </div>
+       </div>
+   </section><!-- #section-four -->
 
     <!--==========================
       Section Mimos
@@ -228,8 +228,7 @@
                                 <small class="text-muted float-left">{{ FormatTime::diasRestantes($campanha->start_date, $campanha->end_date) }} Dias restantes</small>
                             </p>
                             <div style="margin: 20px; margin-top: 50px;" width="100%" align="center">
-                                <a href="{{ route('show.campanha', $campanha->slug) }}" title="Doar" class="btn-msa-white" style="padding: 
-                                13px 30px;">Doar</a>
+                                <a href="{{ route('show.campanha', $campanha->slug) }}" title="Doar"  class="get-started-btn">Doar</a>
                             </div>
                             <p class="card-text float-right"><small class="text-muted">{{ \FormatTime::LongTimeFilter($campanha->created_at) }}</small></p>
                         </div> 
@@ -436,7 +435,7 @@
       <section id="sub-footer" class="sub-footer-bg">
           <div class="container">
             <div class="row" data-aos="fade-up">
-                <div class="col-4">
+                <div class="col-3">
                     <div class="social-links">
                         <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
@@ -445,11 +444,11 @@
                         <a href="#" class="linkedin"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-9">
                     <nav class="footer-links text-lg-right text-center pt-2 pt-lg-2">
                         <a href="#" class="scrollto"><i class="fas fa-envelope"></i> info@meusite.com</a>
                         <a href="#" class="scrollto"><i class="fas fa-phone"></i> (11) 3456-7890</a>
-                        <a href="#" class="scrollto"><i class="fas fa-map-marker-alt"></i> Av. Bernardino de Campos, 98 São Paulo, SP</a>
+                        <a href="#" class="scrollto"><i class="fas fa-map-marker-alt"></i> Rodovia BR 101, km 197 - Capoeiruçu, Cachoeira - BA, 44300-000</a>
                     </nav>
                 </div>
             </div>
