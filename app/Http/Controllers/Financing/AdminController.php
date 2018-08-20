@@ -124,7 +124,7 @@ class AdminController extends Controller
         $student->save();
 
         $request->session()->put('student_id', $student->id);
-        return redirect()->route('create.camping')->with('status', 'O cadastro foi completado, falta pouco para criar sua campanha RATUITAMENTE');
+        return redirect()->route('create.camping')->with('status', 'O cadastro foi completado, falta pouco para criar sua campanha GRATUITAMENTE.');
     }
 
     public function editStudent(Request $request, $idStudent)

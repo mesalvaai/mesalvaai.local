@@ -96,11 +96,11 @@
             </div>
             <div class="col-lg-6">
              <div class="col-lg-8">
-              <h3>Use seus pontos para apagar mensalidades na faculdade</h3>
+              <h3>Use seus pontos para pagar mensalidades na faculdade</h3>
             </div>
             <div class="col-lg-8 espaco-divs">
               Chega de produtos inúteis, vôos impossíveis e de transferir para cá e para lá. Criamos um programa para você usar seus pontos com compras que você faz normalmente.<br><br>
-            A cada gasto que você apagar, você receberá um crédito na sua fatura. E você faz essa troca em segundos, direto no app!</p>
+            A cada gasto que você pagar, você receberá um crédito na sua fatura. E você faz essa troca em segundos, direto no app!</p>
           </div>
         </div>
       </div>
@@ -192,7 +192,7 @@
             <div class="col-lg-8 offset-lg-2">
               <div class="qs-child-bg text-center">
                 <h3>Pontuar é fácil. Experimentar é melhor.</h3>
-                <p>Basta escolher seu curso e instituição e vó alá, divista-se com os Mimos</p>
+                <p>Basta escolher seu curso e instituição e vó alá, divirta-se com os Mimos</p>
                 <div>
                   <a href="#" class="get-started-btn">Buscar bolsa</a>
                 </div>

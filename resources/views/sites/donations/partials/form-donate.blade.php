@@ -39,77 +39,78 @@
 {{-- {!! Form::hidden('user_id', $encrypted) !!}
 {!! Form::hidden('user_id', $decrypted) !!} --}}
 <div class="form-group row">
-    {!! Form::label('full_name', 'Nome completo', ['class' => 'col-sm-3 col-form-label'] ) !!}
-    <div class="col-sm-9">
-      	{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control']) !!}
-      	@if ($errors->has('full_name'))
-        	<span class="invalid-feedback" style="display: block;">
-            	<strong>{{ $errors->first('full_name') }}</strong>
-        	</span>
-    	@endif
-    </div>
+	{!! Form::label('full_name', 'Nome completo', ['class' => 'col-sm-3 col-form-label'] ) !!}
+	<div class="col-sm-9">
+		{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control']) !!}
+		@if ($errors->has('full_name'))
+		<span class="invalid-feedback" style="display: block;">
+			<strong>{{ $errors->first('full_name') }}</strong>
+		</span>
+		@endif
+	</div>
 </div>
 
 <div class="form-group row">
-    {!! Form::label('email', 'E-mail', ['class' => 'col-sm-3 col-form-label'] ) !!}
-    <div class="col-sm-9">
-      	{!! Form::email('email', null, ['class' => $errors->has('email') ? 'form-control is-invalid' : 'form-control']) !!}
-      	@if ($errors->has('email'))
-        	<span class="invalid-feedback" style="display: block;">
-            	<strong>{{ $errors->first('email') }}</strong>
-        	</span>
-    	@endif
-    </div>
+	{!! Form::label('email', 'E-mail', ['class' => 'col-sm-3 col-form-label'] ) !!}
+	<div class="col-sm-9">
+		{!! Form::email('email', null, ['class' => $errors->has('email') ? 'form-control is-invalid' : 'form-control']) !!}
+		@if ($errors->has('email'))
+		<span class="invalid-feedback" style="display: block;">
+			<strong>{{ $errors->first('email') }}</strong>
+		</span>
+		@endif
+	</div>
 </div>
 
 <div class="form-group row">
-    {!! Form::label('data_of_birth', 'E-mail', ['class' => 'col-sm-3 col-form-label'] ) !!}
-    <div class="col-sm-4">
-      	{!! Form::date('data_of_birth', null, ['class' => $errors->has('data_of_birth') ? 'form-control is-invalid' : 'form-control']) !!}
-      	@if ($errors->has('data_of_birth'))
-        	<span class="invalid-feedback" style="display: block;">
-            	<strong>{{ $errors->first('data_of_birth') }}</strong>
-        	</span>
-    	@endif
-    </div>
+	{!! Form::label('data_of_birth', 'Data de nascimento', ['class' => 'col-sm-3 col-form-label'] ) !!}
+	<div class="col-sm-4">
+		{!! Form::text('data_of_birth', null, ['class' => $errors->has('data_of_birth') ? 'form-control is-invalid' : 'form-control', 'placeholder' => '00/00/0000']) !!}
+		@if ($errors->has('data_of_birth'))
+		<span class="invalid-feedback" style="display: block;">
+			<strong>{{ $errors->first('data_of_birth') }}</strong>
+		</span>
+		@endif
+	</div>
 </div>
 
 <div class="form-group row">
-    {!! Form::label('celular', 'Celular', ['class' => 'col-sm-3 col-form-label'] ) !!}
-    <div class="col-sm-4">
-      	{!! Form::text('celular', null, ['class' => $errors->has('celular') ? 'form-control is-invalid' : 'form-control']) !!}
-      	@if ($errors->has('celular'))
-        	<span class="invalid-feedback" style="display: block;">
-            	<strong>{{ $errors->first('celular') }}</strong>
-        	</span>
-    	@endif
-    </div>
+	{!! Form::label('celular', 'Celular', ['class' => 'col-sm-3 col-form-label'] ) !!}
+	<div class="col-sm-4">
+		{!! Form::text('celular', null, ['class' => $errors->has('celular') ? 'form-control is-invalid' : 'form-control']) !!}
+		@if ($errors->has('celular'))
+		<span class="invalid-feedback" style="display: block;">
+			<strong>{{ $errors->first('celular') }}</strong>
+		</span>
+		@endif
+	</div>
 </div>
 
 <div class="form-group row">
-    {!! Form::label('cpf', 'CPF', ['class' => 'col-sm-3 col-form-label'] ) !!}
-    <div class="col-sm-4">
-      	{!! Form::text('cpf', null, ['class' => $errors->has('cpf') ? 'form-control is-invalid' : 'form-control']) !!}
-      	@if ($errors->has('cpf'))
-        	<span class="invalid-feedback" style="display: block;">
-            	<strong>{{ $errors->first('cpf') }}</strong>
-        	</span>
-    	@endif
-    </div>
+	{!! Form::label('cpf', 'CPF', ['class' => 'col-sm-3 col-form-label'] ) !!}
+	<div class="col-sm-4">
+		{!! Form::text('cpf', null, ['class' => $errors->has('cpf') ? 'form-control is-invalid' : 'form-control']) !!}
+		@if ($errors->has('cpf'))
+		<span class="invalid-feedback" style="display: block;">
+			<strong>{{ $errors->first('cpf') }}</strong>
+		</span>
+		@endif
+	</div>
 </div>
 
 
-<div class="form-group pb-4">
-	<h2 class="font-weight-normal">{!! Form::label('title', 'Indique a quantia da Doação') !!}</h2>
+<div class="form-group row">
+	{!! Form::label('title', 'Valor', ['class' => 'col-sm-3 col-form-label']) !!}
 
-	<div class="input-group">
+	<div class="input-group col-md-4">
 		<div class="input-group-prepend">
 			<span class="input-group-text">$R</span>
-			<span class="input-group-text">0,00</span>
+			<span class="input-group-text">0.00</span>
 		</div>
 		{!! Form::text('total_amount', null, ['class' => $errors->has('total_amount') ? 'form-control is-invalid' : 'form-control','id' => 'total_amount', 'required']) !!}
+		<small class="text-warning">(mínimo de R$20,00) </small>
 	</div>
-	<small class="text-muted">(mínimo de R$20,00) </small><br>
+	
 	@if ($errors->has('total_amount'))
 	<span class="invalid-feedback">
 		<strong>{{ $errors->first('total_amount') }}</strong>
@@ -117,100 +118,9 @@
 	@endif
 </div>
 
-<div class="form-group">{{-- 
-	{!! Form::label('full_name', 'Nome completo') !!} --}}
-	<div class="custom-file">
-		{{-- <input type="file" class="custom-file-input" id="inputGroupFile02"/> --}}
-		{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'NOME COMPLETO']) !!}
-	</div>
-	@if ($errors->has('full_name'))
-	<span class="invalid-feedback" style="display: block;">
-		<strong>{{ $errors->first('full_name') }}</strong>
-	</span>
-	@endif
-</div>
-
-
-
-<div class="row">
-	<div class="col-md">
-		<div class="form-group">{{-- 
-			{!! Form::label('full_name', 'Nome completo') !!} --}}
-			<div class="custom-file">
-				{{-- <input type="file" class="custom-file-input" id="inputGroupFile02"/> --}}
-				{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'PAIS']) !!}
-			</div>
-			@if ($errors->has('full_name'))
-			<span class="invalid-feedback" style="display: block;">
-				<strong>{{ $errors->first('full_name') }}</strong>
-			</span>
-			@endif
-		</div>
-	</div>
-	<div class="col-md">
-		<div class="form-group">{{-- 
-			{!! Form::label('full_name', 'Nome completo') !!} --}}
-			<div class="custom-file">
-				{{-- <input type="file" class="custom-file-input" id="inputGroupFile02"/> --}}
-				{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'DIREÇÃO DE FATURAÇÃO']) !!}
-			</div>
-			@if ($errors->has('full_name'))
-			<span class="invalid-feedback" style="display: block;">
-				<strong>{{ $errors->first('full_name') }}</strong>
-			</span>
-			@endif
-		</div>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-md">
-		<div class="form-group">{{-- 
-			{!! Form::label('full_name', 'Nome completo') !!} --}}
-			<div class="custom-file">
-				{{-- <input type="file" class="custom-file-input" id="inputGroupFile02"/> --}}
-				{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'ESTADO']) !!}
-			</div>
-			@if ($errors->has('full_name'))
-			<span class="invalid-feedback" style="display: block;">
-				<strong>{{ $errors->first('full_name') }}</strong>
-			</span>
-			@endif
-		</div>
-	</div>
-	<div class="col-md">
-		<div class="form-group">{{-- 
-			{!! Form::label('full_name', 'Nome completo') !!} --}}
-			<div class="custom-file">
-				{{-- <input type="file" class="custom-file-input" id="inputGroupFile02"/> --}}
-				{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'CIDADE']) !!}
-			</div>
-			@if ($errors->has('full_name'))
-			<span class="invalid-feedback" style="display: block;">
-				<strong>{{ $errors->first('full_name') }}</strong>
-			</span>
-			@endif
-		</div>
-	</div>
-
-	<div class="col-md">
-		<div class="form-group">{{-- 
-			{!! Form::label('full_name', 'Nome completo') !!} --}}
-			<div class="custom-file">
-				{{-- <input type="file" class="custom-file-input" id="inputGroupFile02"/> --}}
-				{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'CODIGO POSTAL']) !!}
-			</div>
-			@if ($errors->has('full_name'))
-			<span class="invalid-feedback" style="display: block;">
-				<strong>{{ $errors->first('full_name') }}</strong>
-			</span>
-			@endif
-		</div>
-	</div>
-
-
-</div>
+<h3>Meios de Pagamentos</h3>
 <div class="row" >
+	
 	<div class="col-6" align="center" >
 		
 		{!! Form::radio('tipo-pagamento',null, null, ['onclick' => 'openCity(event, "cred-card")']) !!}
@@ -229,71 +139,60 @@
 	</div>
 </div>
 <div id="cred-card" class="tabcontent">
-	<h3>Insira os dados do cartão</h3>
-	
-	<div class="form-group">{{-- 
-		{!! Form::label('full_name', 'Nome completo') !!} --}}
-		<div class="custom-file">
-			{{-- <input type="file" class="custom-file-input" id="inputGroupFile02"/> --}}
-			{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'NUMERO DO CARTÃO']) !!}
+	<div class="form-group row">
+		{!! Form::label('card_number', 'Número do cartão:', ['class' => 'col-sm-3 col-form-label'] ) !!}
+		<div class="col-sm-9">
+			{!! Form::text('card_number', null, ['class' => $errors->has('card_number') ? 'form-control is-invalid' : 'form-control']) !!}
+			@if ($errors->has('card_number'))
+			<span class="invalid-feedback" style="display: block;">
+				<strong>{{ $errors->first('card_number') }}</strong>
+			</span>
+			@endif
 		</div>
-		@if ($errors->has('full_name'))
-		<span class="invalid-feedback" style="display: block;">
-			<strong>{{ $errors->first('full_name') }}</strong>
-		</span>
-		@endif
 	</div>
-	<div class="row">
-		<div class="col-md">
-			<div class="form-group">{{-- 
-				{!! Form::label('full_name', 'Mês de vencimento') !!} --}}
-				<div class="custom-file">
-					{{-- <input type="file" class="custom-file-input" id="inputGroupFile02"/> --}}
-					{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'MM']) !!}
-				</div>
-				@if ($errors->has('full_name'))
-				<span class="invalid-feedback" style="display: block;">
-					<strong>{{ $errors->first('full_name') }}</strong>
-				</span>
-				@endif
+	<div class="form-group row">
+		{!! Form::label('card_name', 'Nome do Titular:', ['class' => 'col-sm-3 col-form-label'] ) !!}
+		<div class="col-sm-9">
+			{!! Form::text('card_name', null, ['class' => $errors->has('card_name') ? 'form-control is-invalid' : 'form-control']) !!}
+			@if ($errors->has('card_name'))
+			<span class="invalid-feedback" style="display: block;">
+				<strong>{{ $errors->first('card_name') }}</strong>
+			</span>
+			@endif
+		</div>
+	</div>
+	<?php  $mes = [1=>'Janeiro', 2 =>'Fevereiro', 3 =>'Março', 4 =>'Abril', 5 =>'Maio', 6 =>'Junho', 7 =>'Julho', 8 =>'Agosto', 9 =>'Setembro', 10 =>'Outubro', 11 =>'Novembro', 12 =>'Dezembro'] ?>
+	<?php  $dia = [''=>'',1=>1, 2 =>2, 3 =>3, 4 =>4, 5 =>5, 6 =>6, 7 =>7, 8 =>8, 9 =>9, 10 =>10, 11 =>11, 12 =>12, 13 =>13, 14 =>14,
+	15 =>15, 16 =>16, 17 =>17, 18 =>18, 19 =>19, 20 =>20, 21 =>21, 22 =>22, 23 =>23, 24 =>24, 25 =>25, 26 =>26, 27 =>27,
+	28 =>28, 29 =>29, 30 =>30, 31 =>31] ?>
+	<div class="form-group row">
+		{!! Form::label('card_expiration', 'Validade:', ['class' => 'col-sm-3 col-form-label'] ) !!}
+		<div class="col-sm-9 row">
+			<div class="form-group col-xs-12 col-md-6">
+				{!! Form::label('mes', 'Mês') !!}
+				{!! Form::select('mes', $mes, null, ['class' => 'form-control', 'placeholder' => '-- Selecione um mês --', 'required']) !!}
+			</div>
+			<div class="form-group col-xs-12 col-md-6">
+				{!! Form::label('dia', 'Ano') !!}
+				{!! Form::select('dia', $dia, null, ['class' => 'form-control', 'placeholder' => '00', 'required']) !!}
 			</div>
 		</div>
-		<b>/</b>
-		<div class="col-md">
-			<div class="form-group">{{-- 
-				{!! Form::label('full_name', 'Ano de vencimento') !!} --}}
-				<div class="custom-file">
-					{{-- <input type="file" class="custom-file-input" id="inputGroupFile02"/> --}}
-					{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'AA']) !!}
-				</div>
-				@if ($errors->has('full_name'))
-				<span class="invalid-feedback" style="display: block;">
-					<strong>{{ $errors->first('full_name') }}</strong>
-				</span>
-				@endif
-			</div>
-		</div>
+	</div>
 
-		<div class="col-md">
-			<div class="form-group">{{-- 
-				{!! Form::label('full_name', 'Nome completo') !!} --}}
-				<div class="custom-file">
-					{{-- <input type="file" class="custom-file-input" id="inputGroupFile02"/> --}}
-					{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'CVV']) !!}
-				</div>
-				@if ($errors->has('full_name'))
-				<span class="invalid-feedback" style="display: block;">
-					<strong>{{ $errors->first('full_name') }}</strong>
-				</span>
-				@endif
-			</div>
+	<div class="form-group row">
+		{!! Form::label('card_cvc', 'Código de segurança: ', ['class' => 'col-sm-3 col-form-label'] ) !!}
+		<div class="col-sm-9">
+			{!! Form::text('card_cvc', null, ['class' => $errors->has('card_cvc') ? 'form-control is-invalid' : 'form-control']) !!}
+			@if ($errors->has('card_cvc'))
+			<span class="invalid-feedback" style="display: block;">
+				<strong>{{ $errors->first('card_cvc') }}</strong>
+			</span>
+			@endif
 		</div>
 	</div>
 </div>
 
-
-
-{!! Form::hidden('student_id', (session()->has('student_id')) ? session()->get('student_id') : $campanha->student_id, ['readonly']) !!}
+<br>
 
 <div class="row">{{-- 
 	<div class="col-md">
@@ -308,9 +207,18 @@
 </div>
 
 @section('scripts')
+<script src="{{ asset('site/js/jquery.mask.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('site//lib/maskMoney/jquery.maskMoney.min.js') }}" type="text/javascript"></script>
 <script>
-	$("#total_amount").maskMoney();
+	
+	(function( $ ) {
+		$(function() {
+			$("#total_amount").maskMoney();
+			$("#card_number").mask("0000 0000 0000 0000");
+			$("#card_cvc").mask("000");
+			$("#data_of_birth").mask("00/00/0000");
+		});
+	})(jQuery);
 </script>
 
 <script>
@@ -327,6 +235,7 @@
 		document.getElementById(optionPayment).style.display = "block";
 		evt.currentTarget.className += " active";
 	}
+
 </script>
 
 

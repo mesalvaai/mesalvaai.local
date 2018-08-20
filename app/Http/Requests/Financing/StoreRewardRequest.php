@@ -26,7 +26,7 @@ class StoreRewardRequest extends FormRequest
     {
         $rules = [];
         $rules = [
-            'title'    =>'required|min:10|max:100',
+            'title'    =>'required|min:5|max:100',
             'donation'   =>'required',
             'description'   =>'required',
             'delivery_date' => 'required',
@@ -41,24 +41,28 @@ class StoreRewardRequest extends FormRequest
         //}
 
         if ($request['quantity'] == null and $request['unlimited'] == null) {
-              $rules['quantity'] = 'required';
-        }
+          $rules['quantity'] = 'required';
+      }
 
         // if ($this->attributes->get('some-key') == 'some-value') {
         //     $this->attributes->set('key', 'value');
         // }
 
-        return $rules;
-    }
-    
-    public function messages(){
-        return [
-            'required' => 'O campo ":attribute" é obrigatório!',
-            'numeric' => 'O campo ":attribute" deve ser um número!',
-            'min' => 'O campo ":attribute" deve ter no mínimo :min caracteres!',
-            'max' => 'O campo ":attribute" deve ter no maximo :max caracteres!',
-            'unique' => 'Este ":attribute" já se encontra cadastrado no sistema!',
-            'quantity.required' => 'Precissa prencher uma quantidade ou selecionar ilimitado',
-        ];
-    }
+      return $rules;
+  }
+
+  public function messages(){
+    return [
+        'numeric' => 'O campo ":attribute" deve ser um número.',
+
+        'title.min' => 'O título da sua recompensa deve ter no mínimo :min caracteres.',
+        'title.max' => 'O título da sua recompensa deve ter no máximo :max caracteres.',
+
+        'title.required' => 'Você deve escolher um título para a sua recompensa.',
+        'donation.required' => 'O campo de doação é obrigatório.',
+        'description.required' => 'O campo de descrição é obrigatório.',
+        'delivery_mode.required' => 'Você deve selecionar um meio de entrega para a sua recompensa.',
+        'quantity.required' => 'Você precisa prencher uma quantidade ou selecionar ilimitado.',
+    ];
+}
 }

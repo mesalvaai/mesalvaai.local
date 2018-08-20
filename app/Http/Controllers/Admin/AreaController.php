@@ -16,13 +16,13 @@ class AreaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
+
 
 
     public function index()
     {
         //
-        
+
         $areas = Area::Paginate();
         return view('admins.areas.index',compact('areas'));
 
@@ -47,14 +47,41 @@ class AreaController extends Controller
     public function store(Request $request)
     {
         //
+        $messages = [
+            'name.unique' => 'Já existe uma categoria com este nome.',
+            'max' => 'Valor máximo de caracteres excedido.',
+            'required' => 'Este campo é obrigatório.',
+        ];
+
+        $validator = \Validator::make($request->all(), [
+
+            'name' => 'bail|required|unique:categories|max:255',
+            'description' => 'bail|required|max:255',
+            'slug' => 'bail|required|max:1',
+
+        ], $messages);
+
+        if ($validator->fails()) {
+
+            return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();  
+
+
+        }
+        else
+        {
+
+
+       
          $slug = str_slug($request->input('name'));
          $area = new Area();
          $area->name = $request->input('name');
          $area->description = $request->input('description');
          $area->slug = $slug;
          $area->save();
-        
-     }
+        }
+    }
 
     /**
      * Display the specified resource.
@@ -105,6 +132,6 @@ class AreaController extends Controller
         //
         $area->delete();
 
-     return back()->with('status', 'excluída com sucesso');
+        return back()->with('status', 'excluída com sucesso');
     }
 }

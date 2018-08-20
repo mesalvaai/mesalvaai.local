@@ -86,44 +86,47 @@
 
  $(document).ready(function() {
 
-    $("#encrypt").click(function() {
-      var cc = new Moip.CreditCard({
-        number  : $("#number").val(),
-        cvc     : $("#cvc").val(),
-        expMonth: $("#month").val(),
-        expYear : $("#year").val(),
-        pubKey  : key
+  $("#encrypt").click(function() {
+    var cc = new Moip.CreditCard({
+      number  : $("#number").val(),
+      cvc     : $("#cvc").val(),
+      expMonth: $("#month").val(),
+      expYear : $("#year").val(),
+      pubKey  : key
     });
-      console.log(cc);
-      if( cc.isValid()){
-        $("#encrypted_value").val(cc.hash());
+    console.log(cc);
+    if( cc.isValid()){
+      $("#encrypted_value").val(cc.hash());
     }
     else{
-        $("#encrypted_value").val('');
-        alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
+      $("#encrypted_value").val('');
+      alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
     }
 
     var hash = $("#encrypted_value").val();
 
     var base64 = btoa(hash);
 
+    location.href = '/pagamento-credit-card/' + base64; 
+    // $.get('/pagamento-credit-card/'  + base64, function(retorno){
 
-    $.get('/pagamento-credit-card/'  + base64, function(retorno){
+    //     alert(retorno);
 
-        alert(retorno);
-    }
 
-    );
+    // );
+  });
+
 });
 
-});
+ function redirecionar(item) { 
+  // location.href = '{{route('moip')}}'; 
+}
+function gerar_boleto(){
 
- function gerar_boleto(){
-
-     window.open('/boleto', '_blank');
+ window.open('/boleto', '_blank');
        // window.location.href = "/boleto";
 
-   }
+     }
 
 
 // function MM_goToURL() {

@@ -195,152 +195,152 @@
 			- Custo de produção e envio das recompensas. <br>
 		</p>
 
-           	Quer ajuda para calcular sua meta? <a href="" data-toggle="modal" data-target="#explication" title="">Veja dicas aqui </a></p>
-			<!-- Modal -->
-			<div class="modal fade bd-example-modal-lg" id="explication" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalCenterTitle">Dicas</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<h5>Calculando Porcentagem</h5>
-							<p>Primeiro considere o capital que você precisa (ex. R$ 5.000,00), depois lembre que desse valor 10% é taxa de serviço da plataforma Me Salva Aí (ex. R$5.000,00-10%=R$4.500,00), ou seja seu saldo final será de R$4.500,00. Lembrando sempre que independente da meta alcançada a taxa de 10% sobre o valor arrecadado se mantém, por isso orientamos sempre que ao calcular sua meta incluir os valores dos serviços da Plataforma Me Salva Aí.
-							Exemplo: Meta=R$5.000,00; Taxa=10% (R$500,00); Saldo=R$4.500,00</p>
-							<hr>
-							<h5>Calculando Frete e Produção de Recompensas</h5>
-							<p>Ao criar sua campanha se decidir oferecer recompensas lembre-se de que todos os custos para produzir e enviar são por sua conta, “orientamos que calcule sua meta considerando todos os custos da produção e envio das recompensas” por isso antes certifique nos <a href="http://www2.correios.com.br/sistemas/precosPrazos/"  target="_blank" title="Correios">correios</a> prazo de entrega, valor unitário de cada envio. Lembre-se, as recompensas são valores emocionais para você e para seus doadores</p>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-						</div>
+		Quer ajuda para calcular sua meta? <a href="" data-toggle="modal" data-target="#explication" title="">Veja dicas aqui </a></p>
+		<!-- Modal -->
+		<div class="modal fade bd-example-modal-lg" id="explication" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">Dicas</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<h5>Calculando Porcentagem</h5>
+						<p>Primeiro considere o capital que você precisa (ex. R$ 5.000,00), depois lembre que desse valor 10% é taxa de serviço da plataforma Me Salva Aí (ex. R$5.000,00-10%=R$4.500,00), ou seja seu saldo final será de R$4.500,00. Lembrando sempre que independente da meta alcançada a taxa de 10% sobre o valor arrecadado se mantém, por isso orientamos sempre que ao calcular sua meta incluir os valores dos serviços da Plataforma Me Salva Aí.
+						Exemplo: Meta=R$5.000,00; Taxa=10% (R$500,00); Saldo=R$4.500,00</p>
+						<hr>
+						<h5>Calculando Frete e Produção de Recompensas</h5>
+						<p>Ao criar sua campanha se decidir oferecer recompensas lembre-se de que todos os custos para produzir e enviar são por sua conta, “orientamos que calcule sua meta considerando todos os custos da produção e envio das recompensas” por isso antes certifique nos <a href="http://www2.correios.com.br/sistemas/precosPrazos/"  target="_blank" title="Correios">correios</a> prazo de entrega, valor unitário de cada envio. Lembre-se, as recompensas são valores emocionais para você e para seus doadores</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 					</div>
 				</div>
 			</div>
-
-
 		</div>
+
+
 	</div>
-	<div class="form-group col-md-4 offset-md-4">
-		{!! Form::label('goal', 'Valor da meta*:') !!}
-		<div class="input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text">R$</span>
-				<span class="input-group-text">0,00</span>
-			</div>
-			{!! Form::text('goal', null, ['class' => $errors->has('goal') ? 'form-control is-invalid' : 'form-control', 'data-thousands' => '.', 'data-decimal' => ',', 'required']) !!}
+</div>
+<div class="form-group col-md-4 offset-md-4">
+	{!! Form::label('goal', 'Valor da meta*:') !!}
+	<div class="input-group">
+		<div class="input-group-prepend">
+			<span class="input-group-text">R$</span>
+			<span class="input-group-text">0,00</span>
 		</div>
-		<small class="text-muted">(mínimo de R$500,00) </small><br>
-		
-		
+		{!! Form::text('goal', null, ['class' => $errors->has('goal') ? 'form-control is-invalid' : 'form-control', 'data-thousands' => '.', 'data-decimal' => ',', 'required']) !!}
 		@if ($errors->has('goal'))
 		<span class="invalid-feedback">
 			<strong>{{ $errors->first('goal') }}</strong>
 		</span>
 		@endif
 	</div>
-	<br>
-	<h4 class="font-weight-bold">6. Qual será a duração da sua campanha?</h4><br>
-	<div class="row">
+	<small class="text-muted">(mínimo de R$500,00) </small><br>
+	
+	
+</div>
+<br>
+<h4 class="font-weight-bold">6. Qual será a duração da sua campanha?</h4><br>
+<div class="row">
 
-		<div class="form-group col-md">
-			{!! Form::label('start_date', 'Início da Campamna') !!}
-			{!! Form::date('start_date', \Carbon\Carbon::now(), ['class' => $errors->has('start_date') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
-			<small class="text-muted">(máximo de 60 dias e mínimo 1 dia)</small>
-			@if ($errors->has('start_date'))
-			<span class="invalid-feedback">
-				<strong>{{ $errors->first('start_date') }}</strong>
-			</span>
-			@endif
-		</div>
-
-		<div class="form-group col-md">
-			{!! Form::label('end_date', 'Fim da Campanha') !!}
-			{!! Form::date('end_date', \Carbon\Carbon::now(), ['class' => $errors->has('end_date') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
-			@if ($errors->has('end_date'))
-			<span class="invalid-feedback">
-				<strong>{{ $errors->first('end_date') }}</strong>
-			</span>
-			@endif
-		</div>
-
+	<div class="form-group col-md">
+		{!! Form::label('start_date', 'Início da Campamna') !!}
+		{!! Form::date('start_date', \Carbon\Carbon::now(), ['class' => $errors->has('start_date') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+		<small class="text-muted">(máximo de 60 dias e mínimo 1 dia)</small>
+		@if ($errors->has('start_date'))
+		<span class="invalid-feedback">
+			<strong>{{ $errors->first('start_date') }}</strong>
+		</span>
+		@endif
 	</div>
-	<br>
-	<h4 class="font-weight-bold">7. Adicione suas redes sociais para promover sua campanha (opcional)</h4><br>
-	<div class="row">
 
-		<div class="form-group col-md">
-			{!! Form::label('facebook', 'Início da Campanha') !!}
-			{!! Form::text('facebook', 'https://www.facebook.com/', ['class' => 'form-control']) !!}
-			<small class="text-warning">(Ex: https://www.facebook.com/<b>nome-de-usuario</b>)</small>
-		</div>
-
-		<div class="form-group col-md">
-			{!! Form::label('twitter', 'Início da Campanha') !!}
-			{!! Form::text('twitter', 'https://twitter.com/', ['class' => 'form-control']) !!}
-			<small class="text-warning">(Ex: https://twitter.com/<b>nome-de-usuario</b>)</small>
-		</div>
-
-		<div class="form-group col-md">
-			{!! Form::label('instagram', 'Início da Campanha') !!}
-			{!! Form::text('instagram', 'https://www.instagram.com/', ['class' => 'form-control']) !!}
-			<small class="text-warning">(Ex: https://www.instagram.com/<b>nome-de-usuario</b>)</small>
-		</div>
-
+	<div class="form-group col-md">
+		{!! Form::label('end_date', 'Fim da Campanha') !!}
+		{!! Form::date('end_date', \Carbon\Carbon::now(), ['class' => $errors->has('end_date') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+		@if ($errors->has('end_date'))
+		<span class="invalid-feedback">
+			<strong>{{ $errors->first('end_date') }}</strong>
+		</span>
+		@endif
 	</div>
-	<div class="row pt-5 justify-content-center text-center">
-		<div class="col-4">
-			<div class="card bg-light mb-3" style="max-width: 18rem;">
-				<div class="card-body">
-					<h5 class="card-title"><a href="#" title=""><strong>POLÍTICA DE PRIVACIDADE</strong></a></h5>
-				</div>
+
+</div>
+<br>
+<h4 class="font-weight-bold">7. Adicione suas redes sociais para promover sua campanha (opcional)</h4><br>
+<div class="row">
+
+	<div class="form-group col-md">
+		{!! Form::label('facebook', 'Início da Campanha') !!}
+		{!! Form::text('facebook', 'https://www.facebook.com/', ['class' => 'form-control']) !!}
+		<small class="text-warning">(Ex: https://www.facebook.com/<b>nome-de-usuario</b>)</small>
+	</div>
+
+	<div class="form-group col-md">
+		{!! Form::label('twitter', 'Início da Campanha') !!}
+		{!! Form::text('twitter', 'https://twitter.com/', ['class' => 'form-control']) !!}
+		<small class="text-warning">(Ex: https://twitter.com/<b>nome-de-usuario</b>)</small>
+	</div>
+
+	<div class="form-group col-md">
+		{!! Form::label('instagram', 'Início da Campanha') !!}
+		{!! Form::text('instagram', 'https://www.instagram.com/', ['class' => 'form-control']) !!}
+		<small class="text-warning">(Ex: https://www.instagram.com/<b>nome-de-usuario</b>)</small>
+	</div>
+
+</div>
+<div class="row pt-5 justify-content-center text-center">
+	<div class="col-4">
+		<div class="card bg-light mb-3" style="max-width: 18rem;">
+			<div class="card-body">
+				<a href="#" title=""><strong>POLÍTICA DE PRIVACIDADE</strong></a>
 			</div>
 		</div>
-		<div class="col-4">
-			<div class="card bg-light mb-3" style="max-width: 18rem;">
-				<div class="card-body">
-					<h5 class="card-title"><a href="#" title=""><strong>TERMOS DE <br> USO</a></strong></h5>
-				</div>
+	</div>
+	<div class="col-4">
+		<div class="card bg-light mb-3" style="max-width: 18rem;">
+			<div class="card-body">
+				<a href="#" title=""><strong>TERMOS DE USO</a></strong>
 			</div>
 		</div>
-		<div class="form-check form-check-inline">
-			{{-- {{ Form::checkbox('terms_of_use', old('terms_of_use') ? 'checked' : '', null, ['class' => 'form-check-input']) }} --}}
-			{!! Form::checkbox('terms_of_use',1, null,['class' => $errors->has('terms_of_use') ? 'form-check-input is-invalid' : 'form-check-input', 'required' => 'required'])!!}
-			<label class="form-check-label" for="inlineCheckbox1">Eu li e estou de acordo com os Termos de Uso, Políticas de Privacidade e Termos de uso *</label>	
-			@if ($errors->has('terms_of_use'))
-			<span class="invalid-feedback">
-				<strong>{{ $errors->first('terms_of_use') }}</strong>
-			</span>
-			@endif
-		</div>
 	</div>
-
-	{!! Form::hidden('student_id', (session()->has('student_id')) ? session()->get('student_id') : $student_id, ['readonly']) !!}
-	{!! Form::hidden('status', 0,  ['readonly']) !!}
-
-	<b>Você está quase lá! Pode continuar e lançar sua campanha só quando quiser.</b><br><br>
-	<div class="row">
-		<div class="col-md">
-			{{ Form::button('Aicionar recompensas (opcional)', ['type' => 'submit', 'name' =>'op', 'value' => 'add_r', 'class' => 'btn btn-success btn-sm w-100'] )  }}
-		</div>
-		<div class="col-md">
-			{{ Form::button('Salvar', ['type' => 'submit', 'name' =>'op', 'value' => 'add', 'class' => 'btn btn-msa btn-sm w-100'] )  }}
-		</div>
-		<div class="col-md">
-			{{ Form::button('Visualizar e lançar seu campanha', ['type' => 'submit', 'name' =>'op', 'value' => 'show_c', 'class' => 'btn btn-info btn-sm w-100'] )  }}
-		</div>
+	<div class="form-check form-check-inline">
+		{{-- {{ Form::checkbox('terms_of_use', old('terms_of_use') ? 'checked' : '', null, ['class' => 'form-check-input']) }} --}}
+		{!! Form::checkbox('terms_of_use',1, null,['class' => $errors->has('terms_of_use') ? 'form-check-input is-invalid' : 'form-check-input', 'required' => 'required'])!!}
+		<label class="form-check-label" for="inlineCheckbox1">Eu li e estou de acordo com os Termos de Uso, Políticas de Privacidade e Termos de uso *</label>	
+		@if ($errors->has('terms_of_use'))
+		<span class="invalid-feedback">
+			<strong>{{ $errors->first('terms_of_use') }}</strong>
+		</span>
+		@endif
 	</div>
-	<hr>
-	<b><strong class="text-msa">NOVIDADE!</strong></b> Ao clicar em qualquer um destes botões, o seu rascunho estará salvo para edição ou lançamento imediato e futuro.
-	@section('scripts')
-	<script src="{{ asset('vendor/tinymce/tinymce.min.js') }}" type="text/javascript"></script>
-	<script>
-		var editor_config = {
-			path_absolute : "/",
-			selector: "textarea#description",
+</div>
+
+{!! Form::hidden('student_id', (session()->has('student_id')) ? session()->get('student_id') : $student_id, ['readonly']) !!}
+{!! Form::hidden('status', 0,  ['readonly']) !!}
+
+<b>Você está quase lá! Pode continuar e lançar sua campanha só quando quiser.</b><br><br>
+<div class="row">
+	<div class="col-md">
+		{{ Form::button('Aicionar recompensas (opcional)', ['type' => 'submit', 'name' =>'op', 'value' => 'add_r', 'class' => 'btn btn-success btn-sm w-100'] )  }}
+	</div>
+	<div class="col-md">
+		{{ Form::button('Salvar', ['type' => 'submit', 'name' =>'op', 'value' => 'add', 'class' => 'btn btn-msa btn-sm w-100'] )  }}
+	</div>
+	<div class="col-md">
+		{{ Form::button('Visualizar e lançar seu campanha', ['type' => 'submit', 'name' =>'op', 'value' => 'show_c', 'class' => 'btn btn-info btn-sm w-100'] )  }}
+	</div>
+</div>
+<hr>
+<b><strong class="text-msa">NOVIDADE!</strong></b> Ao clicar em qualquer um destes botões, o seu rascunho estará salvo para edição ou lançamento imediato e futuro.
+@section('scripts')
+<script src="{{ asset('vendor/tinymce/tinymce.min.js') }}" type="text/javascript"></script>
+<script>
+	var editor_config = {
+		path_absolute : "/",
+		selector: "textarea#description",
         //selector: "textarea.my-editor",
         plugins: [
         "advlist autolink lists link image charmap print preview hr anchor pagebreak",

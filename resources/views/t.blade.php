@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
@@ -43,35 +43,42 @@
     {!! Form::radio('tipo-pagamento',null, null, ['onclick' => 'openCity(event, "cred-card")']) !!}
     {!! Form::radio('tipo-pagamento', null, null,['onclick' => 'openCity(event, "boleto")']) !!}
 
-    <!--   <input type = "radio" name="" onclick="openCity(event, 'cred-card')">Cartão de crédito</button> -->
-    <!-- <input type = "radio" name="tipo-pagamento" onclick="openCity(event, 'boleto')">Boleto</button> -->
-  </div>
+      <input type = "radio" name="" onclick="openCity(event, 'cred-card')">Cartão de crédito</button>
+     <input type = "radio" name="tipo-pagamento" onclick="openCity(event, 'boleto')">Boleto</button>
+    </div>
 
-  <div id="cred-card" class="tabcontent">
-    <h3>London</h3>
-    <p>London is the capital city of England.</p>
-  </div>
+    <div id="cred-card" class="tabcontent">
+      <h3>London</h3>
+      <p>London is the capital city of England.</p>
+    </div>
 
-  <div id="boleto" class="tabcontent">
-    <h3>Paris</h3>
-    <p>Paris is the capital of France.</p> 
-  </div>
+    <div id="boleto" class="tabcontent">
+      <h3>Paris</h3>
+      <p>Paris is the capital of France.</p> 
+    </div>
 
-  <script>
-    function openCity(evt, cityName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+    <script>
+      function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
       }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(cityName).style.display = "block";
-      evt.currentTarget.className += " active";
-    }
-  </script>
-  <br>
+    </script>
+    <br>
 
 
+  -->
+
+  @php
+
+dd($base64);
+
+  @endphp

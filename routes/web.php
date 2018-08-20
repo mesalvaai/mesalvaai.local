@@ -36,6 +36,7 @@ Route::post('/campanhas/processar-donacao', 'Site\HomeController@donateProcess')
 
 Route::get('/financiamento', 'Site\FinancingController@index')->name('financing.index');
 Route::get('/financiamento/criar-campanha', 'Site\FinancingController@createCamping')->name('create.project');
+Route::get('/financiamento/criar-conta', 'Site\FinancingController@createConta')->name('create.conta');
 Route::get('/mimos', 'Site\HomeController@mimos')->name('mimos');
 Route::get('/test', 'Site\HomeController@test')->name('test');
 Route::get('/cursos', 'Site\CursoController@curso');
@@ -316,7 +317,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('levels/create', 'Admin\LevelController@create')->name('levels.create')
 	->middleware('permission:levels.create');
 	Route::put('levels/{level}', 'Admin\LevelController@update')->name('levels.update')
-	->middleware('permission:roles.edit');
+	->middleware('permission:levels.edit');
 	Route::get('levels/{level}', 'Admin\LevelController@show')->name('levels.show')
 	->middleware('permission:levels.show');
 	Route::delete('levels/{level}', 'Admin\LevelController@destroy')->name('levels.destroy')
@@ -354,4 +355,20 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:areas.destroy');
 	Route::get('areas/{area}/edit', 'Admin\AreaController@edit')->name('areas.edit')
 	->middleware('permission:areas.edit');
+      
+    //Institutions
+        Route::post('institutions/store', 'Admin\InstitutionController@store')->name('institutions.store')
+	->middleware('permission:institutions.create');
+	Route::get('institutions', 'Admin\InstitutionController@index')->name('institutions.index')
+	->middleware('permission:institutions.index');
+	Route::get('institutions/create', 'Admin\InstitutionController@create')->name('institutions.create')
+	->middleware('permission:institutions.create');
+	Route::put('institutions/{institution}', 'Admin\InstitutionController@update')->name('institutions.update')
+	->middleware('permission:institutions.edit');
+	Route::get('institutions/{institution}', 'Admin\InstitutionController@show')->name('institutions.show')
+	->middleware('permission:institutions.show');
+	Route::delete('institutions/{institution}', 'Admin\InstitutionController@destroy')->name('institutions.destroy')
+	->middleware('permission:institutions.destroy');
+	Route::get('institutions/{institution}/edit', 'Admin\InstitutionController@edit')->name('institutions.edit')
+	->middleware('permission:institutions.edit');
 });
