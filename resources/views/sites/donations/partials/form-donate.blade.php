@@ -63,7 +63,7 @@
 </div>
 
 <div class="form-group row">
-    {!! Form::label('data_of_birth', 'E-mail', ['class' => 'col-sm-3 col-form-label'] ) !!}
+    {!! Form::label('data_of_birth', 'Data de nacimento', ['class' => 'col-sm-3 col-form-label'] ) !!}
     <div class="col-sm-4">
       	{!! Form::date('data_of_birth', null, ['class' => $errors->has('data_of_birth') ? 'form-control is-invalid' : 'form-control']) !!}
       	@if ($errors->has('data_of_birth'))
