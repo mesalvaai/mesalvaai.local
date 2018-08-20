@@ -216,7 +216,7 @@
 		{!! Form::radio('tipo-pagamento',null, null, ['onclick' => 'openCity(event, "cred-card")']) !!}
 		{!! Form::label('tipo-pagamento', 'Cartão de crédito') !!}
 		<br>
-		<img src="\site\img\donations\cartao.png"  width= "160" height= "100">
+		<img src="{{ asset('site/img/donations/cartao.png') }}"  width= "160" height= "100">
 
 	</div>
 	
@@ -224,7 +224,7 @@
 		{!! Form::radio('tipo-pagamento', null, null,['onclick' => 'openCity(event, "boleto")']) !!}
 		{!! Form::label('tipo-pagamento', 'Boleto') !!}
 		<br>
-		<img src="\site\img\donations\boleto.png">
+		<img src="{{ asset('site/img/donations/boleto.png') }}">
 
 	</div>
 </div>
