@@ -124,7 +124,7 @@ class AdminController extends Controller
         $student->save();
 
         $request->session()->put('student_id', $student->id);
-        return redirect()->route('create.camping')->with('status', 'O cadastro foi completado, falta pouco para criar sua campanha RATUITAMENTE');
+        return redirect()->route('create.camping')->with('status', 'O cadastro foi completado, falta pouco para criar sua campanha GRATUITAMENTE.');
     }
 
     public function editStudent(Request $request, $idStudent)
@@ -307,9 +307,9 @@ class AdminController extends Controller
         $camping->start_date = $request['start_date'];
         $camping->end_date = $request['end_date'];
         $camping->goal = str_replace(',','.',str_replace('.','',$request['goal']));
-        $camping->institution = $request['institution'];
-        $camping->course = $request['course'];
-        $camping->period = $request['period'];
+        // $camping->institution = $request['institution'];
+        // $camping->course = $request['course'];
+        // $camping->period = $request['period'];
         $camping->location = $request['location'];
         $camping->facebook = $request['facebook'];
         $camping->twitter = $request['twitter'];

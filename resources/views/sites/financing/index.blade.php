@@ -12,11 +12,13 @@
             padding-top: .75rem;
             padding-bottom: .75rem;
         }*/
+      
         .btncomeçar{
         	border-radius: 25px;
         	width: 200px; 
         	height: 50px; 
         	padding-top: 13px;
+
         }
 	</style>
 @endsection
@@ -87,7 +89,7 @@
 				<div class="col-6">
 					<h1 class="text-center text-msa font-weight-bold">Que tal criar sua campanha para fazer aquele intercâmbio com os amigos.</h1>
 					<div class="pt-2 w-50 mr-0 m-auto">
-						<p>Quer ter mais experiência no currículo? No Me Salva Aí você tem a oportunidade de fazer um intercâmbio (sozinho) ou com (amigos) em uma só campanha!</p>
+						<p>Quer ter mais experiência no currículo? No Me Salva Aí você tem a oportunidade de fazer um intercâmbio sozinho ou com amigos em uma só campanha!</p>
 					</div>
 					<div class="box-img-left">
 						<img src="{{ asset('site/img/msa/financiamento-3.jpg') }}" alt="Financiamento Colectivo" class="w-75">
@@ -114,10 +116,10 @@
 						<div class="row">
 							<div class="col-xs-12 col-md-6">
 								<div class="text-center text-white fc-two-text float-right">
-									<h3>Mesadinha do me salva Aí</h3>
+									<h3>Mesadinha do Me Salva Aí</h3>
 									<p>Acabou o sofoco com o financiamento contínuo, e para estudantes
-									que já tenham bolsas de estudos, mas precisam de uma ajudinha para se manter enquanto estudam.
-									enquanto estuda</p>
+									que já tenham bolsas de estudos, mas precisam de uma ajudinha para se manter enquanto estuda.
+									</p>
 								</div>
 						
 							</div>
@@ -166,6 +168,7 @@
 	                <div class="text-center">
 	                	{{-- <a href="#" title="Começa Projetos" class="btn-msa" data-toggle="modal" data-target="#LoginFinancing">Começar Projetos</a> --}}
 	                	<a href="{{ url('/financiamento/criar-campanha') }}" title="Começa Projetos" class="btn-msa" >Começar Projetos</a>
+	                	
 	                </div>
 	            </div>
 	        </div>

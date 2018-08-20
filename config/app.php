@@ -193,7 +193,7 @@ return [
 
         //Moip
         Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
-        Illuminate\Auth\AuthServiceProvider::class,
+        //Illuminate\Auth\AuthServiceProvider::class,
         Artesaos\Moip\Providers\MoipServiceProvider::class, 
 
 
@@ -250,10 +250,6 @@ return [
         'FormatTime' => App\Helpers\FormatTime::class,
         'ProgressBar' => App\Helpers\ProgressBar::class,
         'Image' => Intervention\Image\Facades\Image::class,
-
-
-        'App'     => Illuminate\Support\Facades\App::class,
-        'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Moip'    => Artesaos\Moip\Facades\Moip::class,
 
 

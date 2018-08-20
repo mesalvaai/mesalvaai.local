@@ -106,11 +106,13 @@ return [
         'name' => [
             'required' => 'O campo nome é obrigatório!',
         ],
-        'name' => [
-            'unique' => 'Já existe um campo com esse nome',
+        'email' => [
+            'unique' => 'Este email já está cadastrado.',
         ],
-        'description' => [
-            'required' => 'O campo descrição é obrigatório!',
+        'password' => [
+            'confirmed' => 'As senhas informadas não são iguais.',
+            'min' => 'O campo de senha deve ter pelo menos :min caracteres.',
+            
         ],
     ],
 

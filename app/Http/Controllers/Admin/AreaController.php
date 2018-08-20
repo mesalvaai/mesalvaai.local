@@ -16,17 +16,13 @@ class AreaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
-    public function test()
-    {
 
 
-    }
 
     public function index()
     {
         //
-        
+
         $areas = Area::Paginate();
         return view('admins.areas.index',compact('areas'));
 
@@ -51,14 +47,41 @@ class AreaController extends Controller
     public function store(Request $request)
     {
         //
+        $messages = [
+            'name.unique' => 'Já existe uma categoria com este nome.',
+            'max' => 'Valor máximo de caracteres excedido.',
+            'required' => 'Este campo é obrigatório.',
+        ];
+
+        $validator = \Validator::make($request->all(), [
+
+            'name' => 'bail|required|unique:categories|max:255',
+            'description' => 'bail|required|max:255',
+            'slug' => 'bail|required|max:1',
+
+        ], $messages);
+
+        if ($validator->fails()) {
+
+            return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();  
+
+
+        }
+        else
+        {
+
+
+       
          $slug = str_slug($request->input('name'));
          $area = new Area();
          $area->name = $request->input('name');
          $area->description = $request->input('description');
          $area->slug = $slug;
          $area->save();
-        
-     }
+        }
+    }
 
     /**
      * Display the specified resource.
@@ -77,9 +100,10 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Area $area)
     {
         //
+        return view ('admins.areas.edit',compact('area'));
     }
 
     /**
@@ -89,9 +113,12 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Area $area)
     {
         //
+        $area->update($request->all());
+        return redirect()->route('areas.index', $area->id)
+        ->with('status', 'editada com sucesso');
     }
 
     /**
@@ -100,8 +127,11 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Area $area)
     {
         //
+        $area->delete();
+
+        return back()->with('status', 'excluída com sucesso');
     }
 }
