@@ -12,16 +12,16 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        @endif
+                    @endif
 
-                        @if ($errors->any())
+                    @if ($errors->any())
                         <div class="alert alert-danger alert-dismissable fade show" role="alert">
-
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -31,17 +31,14 @@
                                 @endforeach
                             </ul>
                         </div>
-                        @endif
+                    @endif
 
-
-                        {{ Form::open(['route' => 'institutions.store']) }}
+                    {{ Form::open(['route' => 'institutions.store']) }}
                         @include('admins.institutions.partials.form')
-                        {{ Form::close() }}
-
-
-                    </div>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection

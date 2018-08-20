@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Institutions;
+use App\State;
+use App\City;
+use App\Location;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 
 class InstitutionController extends Controller
 {
@@ -21,6 +25,19 @@ class InstitutionController extends Controller
      return view('admins.institutions.index', compact('institutions'));
     }
 
+    public function getEstados($idPais)
+    {
+      $states = Location::getEstados($idPais);
+      return $states;
+    }
+
+    public function getCidades($idPais, $idEstado)
+    {
+
+    $cities = Location::getCidades($idPais, $idEstado);
+      return $cities;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -28,7 +45,14 @@ class InstitutionController extends Controller
      */
     public function create()
     {
-        return view('admins.institutions.create', compact('institutions'));
+        $countries = Location::getPaises();
+
+     //Add ID do pais do usuário
+     //Brasil id = 3469034
+        $idPais = 3469034;
+
+        $states = Location::getEstados($idPais);
+        return view('admins.institutions.create', compact('states','countries', 'idPais'));
     }
 
     /**

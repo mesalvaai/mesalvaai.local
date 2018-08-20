@@ -22,14 +22,51 @@
 		{!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => '(75) 00000-0000']) !!}
 	</div>
     <div class="form-group">
-	{!! Form::label('slug', 'slug') !!}
-	{!! Form::text('slug', null, ['class' => 'form-control']) !!}
+		{!! Form::label('slug', 'slug') !!}
+		{!! Form::text('slug', null, ['class' => 'form-control']) !!}
+	</div>
 </div>
-</div>
-
-
 
 <div class="row">
+	<div class="form-group col">
+		@if(isset($institution))
+
+		{!! Form::label('country_id', 'País') !!}
+		{!! Form::select('country_id', $countries, null, ['placeholder' => '-- Selecione um Pais --', 'class' => 'form-control', 'required']) !!}
+
+		@else
+
+		{!! Form::label('country_id', 'País') !!}
+		{!! Form::select('country_id', $countries, $idPais, ['placeholder' => '-- Selecione um Pais --', 'class' => 'form-control', 'required']) !!}
+
+		@endif
+	</div>
+
+	<div class="form-group col">
+		{!! Form::label('state_id', 'Estado') !!}
+		{!! Form::select('state_id',$states, null, ['placeholder' => '-- Selecione um estado --', 'class' => 'form-control', 'required']) !!}
+	</div>
+	<div class="form-group col">
+		@if(isset($institution))
+
+		{!! Form::label('city_id', 'Cidade') !!}
+		{!! Form::select('city_id', $cities, null, ['placeholder' => '-- Antes selecione um estado --', 'class' => 'form-control', 'required']) !!}
+
+		@else
+
+		{!! Form::label('city_id', 'Cidade') !!}
+		{!! Form::select('city_id', [], null, ['placeholder' => '-- Antes selecione um estado --', 'class' => 'form-control', 'required']) !!}
+
+		@endif
+	</div>
+
+	<div class="form-group col">
+		{!! Form::label('street', 'Rua') !!}
+		{!! Form::text('street', null, ['class' => 'form-control', 'required']) !!}
+	</div>
+</div>
+
+{{-- <div class="row">
 
 	<div class="form-group col">
 		{!! Form::label('state_id', 'Estado') !!}
@@ -67,7 +104,7 @@
 		{!! Form::label('complement', 'Complemento') !!}
 		{!! Form::text('complement', null, ['class' => 'form-control']) !!}
 	</div>
-</div>
+</div> --}}
 
 <div class="row">
         <div class="form-group col">
@@ -109,7 +146,7 @@ $countries_json = json_encode($countries);
 	
 	
 
-	var studentName = "<?php isset($student) ? print "ok" : print "erro" ?>";
+	var institutionName = "<?php isset($institution) ? print "ok" : print "erro" ?>";
 
 	if($('select[name=state_id]').val() != null && institutionName == "erro"){
 		
@@ -196,4 +233,5 @@ $('select[name=country_id]').change(function(){
 });
 
 </script>
+@endsection
 
