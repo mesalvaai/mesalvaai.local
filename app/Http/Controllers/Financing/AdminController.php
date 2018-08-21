@@ -238,7 +238,7 @@ class AdminController extends Controller
         //Subida de la miniatura
         $image = $request->file('file_path');
         if ($image) {
-            $image_path = time().$image->getClientOriginalName();
+            $image_path = time().'_'.str_random(4).'.'.$image->getClientOriginalExtension();
             \Storage::disk('images')->put($image_path, \File::get($image));
             $camping->file_path = $image_path;
         }
@@ -320,8 +320,10 @@ class AdminController extends Controller
 
         //Subida de la miniatura
         $image = $request->file('file_path');
+
         if ($image) {
-            $image_path = time().$image->getClientOriginalName();
+            //$image_path = time().$image->getClientOriginalName();
+            $image_path = time().'_'.str_random(4).'.'.$image->getClientOriginalExtension();
             \Storage::disk('images')->put($image_path, \File::get($image));
             $camping->file_path = $image_path;
         }
