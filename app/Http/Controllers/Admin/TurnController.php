@@ -25,7 +25,7 @@ class TurnController extends Controller
 
    }
 
-  
+
     /**
      * Show the form for creating a new resource.
      *
@@ -46,29 +46,33 @@ class TurnController extends Controller
      */
     public function store(Request $request)
     {
-       $messages = [
-      'required' => 'Este campo é obrigatório!',
-      'name.unique' => 'Já existe um turn com este título!',
-      'max' => 'Valor máximo de caracteres excedido!',
-     
-    ];
+      $messages = [
+        'required' => 'Este campo é obrigatório!',
+        'name.unique' => 'Já existe um turn com este título!',
+        'max' => 'Valor máximo de caracteres excedido!',
+
+      ];
 
 
-    $validator = \Validator::make($request->all(), [
-      'name' => 'required|unique:turns|max:255',
-      
-    ], $messages);
+      $validator = \Validator::make($request->all(), [
+        'name' => 'required|unique:turns|max:255',
+        
+      ], $messages);
 
-    if ($validator->fails()){
-      return redirect()->back()
-      ->withErrors($validator)
-      ->withInput();  
-    }
+      if ($validator->fails())
+      {
 
+        return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();
+      }
+      else
+      {
 
-      $turns = Turn::create($request->all());
+        $turns = Turn::create($request->all());
 
-      return redirect()->route('turns.edit', $turns->id);
+        return redirect()->route('turns.edit', $turns->id);
+      }
     }
 
     /**
@@ -106,7 +110,7 @@ class TurnController extends Controller
       'required' => 'Este campo é obrigatório!',
       'name.unique' => 'Já existe um turn com este título!',
       'max' => 'Valor máximo de caracteres excedido!',
-     
+
     ];
 
 
@@ -120,7 +124,7 @@ class TurnController extends Controller
       ->withErrors($validator)
       ->withInput();  
     }
-     
+
     
     $turn->update($request->all());
 
