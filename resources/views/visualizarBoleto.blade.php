@@ -8,6 +8,6 @@ echo $print;
 
 <script>
 
-	window.print();
+	//window.print();
 	
 </script>

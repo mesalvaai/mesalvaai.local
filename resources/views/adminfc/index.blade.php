@@ -16,7 +16,8 @@
 				@foreach ($campings as $camping)
 					<div class="card" style="max-width: 319px;">
 					    @if (Storage::disk('images')->has($camping->file_path))
-		                    <img class="card-img-top" data-src="holder.js/100px160/" alt="{{ $camping->title }}" src="{{ url('/miniatura/'. $camping->file_path) }}" data-holder-rendered="true">
+		                    {{-- <img class="card-img-top" data-src="holder.js/100px160/" alt="{{ $camping->title }}" src="{{ url('/miniatura/'. $camping->file_path) }}" data-holder-rendered="true"> --}}
+		                    <a href="#" style="background-image: url({{ url('/miniatura/'. $camping->file_path) }})" class="img-min-campaign"></a>
 		                @endif
 					    <div class="card-body">
 					      	<h5 class="card-title">{{ $camping->title }}</h5>

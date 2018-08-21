@@ -320,43 +320,43 @@ class AdminController extends Controller
 
         //Subida de la miniatura
         $image = $request->file('file_path');
-        // if ($image) {
-        //     $image_path = time().$image->getClientOriginalName();
-        //     \Storage::disk('images')->put($image_path, \File::get($image));
-        //     $camping->file_path = $image_path;
-        // }
         if ($image) {
-            //get filename with extension
-            //$filenamewithextension = $request->file('profile_image')->getClientOriginalName();
-            $filenamewithextension = $image->getClientOriginalName(); //1534820296vestibular.jpg
-            
-
-            //get filename without extension, Ex 1534820358vestibular
-            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-            
-            //get file extension , Ex = jpg
-            $extension = $image->getClientOriginalExtension();
-            
-
-            //filename to store
-            $filenametostore = $filename.'_'.time().'.'.$extension;
-            
-            //Upload File
-            //$request->file('profile_image')->storeAs('public/profile_images', $filenametostore);
-            //$request->file('profile_image')->storeAs('public/profile_images/thumbnail', $filenametostore);
-            $image->storeAs('public/uploads/campanha', $filenametostore);
-            $image->storeAs('public/uploads/campanha/thumbnail', $filenametostore);
-
-
-            //Resize image here
-            $thumbnailpath = public_path('uploads/campanha/thumbnail/'.$filenametostore);
-            //Image::make(Input::file('artist_pic')->getRealPath())->resize(120,75);
-            $img = Image::make($image->getRealPath())->resize(400, 150, function($constraint) {
-                $constraint->aspectRatio();
-            });
-            $img->save($thumbnailpath);
-            $camping->file_path = $thumbnailpath;
+            $image_path = time().$image->getClientOriginalName();
+            \Storage::disk('images')->put($image_path, \File::get($image));
+            $camping->file_path = $image_path;
         }
+        // if ($image) {
+        //     //get filename with extension
+        //     //$filenamewithextension = $request->file('profile_image')->getClientOriginalName();
+        //     $filenamewithextension = $image->getClientOriginalName(); //1534820296vestibular.jpg
+            
+
+        //     //get filename without extension, Ex 1534820358vestibular
+        //     $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+            
+        //     //get file extension , Ex = jpg
+        //     $extension = $image->getClientOriginalExtension();
+            
+
+        //     //filename to store
+        //     $filenametostore = $filename.'_'.time().'.'.$extension;
+            
+        //     //Upload File
+        //     //$request->file('profile_image')->storeAs('public/profile_images', $filenametostore);
+        //     //$request->file('profile_image')->storeAs('public/profile_images/thumbnail', $filenametostore);
+        //     $image->storeAs('public/uploads/campanha', $filenametostore);
+        //     $image->storeAs('public/uploads/campanha/thumbnail', $filenametostore);
+
+
+        //     //Resize image here
+        //     $thumbnailpath = public_path('uploads/campanha/thumbnail/'.$filenametostore);
+        //     //Image::make(Input::file('artist_pic')->getRealPath())->resize(120,75);
+        //     $img = Image::make($image->getRealPath())->resize(400, 150, function($constraint) {
+        //         $constraint->aspectRatio();
+        //     });
+        //     $img->save($thumbnailpath);
+        //     $camping->file_path = $thumbnailpath;
+        // }
  
         $camping->save();
 
@@ -372,36 +372,6 @@ class AdminController extends Controller
             return redirect()->route('view.camping', $camping->id)->with('status', 'Olha como esta ficando, pode lançar sua campanha ou alterar sim você quiser');
         } else { 
             return redirect()->route('financiamento.index')->with('status', 'Sua campanha foi criada, pode lançar quando quiser');
-        }
-    }
-
-    public function attachmentThumb($name, $width, $height)
-    {
-        if($request->hasFile('profile_image')) {
-            //get filename with extension
-            $filenamewithextension = $request->file('profile_image')->getClientOriginalName();
-
-            //get filename without extension
-            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-
-            //get file extension
-            $extension = $request->file('profile_image')->getClientOriginalExtension();
-
-            //filename to store
-            $filenametostore = $filename.'_'.time().'.'.$extension;
-
-            //Upload File
-            $request->file('profile_image')->storeAs('public/profile_images', $filenametostore);
-            $request->file('profile_image')->storeAs('public/profile_images/thumbnail', $filenametostore);
-
-            //Resize image here
-            $thumbnailpath = public_path('storage/profile_images/thumbnail/'.$filenametostore);
-            $img = Image::make($thumbnailpath)->resize(400, 150, function($constraint) {
-                $constraint->aspectRatio();
-            });
-            $img->save($thumbnailpath);
-
-            return redirect('images')->with('success', "Image uploaded successfully.");
         }
     }
 

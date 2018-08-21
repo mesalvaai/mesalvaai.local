@@ -7,39 +7,34 @@ use Illuminate\Http\Request;
 
 class MoipIntegrationController extends Controller
 {
-  
-public function t()
-{
 
-   return view('t');
-}
+    public function t()
+    {
+        return view('t');
+    }
 
- public function pagamentoCreditCard($hash)
- {
-   $retorno = MoipIntegration::pagamentoCreditCard($hash);
+    public function pagamentoCreditCard($hash)
+    {
+        $retorno = MoipIntegration::pagamentoCreditCard($hash);
+        return $retorno;
+    }
 
-   return $retorno;
-}
+    public function PagamentoBoleto()
+    {
+        $print = MoipIntegration::PagamentoBoleto();
+        return view('visualizarBoleto', compact('print'));
+    }
 
-public function PagamentoBoleto()
-{
-   $print = MoipIntegration::PagamentoBoleto();
+    public function test()
+    {
+        $retorno = MoipIntegration::test();
+    }
 
-   return view('visualizarBoleto', compact('print'));
-}
-
-public function test()
-{
-   $retorno = MoipIntegration::test();
-
-}
-public function testt()
-{
-   $print = MoipIntegration::testt();
-
-   return view('visualizarBoleto', compact('print'));
-}
-
+    public function testt()
+    {
+        $print = MoipIntegration::testt();
+        return view('visualizarBoleto', compact('print'));
+    }
 
     /**
      * Display a listing of the resource.
@@ -48,8 +43,8 @@ public function testt()
      */
     public function index()
     {
-     return view('moip');
- }
+        return view('moip');
+    }
 
     /**
      * Show the form for creating a new resource.

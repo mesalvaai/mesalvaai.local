@@ -51,6 +51,7 @@ class MoipIntegration extends Model
 		}	
 	}
 
+
 	public static function PagamentoBoleto(){
 
 		$moip = Moip::start();
@@ -66,8 +67,6 @@ class MoipIntegration extends Model
 				'Bairro do SHIPPING', 'Sao Paulo', 'SP',
 				'01234567', 8)
 			->create();
-
-
 		} catch (Exception $e) {
 			dd($e->__toString());
 		}
@@ -78,7 +77,6 @@ class MoipIntegration extends Model
 			->addItem("Doação",1, "sku1", 10000)
 			->setCustomer($customer)
 			->create();
-
 		} catch (Exception $e) {
 			dd($e->__toString());
 		}
@@ -98,9 +96,9 @@ class MoipIntegration extends Model
 			$url = file_get_contents($payment->getHrefPrintBoleto());
 
 			$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);
-			//PAYMENT_ID
-			$payment = $moip->payments()->get("PAY-SVSD4VAAGKM5");
-			return $payment;
+
+			return $print;
+
 		} catch (Exception $e) {
 			dd($e->__toString());
 		}
@@ -111,23 +109,35 @@ class MoipIntegration extends Model
 		$moip = Moip::start();
 
 		// $notification = $moip->notifications()->delete('NPR-7PG2BKR3T42M');
+
 		// $notification = $moip->notifications()->delete('NPR-FX00FPQ5VMJP');
+
 		// $notification = $moip->notifications()->delete('NPR-JN2XJU76LRO3');
 
+
+
 		// $notification = $moip->notifications()->getList();
+
 		//  dd($notification);
+
 		// $payment = $moip->payments()->get("PAY-DZ8ME9LE0GUA");
-		// 
+
 		// 		$json = file_get_contents('php://input');
 		// // Converte os dados recebidos
 		// 		$response = json_decode($json, true);
+
 		// 		dd($json);
 
+
 		// $notification = $moip->notifications()->delete("NPR-UCHE076YIHAO");
+
+
 		// dd($notification);
 
 		// $notification = $moip->notifications()->getList();;
+
 		// dd($notification);
+
 
 		$notification = $moip->notifications()
 		->addEvent('PAYMENT.AUTHORIZED')
@@ -136,7 +146,12 @@ class MoipIntegration extends Model
 		->create();
 
 		dd($notification);
+
+
+
+
 		// https://sandbox.moip.com.br/v2/payments/ORD-JZ7XQFDOOSUJ
+
 	}
 
 	public static function testt(){
@@ -151,16 +166,22 @@ class MoipIntegration extends Model
 
 		$de = json_decode($bol);
 
+
 		// $json = file_get_contents('php://input');
 		// $response = json_decode($json, true);
+
+
 
 		// dd($de->resource->payment->status);
 		// dd($de->resource->payment->id);
 
 		// dd($de->event == "PAYMENT.AUTHORIZED");
 		$moip = Moip::start();
+
 		dd($de);
+
 		$webhooks = $moip->webhooks()->get();
+
 		dd($webhooks);
 	}
 

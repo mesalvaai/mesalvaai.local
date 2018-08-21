@@ -123,16 +123,16 @@
 	
 	<div class="col-6" align="center" >
 		
-		{!! Form::radio('type-payment',null, null, ['onclick' => 'openCity(event, "cred-card")']) !!}
-		{!! Form::label('type-payment', 'Cartão de crédito') !!}
+		{!! Form::radio('type_payment','CREDIT_CARD', null, ['onclick' => 'openCity(event, "cred-card")']) !!}
+		{!! Form::label('type_payment', 'Cartão de crédito') !!}
 		<br>
 		<img src="{{ asset('site/img/donations/cartao.png') }}"  width= "160" height= "100">
 
 	</div>
 	
 	<div class="col-6" align="center">
-		{!! Form::radio('type-payment', null, null,['onclick' => 'openCity(event, "boleto")']) !!}
-		{!! Form::label('type-payment', 'Boleto') !!}
+		{!! Form::radio('type_payment', 'BOLETO', null,['onclick' => 'openCity(event, "boleto")']) !!}
+		{!! Form::label('type_payment', 'Boleto') !!}
 		<br>
 		<img src="{{ asset('site/img/donations/boleto.png') }}">
 
@@ -187,8 +187,18 @@
 			</div>
 		</div>
 	</div>
+	<textarea id="encrypted_value" style="display: none;"></textarea>
+	<div class="col-md">
+		{{ Form::button('CONTRIBUIR', ['type' => 'submit', 'name' =>'op', 'value' => 'CREDIT_CARD', 'class' => 'btn btn-msa btn-sm w-100', 'id' => 'encrypt'] )  }}
+	</div>
 </div>
-<textarea id="encrypted_value"></textarea>
+
+<div id="boleto" class="tabcontent">
+	{{-- <input type="submit" id="gerar_boleto" onclick="gerar_boleto()" value="Gerar Boleto"> --}}
+	{{ Form::button('GERAR BOLETO', ['type' => 'submit','name' =>'op', 'value' => 'BOLETO', 'class' => 'btn btn-msa btn-sm w-100', 'id' => 'gerar_boleto', 'onclick' => 'gerar_boleto()'] )  }}
+	{{-- <a href="#" class="btn btn-msa btn-sm w-100" id="gerar_boleto" onclick="gerar_boleto()">Gerar boleto</a> --}}
+</div>
+
 
 <br>
 
@@ -196,9 +206,9 @@
 	<div class="col-md">
 		{{ Form::button('Aicionar recompensas (opcional)', ['type' => 'submit', 'name' =>'op', 'value' => 'add_r', 'class' => 'btn btn-success btn-sm w-100'] )  }}
 	</div> --}}
-	<div class="col-md">
-		{{ Form::button('CONTINUAR', ['type' => 'submit', 'name' =>'op', 'value' => 'add', 'class' => 'btn btn-msa btn-sm w-100', 'id' => 'encrypt'] )  }}
-	</div>{{-- 
+	{{-- <div class="col-md">
+		{{ Form::button('CONTRIBUIR', ['type' => 'submit', 'name' =>'op', 'value' => 'add', 'class' => 'btn btn-msa btn-sm w-100', 'id' => 'encrypt'] )  }}
+	</div> --}}{{-- 
 	<div class="col-md">
 		{{ Form::button('Visualizar e lançar seu campanha', ['type' => 'submit', 'name' =>'op', 'value' => 'show_c', 'class' => 'btn btn-info btn-sm w-100'] )  }}
 	</div> --}}
@@ -285,15 +295,13 @@
 
 });
 
- function redirecionar(item) { 
+function redirecionar(item) { 
   // location.href = '{{route('moip')}}'; 
 }
 function gerar_boleto(){
-
- window.open('/boleto', '_blank');
+ 	window.open('/boleto', '_blank');
        // window.location.href = "/boleto";
-
-     }
+}
 
 
 // function MM_goToURL() {
