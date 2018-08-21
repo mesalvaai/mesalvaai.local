@@ -355,6 +355,22 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:areas.destroy');
 	Route::get('areas/{area}/edit', 'Admin\AreaController@edit')->name('areas.edit')
 	->middleware('permission:areas.edit');
+        
+        //Institutions
+        Route::post('institutions/store', 'Admin\InstitutionController@store')->name('institutions.store')
+	->middleware('permission:institutions.create');
+	Route::get('institutions', 'Admin\InstitutionController@index')->name('institutions.index')
+	->middleware('permission:institutions.index');
+	Route::get('institutions/create', 'Admin\InstitutionController@create')->name('institutions.create')
+	->middleware('permission:institutions.create');
+	Route::put('institutions/{institution}', 'Admin\InstitutionController@update')->name('institutions.update')
+	->middleware('permission:institutions.edit');
+	Route::get('institutions/{institution}', 'Admin\InstitutionController@show')->name('institutions.show')
+	->middleware('permission:institutions.show');
+	Route::delete('institutions/{institution}', 'Admin\InstitutionController@destroy')->name('institutions.destroy')
+	->middleware('permission:institutions.destroy');
+	Route::get('institutions/{institution}/edit', 'Admin\InstitutionController@edit')->name('institutions.edit')
+	->middleware('permission:institutions.edit');
 
 	  //periods
 	Route::post('periods/store', 'Admin\PeriodController@store')->name('periods.store')
