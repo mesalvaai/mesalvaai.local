@@ -16,8 +16,9 @@
                     <li class="menu-has-children"><a href="#"><i class="fas fa-user"></i> {{ Auth::user()->name }}</a>
                         <ul>
                             <li class="menu-has-children"><a href="#" title="Criar Campanha">Perfil</a></li>
-                            <li class="menu-has-children"><a href="{{ route('create.camping') }}" title="Criar Campanha">Campanhas</a></li>
-                            <li class="menu-has-children"><a href="{{ route('create.rewards') }}" title="Criar Recompensas">Recompensas</a></li>
+                            <li class="menu-has-children"><a href="{{ route('financiamento.index') }}" title="Criar Campanha">Campanhas</a></li>
+                            <li class="menu-has-children"><a href="{{ route('create.camping') }}" title="Criar Campanha">Criar Campanhas</a></li>
+                            <li class="menu-has-children"><a href="{{ route('list.rewards') }}" title="Criar Recompensas">Recompensas</a></li>
                             <li class="menu-has-children"><a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">

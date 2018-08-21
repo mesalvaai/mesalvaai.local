@@ -59,14 +59,14 @@
 
 @endsection
 
-@section('scripts')
+{{-- @section('scripts')
     <script>
-        $('.custom-file-input').on('change', function() { 
-           let fileName = $(this).val().split('\\').pop(); 
-           $(this).next('.custom-file-label').addClass("selected").html(fileName); 
-        });
+        // $('.custom-file-input').on('change', function() { 
+        //    let fileName = $(this).val().split('\\').pop(); 
+        //    $(this).next('.custom-file-label').addClass("selected").html(fileName); 
+        // });
     </script>
-    {{-- <script src="{{ asset('vendor/tinymce/tinymce.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/tinymce/tinymce.min.js') }}" type="text/javascript"></script>
     <script>
       var editor_config = {
         path_absolute : "/",
@@ -102,5 +102,5 @@
       };
 
       tinymce.init(editor_config);
-    </script> --}}
-@endsection
+    </script>
+@endsection --}}

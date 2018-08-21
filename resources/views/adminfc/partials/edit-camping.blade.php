@@ -73,14 +73,14 @@
 
 	<div class="input-group mb-3">
 		<div class="custom-file">
-			{!! Form::file('file_path', ['class' => $errors->has('file_path') ? 'custom-file-input is-invalid' : 'custom-file-input', 'id' =>'inputGroupFile02']) !!}
-			<label class="custom-file-label" for="inputGroupFile02">Procurar arquivo</label>
+			{!! Form::file('file_path', ['class' => $errors->has('file_path') ? 'custom-file-input is-invalid' : 'custom-file-input', 'id' =>'uploadArquivo']) !!}
+			<label class="custom-file-label" for="uploadArquivo">Procurar arquivo</label>
 		</div>
 
 	</div>
 	<small class="form-text text-muted">Arquivo devem ter menos que 1 MB. Tipos de arquivos permitidos: png,gif,jpg,jpeg, mp4.</small>
 	@if ($errors->has('file_path'))
-	<span class="invalid-feedback" style="display: block;">
+	<span class="invalid-feedback" >
 		<strong>{{ $errors->first('file_path') }}</strong>
 	</span>
 	@endif
@@ -385,6 +385,11 @@
     };
 
     tinymce.init(editor_config);
+
+    $('.custom-file-input').on('change', function() { 
+       let fileName = $(this).val().split('\\').pop(); 
+       $(this).next('.custom-file-label').addClass("selected").html(fileName); 
+    });
 </script>
 {{-- <script>tinymce.init({ selector:'textarea' });</script> --}}
 @endsection

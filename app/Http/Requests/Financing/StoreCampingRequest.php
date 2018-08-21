@@ -27,7 +27,7 @@ class StoreCampingRequest extends FormRequest
         return [
             'title'    =>'required|min:5|max:250',
             'abstract'    =>'required|min:5|max:160',
-            'description'   =>'required|min:5|max:300',
+            'description'   =>'required|min:5',
             'start_date'   =>'required',
             'end_date'   =>'required',
             'file_path' => 'file|mimes:png,gif,jpg,jpeg,mp4',

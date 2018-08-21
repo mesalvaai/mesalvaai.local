@@ -76,9 +76,9 @@
 
 	<div class="input-group mb-3">
 		<div class="custom-file">
-			{{-- <input type="file" class="custom-file-input" id="inputGroupFile02"/> --}}
-			{!! Form::file('file_path', ['class' => $errors->has('file_path') ? 'custom-file-input is-invalid' : 'custom-file-input', 'id' =>'inputGroupFile02']) !!}
-			<label class="custom-file-label" for="inputGroupFile02">Procurar arquivo</label>
+			{{-- <input type="file" class="custom-file-input" id="uploadArquivo"/> --}}
+			{!! Form::file('file_path', ['class' => $errors->has('file_path') ? 'custom-file-input is-invalid' : 'custom-file-input', 'id' =>'uploadArquivo']) !!}
+			<label class="custom-file-label" for="uploadArquivo">Procurar arquivo</label>
 		</div>
 		
 	</div>
@@ -380,6 +380,16 @@
     	var caracteresRestantes = limite - caracteresDigitados;
 
     	$(".caracteres-abstract").text("Restam " + caracteresRestantes + " caracteres.");
+    });
+
+    
+    // $('#uploadArquivo').change(function (e) {
+    //     $(this).next('.custom-file-label').html(e.target.files[0].name);
+    // });
+    
+    $('.custom-file-input').on('change', function() { 
+       let fileName = $(this).val().split('\\').pop(); 
+       $(this).next('.custom-file-label').addClass("selected").html(fileName); 
     });
 
 

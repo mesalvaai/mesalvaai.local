@@ -10,10 +10,7 @@ class MoipIntegration extends Model
 	
 	public static function pagamentoCreditCard($base64)
 	{
-
-
 		dd($base64);
-
 		$moip = Moip::start();
 
 		$hash = base64_decode($base64);
@@ -152,11 +149,11 @@ class MoipIntegration extends Model
 
 		// $payment = $moip->payments()->get("PAY-DZ8ME9LE0GUA");
 
-// 		$json = file_get_contents('php://input');
-// // Converte os dados recebidos
-// 		$response = json_decode($json, true);
+		// 		$json = file_get_contents('php://input');
+		// // Converte os dados recebidos
+		// 		$response = json_decode($json, true);
 
-// 		dd($json);
+		// 		dd($json);
 
 
 		// $notification = $moip->notifications()->delete("NPR-UCHE076YIHAO");
@@ -180,7 +177,7 @@ class MoipIntegration extends Model
 
 
 
-// https://sandbox.moip.com.br/v2/payments/ORD-JZ7XQFDOOSUJ
+		// https://sandbox.moip.com.br/v2/payments/ORD-JZ7XQFDOOSUJ
 
 	}
 
@@ -194,18 +191,18 @@ class MoipIntegration extends Model
 
 		$bol = '{"date":"","env":"","event":"PAYMENT.AUTHORIZED","resource":{"payment":{"_links":{"order":{"href":"https://sandbox.moip.com.br/v2/orders/ORD-X6Z8LFNPM9T3","title":"ORD-X6Z8LFNPM9T3"},"self":{"href":"https://sandbox.moip.com.br/v2/payments/PAY-VXASZEFLNR0A"}},"amount":{"currency":"BRL","fees":349,"gross":10000,"liquid":9651,"refunds":0,"total":10000},"createdAt":"2018-08-03T13:39:06.000-03","delayCapture":false,"events":[{"createdAt":"2018-08-03T14:53:55.126-03","type":"PAYMENT.AUTHORIZED"},{"createdAt":"2018-08-03T13:39:06.000-03","type":"PAYMENT.CREATED"},{"createdAt":"2018-08-03T13:39:06.000-03","type":"PAYMENT.WAITING"}],"fees":[{"amount":349,"type":"TRANSACTION"}],"fundingInstrument":{"boleto":{"expirationDate":"2018-08-03","instructionLines":{"first":"INSTRUÇÃO 1","second":"INSTRUÇÃO 2","third":"INSTRUÇÃO 3"},"lineCode":"00190.00009 01014.051005 00000.787176 7 72370000001000","logoUri":"https://cdn.moip.com.br/wp-content/uploads/2016/05/02163352/logo-moip.png"},"method":"BOLETO"},"id":"PAY-VXASZEFLNR0A","installmentCount":1,"receivers":[{"amount":{"currency":"BRL","fees":349,"refunds":0,"total":10000},"feePayor":true,"moipAccount":{"fullname":"VINICIUS LEDO BARRETO","id":"MPA-48991CFD3B9D","login":"msa@mesalvaai.com"},"type":"PRIMARY"}],"status":"AUTHORIZED","updatedAt":"2018-08-03T14:53:55.126-03"}}}';
 
-$de = json_decode($bol);
+		$de = json_decode($bol);
 
 
-// $json = file_get_contents('php://input');
-// $response = json_decode($json, true);
+		// $json = file_get_contents('php://input');
+		// $response = json_decode($json, true);
 
 
 
-// dd($de->resource->payment->status);
-// dd($de->resource->payment->id);
+		// dd($de->resource->payment->status);
+		// dd($de->resource->payment->id);
 
-// dd($de->event == "PAYMENT.AUTHORIZED");
+		// dd($de->event == "PAYMENT.AUTHORIZED");
 		$moip = Moip::start();
 
 		dd($de);
