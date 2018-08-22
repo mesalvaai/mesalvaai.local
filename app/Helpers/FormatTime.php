@@ -78,4 +78,10 @@ class FormatTime {
         return $diff_in_days;
         //print_r($diff_in_days); // Output: 1
     }
+
+    public static function formatData($data){
+        $data = explode('/', $data);
+        $data = $data[2].'-'.$data[1].'-'.$data[0];
+        return $data;
+    }
 }

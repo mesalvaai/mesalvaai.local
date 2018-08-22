@@ -21,11 +21,12 @@
 	            		<div class="card-body">
 	            			<p class="text-center">Obrigado pela contribuição de R$ 45,00 no Me Salva Aí <br><b>Henrique Werneck Guerreiro</b><br><em>Henrique Werneck Guerreiro</em></p>
 							<br>
-							<div class="form-group text-center col-sm-6 offset-3">
+							<p id="print" class="text-center"> {!! $print !!}</p>
+							{{-- <div class="form-group text-center col-sm-6 offset-3">
 								<input type="text" name="codigo" value="{{ $codBoleto }}" class="form-control ">
 							</div>
 							<p class="text-center"><em>Copiar o código</em> <br>
-							ou</p>
+							ou</p> --}}
 							<div class="text-center">
 								<a target="_blank" href="#" class="btn btn-msa btn-sm w-50" id="gerar_boleto" onclick="gerar_boleto()">Clique para ver o boleto</a>
 								{{-- <a target="_blank" href="https://checkout-sandbox.moip.com.br/boleto/{{ $printBoleto }}/print" class="btn btn-msa btn-sm w-50">Clique para ver o boleto</a> --}}

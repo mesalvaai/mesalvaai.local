@@ -129,7 +129,8 @@ class HomeController extends Controller
             $boleto = MoipIntegration::getPagamentoBoleto();
             $printBoleto = $boleto['idBoleto'];
             $codBoleto = $boleto['codBoleto'];
-            return view('sites.donations.checkout-boleto', compact('printBoleto', 'codBoleto'));
+            $print = $boleto['print'];
+            return view('sites.donations.checkout-boleto', compact('printBoleto', 'codBoleto', 'print'));
         } else {
             dd('false');
         }

@@ -27,6 +27,7 @@ use App\Reward;
 use App\Period;
 use App\User;
 use Image;
+use FormatTime;
 
 
 class AdminController extends Controller
@@ -164,6 +165,7 @@ class AdminController extends Controller
     {
         $request->user()->authorizeRoles(['role_fc']);
         $validated = $request->validated();
+        //dd($request->input('data_of_birth'));
 
         $student = Student::find($idStudent);
         //$student->fill($request->all())->save();
@@ -172,7 +174,7 @@ class AdminController extends Controller
         $student->email = $request->input('email');
         $student->cpf = $request->input('cpf');
         $student->phone = $request->input('phone');
-        $student->data_of_birth = $request->input('data_of_birth');
+        $student->data_of_birth = FormatTime::formatData($request->input('data_of_birth'));
         $student->how_met_us = $request->input('how_met_us');
         $student->cep = $request->input('cep');
         $student->country_id = $request->input('country_id');
