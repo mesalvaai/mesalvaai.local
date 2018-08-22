@@ -88,11 +88,12 @@ class FormatTime {
 
  public static function FormatDataBR($dateFormatDB){
 
-  $datas[] = explode('-', $dateFormatDB);
 
-  $data = $datas[0][2].$datas[0][1].$datas[0][0];
+    $datas[] = explode('-',  substr($dateFormatDB, 0, 10));
 
-  return $data;
+    $data = $datas[0][2].$datas[0][1].$datas[0][0];
+    
+    return $data;
 
 }
 

@@ -110,7 +110,7 @@ class AdminController extends Controller
         $student->email = $request->input('email');
         $student->cpf = $request->input('cpf');
         $student->phone = $request->input('phone');
-        $student->data_of_birth = $request->input('data_of_birth');
+        $student->data_of_birth = FormatTime::FormatDataDB($request->input('data_of_birth'));
         $student->how_met_us = $request->input('how_met_us');
         $student->cep = $request->input('cep');
         $student->institution = $request->input('institution');
@@ -224,8 +224,8 @@ class AdminController extends Controller
         $camping->slug = Str::slug($request['title']);
         $camping->abstract = $request['abstract'];
         $camping->description = $request['description'];
-        $camping->start_date = $request['start_date'];
-        $camping->end_date = $request['end_date'];
+        $camping->start_date = FormatTime::FormatDataDB($request['start_date']);
+        $camping->end_date = FormatTime::FormatDataDB($request['end_date']);
         $camping->goal = str_replace(',','.',str_replace('.','',$request['goal']));
         $camping->facebook = $request['facebook'];
         $camping->twitter = $request['twitter'];
@@ -307,8 +307,8 @@ class AdminController extends Controller
         $camping->slug = Str::slug($request['title']);
         $camping->abstract = $request['abstract'];
         $camping->description = $request['description'];
-        $camping->start_date = $request['start_date'];
-        $camping->end_date = $request['end_date'];
+        $camping->start_date = FormatTime::FormatDataDB($request['start_date']);
+        $camping->end_date = FormatTime::FormatDataDB($request['end_date']);
         $camping->goal = str_replace(',','.',str_replace('.','',$request['goal']));
         // $camping->institution = $request['institution'];
         // $camping->course = $request['course'];
@@ -454,7 +454,7 @@ class AdminController extends Controller
         $rewards->description = $request['description'];
         $rewards->quantity = $request['quantity'];
         $rewards->unlimited = $request['unlimited'];
-        $rewards->delivery_date = $request['delivery_date'];
+        $rewards->delivery_date = FormatTime::FormatDataDB($request['delivery_date']);
         $rewards->delivery_mode = $request['delivery_mode'];
         $rewards->variations = $request['variations'];
         $rewards->thanks = $request['thanks'];
@@ -497,7 +497,7 @@ class AdminController extends Controller
         $rewards->quantity = $request['quantity'];
         $rewards->description = $request['description'];
         $rewards->unlimited = $request['unlimited'];
-        $rewards->delivery_date = $request['delivery_date'];
+        $rewards->delivery_date = FormatTime::FormatDataDB($request['delivery_date']);
         $rewards->delivery_mode = $request['delivery_mode'];
         $rewards->variations = $request['variations'];
         $rewards->thanks = $request['thanks'];
