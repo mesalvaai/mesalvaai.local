@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 
+
+use FormatTime;
 use Auth;
 use App\Category;
 use App\Campaign;
@@ -47,9 +49,9 @@ class AdminController extends Controller
         if($campings->count() == 0){
             return redirect()->route('create.camping')->with('status', 'Você ainda não crio sua campanha, esta na hora de començar!!');
         }
-		
-		$encrypted = Crypt::encrypt($idUser);
-		$decrypted = Crypt::decrypt($encrypted);
+
+        $encrypted = Crypt::encrypt($idUser);
+        $decrypted = Crypt::decrypt($encrypted);
 
         return view('adminfc.index', compact('idUser', 'campings'));
     }
@@ -87,10 +89,10 @@ class AdminController extends Controller
 
            //Add ID do pais do usuário
            //Brasil id = 3469034
-              $idPais = 3469034;
+            $idPais = 3469034;
 
-              $states = Location::getEstados($idPais);
-              $periodo = Period::get()->pluck('name', 'slug');
+            $states = Location::getEstados($idPais);
+            $periodo = Period::get()->pluck('name', 'slug');
             return view('adminfc.create-student', compact('idUser','states','countries', 'idPais', 'encrypted', 'decrypted', 'periodo'));
         }
         
@@ -172,7 +174,7 @@ class AdminController extends Controller
         $student->email = $request->input('email');
         $student->cpf = $request->input('cpf');
         $student->phone = $request->input('phone');
-        $student->data_of_birth = $request->input('data_of_birth');
+        $student->data_of_birth  = FormatTime::FormatDataDB($request->input('data_of_birth'));
         $student->how_met_us = $request->input('how_met_us');
         $student->cep = $request->input('cep');
         $student->country_id = $request->input('country_id');
@@ -331,18 +333,18 @@ class AdminController extends Controller
         //     //get filename with extension
         //     //$filenamewithextension = $request->file('profile_image')->getClientOriginalName();
         //     $filenamewithextension = $image->getClientOriginalName(); //1534820296vestibular.jpg
-            
+
 
         //     //get filename without extension, Ex 1534820358vestibular
         //     $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-            
+
         //     //get file extension , Ex = jpg
         //     $extension = $image->getClientOriginalExtension();
-            
+
 
         //     //filename to store
         //     $filenametostore = $filename.'_'.time().'.'.$extension;
-            
+
         //     //Upload File
         //     //$request->file('profile_image')->storeAs('public/profile_images', $filenametostore);
         //     //$request->file('profile_image')->storeAs('public/profile_images/thumbnail', $filenametostore);
@@ -359,7 +361,7 @@ class AdminController extends Controller
         //     $img->save($thumbnailpath);
         //     $camping->file_path = $thumbnailpath;
         // }
- 
+
         $camping->save();
 
         // Deletando uma sessão específica:

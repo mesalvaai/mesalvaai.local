@@ -1,19 +1,19 @@
 <?php
 namespace App\Helpers;
-  
+
 use Illuminate\Support\Facades\DB;
 use \Carbon\Carbon;
-  
+
 class FormatTime {
- 
+
     public static function LongTimeFilter($date) {
         if ($date == null) {
             return "Sem Data";
         }
- 
+
         $start_date = $date;
         $since_start = $start_date->diff(new \DateTime(date("Y-m-d") . " " . date("H:i:s")));
- 
+
         if ($since_start->y == 0) {
             if ($since_start->m == 0) {
                 if ($since_start->d == 0) {
@@ -63,7 +63,7 @@ class FormatTime {
                 $result = $since_start->y . ' anos';
             }
         }
- 
+
         return "faz " . $result;
     }
 
@@ -78,4 +78,22 @@ class FormatTime {
         return $diff_in_days;
         //print_r($diff_in_days); // Output: 1
     }
+    public static function FormatDataDB($dateFormatBR)
+    {
+
+     $data = Carbon::createFromFormat('d/m/Y', $dateFormatBR)->toDateString();
+
+     return $data;
+ }    
+
+ public static function FormatDataBR($dateFormatDB){
+
+  $datas[] = explode('-', $dateFormatDB);
+
+  $data = $datas[0][2].$datas[0][1].$datas[0][0];
+
+  return $data;
+
+}
+
 }
