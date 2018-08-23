@@ -127,12 +127,19 @@ class HomeController extends Controller
             dd($request->op .'-'. $request->type_payment);
         } elseif ( ($request->type_payment === 'BOLETO') AND ($request->op === 'BOLETO') ){
             $boleto = MoipIntegration::getPagamentoBoleto();
-            $printBoleto = $boleto['idBoleto'];
+            $idBoleto = $boleto['idBoleto'];
             $codBoleto = $boleto['codBoleto'];
-            $print = $boleto['print'];
-            return view('sites.donations.checkout-boleto', compact('printBoleto', 'codBoleto', 'print'));
+            $urlBoleto = $boleto['urlBoleto'];
+            $hrefBoleto = $boleto['hrefBoleto'];
+            $printBoleto = $boleto['print'];
+            return view('sites.donations.checkout-boleto', compact('idBoleto', 'codBoleto', 'printBoleto', 'hrefBoleto'));
         } else {
             dd('false');
         }
+    }
+
+    public function printBoleto($urlBoleto)
+    {
+        return view('sites.donations.print-boleto', compact('urlBoleto'));
     }
 }

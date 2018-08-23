@@ -21,7 +21,7 @@
 
 	<div class="form-group col-xs-12 col-md">
 		{!! Form::label('data_of_birth', 'Data de Nacimento') !!}
-		{!! Form::text('data_of_birth', null , ['class' => 'form-control','placeholder' => '00/00/0000', 'required']) !!}
+		{!! Form::text('data_of_birth', null, ['class' => 'form-control','placeholder' => '00/00/0000', 'required']) !!}
 	</div>
 	
 </div>

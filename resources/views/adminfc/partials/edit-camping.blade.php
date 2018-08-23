@@ -211,7 +211,7 @@
 
 		<div class="form-group col-md">
 			{!! Form::label('start_date', 'Inicio da Campanha') !!}
-			{!! Form::date('start_date', \Carbon\Carbon::now(), ['class' => $errors->has('start_date') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+			{!! Form::text('start_date', FormatTime::FormatDataBR($campaign->start_date), ['class' => $errors->has('start_date') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 			<small class="text-muted">(máximo de 60 dias e mínimo 1 dia)</small>
 			@if ($errors->has('start_date'))
 			<span class="invalid-feedback">
@@ -222,7 +222,7 @@
 
 		<div class="form-group col-md">
 			{!! Form::label('end_date', 'Fin da Campanha') !!}
-			{!! Form::date('end_date', \Carbon\Carbon::now(), ['class' => $errors->has('end_date') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+			{!! Form::text('end_date', FormatTime::FormatDataBR($campaign->end_date), ['class' => $errors->has('end_date') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 			@if ($errors->has('end_date'))
 			<span class="invalid-feedback">
 				<strong>{{ $errors->first('end_date') }}</strong>
@@ -387,8 +387,8 @@
     tinymce.init(editor_config);
 
     $('.custom-file-input').on('change', function() { 
-       let fileName = $(this).val().split('\\').pop(); 
-       $(this).next('.custom-file-label').addClass("selected").html(fileName); 
+    	let fileName = $(this).val().split('\\').pop(); 
+    	$(this).next('.custom-file-label').addClass("selected").html(fileName); 
     });
 </script>
 {{-- <script>tinymce.init({ selector:'textarea' });</script> --}}

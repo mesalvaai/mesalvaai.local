@@ -99,14 +99,19 @@ class MoipIntegration extends Model
 			$url = file_get_contents($payment->getHrefPrintBoleto());
 			$codBoleto = $payment->getLineCodeBoleto();
 			$idBoleto = $payment->getId();
-
+			$urlBoleto = $payment->getHrefPrintBoleto();
+			$hrefBoleto = explode('/', $payment->getHrefBoleto());
+			$hrefBoleto = array_last($hrefBoleto);
 			$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);
+
 			//PAYMENT_ID
 			//$payment = $moip->payments()->get("PAY-SVSD4VAAGKM5");
 			//$payment = json_encode($payment);
 			$data = [
 				'idBoleto' => $idBoleto,
 				'codBoleto' => $codBoleto,
+				'urlBoleto' => $urlBoleto,
+				'hrefBoleto' => $hrefBoleto,
 				'print' => $print
 			];
 

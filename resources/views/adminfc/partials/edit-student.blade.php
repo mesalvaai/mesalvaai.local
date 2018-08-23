@@ -24,7 +24,7 @@
 <div class="row">
 	<div class="form-group col-xs-12 col-md">
 		{!! Form::label('data_of_birth', 'Data de Nacimento') !!}
-		{!! Form::text('data_of_birth', null , ['class' => 'form-control', 'required','placeholder' => '00/00/0000']) !!}
+		{!! Form::text('data_of_birth', FormatTime::FormatDataBR(($student->data_of_birth)), ['class' => 'form-control', 'required']) !!}
 	</div>
 
 	<div class="form-group col-xs-12 col-md">

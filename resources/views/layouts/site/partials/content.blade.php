@@ -134,12 +134,12 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-center">
-                       <p>Acabou o sufoco de conversões complexas, de pontos que expiram toda hora. Agora, você pode acumular pontos em tempo real para usar de um jeito fácil com o que você realmente quer. No Me Salva Aí, você só tem a ganhar.</p> 
-                   </div>
-               </div>
-           </div>
-       </div>
-   </section><!-- #section-four -->
+                     <p>Acabou o sufoco de conversões complexas, de pontos que expiram toda hora. Agora, você pode acumular pontos em tempo real para usar de um jeito fácil com o que você realmente quer. No Me Salva Aí, você só tem a ganhar.</p> 
+                 </div>
+             </div>
+         </div>
+     </div>
+ </section><!-- #section-four -->
 
     <!--==========================
       Section Mimos
@@ -208,14 +208,25 @@
                 @foreach ($campanhas as $campanha)
                 <div class="col-md-3">
                     <div class="card mb-3">
-                        <img class="card-img-top" src="{{ url('/miniatura/'. $campanha->file_path) }}" alt="Card image cap">
+                        <a href="#" style="background-image: url({{ url('/miniatura/'. $campanha->file_path)  }}); background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 0;
+    display: block;
+    padding-top: 65%;
+    width: 100%;" class="img-min-campaign"></a>
                         <div class="card-body">
-                            <a href="{{ route('show.campanha', $campanha->slug) }}"><h5 class="card-title">{{ $campanha->title }}</h5></a>
-                            <p class="card-text">{{ $campanha->abstract }}</p>
+                            <div style="height: 50px;">
+                            <a href="{{ route('show.campanha', $campanha->slug) }}"><h5 class="card-title">{{ str_limit($campanha->title,'50') }}</h5></a>
+                            </div>
+                            <div style="height: 80px;">
+                            <p class="card-text">{{ str_limit($campanha->abstract, '80') }}</p>
+
+                            </div>
                             <div class="row">
                                 <div class="col">
-                                    <span class="badge badge-pill badge-secondary mb-2 float-left">$R {{ $campanha->funds_received }}</span>
-                                    <span class="badge badge-pill badge-info mb-2 float-right">$R {{ $campanha->goal }}</span>
+                                    <span class="badge badge-pill badge-secondary mb-2 float-left">R$ {{ $campanha->funds_received }}</span>
+                                    <span class="badge badge-pill badge-info mb-2 float-right">R$ {{ $campanha->goal }}</span>
                                 </div>
                             </div>
                             <div class="progress">
@@ -230,7 +241,6 @@
                             <div style="margin: 20px; margin-top: 50px;" width="100%" align="center">
                                 <a href="{{ route('show.campanha', $campanha->slug) }}" title="Doar"  class="get-started-btn">Doar</a>
                             </div>
-                            <p class="card-text float-right"><small class="text-muted">{{ \FormatTime::LongTimeFilter($campanha->created_at) }}</small></p>
                         </div> 
                     </div>
                 </div>
@@ -433,9 +443,9 @@
       Contact Section
       ============================-->
       <section id="sub-footer" class="sub-footer-bg">
-          <div class="container">
+          <div class="container-fluid">
             <div class="row" data-aos="fade-up">
-                <div class="col-3">
+                <div class="col-3" align="center">
                     <div class="social-links">
                         <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
@@ -445,9 +455,9 @@
                     </div>
                 </div>
                 <div class="col-9">
-                    <nav class="footer-links text-lg-right text-center pt-2 pt-lg-2">
-                        <a href="#" class="scrollto"><i class="fas fa-envelope"></i> info@meusite.com</a>
-                        <a href="#" class="scrollto"><i class="fas fa-phone"></i> (11) 3456-7890</a>
+                    <nav class="footer-links pt-2 pt-lg-2">
+                        <a href="#" class="scrollto"><i class="fas fa-envelope"></i> msa@mesalvaai.com</a>&nbsp;&nbsp;
+                        <a href="#" class="scrollto"><i class="fas fa-phone"></i> +55 (75) 99950-5469</a>&nbsp;&nbsp;
                         <a href="#" class="scrollto"><i class="fas fa-map-marker-alt"></i> Rodovia BR 101, km 197 - Capoeiruçu, Cachoeira - BA, 44300-000</a>
                     </nav>
                 </div>
