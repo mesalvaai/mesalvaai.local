@@ -30,13 +30,19 @@ Route::get('get-paises-restantes', 'Admin\StudentController@getPaises')->name('g
 Route::get('get-estados/{idPais}', 'Admin\StudentController@getEstados')->name('get-estados');
 Route::get('get-cidades/{idPais}/{idEstado}', 'Admin\StudentController@getCidades')->name('get-cidades');
 
+Route::get('/campanhas', function()
+{
+	return redirect('/');
+});
 Route::get('/campanhas/{idCamping?}', 'Site\HomeController@campanha')->name('show.campanha');
 Route::get('/campanhas/{slugCamping}/donate', 'Site\HomeController@donate')->name('donate.campanha');
 Route::post('/campanhas/processar-donacao', 'Site\HomeController@donateProcess')->name('donate.process');
+Route::get('/campanhas/boleto/{codBoleto}/print', 'Site\HomeController@printBoleto')->name('boleto.print');
 
 Route::get('/financiamento', 'Site\FinancingController@index')->name('financing.index');
 Route::get('/financiamento/criar-campanha', 'Site\FinancingController@createCamping')->name('create.project');
 Route::get('/financiamento/criar-conta', 'Site\FinancingController@createConta')->name('create.conta');
+
 Route::get('/mimos', 'Site\HomeController@mimos')->name('mimos');
 Route::get('/test', 'Site\HomeController@test')->name('test');
 Route::get('/cursos', 'Site\CursoController@curso');

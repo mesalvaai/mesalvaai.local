@@ -216,7 +216,9 @@
     padding-top: 65%;
     width: 100%;" class="img-min-campaign"></a>
                         <div class="card-body">
-                            <a href="{{ route('show.campanha', $campanha->slug) }}"><h5 class="card-title">{{ str_limit($campanha->title,'20') }}</h5></a>
+                            <div style="height: 50px;">
+                            <a href="{{ route('show.campanha', $campanha->slug) }}"><h5 class="card-title">{{ str_limit($campanha->title,'50') }}</h5></a>
+                            </div>
                             <div style="height: 80px;">
                             <p class="card-text">{{ str_limit($campanha->abstract, '80') }}</p>
 
