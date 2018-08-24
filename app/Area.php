@@ -13,4 +13,9 @@ class Area extends Model
 		'description',
 		
 	];
+
+	public function courses()
+	{
+		return $this->hasMany(Course::class);
+	}
 }
