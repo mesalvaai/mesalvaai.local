@@ -41,7 +41,7 @@
 <div class="form-group row">
 	{!! Form::label('full_name', 'Nome completo', ['class' => 'col-sm-3 col-form-label'] ) !!}
 	<div class="col-sm-9">
-		{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control']) !!}
+		{!! Form::text('full_name', null, ['class' => $errors->has('full_name') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 		@if ($errors->has('full_name'))
 		<span class="invalid-feedback" style="display: block;">
 			<strong>{{ $errors->first('full_name') }}</strong>
@@ -53,7 +53,7 @@
 <div class="form-group row">
 	{!! Form::label('email', 'E-mail', ['class' => 'col-sm-3 col-form-label'] ) !!}
 	<div class="col-sm-9">
-		{!! Form::email('email', null, ['class' => $errors->has('email') ? 'form-control is-invalid' : 'form-control']) !!}
+		{!! Form::email('email', null, ['class' => $errors->has('email') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 		@if ($errors->has('email'))
 		<span class="invalid-feedback" style="display: block;">
 			<strong>{{ $errors->first('email') }}</strong>
@@ -65,7 +65,7 @@
 <div class="form-group row">
 	{!! Form::label('data_of_birth', 'Data de nascimento', ['class' => 'col-sm-3 col-form-label'] ) !!}
 	<div class="col-sm-4">
-		{!! Form::text('data_of_birth', null, ['class' => $errors->has('data_of_birth') ? 'form-control is-invalid' : 'form-control', 'placeholder' => '00/00/0000']) !!}
+		{!! Form::text('data_of_birth', null, ['class' => $errors->has('data_of_birth') ? 'form-control is-invalid' : 'form-control', 'placeholder' => '00/00/0000', 'required']) !!}
 		@if ($errors->has('data_of_birth'))
 		<span class="invalid-feedback" style="display: block;">
 			<strong>{{ $errors->first('data_of_birth') }}</strong>
@@ -75,12 +75,12 @@
 </div>
 
 <div class="form-group row">
-	{!! Form::label('celular', 'Celular', ['class' => 'col-sm-3 col-form-label'] ) !!}
+	{!! Form::label('phone', 'phone', ['class' => 'col-sm-3 col-form-label'] ) !!}
 	<div class="col-sm-4">
-		{!! Form::text('celular', null, ['class' => $errors->has('celular') ? 'form-control is-invalid' : 'form-control']) !!}
-		@if ($errors->has('celular'))
+		{!! Form::text('phone', null, ['class' => $errors->has('phone') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+		@if ($errors->has('phone'))
 		<span class="invalid-feedback" style="display: block;">
-			<strong>{{ $errors->first('celular') }}</strong>
+			<strong>{{ $errors->first('phone') }}</strong>
 		</span>
 		@endif
 	</div>
@@ -89,7 +89,7 @@
 <div class="form-group row">
 	{!! Form::label('cpf', 'CPF', ['class' => 'col-sm-3 col-form-label'] ) !!}
 	<div class="col-sm-4">
-		{!! Form::text('cpf', null, ['class' => $errors->has('cpf') ? 'form-control is-invalid' : 'form-control']) !!}
+		{!! Form::text('cpf', null, ['class' => $errors->has('cpf') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 		@if ($errors->has('cpf'))
 		<span class="invalid-feedback" style="display: block;">
 			<strong>{{ $errors->first('cpf') }}</strong>
@@ -179,11 +179,11 @@
 		<div class="col-sm-9 row">
 			<div class="form-group col-xs-12 col-md-6">
 				{!! Form::label('mes', 'Mês') !!}
-				{!! Form::select('mes', $mes, null, ['class' => 'form-control', 'placeholder' => '-- Selecione um mês --', 'required', 'id' => 'month']) !!}
+				{!! Form::select('mes', $mes, null, ['class' => 'form-control', 'placeholder' => '-- Selecione um mês --', 'id' => 'month']) !!}
 			</div>
 			<div class="form-group col-xs-12 col-md-6">
 				{!! Form::label('dia', 'Ano') !!}
-				{!! Form::select('dia', $dia, null, ['class' => 'form-control', 'placeholder' => '00', 'required', 'id' => 'year']) !!}
+				{!! Form::select('dia', $dia, null, ['class' => 'form-control', 'placeholder' => '00', 'id' => 'year']) !!}
 			</div>
 		</div>
 	</div>
@@ -195,7 +195,7 @@
 
 <div id="boleto" class="tabcontent">
 	{{-- <input type="submit" id="gerar_boleto" onclick="gerar_boleto()" value="Gerar Boleto"> --}}
-	{{ Form::button('GERAR BOLETO', ['type' => 'submit','name' =>'op', 'value' => 'BOLETO', 'class' => 'btn btn-msa btn-sm w-100', 'id' => 'gerar_boleto', 'onclick' => 'gerar_boleto()'] )  }}
+	{{ Form::button('GERAR BOLETO', ['type' => 'submit','name' =>'op', 'value' => 'BOLETO', 'class' => 'btn btn-msa btn-sm w-100', 'id' => 'gerar_boleto'] )  }}
 	{{-- <a href="#" class="btn btn-msa btn-sm w-100" id="gerar_boleto" onclick="gerar_boleto()">Gerar boleto</a> --}}
 </div>
 
@@ -224,6 +224,8 @@
 	
 	(function( $ ) {
 		$(function() {
+			$("#phone").mask("(99) 999999999");
+			$("#cpf").mask("000.000.000-00");
 			$("#total_amount").maskMoney();
 			$("#number").mask("0000 0000 0000 0000");
 			$("#card_cvc").mask("000");

@@ -126,7 +126,7 @@ class HomeController extends Controller
         if ( ($request->type_payment === 'CREDIT_CARD') AND ($request->op === 'CREDIT_CARD') ) {
             dd($request->op .'-'. $request->type_payment);
         } elseif ( ($request->type_payment === 'BOLETO') AND ($request->op === 'BOLETO') ){
-            $boleto = MoipIntegration::getPagamentoBoleto();
+            $boleto = MoipIntegration::getPagamentoBoleto($request);
             $idBoleto = $boleto['idBoleto'];
             $codBoleto = $boleto['codBoleto'];
             $urlBoleto = $boleto['urlBoleto'];
