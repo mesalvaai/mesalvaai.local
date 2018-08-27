@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use vendor\autoload;
+use App\Helpers\FormatTime;
+use \Carbon\Carbon;
 use Moip;
 class MoipIntegration extends Model
 {
@@ -55,18 +57,21 @@ class MoipIntegration extends Model
 	public static function getPagamentoBoleto($request){
 		$phone = self::getPhone($request['phone']);
 		$total_amount = self::getTotalAmount($request['total_amount']);
+		$data_of_birth =FormatTime::FormatDataDB($request['data_of_birth']);
+
+		//dd(new Carbon(date('Y-m-d', strtotime('+4 days'))));
 		$moip = Moip::start();
 		try {
 			$customer = $moip->customers()->setOwnId(uniqid())
 			->setFullname($request['full_name'])
 			->setEmail($request['email'])
-			->setBirthDate('1984-08-14')
+			->setBirthDate($data_of_birth)
 			->setTaxDocument($request['cpf'])
 			->setPhone($phone['ddd'], $phone['numero'])
 			->addAddress('SHIPPING',
-				'Rua de teste do SHIPPING', 123,
-				'Bairro do SHIPPING', 'Bahia', 'BA',
-				'01234567', 8)
+				'Rua de teste do SHIPPING', 101,
+				'Bairro de Capoeiruçu', 'Bahia', 'BA',
+				'44.300-000', 197)
 			->create();
 
 
@@ -87,7 +92,7 @@ class MoipIntegration extends Model
 
 		try {
 			$logo_uri = 'https://cdn.moip.com.br/wp-content/uploads/2016/05/02163352/logo-moip.png';
-			$expiration_date = \Carbon\Carbon::now();
+			$expiration_date = new Carbon(date('Y-m-d', strtotime('+4 days')));
 
 			// $now = new \DateTime();
 			$instruction_lines = ['INSTRUÇÃO 1', 'INSTRUÇÃO 2', 'INSTRUÇÃO 3'];

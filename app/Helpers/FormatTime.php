@@ -95,4 +95,33 @@ class FormatTime {
         return $data;
     }
 
+    public static function ExpirationDate($expiration_date)
+    {
+        // Se você não tiver o timestamp da data que cairía o vencimento, faça assim:
+        $dia = 12;
+        $mes = 01;
+        $ano = 2009;
+        $timestamp = mktime(0,0,0, $mes, $dia, $ano);
+
+        $dia_semana = date('N', $timestamp);
+
+        // Se for sábado ou domingo
+        if ($dia_semana >= 6) {
+           // Adicinoa a diferença de dias até a próxima segunda-feira
+           $timestamp += ((8 - $dia_semana)  * 3600 * 24);
+        }
+
+        // Monta a data final
+        $data_final = date('d/m/Y', $timestamp); 
+
+        // Exibe-a
+        echo "A data final é " . $data_final;
+    }
+
+    
+    public static function getDataVencimento($dataNow)
+    {
+        return $carbon = new Carbon(date('Y-m-d', strtotime('+5 days')));
+    }
+
 }
