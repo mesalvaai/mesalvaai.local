@@ -5,6 +5,7 @@ namespace App;
 use Caffeinated\Shinobi\Traits\ShinobiTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\RedefinirSenha as ResetPasswordNotification;
 
 class User extends Authenticatable
 {
@@ -28,14 +29,20 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
     // public function roles()
     // {
     //     return $this
     //         ->belongsToMany('\Caffeinated\Shinobi\Models\Role')
     //         ->withTimestamps();
     // }
-
+    // public function sendPasswordResetNotification($token)
+    // {
+    //     $this->notify(new Notifications\RedefinirSenha($token));
+    // }
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new Notifications\RedefinirSenha($token));
+    }
     public function authorizeRoles($roles)
     {
         if ($this->hasAnyRole($roles)) {

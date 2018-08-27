@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 
-
-use FormatTime;
 use Auth;
 use App\Category;
 use App\Campaign;
@@ -40,7 +38,6 @@ class AdminController extends Controller
     	//$this->middleware('IsRoleAluno:role_fc');
         //$this->middleware('IsRoleAluno:role_fc');
     }
-
     public function index(Request $request)
     {
     	$request->user()->authorizeRoles(['role_fc']);
