@@ -112,21 +112,6 @@ public function campanha($slug = null)
     } 
 }
 
-public function donate($slug)
-{
-    if ($slug == null) {
-        abort(404, 'A url não existe');
-    } else {
-        $campanha = Campaign::where('slug', $slug)->first();
-        if ($campanha) {
-            return view('sites.donations.create', compact('slug', 'campanha'));
-        } else {
-            abort(404, 'A url não existe');
-        }
-    }
-
-}
-
 public function donateProcess(Request $request)
 {
     if ( ($request->type_payment === 'CREDIT_CARD') AND ($request->op === 'CREDIT_CARD') ) {

@@ -52,19 +52,20 @@ class MoipIntegration extends Model
 	}
 
 
-	public static function getPagamentoBoleto(){
-
+	public static function getPagamentoBoleto($request){
+		$phone = self::getPhone($request['phone']);
+		$total_amount = self::getTotalAmount($request['total_amount']);
 		$moip = Moip::start();
 		try {
 			$customer = $moip->customers()->setOwnId(uniqid())
-			->setFullname('Fulano de Tal')
-			->setEmail('fulano@email.com')
-			->setBirthDate('1988-12-30')
-			->setTaxDocument('22222222222')
-			->setPhone(11, 66778899)
+			->setFullname($request['full_name'])
+			->setEmail($request['email'])
+			->setBirthDate('1984-08-14')
+			->setTaxDocument($request['cpf'])
+			->setPhone($phone['ddd'], $phone['numero'])
 			->addAddress('SHIPPING',
 				'Rua de teste do SHIPPING', 123,
-				'Bairro do SHIPPING', 'Sao Paulo', 'SP',
+				'Bairro do SHIPPING', 'Bahia', 'BA',
 				'01234567', 8)
 			->create();
 
@@ -76,7 +77,7 @@ class MoipIntegration extends Model
 		try {
             //set OwnId único, adiciona item [doação, a quantidade, detalhe, e valor no ex. 100 R$]
 			$order = $moip->orders()->setOwnId(uniqid())
-			->addItem("Doação",1, "sku1", 10000)
+			->addItem("Doação",1, "sku1", $total_amount)
 			->setCustomer($customer)
 			->create();
 
@@ -104,9 +105,6 @@ class MoipIntegration extends Model
 			$hrefBoleto = array_last($hrefBoleto);
 			$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);
 
-			//PAYMENT_ID
-			//$payment = $moip->payments()->get("PAY-SVSD4VAAGKM5");
-			//$payment = json_encode($payment);
 			$data = [
 				'idBoleto' => $idBoleto,
 				'codBoleto' => $codBoleto,
@@ -119,6 +117,24 @@ class MoipIntegration extends Model
 		} catch (Exception $e) {
 			dd($e->__toString());
 		}
+	}
+
+	public static function getPhone($phone)
+	{
+		$removeCarateres = preg_replace("/[^0-9]/", "", $phone);
+		$pegarDosPrimeirosDigitos = substr( $removeCarateres, 0, 2 );
+		$pegarUltimosDigitos = substr( $removeCarateres, 2, 9 );
+		$data = [
+			'ddd' => $pegarDosPrimeirosDigitos,
+			'numero' => $pegarUltimosDigitos,
+		];
+		return $data;
+	}
+
+	public static function getTotalAmount($total_amount)
+	{
+		$amount = preg_replace("/[^0-9]/", "", $total_amount);
+		return intval($amount);
 	}
 
 	public static function PagamentoBoleto(){

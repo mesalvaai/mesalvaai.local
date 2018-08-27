@@ -76,25 +76,23 @@ class FormatTime {
         $from = Carbon::createFromFormat('Y-m-d H:s:i', $end_date);
         $diff_in_days = $to->diffInDays($from);
         return $diff_in_days;
-        //print_r($diff_in_days); // Output: 1
     }
+    public static function formatData($data){
+        $data = explode('/', $data);
+        $data = $data[2].'-'.$data[1].'-'.$data[0];
+        return $data;
+    }
+
     public static function FormatDataDB($dateFormatBR)
     {
+         $data = Carbon::createFromFormat('d/m/Y', $dateFormatBR)->toDateString();
+         return $data;
+     }    
 
-     $data = Carbon::createFromFormat('d/m/Y', $dateFormatBR)->toDateString();
-
-     return $data;
- }    
-
- public static function FormatDataBR($dateFormatDB){
-
-
-    $datas[] = explode('-',  substr($dateFormatDB, 0, 10));
-
-    $data = $datas[0][2].$datas[0][1].$datas[0][0];
-    
-    return $data;
-
-}
+     public static function FormatDataBR($dateFormatDB){
+        $datas[] = explode('-',  substr($dateFormatDB, 0, 10));
+        $data = $datas[0][2].$datas[0][1].$datas[0][0];
+        return $data;
+    }
 
 }

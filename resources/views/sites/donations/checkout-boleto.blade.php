@@ -34,7 +34,8 @@
 								</div>
 							</div> --}}
 							<div class="text-center">
-								<a target="_blank" href="{{ route('boleto.print', $hrefBoleto) }}"  class="btn btn-msa btn-sm w-50" >Clique para ver o boleto</a>
+								{{-- <a target="_blank" href="{{ route('boleto.print', $hrefBoleto) }}"  class="btn btn-msa btn-sm w-50" >Clique para ver o boleto</a> --}}
+								<a target="_blank" href="{{ route('boleto.print', $idBoleto) }}"  class="btn btn-msa btn-sm w-50" >Clique para ver o boleto</a>
 							</div>
 							<br>
 							<p class="text-center"><b>Pague seu boleto até a data de vencimento. Contamos com você!</b> <br>

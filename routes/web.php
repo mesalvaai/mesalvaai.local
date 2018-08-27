@@ -390,4 +390,24 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:periods.destroy');
 	Route::get('periods/{period}/edit', 'Admin\PeriodController@edit')->name('periods.edit')
 	->middleware('permission:periods.edit');
+
+
+
+     //courses
+	Route::post('courses/store', 'Admin\CourseController@store')->name('courses.store')
+	->middleware('permission:courses.create');
+	Route::get('courses', 'Admin\CourseController@index')->name('courses.index')
+	->middleware('permission:courses.index');
+	Route::get('courses/create', 'Admin\CourseController@create')->name('courses.create')
+	->middleware('permission:courses.create');
+	Route::put('courses/{course}', 'Admin\CourseController@update')->name('courses.update')
+	->middleware('permission:courses.edit');
+	Route::get('courses/{course}', 'Admin\CourseController@show')->name('courses.show')
+	->middleware('permission:courses.show');
+	Route::delete('courses/{course}', 'Admin\CourseController@destroy')->name('courses.destroy')
+	->middleware('permission:courses.destroy');
+	Route::get('courses/{course}/edit', 'Admin\CourseController@edit')->name('courses.edit')
+	->middleware('permission:courses.edit');
+
+	
 });
