@@ -39,7 +39,6 @@ class AdminController extends Controller
     	//$this->middleware('IsRoleAluno:role_fc');
         //$this->middleware('IsRoleAluno:role_fc');
     }
-
     public function index(Request $request)
     {
     	$request->user()->authorizeRoles(['role_fc']);

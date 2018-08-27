@@ -30,10 +30,8 @@ Route::get('get-paises-restantes', 'Admin\StudentController@getPaises')->name('g
 Route::get('get-estados/{idPais}', 'Admin\StudentController@getEstados')->name('get-estados');
 Route::get('get-cidades/{idPais}/{idEstado}', 'Admin\StudentController@getCidades')->name('get-cidades');
 
-Route::get('/campanhas', function()
-{
-	return redirect('/');
-});
+Route::get('/campanhas', 'Site\HomeController@campanhas')->name('campanhas');
+
 Route::get('/campanhas/{idCamping?}', 'Site\HomeController@campanha')->name('show.campanha');
 Route::get('/campanhas/{slugCamping}/donate', 'Site\HomeController@donate')->name('donate.campanha');
 Route::post('/campanhas/processar-donacao', 'Site\HomeController@donateProcess')->name('donate.process');
@@ -48,7 +46,6 @@ Route::get('/test', 'Site\HomeController@test')->name('test');
 Route::get('/cursos', 'Site\CursoController@curso');
 Route::get('/faculdade/id_curso', 'Site\CursoController@faculdade');
 Route::get('/student', 'Admin\StudentController@index');
-
 
 Auth::routes();
 
