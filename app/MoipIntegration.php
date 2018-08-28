@@ -10,23 +10,27 @@ use Moip;
 class MoipIntegration extends Model
 {
 	
-	public static function pagamentoCreditCard($base64)
+	public static function getPagamentoCreditCard($request)
 	{
-		dd($base64);
+		$phone = self::getPhone($request['phone']);
+		$total_amount = self::getTotalAmount($request['total_amount']);
+		$data_of_birth =FormatTime::FormatDataDB($request['data_of_birth']);
 		$moip = Moip::start();
-		$hash = base64_decode($base64);
+		//$hash = base64_decode($request->keyMoip);
+		$hash = $request->keyMoip;
+		
 
 		try {
 			$customer = $moip->customers()->setOwnId(uniqid())
-			->setFullname('Fulano de Tal')
-			->setEmail('fulano@email.com')
-			->setBirthDate('1988-12-30')
-			->setPhone(11, 66778899)
-			->setTaxDocument('22222222222')
+			->setFullname($request->card_name)
+			->setEmail($request->email)
+			->setBirthDate($data_of_birth)
+			->setPhone($phone['ddd'], $phone['numero'])
+			->setTaxDocument($request['cpf'])
 			->addAddress('SHIPPING',
-				'Rua de teste do SHIPPING', 123,
-				'Bairro do SHIPPING', 'Sao Paulo', 'SP',
-				'01234567', 8)
+				'Rua de teste do SHIPPING', 101,
+				'Bairro de Capoeiruçu', 'Bahia', 'BA',
+				'44.300-000', 197)
 			->create();
 		} catch (Exception $e) {
 			dd($e->__toString());
@@ -34,7 +38,7 @@ class MoipIntegration extends Model
 		try {
             //set OwnId único, adiciona item [doação, a quantidade, detalhe, e valor no ex. 100 R$]
 			$order = $moip->orders()->setOwnId(uniqid())
-			->addItem("Doação",1, "sku1", 10000)
+			->addItem("Doação",1, "sku1", $total_amount)
 			->setCustomer($customer)
 			->create();
 		} catch (Exception $e) {
@@ -52,7 +56,6 @@ class MoipIntegration extends Model
 			dd($e->__toString());
 		}	
 	}
-
 
 	public static function getPagamentoBoleto($request){
 		$phone = self::getPhone($request['phone']);
@@ -140,6 +143,49 @@ class MoipIntegration extends Model
 	{
 		$amount = preg_replace("/[^0-9]/", "", $total_amount);
 		return intval($amount);
+	}
+
+	public static function pagamentoCreditCard($base64)
+	{
+		//dd($base64);
+		$moip = Moip::start();
+		$hash = base64_decode($base64);
+
+		try {
+			$customer = $moip->customers()->setOwnId(uniqid())
+			->setFullname('Fulano de Tal')
+			->setEmail('fulano@email.com')
+			->setBirthDate('1988-12-30')
+			->setPhone(11, 66778899)
+			->setTaxDocument('22222222222')
+			->addAddress('SHIPPING',
+				'Rua de teste do SHIPPING', 123,
+				'Bairro do SHIPPING', 'Sao Paulo', 'SP',
+				'01234567', 8)
+			->create();
+		} catch (Exception $e) {
+			dd($e->__toString());
+		}
+		try {
+            //set OwnId único, adiciona item [doação, a quantidade, detalhe, e valor no ex. 100 R$]
+			$order = $moip->orders()->setOwnId(uniqid())
+			->addItem("Doação",1, "sku1", 10000)
+			->setCustomer($customer)
+			->create();
+		} catch (Exception $e) {
+			dd($e->__toString());
+		}
+
+		try {
+
+			$payment = $order->payments()->setCreditCardHash($hash, $customer)
+			->execute();
+
+			return "Doação Realizada com sucesso";
+
+		} catch (Exception $e) {
+			dd($e->__toString());
+		}	
 	}
 
 	public static function PagamentoBoleto(){

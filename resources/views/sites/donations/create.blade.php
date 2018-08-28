@@ -16,7 +16,7 @@
 				<div class="col-xs-12 col-sm-8 col-md-8">
 					<div class="card">
 						<div class="card-body">
-							{{ Form::open(['route' => 'donate.process']) }}
+							{{ Form::open(['route' => 'donate.process', 'novalidate']) }}
 		                            @include('sites.donations.partials.form-donate')
 		                    {{ Form::close() }}
 						</div>
