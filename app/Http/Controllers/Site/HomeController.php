@@ -6,7 +6,7 @@ use App\MoipIntegration;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use App\Http\Requests\Donations\DonationsRequest;
 
 use App\Campaign;
 
@@ -126,13 +126,13 @@ class HomeController extends Controller
         }
     }
 
-    public function donateProcess(Request $request)
+    public function donateProcess(DonationsRequest $request)
     {
         if ( ($request->type_payment === 'CREDIT_CARD') AND ($request->op === 'CREDIT_CARD') ) {
             $pagoComCartao = MoipIntegration::getPagamentoCreditCard($request);
             dd($pagoComCartao);
         } elseif ( ($request->type_payment === 'BOLETO') AND ($request->op === 'BOLETO') ){
-            $boleto = MoipIntegration::getPagamentoBoleto();
+            $boleto = MoipIntegration::getPagamentoBoleto($request);
             $idBoleto = $boleto['idBoleto'];
             $codBoleto = $boleto['codBoleto'];
             $urlBoleto = $boleto['urlBoleto'];

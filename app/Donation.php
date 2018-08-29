@@ -7,11 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Donation extends Model
 {
    protected  $fillable = [
-		'total_amount',
-		'donation_date',
 		'details',
 		'full_name',
 		'email',
+		'date_of_birth',
+		'cpf',
+		'total_amount',
+		'donation_date',
+		'type_payment',
 		'country',
 		'postal_code',
 		'anonymus',

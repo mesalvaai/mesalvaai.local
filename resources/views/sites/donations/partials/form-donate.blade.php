@@ -38,6 +38,7 @@
 
 {{-- {!! Form::hidden('user_id', $encrypted) !!}
 {!! Form::hidden('user_id', $decrypted) !!} --}}
+{!! Form::text('campaign_id', $campanha->id) !!}
 <div class="form-group row">
 	{!! Form::label('full_name', 'Nome completo', ['class' => 'col-sm-3 col-form-label'] ) !!}
 	<div class="col-sm-9">
@@ -63,12 +64,12 @@
 </div>
 
 <div class="form-group row">
-	{!! Form::label('data_of_birth', 'Data de nascimento', ['class' => 'col-sm-3 col-form-label'] ) !!}
+	{!! Form::label('date_of_birth', 'Data de nascimento', ['class' => 'col-sm-3 col-form-label'] ) !!}
 	<div class="col-sm-4">
-		{!! Form::text('data_of_birth', null, ['class' => $errors->has('data_of_birth') ? 'form-control is-invalid' : 'form-control', 'placeholder' => '00/00/0000', 'required']) !!}
-		@if ($errors->has('data_of_birth'))
+		{!! Form::text('date_of_birth', null, ['class' => $errors->has('date_of_birth') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'DD/MM/AAAA', 'required']) !!}
+		@if ($errors->has('date_of_birth'))
 		<span class="invalid-feedback" style="display: block;">
-			<strong>{{ $errors->first('data_of_birth') }}</strong>
+			<strong>{{ $errors->first('date_of_birth') }}</strong>
 		</span>
 		@endif
 	</div>
@@ -109,13 +110,14 @@
 		</div>
 		{!! Form::text('total_amount', null, ['class' => $errors->has('total_amount') ? 'form-control is-invalid' : 'form-control','id' => 'total_amount', 'required']) !!}
 		<small class="text-warning">(mínimo de R$20,00) </small>
+		@if ($errors->has('total_amount'))
+			<span class="invalid-feedback">
+				<strong>{{ $errors->first('total_amount') }}</strong>
+			</span>
+		@endif
 	</div>
 	
-	@if ($errors->has('total_amount'))
-	<span class="invalid-feedback">
-		<strong>{{ $errors->first('total_amount') }}</strong>
-	</span>
-	@endif
+	
 </div>
 
 <h3>Meios de Pagamentos</h3>
@@ -214,7 +216,7 @@
 			$("#total_amount").maskMoney();
 			$("#number").mask("0000 0000 0000 0000");
 			$("#card_cvc").mask("000");
-			$("#data_of_birth").mask("00/00/0000");
+			$("#date_of_birth").mask("00/00/0000");
 		});
 	})(jQuery);
 </script>

@@ -14,7 +14,7 @@ class MoipIntegration extends Model
 	{
 		$phone = self::getPhone($request['phone']);
 		$total_amount = self::getTotalAmount($request['total_amount']);
-		$data_of_birth =FormatTime::FormatDataDB($request['data_of_birth']);
+		$date_of_birth =FormatTime::FormatDataDB($request['date_of_birth']);
 		$moip = Moip::start();
 		//$hash = base64_decode($request->keyMoip);
 		$hash = $request->keyMoip;
@@ -24,7 +24,7 @@ class MoipIntegration extends Model
 			$customer = $moip->customers()->setOwnId(uniqid())
 			->setFullname($request->card_name)
 			->setEmail($request->email)
-			->setBirthDate($data_of_birth)
+			->setBirthDate($date_of_birth)
 			->setPhone($phone['ddd'], $phone['numero'])
 			->setTaxDocument($request['cpf'])
 			->addAddress('SHIPPING',
@@ -58,9 +58,39 @@ class MoipIntegration extends Model
 	}
 
 	public static function getPagamentoBoleto($request){
+		$current_time = Carbon::now()->toDateTimeString();
 		$phone = self::getPhone($request['phone']);
 		$total_amount = self::getTotalAmount($request['total_amount']);
-		$data_of_birth =FormatTime::FormatDataDB($request['data_of_birth']);
+		$date_of_birth =FormatTime::FormatDataDB($request['date_of_birth']);
+
+		$donation = new Donation();
+		$donation->full_name = $request['full_name'];
+		$donation->email = $request['email'];
+		$donation->date_of_birth = $date_of_birth;
+		$donation->phone = $request['phone'];
+		$donation->cpf = $request['cpf'];
+		$donation->total_amount = $request['total_amount'];
+		$donation->donation_date = $current_time;
+		$donation->type_payment = $request['type_payment'];
+		$donation->status = 1;
+		$donation->details = 'Pagamento no boleto';
+		$save = $donation->save();
+
+		if ($save) {
+			$campaign_donation = new CampaignDonation();
+			$campaign_donation->campaign_id = $request['campaign_id'];
+			$campaign_donation->donation_id = $donation->id;
+			$campaign_donation->donation_amount = $request['total_amount'];
+			$campaign_donation->details = 'Pagamento no boleto';
+			$saveCampaingDonation  = $campaign_donation->save();
+
+			if ($saveCampaingDonation) {
+				$campaign = Campaign::where('id', $request->input('campaign_id'))->first();
+			    $campaign->funds_received = $campaign->funds_received + $request->input('total_amount');
+			    $campaign->update();
+			}
+		}
+		dd($campaign->id);
 
 		//dd(new Carbon(date('Y-m-d', strtotime('+4 days'))));
 		$moip = Moip::start();
@@ -68,7 +98,7 @@ class MoipIntegration extends Model
 			$customer = $moip->customers()->setOwnId(uniqid())
 			->setFullname($request['full_name'])
 			->setEmail($request['email'])
-			->setBirthDate($data_of_birth)
+			->setBirthDate($date_of_birth)
 			->setTaxDocument($request['cpf'])
 			->setPhone($phone['ddd'], $phone['numero'])
 			->addAddress('SHIPPING',
