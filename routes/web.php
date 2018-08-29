@@ -412,17 +412,17 @@ Route::middleware(['auth'])->group(function(){
 	
      //Costs
 	Route::post('costs/store', 'Admin\CostController@store')->name('costs.store')
-	;
+	->middleware('permission:costs.create');
 	Route::get('costs', 'Admin\CostController@index')->name('costs.index')
-	;
+	->middleware('permission:costs.index');
 	Route::get('costs/create', 'Admin\CostController@create')->name('costs.create')
-	;
+	->middleware('permission:costs.create');
 	Route::put('costs/{cost}', 'Admin\CostController@update')->name('costs.update')
-	;
+	->middleware('permission:costs.edit');
 	Route::get('costs/{cost}', 'Admin\CostController@show')->name('costs.show')
-	;
+	->middleware('permission:costs.show');
 	Route::delete('costs/{cost}', 'Admin\CostController@destroy')->name('costs.destroy')
-	;
+	->middleware('permission:costs.destroy');
 	Route::get('costs/{cost}/edit', 'Admin\CostController@edit')->name('costs.edit')
-	;
+	->middleware('permission:costs.edit');
 });
