@@ -19,14 +19,15 @@ class CostController extends Controller
     public function index()
     {
         $costs = Cost::paginate();
-
+            
         // Repassando para a view
         return view('admins.costs.index', compact('costs'));
     }
     
     public function getCursos()
     {
-      $courses = Course::getCursos();
+      $course = new Course();
+      $courses = $course->getCursos();
       return $courses;
     }
 
@@ -51,10 +52,11 @@ class CostController extends Controller
      */
     public function create()
     {
-        $courses = Course::getCursos();
+        $courses = Course::get();
         
-        $periods = Period::getPeriodo();
-        $levels = Level::getNivel();
+        $periods = Period::get();
+        $levels = Level::get()->pluck('name', 'id');
+
         return view('admins.costs.create', compact('courses','periods', 'levels'));
     }
 
@@ -72,7 +74,7 @@ class CostController extends Controller
      
     ];
     $validator = \Validator::make($request->all(), [
-      'monthly_payment', 'dicount' ,'scholarship','economy', 'vacancy' => 'required',
+      'monthly_payment', 'discount' ,'scholarship','economy', 'vacancy' => 'required',
       
       'status' => 'bail|required|max:1',
     ], $messages);
@@ -126,7 +128,7 @@ class CostController extends Controller
      
     ];
     $validator = \Validator::make($request->all(), [
-      'monthly_payment', 'dicount' ,'scholarship','economy', 'vacancy' => 'required',
+      'monthly_payment', 'discount' ,'scholarship','economy', 'vacancy' => 'required',
       
       'status' => 'bail|required|max:1',
     ], $messages);

@@ -11,5 +11,16 @@ class Cost extends Model
     ];
     protected $guarded = ['id', 'created_at', 'updated_at'];
     protected $table = 'costs';
-  
+    
+    public function getCursos(){
+        return Course::get();
+    }
+    public function getPeriodo(){
+        return Period::get();
+    }
+    public function getNiveis(){
+        return Level::get();
+    }
+    
+    
 }
