@@ -19,17 +19,15 @@ class CostController extends Controller
     public function index()
     {
         $costs = Cost::paginate();
-        dd($costs);
-
         // Repassando para a view
         return view('admins.costs.index', compact('costs'));
     }
     
     public function getCursos()
     {
-        $course = new Course();
-        $courses = $course->getCursos();
-        return $courses;
+      $course = new Course();
+      $courses = $course->getCursos();
+      return $courses;
     }
 
     public function getNivel()
@@ -72,7 +70,7 @@ class CostController extends Controller
      
     ];
     $validator = \Validator::make($request->all(), [
-      'monthly_payment', 'dicount' ,'scholarship','economy', 'vacancy' => 'required',
+      'monthly_payment', 'discount' ,'scholarship','economy', 'vacancy' => 'required',
       
       'status' => 'bail|required|max:1',
     ], $messages);
@@ -126,7 +124,7 @@ class CostController extends Controller
      
     ];
     $validator = \Validator::make($request->all(), [
-      'monthly_payment', 'dicount' ,'scholarship','economy', 'vacancy' => 'required',
+      'monthly_payment', 'discount' ,'scholarship','economy', 'vacancy' => 'required',
       
       'status' => 'bail|required|max:1',
     ], $messages);
