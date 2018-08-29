@@ -78,9 +78,55 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StudentFormRequest $request)
+    public function store(Request $request, Student $student)
     {
-      $validated = $request->validated();
+      $messages = [
+       'required' => 'O campo ":attribute" é obrigatório!',
+       'email.unique' => 'Já existe estudante cadastrado com este email!',
+       'cpf.unique' => 'Já existe estudante cadastrado com este CPF!',
+       'numeric' => 'O campo ":attribute" deve ser um número!',
+       'min' => 'O campo ":attribute" deve ter no mínimo :min caracteres!',
+       'max' => 'O campo ":attribute" deve ter no maximo :max caracteres!',
+       'type.required' => 'O campo "tipo" é obrigatório!',
+       'unique' => 'Este ":attribute" já se encontra cadastrado no sistema!',
+        'cpf'=> 'Esse cpf é inválido!',
+       
+     ];
+
+     $validator = \Validator::make($request->all(), [
+      'email' => [
+        'bail',
+        'required',
+        'max:255',
+        Rule::unique('students')->ignore($student->id),
+      ], 
+      'cpf' => [
+        'bail',
+        'required',
+         'cpf',  
+        'max:11',
+        Rule::unique('students')->ignore($student->id),
+      ], 
+      'name'    =>'required|min:3|max:100',           
+      'data_of_birth' => 'required|date',
+      'phone'   =>'required|integer',
+      'cep'     =>'required|integer',
+      'state_id'   =>'required',
+      'city_id' =>'required',
+      'street'  =>'required',
+      'number'  =>'required',
+      'neighborhood' =>'required',
+      'complement'   =>'required',
+      'status'  =>'required'
+    ], $messages);
+
+     if ($validator->fails()) {
+
+      return redirect()->back()
+      ->withErrors($validator)
+      ->withInput();
+
+    }
 
       $student = Student::create($request->all());
 
@@ -155,7 +201,9 @@ class StudentController extends Controller
        'min' => 'O campo ":attribute" deve ter no mínimo :min caracteres!',
        'max' => 'O campo ":attribute" deve ter no maximo :max caracteres!',
        'type.required' => 'O campo "tipo" é obrigatório!',
-       'unique' => 'Este ":attribute" já se encontra cadastrado no sistema!'
+       'unique' => 'Este ":attribute" já se encontra cadastrado no sistema!',
+        'cpf'=> 'Esse cpf é inválido!',
+       
      ];
 
      $validator = \Validator::make($request->all(), [
@@ -165,10 +213,11 @@ class StudentController extends Controller
         'max:255',
         Rule::unique('students')->ignore($student->id),
       ], 
-      'cpf' => [
+      'cpf' => [ 
         'bail',
         'required',
-        'max:255',
+        'cpf',
+        'max:11',
         Rule::unique('students')->ignore($student->id),
       ], 
       'name'    =>'required|min:3|max:100',           
