@@ -408,9 +408,7 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:courses.destroy');
 	Route::get('courses/{course}/edit', 'Admin\CourseController@edit')->name('courses.edit')
 	->middleware('permission:courses.edit');
-
-	
-     //Costs
+//Costs
 	Route::post('costs/store', 'Admin\CostController@store')->name('costs.store')
 	->middleware('permission:costs.create');
 	Route::get('costs', 'Admin\CostController@index')->name('costs.index')
@@ -425,4 +423,6 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:costs.destroy');
 	Route::get('costs/{cost}/edit', 'Admin\CostController@edit')->name('costs.edit')
 	->middleware('permission:costs.edit');
+	
+     
 });
