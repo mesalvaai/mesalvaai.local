@@ -69,13 +69,14 @@ class InstitutionController extends Controller
       'phone.unique' => 'Já existe uma instituição com esse telefone, cadastrada!',
       'cpnj.unique' => 'Já existe uma instituição com esse CNPJ, cadastrada!',
       'max' => 'Valor máximo de caracteres excedido!',
+      'cnpj' => 'Esse CNPJ é inválido!',  
      
     ];
     $validator = \Validator::make($request->all(), [
       'name' => 'required|unique:institutions|max:150',
       'slug' => 'required|max:150',
       'phone'=> 'required|unique:institutions|max:16',
-      'cpnj' => 'required|unique:institutions|max:18',
+      'cpnj' => 'required|unique:institutions|max:18|cnpj',
       'cpe'  => 'required|max:9',
       'street' => 'required|max:45',
       'number' => 'required|max:5',

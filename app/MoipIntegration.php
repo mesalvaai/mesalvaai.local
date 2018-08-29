@@ -4,13 +4,180 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use vendor\autoload;
+use App\Helpers\FormatTime;
+use \Carbon\Carbon;
 use Moip;
 class MoipIntegration extends Model
 {
 	
+	public static function getPagamentoCreditCard($request)
+	{
+		$phone = self::getPhone($request['phone']);
+		$total_amount = self::getTotalAmount($request['total_amount']);
+		$date_of_birth =FormatTime::FormatDataDB($request['date_of_birth']);
+		$moip = Moip::start();
+		//$hash = base64_decode($request->keyMoip);
+		$hash = $request->keyMoip;
+		
+
+		try {
+			$customer = $moip->customers()->setOwnId(uniqid())
+			->setFullname($request->card_name)
+			->setEmail($request->email)
+			->setBirthDate($date_of_birth)
+			->setPhone($phone['ddd'], $phone['numero'])
+			->setTaxDocument($request['cpf'])
+			->addAddress('SHIPPING',
+				'Rua de teste do SHIPPING', 101,
+				'Bairro de Capoeiruçu', 'Bahia', 'BA',
+				'44.300-000', 197)
+			->create();
+		} catch (Exception $e) {
+			dd($e->__toString());
+		}
+		try {
+            //set OwnId único, adiciona item [doação, a quantidade, detalhe, e valor no ex. 100 R$]
+			$order = $moip->orders()->setOwnId(uniqid())
+			->addItem("Doação",1, "sku1", $total_amount)
+			->setCustomer($customer)
+			->create();
+		} catch (Exception $e) {
+			dd($e->__toString());
+		}
+
+		try {
+
+			$payment = $order->payments()->setCreditCardHash($hash, $customer)
+			->execute();
+
+			return "Doação Realizada com sucesso";
+
+		} catch (Exception $e) {
+			dd($e->__toString());
+		}	
+	}
+
+	public static function getPagamentoBoleto($request){
+		$current_time = Carbon::now()->toDateTimeString();
+		$phone = self::getPhone($request['phone']);
+		$total_amount = self::getTotalAmount($request['total_amount']);
+		$date_of_birth =FormatTime::FormatDataDB($request['date_of_birth']);
+
+		$donation = new Donation();
+		$donation->full_name = $request['full_name'];
+		$donation->email = $request['email'];
+		$donation->date_of_birth = $date_of_birth;
+		$donation->phone = $request['phone'];
+		$donation->cpf = $request['cpf'];
+		$donation->total_amount = $request['total_amount'];
+		$donation->donation_date = $current_time;
+		$donation->type_payment = $request['type_payment'];
+		$donation->status = 1;
+		$donation->details = 'Pagamento no boleto';
+		$save = $donation->save();
+
+		if ($save) {
+			$campaign_donation = new CampaignDonation();
+			$campaign_donation->campaign_id = $request['campaign_id'];
+			$campaign_donation->donation_id = $donation->id;
+			$campaign_donation->donation_amount = $request['total_amount'];
+			$campaign_donation->details = 'Pagamento no boleto';
+			$saveCampaingDonation  = $campaign_donation->save();
+
+			if ($saveCampaingDonation) {
+				$campaign = Campaign::where('id', $request->input('campaign_id'))->first();
+			    $campaign->funds_received = $campaign->funds_received + $request->input('total_amount');
+			    $campaign->update();
+			}
+		}
+		dd($campaign->id);
+
+		//dd(new Carbon(date('Y-m-d', strtotime('+4 days'))));
+		$moip = Moip::start();
+		try {
+			$customer = $moip->customers()->setOwnId(uniqid())
+			->setFullname($request['full_name'])
+			->setEmail($request['email'])
+			->setBirthDate($date_of_birth)
+			->setTaxDocument($request['cpf'])
+			->setPhone($phone['ddd'], $phone['numero'])
+			->addAddress('SHIPPING',
+				'Rua de teste do SHIPPING', 101,
+				'Bairro de Capoeiruçu', 'Bahia', 'BA',
+				'44.300-000', 197)
+			->create();
+
+
+		} catch (Exception $e) {
+			dd($e->__toString());
+		}
+
+		try {
+            //set OwnId único, adiciona item [doação, a quantidade, detalhe, e valor no ex. 100 R$]
+			$order = $moip->orders()->setOwnId(uniqid())
+			->addItem("Doação",1, "sku1", $total_amount)
+			->setCustomer($customer)
+			->create();
+
+		} catch (Exception $e) {
+			dd($e->__toString());
+		}
+
+		try {
+			$logo_uri = 'https://cdn.moip.com.br/wp-content/uploads/2016/05/02163352/logo-moip.png';
+			$expiration_date = new Carbon(date('Y-m-d', strtotime('+4 days')));
+
+			// $now = new \DateTime();
+			$instruction_lines = ['INSTRUÇÃO 1', 'INSTRUÇÃO 2', 'INSTRUÇÃO 3'];
+
+            // dd($instruction_lines);
+			$payment = $order->payments()  
+			->setBoleto($expiration_date, $logo_uri, $instruction_lines)
+			->execute();
+
+			$url = file_get_contents($payment->getHrefPrintBoleto());
+			$codBoleto = $payment->getLineCodeBoleto();
+			$idBoleto = $payment->getId();
+			$urlBoleto = $payment->getHrefPrintBoleto();
+			$hrefBoleto = explode('/', $payment->getHrefBoleto());
+			$hrefBoleto = array_last($hrefBoleto);
+			$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);
+
+			$data = [
+				'idBoleto' => $idBoleto,
+				'codBoleto' => $codBoleto,
+				'urlBoleto' => $urlBoleto,
+				'hrefBoleto' => $hrefBoleto,
+				'print' => $print
+			];
+
+			return $data;
+		} catch (Exception $e) {
+			dd($e->__toString());
+		}
+	}
+
+	public static function getPhone($phone)
+	{
+		$removeCarateres = preg_replace("/[^0-9]/", "", $phone);
+		$pegarDosPrimeirosDigitos = substr( $removeCarateres, 0, 2 );
+		$pegarUltimosDigitos = substr( $removeCarateres, 2, 9 );
+		$data = [
+			'ddd' => $pegarDosPrimeirosDigitos,
+			'numero' => $pegarUltimosDigitos,
+		];
+		return $data;
+	}
+
+	public static function getTotalAmount($total_amount)
+	{
+		$amount = preg_replace("/[^0-9]/", "", $total_amount);
+		return intval($amount);
+	}
+
 	public static function pagamentoCreditCard($base64)
 	{
-		dd($base64);
+		//dd($base64);
 		$moip = Moip::start();
 		$hash = base64_decode($base64);
 
@@ -49,76 +216,6 @@ class MoipIntegration extends Model
 		} catch (Exception $e) {
 			dd($e->__toString());
 		}	
-	}
-
-
-	public static function getPagamentoBoleto(){
-
-		$moip = Moip::start();
-		try {
-			$customer = $moip->customers()->setOwnId(uniqid())
-			->setFullname('Fulano de Tal')
-			->setEmail('fulano@email.com')
-			->setBirthDate('1988-12-30')
-			->setTaxDocument('22222222222')
-			->setPhone(11, 66778899)
-			->addAddress('SHIPPING',
-				'Rua de teste do SHIPPING', 123,
-				'Bairro do SHIPPING', 'Sao Paulo', 'SP',
-				'01234567', 8)
-			->create();
-
-
-		} catch (Exception $e) {
-			dd($e->__toString());
-		}
-
-		try {
-            //set OwnId único, adiciona item [doação, a quantidade, detalhe, e valor no ex. 100 R$]
-			$order = $moip->orders()->setOwnId(uniqid())
-			->addItem("Doação",1, "sku1", 10000)
-			->setCustomer($customer)
-			->create();
-
-		} catch (Exception $e) {
-			dd($e->__toString());
-		}
-
-		try {
-			$logo_uri = 'https://cdn.moip.com.br/wp-content/uploads/2016/05/02163352/logo-moip.png';
-			$expiration_date = \Carbon\Carbon::now();
-
-			// $now = new \DateTime();
-			$instruction_lines = ['INSTRUÇÃO 1', 'INSTRUÇÃO 2', 'INSTRUÇÃO 3'];
-
-            // dd($instruction_lines);
-			$payment = $order->payments()  
-			->setBoleto($expiration_date, $logo_uri, $instruction_lines)
-			->execute();
-
-			$url = file_get_contents($payment->getHrefPrintBoleto());
-			$codBoleto = $payment->getLineCodeBoleto();
-			$idBoleto = $payment->getId();
-			$urlBoleto = $payment->getHrefPrintBoleto();
-			$hrefBoleto = explode('/', $payment->getHrefBoleto());
-			$hrefBoleto = array_last($hrefBoleto);
-			$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);
-
-			//PAYMENT_ID
-			//$payment = $moip->payments()->get("PAY-SVSD4VAAGKM5");
-			//$payment = json_encode($payment);
-			$data = [
-				'idBoleto' => $idBoleto,
-				'codBoleto' => $codBoleto,
-				'urlBoleto' => $urlBoleto,
-				'hrefBoleto' => $hrefBoleto,
-				'print' => $print
-			];
-
-			return $data;
-		} catch (Exception $e) {
-			dd($e->__toString());
-		}
 	}
 
 	public static function PagamentoBoleto(){

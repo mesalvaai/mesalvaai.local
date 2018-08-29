@@ -13,7 +13,6 @@
 
 Route::get('/', 'Site\HomeController@home')->name('site');
 
-
 Route::get('/pagamento-credit-card/{base64}', 'MoipIntegrationController@pagamentoCreditCard')->name('pagamento-credit-card');
 
 Route::get('/moip', 'MoipIntegrationController@index')->name('moip');
@@ -26,14 +25,13 @@ Route::get('/t', 'MoipIntegrationController@t')->name('t');
 Route::get('/info',function(){
 	return view('sites.info-cursos');
 });
+
 Route::get('get-paises-restantes', 'Admin\StudentController@getPaises')->name('get-paises-restantes');
 Route::get('get-estados/{idPais}', 'Admin\StudentController@getEstados')->name('get-estados');
 Route::get('get-cidades/{idPais}/{idEstado}', 'Admin\StudentController@getCidades')->name('get-cidades');
 
-Route::get('/campanhas', function()
-{
-	return redirect('/');
-});
+Route::get('/campanhas', 'Site\HomeController@campanhas')->name('campanhas');
+
 Route::get('/campanhas/{idCamping?}', 'Site\HomeController@campanha')->name('show.campanha');
 Route::get('/campanhas/{slugCamping}/donate', 'Site\HomeController@donate')->name('donate.campanha');
 Route::post('/campanhas/processar-donacao', 'Site\HomeController@donateProcess')->name('donate.process');
@@ -48,7 +46,6 @@ Route::get('/test', 'Site\HomeController@test')->name('test');
 Route::get('/cursos', 'Site\CursoController@curso');
 Route::get('/faculdade/id_curso', 'Site\CursoController@faculdade');
 Route::get('/student', 'Admin\StudentController@index');
-
 
 Auth::routes();
 
@@ -393,4 +390,39 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:periods.destroy');
 	Route::get('periods/{period}/edit', 'Admin\PeriodController@edit')->name('periods.edit')
 	->middleware('permission:periods.edit');
+
+
+
+     //courses
+	Route::post('courses/store', 'Admin\CourseController@store')->name('courses.store')
+	->middleware('permission:courses.create');
+	Route::get('courses', 'Admin\CourseController@index')->name('courses.index')
+	->middleware('permission:courses.index');
+	Route::get('courses/create', 'Admin\CourseController@create')->name('courses.create')
+	->middleware('permission:courses.create');
+	Route::put('courses/{course}', 'Admin\CourseController@update')->name('courses.update')
+	->middleware('permission:courses.edit');
+	Route::get('courses/{course}', 'Admin\CourseController@show')->name('courses.show')
+	->middleware('permission:courses.show');
+	Route::delete('courses/{course}', 'Admin\CourseController@destroy')->name('courses.destroy')
+	->middleware('permission:courses.destroy');
+	Route::get('courses/{course}/edit', 'Admin\CourseController@edit')->name('courses.edit')
+	->middleware('permission:courses.edit');
+
+	
+     //Costs
+	Route::post('costs/store', 'Admin\CostController@store')->name('costs.store')
+	->middleware('permission:costs.create');
+	Route::get('costs', 'Admin\CostController@index')->name('costs.index')
+	->middleware('permission:costs.index');
+	Route::get('costs/create', 'Admin\CostController@create')->name('costs.create')
+	->middleware('permission:costs.create');
+	Route::put('costs/{cost}', 'Admin\CostController@update')->name('costs.update')
+	->middleware('permission:costs.edit');
+	Route::get('costs/{cost}', 'Admin\CostController@show')->name('costs.show')
+	->middleware('permission:costs.show');
+	Route::delete('costs/{cost}', 'Admin\CostController@destroy')->name('costs.destroy')
+	->middleware('permission:costs.destroy');
+	Route::get('costs/{cost}/edit', 'Admin\CostController@edit')->name('costs.edit')
+	->middleware('permission:costs.edit');
 });

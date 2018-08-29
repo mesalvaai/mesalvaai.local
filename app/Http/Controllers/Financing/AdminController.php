@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 
-
-use FormatTime;
 use Auth;
 use App\Category;
 use App\Campaign;
@@ -29,6 +27,7 @@ use App\Reward;
 use App\Period;
 use App\User;
 use Image;
+use FormatTime;
 
 
 class AdminController extends Controller
@@ -39,7 +38,6 @@ class AdminController extends Controller
     	//$this->middleware('IsRoleAluno:role_fc');
         //$this->middleware('IsRoleAluno:role_fc');
     }
-
     public function index(Request $request)
     {
     	$request->user()->authorizeRoles(['role_fc']);
@@ -166,6 +164,7 @@ class AdminController extends Controller
     {
         $request->user()->authorizeRoles(['role_fc']);
         $validated = $request->validated();
+        //dd($request->input('data_of_birth'));
 
         $student = Student::find($idStudent);
         //$student->fill($request->all())->save();

@@ -38,7 +38,6 @@
 
 {{-- {!! Form::hidden('user_id', $encrypted) !!}
 {!! Form::hidden('user_id', $decrypted) !!} --}}
-{!! Form::text('campaign_id', $campanha->id) !!}
 <div class="form-group row">
 	{!! Form::label('full_name', 'Nome completo', ['class' => 'col-sm-3 col-form-label'] ) !!}
 	<div class="col-sm-9">
@@ -66,7 +65,7 @@
 <div class="form-group row">
 	{!! Form::label('date_of_birth', 'Data de nascimento', ['class' => 'col-sm-3 col-form-label'] ) !!}
 	<div class="col-sm-4">
-		{!! Form::text('date_of_birth', null, ['class' => $errors->has('date_of_birth') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'DD/MM/AAAA', 'required']) !!}
+		{!! Form::text('date_of_birth', null, ['class' => $errors->has('date_of_birth') ? 'form-control is-invalid' : 'form-control', 'placeholder' => '00/00/0000', 'required']) !!}
 		@if ($errors->has('date_of_birth'))
 		<span class="invalid-feedback" style="display: block;">
 			<strong>{{ $errors->first('date_of_birth') }}</strong>
@@ -110,14 +109,13 @@
 		</div>
 		{!! Form::text('total_amount', null, ['class' => $errors->has('total_amount') ? 'form-control is-invalid' : 'form-control','id' => 'total_amount', 'required']) !!}
 		<small class="text-warning">(mínimo de R$20,00) </small>
-		@if ($errors->has('total_amount'))
-			<span class="invalid-feedback">
-				<strong>{{ $errors->first('total_amount') }}</strong>
-			</span>
-		@endif
 	</div>
 	
-	
+	@if ($errors->has('total_amount'))
+	<span class="invalid-feedback">
+		<strong>{{ $errors->first('total_amount') }}</strong>
+	</span>
+	@endif
 </div>
 
 <h3>Meios de Pagamentos</h3>
@@ -125,7 +123,7 @@
 	
 	<div class="col-6" align="center" >
 		
-		{!! Form::radio('type_payment','CREDIT_CARD', null, ['onclick' => 'openMethodPago(event, "cred-card")']) !!}
+		{!! Form::radio('type_payment','CREDIT_CARD', null, ['onclick' => 'openCity(event, "cred-card")']) !!}
 		{!! Form::label('type_payment', 'Cartão de crédito') !!}
 		<br>
 		<img src="{{ asset('site/img/donations/cartao.png') }}"  width= "160" height= "100">
@@ -133,7 +131,7 @@
 	</div>
 	
 	<div class="col-6" align="center">
-		{!! Form::radio('type_payment', 'BOLETO', null,['onclick' => 'openMethodPago(event, "boleto")']) !!}
+		{!! Form::radio('type_payment', 'BOLETO', null,['onclick' => 'openCity(event, "boleto")']) !!}
 		{!! Form::label('type_payment', 'Boleto') !!}
 		<br>
 		<img src="{{ asset('site/img/donations/boleto.png') }}">
@@ -189,17 +187,32 @@
 			</div>
 		</div>
 	</div>
-	<textarea name="keyMoip" id="encrypted_value" style="display: none;"></textarea>
+	<textarea id="encrypted_value" style="display: none;"></textarea>
 	<div class="col-md">
 		{{ Form::button('CONTRIBUIR', ['type' => 'submit', 'name' =>'op', 'value' => 'CREDIT_CARD', 'class' => 'btn btn-msa btn-sm w-100', 'id' => 'encrypt'] )  }}
 	</div>
 </div>
 
 <div id="boleto" class="tabcontent">
+	{{-- <input type="submit" id="gerar_boleto" onclick="gerar_boleto()" value="Gerar Boleto"> --}}
 	{{ Form::button('GERAR BOLETO', ['type' => 'submit','name' =>'op', 'value' => 'BOLETO', 'class' => 'btn btn-msa btn-sm w-100', 'id' => 'gerar_boleto'] )  }}
+	{{-- <a href="#" class="btn btn-msa btn-sm w-100" id="gerar_boleto" onclick="gerar_boleto()">Gerar boleto</a> --}}
 </div>
 
+
 <br>
+
+<div class="row">{{-- 
+	<div class="col-md">
+		{{ Form::button('Aicionar recompensas (opcional)', ['type' => 'submit', 'name' =>'op', 'value' => 'add_r', 'class' => 'btn btn-success btn-sm w-100'] )  }}
+	</div> --}}
+	{{-- <div class="col-md">
+		{{ Form::button('CONTRIBUIR', ['type' => 'submit', 'name' =>'op', 'value' => 'add', 'class' => 'btn btn-msa btn-sm w-100', 'id' => 'encrypt'] )  }}
+	</div> --}}{{-- 
+	<div class="col-md">
+		{{ Form::button('Visualizar e lançar seu campanha', ['type' => 'submit', 'name' =>'op', 'value' => 'show_c', 'class' => 'btn btn-info btn-sm w-100'] )  }}
+	</div> --}}
+</div>
 
 @section('scripts')
 <!-- JavaScript do moip -->
@@ -222,7 +235,7 @@
 </script>
 
 <script>
-	function openMethodPago(evt, optionPayment) {
+	function openCity(evt, optionPayment) {
 		var i, tabcontent, tablinks;
 		tabcontent = document.getElementsByClassName("tabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
@@ -239,65 +252,96 @@
 </script>
 
 <script type="text/javascript" language="javascript">
-	var key = "-----BEGIN PUBLIC KEY-----"+
-	 "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4UDKQUT5lrZdSeE6d/Tu"+
-	 "AnYAV8H0FjwT3+0AAIoo3bwekxvkLjn9AjQ+25IIEOe2Q5h4KWf8Apa4KA69S58T"+
-	 "R32FSJofl3S6TS9F/bZSYfZXwizcdfJhOl3aIbtFRQ3/B6Pa3Bg0Z/bofN02cy5T"+
-	 "SxY3+wAqORYChhMNS+NQT68NVIgk2mYJU9Le+a/lj8IwVDEAoy0N5jsox8PPfe0a"+
-	 "kU1cTtx7TWOVSBTJC9l/GbT/CvKGcj2MO824ShYozW/4bx3yeaAIzBl8VgQMnph3"+
-	 "v8pYTtQJjhQ7N6GwMu7mRoYkwYVNUgxgJocIcnKfXym5Ij95aJw8WyfzgxvkSdNh"+
-	 "2wIDAQAB"+
-	 "-----END PUBLIC KEY-----";
 
-	$(document).ready(function() {
+ var key = "-----BEGIN PUBLIC KEY-----"+
+ "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4UDKQUT5lrZdSeE6d/Tu"+
+ "AnYAV8H0FjwT3+0AAIoo3bwekxvkLjn9AjQ+25IIEOe2Q5h4KWf8Apa4KA69S58T"+
+ "R32FSJofl3S6TS9F/bZSYfZXwizcdfJhOl3aIbtFRQ3/B6Pa3Bg0Z/bofN02cy5T"+
+ "SxY3+wAqORYChhMNS+NQT68NVIgk2mYJU9Le+a/lj8IwVDEAoy0N5jsox8PPfe0a"+
+ "kU1cTtx7TWOVSBTJC9l/GbT/CvKGcj2MO824ShYozW/4bx3yeaAIzBl8VgQMnph3"+
+ "v8pYTtQJjhQ7N6GwMu7mRoYkwYVNUgxgJocIcnKfXym5Ij95aJw8WyfzgxvkSdNh"+
+ "2wIDAQAB"+
+ "-----END PUBLIC KEY-----";
 
-	  	$("#encrypt").click(function() {
-		    var cc = new Moip.CreditCard({
-		      	number  : $("#number").val(),
-		      	cvc     : $("#cvc").val(),
-		      	expMonth: $("#month").val(),
-		      	expYear : $("#year").val(),
-		      	pubKey  : key
-		    });
-		    console.log(cc);
-		    if( cc.isValid()){
-		      	$("#encrypted_value").val(cc.hash());
-		    }
-		    else{
-		      	$("#encrypted_value").val('');
-		      	alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
-		    }
+ $(document).ready(function() {
 
-		    var hash = $("#encrypted_value").val();
-		   	var base64 = btoa(hash);
-		   	//  location.href = '/campanhas/processar-donacao/' + base64; 
-		  	// });
+  $("#encrypt").click(function() {
+    var cc = new Moip.CreditCard({
+      number  : $("#number").val(),
+      cvc     : $("#cvc").val(),
+      expMonth: $("#month").val(),
+      expYear : $("#year").val(),
+      pubKey  : key
+    });
+    console.log(cc);
+    if( cc.isValid()){
+      $("#encrypted_value").val(cc.hash());
+    }
+    else{
+      $("#encrypted_value").val('');
+      alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
+    }
 
-		   	// pegando os dados 
-		   	//var vHash = $("#encrypted_value").val();
-		   	var vHash = base64;
-		   	// criando as variáveis 
-		   	var vUrl = "/campanhas/processar-donacao"; 
-		   	var vData = { nome:vHash };
+    var hash = $("#encrypted_value").val();
 
-		   	$.post( 
-		   		vUrl, //Required URL of the page on server v
-		   		Data, 
-		   		function(response,status) { 
-		   			// tratando o status de retorno. Sucesso significa que o envio e retorno foi executado com sucesso. 
-		   			if(status == "success") {
-		   				// pegando os dados jSON 
-		   				// var obj = jQuery.parseJSON(response); 
-		   				// $("#result").html( 
-		   				// 	"Nome enviado: " + obj.nome + "<br>" + 
-		   				// 	"E-mail enviado: " + obj.email 
-		   				// ); 
-		   			} 
-		   		}
-		   	);
-		});
+    var base64 = btoa(hash);
+
+    location.href = '/pagamento-credit-card/' + base64; 
+    // $.get('/pagamento-credit-card/'  + base64, function(retorno){
+
+    //     alert(retorno);
+
+
+    // );
+  });
+
 });
+
+function redirecionar(item) { 
+  // location.href = '{{route('moip')}}'; 
+}
+function gerar_boleto(){
+ 	window.open('/boleto', '_blank');
+       // window.location.href = "/boleto";
+}
+
+
+// function MM_goToURL() {
+
+// for (var i=0; i< (MM_goToURL.arguments.length - 1); i+=100)
+
+// eval(MM_goToURL.arguments+".location='"+MM_goToURL.arguments[i+1]+"'");
+
+// document.MM_returnValue = false;
+
+// }
+
 </script>
+
+<script type="text/javascript">
+    // $(document).ready(function() {
+    //     $("#encrypt").click(function() {
+    //       var cc = new Moip.CreditCard({
+    //         number  : $("#number").val(),
+    //         cvc     : $("#cvc").val(),
+    //         expMonth: $("#month").val(),
+    //         expYear : $("#year").val(),
+    //         pubKey  : $("#public_key").val()
+    //       });
+    //       console.log(cc);
+    //       if( cc.isValid()){
+    //         $("#encrypted_value").val(cc.hash());
+    //         $("#card_type").val(cc.cardType());
+    //       }
+    //       else{
+    //         $("#encrypted_value").val('');
+    //         $("#card_type").val('');
+    //         alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
+    //       }
+    //     });
+    // });
+  </script>
+
 
 @endsection
 

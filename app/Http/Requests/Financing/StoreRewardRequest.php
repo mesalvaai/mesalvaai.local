@@ -41,8 +41,8 @@ class StoreRewardRequest extends FormRequest
         //}
 
         if ($request['quantity'] == null and $request['unlimited'] == null) {
-          $rules['quantity'] = 'required';
-      }
+            $rules['quantity'] = 'required';
+        }
 
         // if ($this->attributes->get('some-key') == 'some-value') {
         //     $this->attributes->set('key', 'value');

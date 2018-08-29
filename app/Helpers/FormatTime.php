@@ -76,25 +76,52 @@ class FormatTime {
         $from = Carbon::createFromFormat('Y-m-d H:s:i', $end_date);
         $diff_in_days = $to->diffInDays($from);
         return $diff_in_days;
-        //print_r($diff_in_days); // Output: 1
     }
+    public static function formatData($data){
+        $data = explode('/', $data);
+        $data = $data[2].'-'.$data[1].'-'.$data[0];
+        return $data;
+    }
+
     public static function FormatDataDB($dateFormatBR)
     {
+         $data = Carbon::createFromFormat('d/m/Y', $dateFormatBR)->toDateString();
+         return $data;
+     }    
 
-     $data = Carbon::createFromFormat('d/m/Y', $dateFormatBR)->toDateString();
+     public static function FormatDataBR($dateFormatDB){
+        $datas[] = explode('-',  substr($dateFormatDB, 0, 10));
+        $data = $datas[0][2].$datas[0][1].$datas[0][0];
+        return $data;
+    }
 
-     return $data;
- }    
+    public static function ExpirationDate($expiration_date)
+    {
+        // Se você não tiver o timestamp da data que cairía o vencimento, faça assim:
+        $dia = 12;
+        $mes = 01;
+        $ano = 2009;
+        $timestamp = mktime(0,0,0, $mes, $dia, $ano);
 
- public static function FormatDataBR($dateFormatDB){
+        $dia_semana = date('N', $timestamp);
 
+        // Se for sábado ou domingo
+        if ($dia_semana >= 6) {
+           // Adicinoa a diferença de dias até a próxima segunda-feira
+           $timestamp += ((8 - $dia_semana)  * 3600 * 24);
+        }
 
-    $datas[] = explode('-',  substr($dateFormatDB, 0, 10));
+        // Monta a data final
+        $data_final = date('d/m/Y', $timestamp); 
 
-    $data = $datas[0][2].$datas[0][1].$datas[0][0];
+        // Exibe-a
+        echo "A data final é " . $data_final;
+    }
+
     
-    return $data;
-
-}
+    public static function getDataVencimento($dataNow)
+    {
+        return $carbon = new Carbon(date('Y-m-d', strtotime('+5 days')));
+    }
 
 }

@@ -28,8 +28,8 @@
   <!-- Main Stylesheet File -->
   <link href="{{ asset('site/css/style.css') }}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ asset('site/css/msa.css') }}">
-   <link rel="stylesheet" type="text/css" href="{{ asset('site/css/sty.css') }}">
-
+  <link rel="stylesheet" type="text/css" href="{{ asset('site/css/sty.css') }}">
+  
 
   @yield('styles')
 </head>

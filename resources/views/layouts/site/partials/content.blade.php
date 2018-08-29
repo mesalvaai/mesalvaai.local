@@ -134,12 +134,12 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-center">
-                     <p>Acabou o sufoco de conversões complexas, de pontos que expiram toda hora. Agora, você pode acumular pontos em tempo real para usar de um jeito fácil com o que você realmente quer. No Me Salva Aí, você só tem a ganhar.</p> 
-                 </div>
-             </div>
-         </div>
-     </div>
- </section><!-- #section-four -->
+                       <p>Acabou o sufoco de conversões complexas, de pontos que expiram toda hora. Agora, você pode acumular pontos em tempo real para usar de um jeito fácil com o que você realmente quer. No Me Salva Aí, você só tem a ganhar.</p> 
+                   </div>
+               </div>
+           </div>
+       </div>
+   </section><!-- #section-four -->
 
     <!--==========================
       Section Mimos
@@ -208,19 +208,13 @@
                 @foreach ($campanhas as $campanha)
                 <div class="col-md-3">
                     <div class="card mb-3">
-                        <a href="#" style="background-image: url({{ url('/miniatura/'. $campanha->file_path)  }}); background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 0;
-    display: block;
-    padding-top: 65%;
-    width: 100%;" class="img-min-campaign"></a>
+                        <a href="#" style="background-image: url({{ url('/miniatura/'. $campanha->file_path)  }});" class="img-min-campaign"></a>
                         <div class="card-body">
                             <div style="height: 50px;">
-                            <a href="{{ route('show.campanha', $campanha->slug) }}"><h5 class="card-title">{{ str_limit($campanha->title,'50') }}</h5></a>
+                                <a href="{{ route('show.campanha', $campanha->slug) }}"><h5 class="card-title">{{ str_limit($campanha->title,'50') }}</h5></a>
                             </div>
                             <div style="height: 80px;">
-                            <p class="card-text">{{ str_limit($campanha->abstract, '80') }}</p>
+                                <p class="card-text">{{ str_limit($campanha->abstract, '80') }}</p>
 
                             </div>
                             <div class="row">
@@ -246,7 +240,9 @@
                 </div>
                 @endforeach
             </div>
-            {{ $campanhas->links() }}
+            <div style="margin: 20px; margin-top: 50px;" width="100%" align="center">
+                <a href="{{ route('campanhas') }}" title="todas-campanhas"  class="get-started-btn">Todas as campanhas</a>
+            </div>
         </div>
         
     </section>
