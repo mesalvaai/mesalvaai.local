@@ -36,11 +36,14 @@ class DonationsRequest extends FormRequest
                     'phone' => 'required|max:15',
                     'email' => 'email|max:200|unique:donations',
                     'date_of_birth' => 'date_format:"d/m/Y"',
-                    'cpf' => 'required|max:14'
+                    'cpf' => 'required|max:14|cpf',
+                    'total_amount' => [function ($attribute, $value, $fail) {
+                        if ($value <= 20) {
+                            $fail('O valor mínimo de doação é R$ 20,00');
+                        }
+                    }]
                 ];
-                if ($this->total_amount < 20) {
-                    $rules['total_amount'] = 'min:20';
-                }
+                
                 return $rules;
                 break;
             case "PUT": // ATUALIZAÇÃO DE UM REGISTRO EXISTENTE
@@ -67,8 +70,7 @@ class DonationsRequest extends FormRequest
             'email.email' => 'Informe um e-mail válido',
             'date_of_birth.date_format' => 'A data de nacimento deve ser no formato DD/MM/AAAA',
             'cpf.required' => 'O CPF é obrigatório',
-            'total_amount.required' => 'O Valor é obrigatório',
-            'total_amount.min' => 'O Valor minimo é $R 20.00'
+            'total_amount.required' => 'O Valor é obrigatório'
         ];
     }
 }

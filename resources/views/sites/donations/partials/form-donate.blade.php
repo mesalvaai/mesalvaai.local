@@ -38,7 +38,7 @@
 
 {{-- {!! Form::hidden('user_id', $encrypted) !!}
 {!! Form::hidden('user_id', $decrypted) !!} --}}
-{!! Form::text('campaign_id', $campanha->id) !!}
+{!! Form::hidden('campaign_id', $campanha->id) !!}
 <div class="form-group row">
 	{!! Form::label('full_name', 'Nome completo', ['class' => 'col-sm-3 col-form-label'] ) !!}
 	<div class="col-sm-9">
