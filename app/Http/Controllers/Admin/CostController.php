@@ -19,6 +19,7 @@ class CostController extends Controller
     public function index()
     {
         $costs = Cost::paginate();
+        dd($costs);
 
         // Repassando para a view
         return view('admins.costs.index', compact('costs'));
@@ -26,8 +27,9 @@ class CostController extends Controller
     
     public function getCursos()
     {
-      $courses = Course::getCursos();
-      return $courses;
+        $course = new Course();
+        $courses = $course->getCursos();
+        return $courses;
     }
 
     public function getNivel()
@@ -39,9 +41,8 @@ class CostController extends Controller
     
     public function getPeriodo()
     {
-
-    $periods = Period::getPeriodo();
-      return $periods;
+        $periods = Period::getPeriodo();
+        return $periods;
     }
 
     /**
@@ -51,10 +52,9 @@ class CostController extends Controller
      */
     public function create()
     {
-        $courses = Course::getCursos();
-        
-        $periods = Period::getPeriodo();
-        $levels = Level::getNivel();
+        $courses = Course::get()->pluck('name', 'id');
+        $periods = Period::get()->pluck('name', 'id');
+        $levels = Level::get()->pluck('name', 'id');
         return view('admins.costs.create', compact('courses','periods', 'levels'));
     }
 

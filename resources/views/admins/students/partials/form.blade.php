@@ -107,6 +107,15 @@ $countries_json = json_encode($countries);
 @endphp
 
 @section('scripts')
+<script src="{{ asset('site/js/jquery.mask.min.js') }}" type="text/javascript"></script>
+<script>
+	(function( $ ) {
+		$(function() {
+			$("#phone").mask("(99) 999999999");
+			$("#cpf").mask("000.000.000-00");
+		});
+	})(jQuery);
+</script>
 
 <script type="text/javascript">
 	
