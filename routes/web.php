@@ -26,9 +26,11 @@ Route::get('/info',function(){
 	return view('sites.info-cursos');
 });
 
-Route::get('get-paises-restantes', 'Admin\StudentController@getPaises')->name('get-paises-restantes');
-Route::get('get-estados/{idPais}', 'Admin\StudentController@getEstados')->name('get-estados');
-Route::get('get-cidades/{idPais}/{idEstado}', 'Admin\StudentController@getCidades')->name('get-cidades');
+
+Route::get('get-paises-restantes', 'LocationController@getPaises')->name('get-paises-restantes');
+Route::get('get-estados/{idPais}', 'LocationController@getEstados')->name('get-estados');
+Route::get('get-cidades/{idPais}/{idEstado}', 'LocationController@getCidades')->name('get-cidades');
+
 
 Route::get('/campanhas', 'Site\HomeController@campanhas')->name('campanhas');
 
@@ -65,6 +67,9 @@ Route::get('/charts', 'Admin\AdminController@charts')->name('charts');
 Route::get('/tables', 'Admin\AdminController@tables')->name('tables');
 Route::get('/ingresar', 'Admin\AdminController@ingresar')->name('ingresar');
 Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
+
+
+
 
 // Authentication Routes...
 // $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -358,9 +363,9 @@ Route::middleware(['auth'])->group(function(){
 	->middleware('permission:areas.destroy');
 	Route::get('areas/{area}/edit', 'Admin\AreaController@edit')->name('areas.edit')
 	->middleware('permission:areas.edit');
-        
+	
         //Institutions
-        Route::post('institutions/store', 'Admin\InstitutionController@store')->name('institutions.store')
+	Route::post('institutions/store', 'Admin\InstitutionController@store')->name('institutions.store')
 	->middleware('permission:institutions.create');
 	Route::get('institutions', 'Admin\InstitutionController@index')->name('institutions.index')
 	->middleware('permission:institutions.index');
@@ -424,5 +429,75 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('costs/{cost}/edit', 'Admin\CostController@edit')->name('costs.edit')
 	->middleware('permission:costs.edit');
 	
-     
+	
+
+
+
+
+     //courses
+	Route::post('courses/store', 'Admin\CourseController@store')->name('courses.store')
+	->middleware('permission:courses.create');
+	Route::get('courses', 'Admin\CourseController@index')->name('courses.index')
+	->middleware('permission:courses.index');
+	Route::get('courses/create', 'Admin\CourseController@create')->name('courses.create')
+	->middleware('permission:courses.create');
+	Route::put('courses/{course}', 'Admin\CourseController@update')->name('courses.update')
+	->middleware('permission:courses.edit');
+	Route::get('courses/{course}', 'Admin\CourseController@show')->name('courses.show')
+	->middleware('permission:courses.show');
+	Route::delete('courses/{course}', 'Admin\CourseController@destroy')->name('courses.destroy')
+	->middleware('permission:courses.destroy');
+	Route::get('courses/{course}/edit', 'Admin\CourseController@edit')->name('courses.edit')
+	->middleware('permission:courses.edit');
+
+	//course_turns
+	Route::post('course-turns/store/{course}', 'Admin\Course_TurnController@store')->name('course-turns.store')
+	->middleware('permission:course-turns.create');
+	Route::get('course-turns', 'Admin\CourseController@index')->name('course-turns.index')
+	->middleware('permission:course-turns.index');
+	Route::get('course-turns/create', 'Admin\Course_TurnController@create')->name('course-turns.create')
+	->middleware('permission:course-turns.create');
+	Route::put('course-turns/{courseturn}', 'Admin\Course_T_urnController@update')->name('course-turns.update')
+	->middleware('permission:course-turns.edit');
+	Route::get('course-turns/{courseturn}', 'Admin\Course_TurnController@show')->name('course-turns.show')
+	->middleware('permission:course-turns.show');
+	Route::delete('course-turns/{courseturn}', 'Admin\Course_TurnController@destroy')->name('course-turns.destroy')
+	->middleware('permission:course-turns.destroy');
+	Route::get('course-turns/{courseturn}/edit', 'Admin\Course_TurnController@edit')->name('course-turns.edit')
+	->middleware('permission:course-turns.edit');
+
+	//course_modality
+	Route::post('course-modality/store/{course}', 'Admin\Course_ModalityController@store')->name('course-modality.store')
+	->middleware('permission:course-modality.create');
+	Route::get('course-modality', 'Admin\Course_ModalityController@index')->name('course-modality.index')
+	->middleware('permission:course-modality.index');
+	Route::get('course-modality/create', 'Admin\Course_ModalityController@create')->name('course-modality.create')
+	->middleware('permission:course-modality.create');
+	Route::put('course-modality/{coursemodality}', 'Admin\Course_ModalityController@update')->name('course-turns.update')
+	->middleware('permission:course-modality.edit');
+	Route::get('course-modality/{coursemodality}', 'Admin\Course_ModalityController@show')->name('course-modality.show')
+	->middleware('permission:course-modality.show');
+	Route::delete('course-modality/{coursemodality}', 'Admin\Course_ModalityController@destroy')->name('course-modality.destroy')
+	->middleware('permission:course-modality.destroy');
+	Route::get('course-modality/{coursemodality}/edit', 'Admin\Course_ModalityController@edit')->name('course-modality.edit')
+	->middleware('permission:course-modality.edit');
+
+
+	//course_periods
+	Route::post('course-period/store/{course}', 'Admin\Course_PeriodController@store')->name('course-period.store')
+	->middleware('permission:course-period.create');
+	Route::get('course-period', 'Admin\Course_PeriodController@index')->name('course-period.index')
+	->middleware('permission:course-period.index');
+	Route::get('course-period/create', 'Admin\Course_PeriodController@create')->name('course-period.create')
+	->middleware('permission:course-period.create');
+	Route::put('course-period/{courseperiod}', 'Admin\Course_PeriodController@update')->name('course-turns.update')
+	->middleware('permission:course-period.edit');
+	Route::get('course-period/{courseperiod}', 'Admin\Course_PeriodController@show')->name('course-period.show')
+	->middleware('permission:course-period.show');
+	Route::delete('course-period/{courseperiod}', 'Admin\Course_PeriodController@destroy')->name('course-period.destroy')
+	->middleware('permission:course-period.destroy');
+	Route::get('course-period/{courseperiod}/edit', 'Admin\Course_PeriodController@edit')->name('course-period.edit')
+	->middleware('permission:course-period.edit');
+
+	
 });

@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Course;
 use App\Area;
 use App\Level;
+use App\Turn;
+use App\Modality;
+use App\Period;
+
 
 
 class CourseController extends Controller
@@ -66,7 +70,18 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         //
-        return view('admins.courses.show', compact('course'));
+        $course_turns = \DB::table('turns')->join('course_turn', 'turns.id', '=', 'course_turn.turn_id')->select('*')->where('course_turn.course_id',$course->id)->orderBy('turns.id','ASC')->get();
+
+        $course_modalities = \DB::table('modalities')->join('course_modality', 'modalities.id', '=', 'course_modality.modality_id')->select('*')->where('course_modality.course_id',$course->id)->orderBy('modalities.name','ASC')->get();
+
+         $course_periods = \DB::table('periods')->join('course_period', 'periods.id', '=', 'course_period.period_id')->select('*')->where('course_period.course_id',$course->id)->orderBy('periods.name','ASC')->get();
+         
+
+        $turn = Turn::orderBy('name', 'ASC')->pluck('name', 'id');
+        $modality = Modality::orderBy('name', 'ASC')->pluck('name', 'id');
+        $period = Period::orderBy('name', 'ASC')->pluck('name', 'id');
+
+        return view('admins.courses.show',compact('course_periods','period','course_modalities','modality','course_turns','course','turn'));
     }
 
     /**
@@ -81,7 +96,7 @@ class CourseController extends Controller
        $area = Area::orderBy('name', 'ASC')->pluck('name', 'id');
        $nivel = Level::orderBy('name', 'ASC')->pluck('name', 'id');
        return view('admins.courses.edit', compact('area','nivel','course'));
-       
+
    }
 
     /**
