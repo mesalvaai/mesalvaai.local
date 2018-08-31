@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\Donations\DonationsRequest;
+use App\Helpers\MyFunctions;
 
 use App\Campaign;
 
@@ -43,7 +44,7 @@ class HomeController extends Controller
 
     public function test()
     {
-
+        dd(MyFunctions::FormatCurrencyForDataBase('22.002.334,35'));
             // rebuilding-stillatcom
         $nome = 'TECNOLOGIA DE INFORMAÇÃO';
         echo Str::slug($nome);
@@ -81,11 +82,16 @@ class HomeController extends Controller
         $number = str_replace(',','.',str_replace('.','',$string)); 
         echo $number;
         echo "<hr>";
+        $string='1,500,050.00'; 
+        $number = str_replace('.','.',str_replace(',','',$string)); 
+        echo $number;
             //echo $replaced = str_replace_array(',', '.', str_replace_array('.','',$string));
         echo "<hr>";
         echo $replaced = str_replace_first(',', '.', str_replace_first('.','',$string));
         echo "<hr>";
         echo "<hr>";
+        //$ 22.345,50
+        $number = 1500.40 + 1500.50;
         echo number_format($number,2,',','.');
             //dd('');
         $campings = Campaign::get();

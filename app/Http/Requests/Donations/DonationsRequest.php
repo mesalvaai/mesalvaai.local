@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Donations;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use MyFunctions;
 class DonationsRequest extends FormRequest
 {
     /**
@@ -36,9 +36,10 @@ class DonationsRequest extends FormRequest
                     'phone' => 'required|max:15',
                     'email' => 'email|max:200|unique:donations',
                     'date_of_birth' => 'date_format:"d/m/Y"',
-                    'cpf' => 'required|max:14|cpf',
+                    'cpf' => 'required|max:14',
                     'total_amount' => [function ($attribute, $value, $fail) {
-                        if ($value <= 20) {
+                        $valor = MyFunctions::FormatCurrencyForScreen($value);
+                        if ($valor < 20) {
                             $fail('O valor mínimo de doação é R$ 20,00');
                         }
                     }]

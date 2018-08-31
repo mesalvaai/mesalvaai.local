@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use vendor\autoload;
 use App\Helpers\FormatTime;
+use App\Helpers\MyFunctions;
 use \Carbon\Carbon;
 use Moip;
 class MoipIntegration extends Model
@@ -69,9 +70,10 @@ class MoipIntegration extends Model
 		$donation->date_of_birth = $date_of_birth;
 		$donation->phone = $request['phone'];
 		$donation->cpf = $request['cpf'];
-		$donation->total_amount = $request['total_amount'];
+		$donation->total_amount = MyFunctions::FormatCurrencyForDataBase($request['total_amount']);
 		$donation->donation_date = $current_time;
 		$donation->type_payment = $request['type_payment'];
+		$donation->payment_status = 'WAITING';
 		$donation->status = 1;
 		$donation->details = 'Pagamento no boleto';
 		$save = $donation->save();
@@ -80,19 +82,17 @@ class MoipIntegration extends Model
 			$campaign_donation = new CampaignDonation();
 			$campaign_donation->campaign_id = $request['campaign_id'];
 			$campaign_donation->donation_id = $donation->id;
-			$campaign_donation->donation_amount = $request['total_amount'];
+			$campaign_donation->donation_amount = MyFunctions::FormatCurrencyForDataBase($request['total_amount']);
 			$campaign_donation->details = 'Pagamento no boleto';
 			$saveCampaingDonation  = $campaign_donation->save();
 
 			if ($saveCampaingDonation) {
 				$campaign = Campaign::where('id', $request->input('campaign_id'))->first();
-			    $campaign->funds_received = $campaign->funds_received + $request->input('total_amount');
+			    $campaign->funds_received = $campaign->funds_received + MyFunctions::FormatCurrencyForDataBase($request['total_amount']);
 			    $campaign->update();
 			}
 		}
-		dd($campaign->id);
-
-		//dd(new Carbon(date('Y-m-d', strtotime('+4 days'))));
+		dd(MyFunctions::FormatCurrencyForDataBase($request['total_amount']));
 		$moip = Moip::start();
 		try {
 			$customer = $moip->customers()->setOwnId(uniqid())
@@ -106,8 +106,6 @@ class MoipIntegration extends Model
 				'Bairro de Capoeiruçu', 'Bahia', 'BA',
 				'44.300-000', 197)
 			->create();
-
-
 		} catch (Exception $e) {
 			dd($e->__toString());
 		}
@@ -130,28 +128,59 @@ class MoipIntegration extends Model
 			// $now = new \DateTime();
 			$instruction_lines = ['INSTRUÇÃO 1', 'INSTRUÇÃO 2', 'INSTRUÇÃO 3'];
 
-            // dd($instruction_lines);
 			$payment = $order->payments()  
 			->setBoleto($expiration_date, $logo_uri, $instruction_lines)
 			->execute();
+			//dd(MyFunctions::FormatCurrencyForDataBase($request['total_amount']));
+			if ($payment->getStatus() === 'WAITING') {
+				$donation = new Donation();
+				$donation->full_name = $request['full_name'];
+				$donation->email = $request['email'];
+				$donation->date_of_birth = $date_of_birth;
+				$donation->phone = $request['phone'];
+				$donation->cpf = $request['cpf'];
+				$donation->total_amount = MyFunctions::FormatCurrencyForDataBase($request['total_amount']);
+				$donation->donation_date = $current_time;
+				$donation->type_payment = $request['type_payment'];
+				$donation->payment_status = $payment->getStatus();
+				$donation->status = 1;
+				$donation->details = 'Pagamento no boleto';
+				$save = $donation->save();
 
-			$url = file_get_contents($payment->getHrefPrintBoleto());
-			$codBoleto = $payment->getLineCodeBoleto();
-			$idBoleto = $payment->getId();
-			$urlBoleto = $payment->getHrefPrintBoleto();
-			$hrefBoleto = explode('/', $payment->getHrefBoleto());
-			$hrefBoleto = array_last($hrefBoleto);
-			$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);
+				if ($save) {
+					$campaign_donation = new CampaignDonation();
+					$campaign_donation->campaign_id = $request['campaign_id'];
+					$campaign_donation->donation_id = $donation->id;
+					$campaign_donation->donation_amount = MyFunctions::FormatCurrencyForDataBase($request['total_amount']);
+					$campaign_donation->details = 'Pagamento no boleto';
+					$saveCampaingDonation  = $campaign_donation->save();
 
-			$data = [
-				'idBoleto' => $idBoleto,
-				'codBoleto' => $codBoleto,
-				'urlBoleto' => $urlBoleto,
-				'hrefBoleto' => $hrefBoleto,
-				'print' => $print
-			];
+					if ($saveCampaingDonation) {
+						$campaign = Campaign::where('id', $request->input('campaign_id'))->first();
+					    $campaign->funds_received = $campaign->funds_received + MyFunctions::FormatCurrencyForDataBase($request['total_amount']);
+					    $campaign->update();
+					}
+				}
 
-			return $data;
+				$url = file_get_contents($payment->getHrefPrintBoleto());
+				$codBoleto = $payment->getLineCodeBoleto();
+				$idBoleto = $payment->getId();
+				$urlBoleto = $payment->getHrefPrintBoleto();
+				$hrefBoleto = explode('/', $payment->getHrefBoleto());
+				$hrefBoleto = array_last($hrefBoleto);
+				$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);
+
+				$data = [
+					'idBoleto' => $idBoleto,
+					'codBoleto' => $codBoleto,
+					'urlBoleto' => $urlBoleto,
+					'hrefBoleto' => $hrefBoleto,
+					'print' => $print
+				];
+
+				return $data;
+			}
+			
 		} catch (Exception $e) {
 			dd($e->__toString());
 		}
@@ -254,11 +283,11 @@ class MoipIntegration extends Model
 			// $now = new \DateTime();
 			$instruction_lines = ['INSTRUÇÃO 1', 'INSTRUÇÃO 2', 'INSTRUÇÃO 3'];
 
-            // dd($instruction_lines);
 			$payment = $order->payments()  
 			->setBoleto($expiration_date, $logo_uri, $instruction_lines)
 			->execute();
-
+			//Status => CREATED, WAITING, IN_ANALYSIS, PRE_AUTHORIZED, AUTHORIZED, CANCELLED, REFUNDED, REVERSED, SETTLED.
+			dd($payment->getStatus());
 			$url = file_get_contents($payment->getHrefPrintBoleto());
 
 			$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);

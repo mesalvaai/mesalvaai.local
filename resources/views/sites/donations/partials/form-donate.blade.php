@@ -106,7 +106,7 @@
 	<div class="input-group col-md-4">
 		<div class="input-group-prepend">
 			<span class="input-group-text">$R</span>
-			<span class="input-group-text">0.00</span>
+			<span class="input-group-text">0,00</span>
 		</div>
 		{!! Form::text('total_amount', null, ['class' => $errors->has('total_amount') ? 'form-control is-invalid' : 'form-control','id' => 'total_amount', 'required']) !!}
 		<small class="text-warning">(mínimo de R$20,00) </small>
@@ -213,7 +213,8 @@
 		$(function() {
 			$("#phone").mask("(99) 999999999");
 			$("#cpf").mask("000.000.000-00");
-			$("#total_amount").maskMoney();
+			//$("#total_amount").maskMoney();
+			$("#total_amount").maskMoney({thousands:".", decimal:",", symbol:"R$", showSymbol:true, symbolStay:true});
 			$("#number").mask("0000 0000 0000 0000");
 			$("#card_cvc").mask("000");
 			$("#date_of_birth").mask("00/00/0000");
