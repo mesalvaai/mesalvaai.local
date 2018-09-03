@@ -12,7 +12,7 @@
 
 	<div class="form-group col">
 		{!! Form::label('cpe', 'CEP') !!}
-		{!! Form::email('cpe', null, ['class' => 'form-control']) !!}
+		{!! Form::text('cpe', null, ['class' => 'form-control']) !!}
 	</div>
 </div>
 

@@ -194,7 +194,7 @@
                 <h3>Pontuar é fácil. Experimentar é melhor.</h3>
                 <p>Basta escolher seu curso e instituição e vó alá, divirta-se com os Mimos</p>
                 <div>
-                  <a href="#" class="get-started-btn">Buscar bolsa</a>
+                  <a href="/bolsas" class="get-started-btn">Buscar bolsa</a>
                 </div>
               </div>
             </div>
