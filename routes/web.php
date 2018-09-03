@@ -71,6 +71,16 @@ Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
 
 
 
+//Buscar bolsa
+Route::get('/bolsas', 'Handbag\AdminController@index')->name('bolsas');
+Route::post('bolsas/resultado', 'Handbag\AdminController@showResult')->name('bolsas.resultado');
+Route::post('/bolsas/show-course', 'Handbag\AdminController@showCourse')->name('bolsas.show.curso');;
+
+
+
+
+
+
 // Authentication Routes...
 // $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
 // $this->post('login', 'Auth\LoginController@login');
