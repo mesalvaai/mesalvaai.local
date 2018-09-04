@@ -89,28 +89,29 @@ class HomeController extends Controller
 
             $boleto = MoipIntegration::getPagamentoBoleto($request);
             $idBoleto = $boleto['idBoleto'];
-            $codBoleto = $boleto['codBoleto'];
-            $urlBoleto = $boleto['urlBoleto'];
-            $hrefBoleto = $boleto['hrefBoleto'];
-            $printBoleto = $boleto['print'];
-            $request->session()->flash('status', 'Obrigado por sua contribuição, aguardamos o pagamento do boleto!!');
-            return view('sites.donations.checkout-boleto', compact('idBoleto', 'codBoleto', 'printBoleto', 'hrefBoleto'));
+            // $codBoleto = $boleto['codBoleto'];
+            // $urlBoleto = $boleto['urlBoleto'];
+            // $hrefBoleto = $boleto['hrefBoleto'];
+            // $printBoleto = $boleto['print'];
+            // $request->session()->flash('status', 'Obrigado por sua contribuição, aguardamos o pagamento do boleto!!');
+            // return view('sites.donations.checkout-boleto', compact('idBoleto', 'codBoleto', 'printBoleto', 'hrefBoleto'));
+            return redirect()->route('gerar.boleto', $idBoleto);
 
         } else {
             dd('false');
         }
-        // $data = [
-        //     'full_name' => $request['full_name'],
-        //     'email' => $request['email']
-        // ];
-        // return redirect()->route('gerar.boleto', ['full_name' =>  $request['full_name'], 'email' => $request['email']]);
+
     }
 
-    public function gerarBoleto(array $data)
+    public function gerarBoleto($idBoleto)
     {
-        $full_name = $data['full_name'];
-        $email = $data['email'];
-        return view('sites.donations.gerar-boleto', compact('full_name', 'email'));
+
+        $boleto = MoipIntegration::getDadosBoleto($idBoleto);
+        $codBoleto = $boleto['codBoleto'];
+        $urlBoleto = $boleto['urlBoleto'];
+        $hrefBoleto = $boleto['hrefBoleto'];
+        $printBoleto = $boleto['print'];
+        return view('sites.donations.gerar-boleto', compact('idBoleto', 'codBoleto', 'printBoleto', 'hrefBoleto'));
     }
 
     public function printBoleto($urlBoleto)

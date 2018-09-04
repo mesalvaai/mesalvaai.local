@@ -15,7 +15,7 @@ class TestController extends Controller
 {
 	public function retornarStatusBoleto()
 	{
-		$statusPagoBoleto = MoipIntegration::getRetornarStatusBoleto('ORD-UAN0O4CLPQKE');
+		$statusPagoBoleto = MoipIntegration::getStatusBoleto('ORD-UAN0O4CLPQKE');
 		dd($statusPagoBoleto);
 	}
 

@@ -36,7 +36,11 @@ Route::get('/campanhas', 'Site\HomeController@campanhas')->name('campanhas');
 Route::get('/campanhas/{idCamping?}', 'Site\HomeController@campanha')->name('show.campanha');
 Route::get('/campanhas/{slugCamping}/donate', 'Site\HomeController@donate')->name('donate.campanha');
 Route::post('/campanhas/processar-donacao', 'Site\HomeController@donateProcess')->name('donate.process');
-//Route::get('/campanhas/gerar-boleto/{[data]}', array('as' => 'gerar.boleto', 'uses' => 'Site\HomeController@gerarBoleto'));
+Route::get('/campanhas/gerar-boleto/{idBoleto?}', 'Site\HomeController@gerarBoleto')->name('gerar.boleto');
+//Route::get('/campanhas/gerar-boleto', array('as' => 'gerar.boleto', 'uses' => 'Site\HomeController@gerarBoleto'));
+// Route::get('/campanhas/gerar-boleto/{data}', array('as' => 'gerar.boleto', function($data) {
+// 	return View::make('sites.donations.gerar-boleto')->with('data', $data);
+// })); 
 Route::get('/campanhas/boleto/{codBoleto}/print', 'Site\HomeController@printBoleto')->name('boleto.print');
 
 Route::get('/financiamento', 'Site\FinancingController@index')->name('financing.index');

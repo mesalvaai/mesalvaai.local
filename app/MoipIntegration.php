@@ -126,6 +126,7 @@ class MoipIntegration extends Model
 			$payment = $order->payments()  
 			->setBoleto($expiration_date, $logo_uri, $instruction_lines)
 			->execute();
+			dd($payment);
 			//dd(MyFunctions::FormatCurrencyForDataBase($request['total_amount']));
 			if ($payment->getStatus() === 'WAITING') {
 				$donation = new Donation();
@@ -294,7 +295,7 @@ class MoipIntegration extends Model
 		}
 	}
 
-	public static function getRetornarStatusBoleto($idMoip)
+	public static function getStatusBoleto($idMoip)
 	{
 		//{"ownId":"5b888fbb5810c","amount":{"currency":"BRL","subtotals":{"shipping":0,"addition":0,"discount":0,"items":200000050},"total":200000050,"fees":0,"refunds":0,"liquid":0,"otherReceivers":0},"items":[{"product":"Doa\u00e7\u00e3o","detail":"sku1","quantity":1,"price":200000050}],"receivers":[{"moipAccount":{"id":"MPA-48991CFD3B9D","login":"msa@mesalvaai.com","fullname":"VINICIUS LEDO BARRETO"},"type":"PRIMARY","amount":{"total":200000050,"currency":"BRL","fees":0,"refunds":0},"feePayor":true}],"checkoutPreferences":{"redirectUrls":{},"installments":[]},"id":"ORD-UAN0O4CLPQKE","customer":{"id":"CUS-87O6IRFADSZT","ownId":"5b888fb621c69","fullname":"Eber Ortiz Mas","email":"ortizmas111@gmail.com","phone":{"countryCode":"55","areaCode":"75","number":"92438993"},"birthDate":"1984-08-14","taxDocument":{"type":"CPF","number":"86316584563"},"addresses":[],"shippingAddress":{"zipCode":"44.300-000","street":"Rua de teste do SHIPPING","streetNumber":"101","complement":"197","city":"Bahia","district":"Bairro de Capoeiru\u00e7u","state":"BA","country":"BRA"},"billingAddress":null,"fundingInstrument":null,"_links":{"self":{"href":"https:\/\/sandbox.moip.com.br\/v2\/customers\/CUS-87O6IRFADSZT"},"hostedAccount":{"redirectHref":"https:\/\/hostedaccount-sandbox.moip.com.br?token=152ba2da-5a28-4d85-9eb8-d4aeeca3a28e&id=CUS-87O6IRFADSZT&mpa=MPA-48991CFD3B9D"}}},"payments":[{"installmentCount":1,"fundingInstrument":{"boleto":{"expirationDate":"2018-09-04","lineCode":"00190.00009 01014.051005 00000.787176 7 72370000001000","logoUri":"https:\/\/cdn.moip.com.br\/wp-content\/uploads\/2016\/05\/02163352\/logo-moip.png","instructionLines":{"first":"INSTRU\u00c7\u00c3O 1","second":"INSTRU\u00c7\u00c3O 2","third":"INSTRU\u00c7\u00c3O 3"}},"method":"BOLETO"},"id":"PAY-0IXRLJELGFLH","status":"WAITING","delayCapture":false,"amount":{"total":200000050,"currency":"BRL"},"payments":null,"escrows":null,"fees":[{"type":"TRANSACTION","amount":0}],"refunds":null,"_links":{"self":{"href":"https:\/\/sandbox.moip.com.br\/v2\/payments\/PAY-0IXRLJELGFLH"},"order":{"href":"https:\/\/sandbox.moip.com.br\/v2\/orders\/ORD-UAN0O4CLPQKE","title":"ORD-UAN0O4CLPQKE"},"payBoleto":{"printHref":"https:\/\/sandbox.moip.com.br\/v2\/boleto\/BOL-9235UJAZAUOD\/print","redirectHref":"https:\/\/sandbox.moip.com.br\/v2\/boleto\/BOL-9235UJAZAUOD"}},"createdAt":{"date":"2018-08-30 21:45:53.000000","timezone_type":1,"timezone":"-03:00"},"updatedAt":{"date":"2018-08-30 21:45:53.000000","timezone_type":1,"timezone":"-03:00"}}],"refunds":[],"entries":[],"events":[{"type":"ORDER.WAITING","createdAt":"2018-08-30T21:45:53.000-03","description":""},{"type":"ORDER.CREATED","createdAt":"2018-08-30T21:45:48.000-03","description":""}],"createdAt":"2018-08-30T21:45:48.000-03","status":"WAITING","_links":{"self":{"href":"https:\/\/sandbox.moip.com.br\/v2\/orders\/ORD-UAN0O4CLPQKE"},"checkout":{"payCheckout":{"redirectHref":"https:\/\/checkout-new-sandbox.moip.com.br?token=3ce5fa4e-e76b-48ab-80e8-84489a3cfc93&id=ORD-UAN0O4CLPQKE"},"payCreditCard":{"redirectHref":"https:\/\/checkout-new-sandbox.moip.com.br?token=3ce5fa4e-e76b-48ab-80e8-84489a3cfc93&id=ORD-UAN0O4CLPQKE&payment-method=credit-card"},"payBoleto":{"redirectHref":"https:\/\/checkout-new-sandbox.moip.com.br?token=3ce5fa4e-e76b-48ab-80e8-84489a3cfc93&id=ORD-UAN0O4CLPQKE&payment-method=boleto"},"payOnlineBankDebitItau":{"redirectHref":"https:\/\/checkout-sandbox.moip.com.br\/debit\/itau\/ORD-UAN0O4CLPQKE"}}}}
 		
@@ -312,6 +313,38 @@ class MoipIntegration extends Model
 			//$total = $data->amount->total;
 			//$total = $data->status;
 			//return $data->status;
+			
+		} catch (Exception $e) {
+		    printf($e->__toString());
+		}
+	}
+
+	public static function getDadosBoleto($idMoip)
+	{
+
+		
+		try {
+		    $moip = Moip::start();
+
+			$payment = $moip->payments()->get($idMoip);
+			//$payment = $moip->orders()->get($idMoip);
+			$url = file_get_contents($payment->getHrefPrintBoleto());
+			$codBoleto = $payment->getLineCodeBoleto();
+			$idBoleto = $payment->getId();
+			$urlBoleto = $payment->getHrefPrintBoleto();
+			$hrefBoleto = explode('/', $payment->getHrefBoleto());
+			$hrefBoleto = array_last($hrefBoleto);
+			$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);
+
+			$data = [
+				'idBoleto' => $idBoleto,
+				'codBoleto' => $codBoleto,
+				'urlBoleto' => $urlBoleto,
+				'hrefBoleto' => $hrefBoleto,
+				'print' => $print
+			];
+
+			return $data;
 			
 		} catch (Exception $e) {
 		    printf($e->__toString());
