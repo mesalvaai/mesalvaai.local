@@ -4,6 +4,13 @@
 
  <section class="campanhas-ativas pt-5 pb-5" style="margin-top: 80px">
     <div class="container-fluid">
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </div>
+        @endif
         <div class="row">
             @foreach ($campanhas as $campanha)
             <div class="col-md-3">
