@@ -2,5 +2,5 @@
 
 
 @section('content')
-  @include('layouts.site.partials.contentMimos')
+  @include('layouts.site.partials.content-mimos')
 @endsection

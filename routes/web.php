@@ -72,6 +72,11 @@ Route::get('/cadastrarr', 'Admin\PainelController@cadastrar')->name('cadastrar')
 // Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
 
 
+//Buscar bolsa
+Route::get('/bolsas', 'Handbag\AdminController@index')->name('bolsas');
+Route::post('bolsas/resultado', 'Handbag\AdminController@showResult')->name('bolsas.resultado');
+Route::post('/bolsas/show-course', 'Handbag\AdminController@showCourse')->name('bolsas.show.curso');;
+
 
 //Lêr arquivos do storage para frontend
 Route::get('/miniatura/{filename}', array(

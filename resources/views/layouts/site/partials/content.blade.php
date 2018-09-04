@@ -91,7 +91,7 @@
                         
                     </div>
                     <div class="text-center">
-                        <a href="#" class="get-started-btn">Buscar bolsa</a>
+                        <a href="/bolsas" class="get-started-btn">Buscar bolsa</a>
                     </div>
                 </div>
 
@@ -258,7 +258,7 @@
                         <h2 class="text-center">Viu como é simples</h2>
                         <p class="text-center">Basta escolher seu curso, instituição e pagar a primeira mensalidade e vó alá, divirta-se até o final do curso</p>
                         <div class="text-center">
-                            <a href="#" class="get-started-btn">Encontre sua bolsa</a>
+                            <a href="/bolsas" class="get-started-btn">Encontre sua bolsa</a>
                         </div>
                     </div>
                 </div>

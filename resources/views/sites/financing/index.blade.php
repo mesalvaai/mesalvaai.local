@@ -62,7 +62,7 @@
 				</div>
 			</div>
 			<div class="text-center">
-				<a href="{{ url('/financiamento/criar-campanha') }}" title="Comença projetos" class="btn-msa btncomeçar">Começar projetos</a>
+				<a href="{{ url('/financiamento/criar-campanha') }}" title="Comença projetos" class="btn-msa">Começar projetos</a>
 				<h4 class="pt-5 text-msa font-weight-bold">A tecnologia a seu favor.</h4>
 			</div>
 		</div>
@@ -166,7 +166,7 @@
 	                <h1>Tudo isso de graça? <span>Sim.</span></h1>
 	                <p class="text-justify w-50 pl-5 ml-3">Basta criar personalizar e vu alá sua campanha em segundos. Então somos eficientes para você não ter que pagar nada.</p>
 	                <div class="text-center">
-	                	{{-- <a href="#" title="Começa Projetos" class="btn-msa" data-toggle="modal" data-target="#LoginFinancing">Começar Projetos</a> --}}
+	                	{{-- <a href="#" title="Começar Projetos" class="btn-msa" data-toggle="modal" data-target="#LoginFinancing">Começar Projetos</a> --}}
 	                	<a href="{{ url('/financiamento/criar-campanha') }}" title="Começa Projetos" class="btn-msa" >Começar Projetos</a>
 	                	
 	                </div>

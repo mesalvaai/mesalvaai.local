@@ -17,7 +17,7 @@
                     @endif
                     
                     {!! Form::open(['route' => 'periods.store']) !!}
-
+                    
                     @include('admins.periods.partials.form', ['some' => 'data'])
 
                     {!! Form::close() !!}
