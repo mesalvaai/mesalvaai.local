@@ -166,7 +166,7 @@
 	<div class="form-group row">
 		{!! Form::label('card_cvc', 'Código de segurança: ', ['class' => 'col-sm-3 col-form-label'] ) !!}
 		<div class="col-sm-9">
-			{!! Form::text('card_cvc', null, ['class' => $errors->has('card_cvc') ? 'form-control is-invalid' : 'form-control', 'id' => 'cvc']) !!}
+			{!! Form::text('card_cvc', null, ['class' => $errors->has('card_cvc') ? 'form-control is-invalid' : 'form-control', 'id' => 'card_cvc']) !!}
 			@if ($errors->has('card_cvc'))
 			<span class="invalid-feedback" style="display: block;">
 				<strong>{{ $errors->first('card_cvc') }}</strong>
@@ -175,17 +175,27 @@
 		</div>
 	</div>
 	<?php  $mes = ['01'=>'Janeiro', '02' =>'Fevereiro', '03' =>'Março', '04' =>'Abril', '05' =>'Maio', '06' =>'Junho', '07' =>'Julho', '08' =>'Agosto', '09' =>'Setembro', '10' =>'Outubro', '11' =>'Novembro', '12' =>'Dezembro'] ?>
-	<?php  $dia = [''=>'',18=>18, 19 =>19, 20 =>20, 22 =>22, 23 =>23, 24 =>24, 25 =>25, 26 =>26, 27 =>27, 28 =>28, 29 =>29, 30 =>30] ?>
+	<?php  $ano = [''=>'',18=>18, 19 =>19, 20 =>20, 22 =>22, 23 =>23, 24 =>24, 25 =>25, 26 =>26, 27 =>27, 28 =>28, 29 =>29, 30 =>30] ?>
 	<div class="form-group row">
 		{!! Form::label('card_expiration', 'Validade:', ['class' => 'col-sm-3 col-form-label'] ) !!}
 		<div class="col-sm-9 row">
 			<div class="form-group col-xs-12 col-md-6">
-				{!! Form::label('mes', 'Mês') !!}
-				{!! Form::select('mes', $mes, null, ['class' => 'form-control', 'placeholder' => '-- Selecione um mês --', 'id' => 'month']) !!}
+				{!! Form::label('month', 'Mês') !!}
+				{!! Form::select('month', $mes, null, ['class' => $errors->has('year') ? 'form-control is-invalid' : 'form-control', 'placeholder' => '-- Selecione um mês --', 'id' => 'month']) !!}
+				@if ($errors->has('month'))
+					<span class="invalid-feedback" style="display: block;">
+						<strong>{{ $errors->first('month') }}</strong>
+					</span>
+				@endif
 			</div>
 			<div class="form-group col-xs-12 col-md-6">
-				{!! Form::label('dia', 'Ano') !!}
-				{!! Form::select('dia', $dia, null, ['class' => 'form-control', 'placeholder' => '00', 'id' => 'year']) !!}
+				{!! Form::label('year', 'Ano') !!}
+				{!! Form::select('year', $ano, null, ['class' => $errors->has('year') ? 'form-control is-invalid' : 'form-control', 'placeholder' => '00', 'id' => 'year']) !!}
+				@if ($errors->has('year'))
+					<span class="invalid-feedback" style="display: block;">
+						<strong>{{ $errors->first('year') }}</strong>
+					</span>
+				@endif
 			</div>
 		</div>
 	</div>

@@ -23,7 +23,7 @@ class DonationsRequest extends FormRequest
      */
     public function rules()
     {
-        //dd($this->total_amount);
+        //dd('test validate');
         switch($this->method()) {
             case "GET":
             case "DELETE": {
@@ -44,6 +44,15 @@ class DonationsRequest extends FormRequest
                         }
                     }]
                 ];
+                if ($this->type_payment === 'CREDIT_CARD') {
+                    $rules = [
+                        'card_number' => 'required|max:19',
+                        'card_name' => 'required|alpha',
+                        'card_cvc' => 'required|numeric|max:3',
+                        'month' => 'required|numeric|max:2',
+                        'year' => 'required|numeric|max:2'
+                    ];
+                }
                 
                 return $rules;
                 break;
@@ -71,7 +80,15 @@ class DonationsRequest extends FormRequest
             'email.email' => 'Informe um e-mail válido',
             'date_of_birth.date_format' => 'A data de nacimento deve ser no formato DD/MM/AAAA',
             'cpf.required' => 'O CPF é obrigatório',
-            'total_amount.required' => 'O Valor é obrigatório'
+            'total_amount.required' => 'O Valor é obrigatório',
+            'card_number.required' => 'O numero do cartão é obrigatorio',
+            'card_name.required' => 'O Nome do Titular é obrigatorio',
+            'card_cvc.required' => 'O CVS do cartão é obrigatorio',
+            'card_cvc.numeric' => 'O CVS têm que ser só numeros',
+            'month.required' => 'O mês de Validade é obrigatorio',
+            'month.numeric' => 'O mês têm que ser só numeros',
+            'year.required' => 'O ano de Validade é obrigatorio',
+            'year.numeric' => 'O ano têm que ser só numeros'
         ];
     }
 }

@@ -79,6 +79,7 @@ class HomeController extends Controller
 
     public function donateProcess(DonationsRequest $request)
     {
+        
         if ( ($request->type_payment === 'CREDIT_CARD') AND ($request->op === 'CREDIT_CARD') ) {
             
             $pagoComCartao = MoipIntegration::getPagamentoCreditCard($request);
@@ -98,6 +99,18 @@ class HomeController extends Controller
         } else {
             dd('false');
         }
+        // $data = [
+        //     'full_name' => $request['full_name'],
+        //     'email' => $request['email']
+        // ];
+        // return redirect()->route('gerar.boleto', ['full_name' =>  $request['full_name'], 'email' => $request['email']]);
+    }
+
+    public function gerarBoleto(array $data)
+    {
+        $full_name = $data['full_name'];
+        $email = $data['email'];
+        return view('sites.donations.gerar-boleto', compact('full_name', 'email'));
     }
 
     public function printBoleto($urlBoleto)
