@@ -19,7 +19,7 @@
 	            			<b class="text-muted">Juntos caminhamos mais longe</b>
 	            		</div>
 	            		<div class="card-body">
-	            			<p class="text-center">Obrigado pela contribuição de R$ 45,00 no Me Salva Aí <br><b>Henrique Werneck Guerreiro</b><br><em>Henrique Werneck Guerreiro</em></p>
+	            			<p class="text-center">Obrigado pela contribuição de R$ {{ $total_amount }} no Me Salva Aí <br><b>{{ $full_name }}</b><br></p>
 							<br>
 							<div class="form-group text-center col-sm-6 offset-3">
 								<input id="CopyCodBoleto" type="text" name="codigo" value="{{ $codBoleto }}" class="form-control ">

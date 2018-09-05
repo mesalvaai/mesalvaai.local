@@ -89,13 +89,14 @@ class HomeController extends Controller
 
             $boleto = MoipIntegration::getPagamentoBoleto($request);
             $idBoleto = $boleto['idBoleto'];
+            $orderId = $boleto['orderId'];
             // $codBoleto = $boleto['codBoleto'];
             // $urlBoleto = $boleto['urlBoleto'];
             // $hrefBoleto = $boleto['hrefBoleto'];
             // $printBoleto = $boleto['print'];
             // $request->session()->flash('status', 'Obrigado por sua contribuição, aguardamos o pagamento do boleto!!');
             // return view('sites.donations.checkout-boleto', compact('idBoleto', 'codBoleto', 'printBoleto', 'hrefBoleto'));
-            return redirect()->route('gerar.boleto', $idBoleto);
+            return redirect()->route('gerar.boleto', ['idBoleto' => $idBoleto, 'orderId ' => $orderId]);
 
         } else {
             dd('false');
@@ -103,15 +104,18 @@ class HomeController extends Controller
 
     }
 
-    public function gerarBoleto($idBoleto)
+    public function gerarBoleto($idBoleto, $orderId)
     {
 
-        $boleto = MoipIntegration::getDadosBoleto($idBoleto);
+        $boleto = MoipIntegration::getDadosBoleto($idBoleto, $orderId);
         $codBoleto = $boleto['codBoleto'];
+        $full_name = $boleto['full_name'];
+        $total_amount = $boleto['total_amount'];
         $urlBoleto = $boleto['urlBoleto'];
         $hrefBoleto = $boleto['hrefBoleto'];
         $printBoleto = $boleto['print'];
-        return view('sites.donations.gerar-boleto', compact('idBoleto', 'codBoleto', 'printBoleto', 'hrefBoleto'));
+        session()->flash('status', 'Obrigado por sua contribuição, aguardamos o pagamento do boleto!!');
+        return view('sites.donations.gerar-boleto', compact('idBoleto', 'full_name', 'total_amount', 'codBoleto', 'printBoleto', 'hrefBoleto'));
     }
 
     public function printBoleto($urlBoleto)

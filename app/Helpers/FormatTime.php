@@ -77,6 +77,7 @@ class FormatTime {
         $diff_in_days = $to->diffInDays($from);
         return $diff_in_days;
     }
+    
     public static function formatData($data){
         $data = explode('/', $data);
         $data = $data[2].'-'.$data[1].'-'.$data[0];

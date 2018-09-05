@@ -126,7 +126,9 @@ class MoipIntegration extends Model
 			$payment = $order->payments()  
 			->setBoleto($expiration_date, $logo_uri, $instruction_lines)
 			->execute();
-			dd($payment);
+
+			//dd($payment->getOrder()->getCustomer()->getfullname());
+
 			//dd(MyFunctions::FormatCurrencyForDataBase($request['total_amount']));
 			if ($payment->getStatus() === 'WAITING') {
 				$donation = new Donation();
@@ -168,6 +170,7 @@ class MoipIntegration extends Model
 
 				$data = [
 					'idBoleto' => $idBoleto,
+					'orderId' => $payment->getOrder()->getId(),
 					'codBoleto' => $codBoleto,
 					'urlBoleto' => $urlBoleto,
 					'hrefBoleto' => $hrefBoleto,
@@ -304,7 +307,8 @@ class MoipIntegration extends Model
 			//$payment = $moip->payments()->get($idMoip);
 			$payment = $moip->orders()->get($idMoip);
 			return $payment->getStatus();
-
+			//$payment->getOrder()->getCustomer()->getfullname()
+			//$payment->getOrder()->getId() //obter order id
 			//Com Json
 			//$payment = $moip->orders()->get($idMoip);
 			//$data = json_encode($payment);
@@ -319,7 +323,7 @@ class MoipIntegration extends Model
 		}
 	}
 
-	public static function getDadosBoleto($idMoip)
+	public static function getDadosBoleto($idMoip, $idOrder)
 	{
 
 		
@@ -327,7 +331,7 @@ class MoipIntegration extends Model
 		    $moip = Moip::start();
 
 			$payment = $moip->payments()->get($idMoip);
-			//$payment = $moip->orders()->get($idMoip);
+			$orders = $moip->orders()->get($idOrder);
 			$url = file_get_contents($payment->getHrefPrintBoleto());
 			$codBoleto = $payment->getLineCodeBoleto();
 			$idBoleto = $payment->getId();
@@ -335,9 +339,11 @@ class MoipIntegration extends Model
 			$hrefBoleto = explode('/', $payment->getHrefBoleto());
 			$hrefBoleto = array_last($hrefBoleto);
 			$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);
-
+			//dd($orders->getCustomer()->getFullName());
 			$data = [
 				'idBoleto' => $idBoleto,
+				'full_name' => $orders->getCustomer()->getFullName(),
+				'total_amount' => MyFunctions::AddDecimalPointForMoney($payment->getAmount()->total),
 				'codBoleto' => $codBoleto,
 				'urlBoleto' => $urlBoleto,
 				'hrefBoleto' => $hrefBoleto,

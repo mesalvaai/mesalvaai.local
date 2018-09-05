@@ -36,7 +36,7 @@ class DonationsRequest extends FormRequest
                     'phone' => 'required|max:15',
                     'email' => 'email|max:200|unique:donations',
                     'date_of_birth' => 'date_format:"d/m/Y"',
-                    'cpf' => 'required|max:14',
+                    'cpf' => 'required|cpf|max:14',
                     'total_amount' => [function ($attribute, $value, $fail) {
                         $valor = MyFunctions::FormatCurrencyForScreen($value);
                         if ($valor < 20) {
@@ -62,7 +62,7 @@ class DonationsRequest extends FormRequest
                     'phone' => 'required|max:15',
                     'email' => 'email|max:200|unique:donations,email,'.$this->id,
                     'date_of_birth' => 'date_format:"d/m/Y"',
-                    'cpf' => 'required|max:15'
+                    'cpf' => 'required|cpf|max:15'
                 ];
                 break;
             case 'PATCH': {

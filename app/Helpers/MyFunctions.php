@@ -22,5 +22,11 @@ class MyFunctions
     	$retornarValorFormatado = str_replace(',','.',str_replace('.','',$valor));
     	return $retornarValorFormatado;
     }
+
+    public static function AddDecimalPointForMoney($valor)
+    {
+        $total_amount = $valor / 100;
+        return number_format($total_amount,2,',','.');
+    }
 }
 ?>
