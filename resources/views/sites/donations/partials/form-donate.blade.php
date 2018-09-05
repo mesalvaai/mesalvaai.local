@@ -166,7 +166,7 @@
 	<div class="form-group row">
 		{!! Form::label('card_cvc', 'Código de segurança: ', ['class' => 'col-sm-3 col-form-label'] ) !!}
 		<div class="col-sm-9">
-			{!! Form::text('card_cvc', null, ['class' => $errors->has('card_cvc') ? 'form-control is-invalid' : 'form-control', 'id' => 'card_cvc']) !!}
+			{!! Form::text('card_cvc', null, ['class' => $errors->has('card_cvc') ? 'form-control is-invalid' : 'form-control', 'id' => 'cvc']) !!}
 			@if ($errors->has('card_cvc'))
 			<span class="invalid-feedback" style="display: block;">
 				<strong>{{ $errors->first('card_cvc') }}</strong>

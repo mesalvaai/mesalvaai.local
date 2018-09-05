@@ -45,13 +45,11 @@ class DonationsRequest extends FormRequest
                     }]
                 ];
                 if ($this->type_payment === 'CREDIT_CARD') {
-                    $rules = [
-                        'card_number' => 'required|max:19',
-                        'card_name' => 'required|alpha',
-                        'card_cvc' => 'required|numeric|max:3',
-                        'month' => 'required|numeric|max:2',
-                        'year' => 'required|numeric|max:2'
-                    ];
+                    $rules['card_number']   = 'required|max:19';
+                     $rules['card_name']    = 'required';
+                     $rules['card_cvc']     = 'required|numeric';
+                     $rules['month']        = 'required|numeric';
+                     $rules['year']         = 'required|numeric';
                 }
                 
                 return $rules;
