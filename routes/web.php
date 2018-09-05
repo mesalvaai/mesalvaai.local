@@ -55,6 +55,7 @@ Route::get('/student', 'Admin\StudentController@index');
 //Controllers para tests
 Route::get('/test', 'Site\TestController@test')->name('test');
 Route::get('/retornar-status-boleto', 'Site\TestController@retornarStatusBoleto')->name('rsb');
+Route::get('/retornar-status-cartao', 'Site\TestController@getStatusCartao')->name('status.cartao');
 Route::get('/flash-session', 'Site\TestController@testSessions')->name('test-session');
 
 
