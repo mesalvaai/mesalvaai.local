@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Location;
 use App\Course;
-
+use App\Level;
+use App\Turn;
+use App\Institutions;
+use App\Modality;
 
 class AdminController extends Controller
 {
@@ -20,8 +23,10 @@ class AdminController extends Controller
 		$states = Location::getEstados($idPais);
 		$courses = Course::paginate()->pluck('name', 'id');
 
+		$levels = Level::paginate()->pluck('name', 'id');
+
 		// dd($states);
-		return view('bags.index', compact('states', 'courses'));
+		return view('bags.index', compact('states', 'courses', 'levels'));
 	}
 
 	public function showCourse(Request $request)
@@ -44,85 +49,164 @@ class AdminController extends Controller
 	public function showResult(Request $request)
 	{
 
-// 		SELECT c.name,t.name,l.name FROM mm2.courses c 
-// inner join course_turn ct on(c.id = ct.course_id)
-// inner join turns t on(ct.turn_id = t.id)
-// inner join levels l on (c.level_id = l.id)
-//  where c.id = 1 ;
 
- //  select i.name,c.name,m.name  from mm2.institutions i
- // inner join institution_course ic on (i.id = ic.institution_id) 
- // inner join courses c on (ic.course_id = c.id)
- // inner join course_modality cm on (cm.course_id = c.id)
- // inner join modalities m on (m.id = cm.modality_id)
- //  ;
+		$idPais = 3469034;
+		$states = Location::getEstados($idPais);
 
-		if($request->input('presential') == 1 && $request->input('distance') != 1){
-//apenas presencial
+		$state_id = $request->input('state_id');
 
-			// inner join costs cc on (cc.course_id = c.id);
+		$cities = Location::getCidades($idPais, $state_id);
+
+		$levels = Level::paginate()->pluck('name', 'id');
+
+		$institutions = Institutions::paginate()->pluck('name', 'id');
+		$modalities = Modality::paginate()->pluck('name', 'id');
+		$turns = Turn::paginate()->pluck('name', 'id');
+
+		$level_name = $request->input('level_id');
+
+			// dd($request->input('levels'));
+		$cursos= Course::paginate()->pluck('name', 'id');
+
+		$curso = $request->input('course_id');
 
 
-			$courses = \DB::table('institutions')
-			->join('institution_course', 'institutions.id', '=', 'institution_course.institution_id')
-			->join('courses', 'courses.id', '=', 'institution_course.course_id')
-			->join('course_turn', 'courses.id', '=', 'course_turn.course_id')
-			->join('turns', 'turns.id', '=', 'course_turn.turn_id')
-			->join('levels', 'levels.id', '=', 'courses.level_id')
-			->join('course_modality', 'courses.id', '=', 'course_modality.course_id')
-			->join('modalities', 'modalities.id', '=', 'course_modality.modality_id')
-			->join('course_type', 'course_type.course_id', '=', 'courses.id')
-			->join('types', 'course_type.type_id', '=', 'types.id')
-			->join('costs', 'costs.course_id', '=', 'courses.id')
-			->select('courses.id', 'costs.monthly_payment', 'costs.discount', 'courses.duration', 'courses.name as name_course', 'turns.name as name_turn', 'levels.name as name_level', 'institutions.name as name_institution', 'modalities.name as name_modality', 'types.name as name_type' )
-			->where('institutions.state_id', '=', $request->input('state_id'))
-			->where('institutions.city_id', '=', $request->input('city_id'))
-			->where('modalities.name', '=','presencial')
-			->where('courses.id', '=', $request->input('course_id'))
-			->paginate(30);
 
-		} elseif ($request->input('distance') == 1 && $request->input('presential') != 1) {
+		$dataForm = $request->all();
 
-			$courses = \DB::table('institutions')
-			->join('institution_course', 'institutions.id', '=', 'institution_course.institution_id')
-			->join('courses', 'courses.id', '=', 'institution_course.course_id')
-			->join('course_turn', 'courses.id', '=', 'course_turn.course_id')
-			->join('turns', 'turns.id', '=', 'course_turn.turn_id')
-			->join('levels', 'levels.id', '=', 'courses.level_id')
-			->join('course_modality', 'courses.id', '=', 'course_modality.course_id')
-			->join('modalities', 'modalities.id', '=', 'course_modality.modality_id')
-			->join('course_type', 'course_type.course_id', '=', 'courses.id')
-			->join('types', 'course_type.type_id', '=', 'types.id')
-			->join('costs', 'costs.course_id', '=', 'courses.id')
-			->select('courses.id', 'costs.monthly_payment', 'costs.discount', 'courses.duration', 'courses.name as name_course', 'turns.name as name_turn', 'levels.name as name_level', 'institutions.name as name_institution', 'modalities.name as name_modality', 'types.name as name_type' )
-			->where('institutions.state_id', '=', $request->input('state_id'))
-			->where('institutions.city_id', '=', $request->input('city_id'))
-			->where('modalities.name', '=','EAD')
-			->where('courses.id', '=', $request->input('course_id'))
-			->paginate(30);
+		$courses = \DB::table('vw_info_bags')
+		->where(function($query) use ($dataForm){
 
-		}
-		else{
-			$courses = \DB::table('institutions')
-			->join('institution_course', 'institutions.id', '=', 'institution_course.institution_id')
-			->join('courses', 'courses.id', '=', 'institution_course.course_id')
-			->join('course_turn', 'courses.id', '=', 'course_turn.course_id')
-			->join('turns', 'turns.id', '=', 'course_turn.turn_id')
-			->join('levels', 'levels.id', '=', 'courses.level_id')
-			->join('course_modality', 'courses.id', '=', 'course_modality.course_id')
-			->join('modalities', 'modalities.id', '=', 'course_modality.modality_id')
-			->join('course_type', 'course_type.course_id', '=', 'courses.id')
-			->join('types', 'course_type.type_id', '=', 'types.id')
-			->join('costs', 'costs.course_id', '=', 'courses.id')
-			->select('courses.id', 'costs.monthly_payment', 'costs.discount', 'courses.duration', 'courses.name as name_course', 'turns.name as name_turn', 'levels.name as name_level', 'institutions.name as name_institution', 'modalities.name as name_modality', 'types.name as name_type' )
-			->where('institutions.state_id', '=', $request->input('state_id'))
-			->where('institutions.city_id', '=', $request->input('city_id'))
-			->where('courses.id', '=', $request->input('course_id'))
-			->paginate(30);
+			if(isset($dataForm['state_id']))
+				$query->where('state_id_institution', '=', $dataForm['state_id']);
+
+
+			if(isset($dataForm['level_id']))
+				$query->where('id_level', '=', $dataForm['level_id']);
+
+			if(isset($dataForm['course_id']))
+				$query->where('id_course', '=', $dataForm['course_id']);
+
+
+			if(!(isset($dataForm['presential']) && isset($dataForm['distance'])))
+			{
+				if(isset($dataForm['presential']))
+					$query->where('name_modality', '=', 'presencial');
+
+
+				if(isset($dataForm['distance']))
+					$query->where('name_modality', '=', 'EAD');
+			}
+		})
+		->paginate(3);
+		// dd($courses);
+
+
+
+		// if($request->input('presential') == 1 && $request->input('distance') != 1){
+
+  //           //apenas presencial
+
+		// 	// inner join costs cc on (cc.course_id = c.id);
+
+
+		// 	$courses = \DB::table('vw_info_bags')
+
+		// 	->where('state_id_institution', '=', $request->input('state_id'))
+
+		// 	->where('name_modality', '=','presencial')
+		// 	->where('id_courses', '=', $request->input('course_id'))
+		// 	->where('name_level', '=', $request->input('levels'))
+		// 	->paginate(30);
+		// 	// dd($courses);
+
+		// } elseif ($request->input('distance') == 1 && $request->input('presential') != 1) {
+		// 	$courses = \DB::table('vw_info_bags')
+
+		// 	->where('state_id_institution', '=', $request->input('state_id'))
+		// 	->where('name_modality', '=','EAD')
+		// 	->where('id_courses', '=', $request->input('course_id'))
+		// 	->where('name_level', '=', $request->input('levels'))
+		// 	->paginate(30);
+
+		// 	// dd($courses);
+
+		// }
+		// else{
+		// 	$courses = \DB::table('vw_info_bags')
+
+		// 	->where('state_id_institution', '=', $request->input('state_id'))
+		// 	->where('id_courses', '=', $request->input('course_id'))
+		// 	->where('name_level', '=', $request->input('levels'))
+		// 	->paginate(30);
+
+			// dd($courses);
 
          //where cidade e estado a distância ou presencial
 
-		}
-		return view('bags.resultado', compact('courses'));
+	// }
+		return view('bags.resultado', compact('courses', 'states', 'state_id', 'cities', 'levels', 'level_name', 'cursos', 'curso', 'institutions', 'modalities', 'turns', 'modalities'));
+	}
+
+	public function searchCourses(Request $request)
+	{
+
+		$dataForm = $request->except('_token');
+
+		$courses = \DB::table('vw_info_bags')
+		->where(function($query) use ($dataForm){
+
+			if(isset($dataForm['state_id']))
+				$query->where('state_id_institution', '=', $dataForm['state_id']);
+
+			if(isset($dataForm['city_id']))
+				$query->where('city_id_institution', '=', $dataForm['city_id']);
+
+			if(isset($dataForm['level_id']))
+				$query->where('id_level', '=', $dataForm['level_id']);
+
+			if(isset($dataForm['course_id']))
+				$query->where('id_course', '=', $dataForm['course_id']);
+
+			if(isset($dataForm['institution_id']))
+				$query->where('id_institution', '=', $dataForm['institution_id']);
+
+
+			if(isset($dataForm['modality_id']))
+				$query->where('id_modality', '=', $dataForm['modality_id']);
+
+			if(isset($dataForm['turn_id']))
+				$query->where('id_turn', '=', $dataForm['turn_id']);
+
+		})
+		// ->toSql();
+		// dd($courses);
+		->paginate(1);
+
+		$idPais = 3469034;
+
+		$states = Location::getEstados($idPais);
+
+		$state_id = $request->input('state_id');
+
+		$cities = Location::getCidades($idPais, $state_id);
+
+		$levels = Level::paginate()->pluck('name', 'id');
+
+		$level_name = $request->input('level_id');
+
+		$cursos= Course::paginate()->pluck('name', 'id');
+
+		$curso = $request->input('course_id');
+
+
+		$institutions = Institutions::paginate()->pluck('name', 'id');
+
+		$modalities = Modality::paginate()->pluck('name', 'id');
+
+		$turns = Turn::paginate()->pluck('name', 'id');
+
+
+		return view('bags.resultado', compact('courses', 'states', 'state_id', 'cities', 'levels', 'level_name', 'cursos', 'curso', 'institutions', 'modalities', 'turns'));
 	}
 }
