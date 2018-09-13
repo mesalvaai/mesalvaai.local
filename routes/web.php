@@ -80,7 +80,9 @@ Route::get('/cadastrarr', 'Admin\PainelController@cadastrar')->name('cadastrar')
 //Buscar bolsa
 Route::get('/bolsas', 'Handbag\AdminController@index')->name('bolsas');
 Route::post('bolsas/resultado', 'Handbag\AdminController@showResult')->name('bolsas.resultado');
-Route::post('/bolsas/show-course', 'Handbag\AdminController@showCourse')->name('bolsas.show.curso');;
+Route::post('/bolsas/show-course', 'Handbag\AdminController@showCourse')->name('bolsas.show.curso');
+
+Route::get('/webhook', 'Admin\WebhookController@index')->name('webhook.index');
 
 
 //Lêr arquivos do storage para frontend
