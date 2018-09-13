@@ -1,6 +1,6 @@
 <div class="form-group">
 
-	{!! Form::label('state_id', 'Em que estado pretende cursar uma faculdade?') !!}
+	{!! Form::label('state_id', 'Estado') !!}
 
 	@if ($errors->has('state_id'))
 
@@ -17,21 +17,41 @@
 	@endif
 </div>
 
-<div class="form-group">
+<!-- <div class="form-group">
 
-	{!! Form::label('city_id', 'E em qual cidade?') !!}
+	{-- Form::label('city_id', 'E em qual cidade?') --}
 
 	@if ($errors->has('city_id'))
 
-	{!! Form::select('city_id', [], null, ['placeholder' => '-- Antes Selecione um Estado --', 'class' => 'form-control is-invalid', 'required']) !!}
+	{-- Form::select('city_id', [], null, ['placeholder' => '-- Antes Selecione um Estado --', 'class' => 'form-control is-invalid', 'required']) --}
 	
 	<div class="invalid-feedback">
-		{{ $errors->first('city_id') }}
+		{-- $errors->first('city_id') --}
 	</div>
 	
 	@else
 	
-	{!! Form::select('city_id', [], null, ['placeholder' => '-- Antes Selecione um Estado --', 'class' => 'form-control', 'required']) !!}
+	{-- Form::select('city_id', [], null, ['placeholder' => '-- Antes Selecione um Estado --', 'class' => 'form-control', 'required']) --}
+
+	@endif
+</div>
+-->
+
+<div class="form-group">
+
+	{!! Form::label('level_id', 'Qual o nível do curso você prefere?') !!}
+
+	@if ($errors->has('level_id'))
+
+	{!! Form::select('level_id', $levels, null, ['placeholder' => '-- Antes Selecione um Nível --', 'class' => 'form-control is-invalid', 'required']) !!}
+	
+	<div class="invalid-feedback">
+		{{ $errors->first('level_id') }}
+	</div>
+	
+	@else
+	
+	{!! Form::select('level_id', $levels, null, ['placeholder' => '-- Selecione um Nível --', 'class' => 'form-control', 'required']) !!}
 
 	@endif
 </div>
@@ -39,11 +59,11 @@
 
 <div class="form-group">
 
-	{!! Form::label('course_id', 'Qual o seu curso?') !!}
+	{!! Form::label('course_id', 'Tem preferêcia de curso?') !!}
 
 	@if ($errors->has('course_id'))
 
-	{!! Form::select('course_id', $courses, null, ['placeholder' => '-- Antes Selecione um Estado --', 'class' => 'form-control is-invalid', 'required']) !!}
+	{!! Form::select('course_id', $courses, null, ['placeholder' => '-- Selecione um Curso --', 'class' => 'form-control is-invalid']) !!}
 	
 	<div class="invalid-feedback">
 		{{ $errors->first('course_id') }}
@@ -51,9 +71,11 @@
 	
 	@else
 	
-	{!! Form::select('course_id', $courses, null, ['placeholder' => '-- Selecione um Curso --', 'class' => 'form-control', 'required']) !!}
+	{!! Form::select('course_id', $courses, null, ['placeholder' => '-- Selecione um Curso --', 'class' => 'form-control']) !!}
 
 	@endif
+
+	{!! Form::label('opcional', '(Opicional)', ['class' => 'small']) !!}
 </div>
 
 <div class="row">

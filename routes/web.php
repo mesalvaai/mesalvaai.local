@@ -27,20 +27,16 @@ Route::get('/info',function(){
 });
 
 
-// Route::get('get-paises-restantes', 'LocationController@getPaises')->name('get-paises-restantes');
-// Route::get('get-estados/{idPais}', 'LocationController@getEstados')->name('get-estados');
-//Route::get('get-cidades/{idPais}/{idEstado}', 'LocationController@getCidades')->name('get-cidades');
+Route::get('get-paises-restantes', 'LocationController@getPaises')->name('get-paises-restantes');
+Route::get('get-estados/{idPais}', 'LocationController@getEstados')->name('get-estados');
+Route::get('get-cidades/{idPais}/{idEstado}', 'LocationController@getCidades')->name('get-cidades');
 
 
 Route::get('/campanhas', 'Site\HomeController@campanhas')->name('campanhas');
+
 Route::get('/campanhas/{idCamping?}', 'Site\HomeController@campanha')->name('show.campanha');
 Route::get('/campanhas/{slugCamping}/donate', 'Site\HomeController@donate')->name('donate.campanha');
 Route::post('/campanhas/processar-donacao', 'Site\HomeController@donateProcess')->name('donate.process');
-Route::get('/campanhas/gerar-boleto/{idBoleto?}/{idOrder?}', 'Site\HomeController@gerarBoleto')->name('gerar.boleto');
-//Route::get('/campanhas/gerar-boleto', array('as' => 'gerar.boleto', 'uses' => 'Site\HomeController@gerarBoleto'));
-// Route::get('/campanhas/gerar-boleto/{data}', array('as' => 'gerar.boleto', function($data) {
-// 	return View::make('sites.donations.gerar-boleto')->with('data', $data);
-// })); 
 Route::get('/campanhas/boleto/{codBoleto}/print', 'Site\HomeController@printBoleto')->name('boleto.print');
 
 Route::get('/financiamento', 'Site\FinancingController@index')->name('financing.index');
@@ -48,16 +44,12 @@ Route::get('/financiamento/criar-campanha', 'Site\FinancingController@createCamp
 Route::get('/financiamento/criar-conta', 'Site\FinancingController@createConta')->name('create.conta');
 
 Route::get('/mimos', 'Site\HomeController@mimos')->name('mimos');
+Route::get('/test', 'Site\HomeController@test')->name('test');
 Route::get('/cursos', 'Site\CursoController@curso');
 Route::get('/faculdade/id_curso', 'Site\CursoController@faculdade');
 Route::get('/student', 'Admin\StudentController@index');
 
-//Controllers para tests
-Route::get('/test', 'Site\TestController@test')->name('test');
-Route::get('/retornar-status-boleto', 'Site\TestController@retornarStatusBoleto')->name('rsb');
-Route::get('/flash-session', 'Site\TestController@testSessions')->name('test-session');
-
-
+Auth::routes();
 
 //Route::get('/home', 'Site\HomeController@index')->name('home');
 
@@ -69,12 +61,15 @@ Route::get('/ingresarr', 'Admin\PainelController@ingresar')->name('ingresar');
 Route::get('/cadastrarr', 'Admin\PainelController@cadastrar')->name('cadastrar');
 
 //Layout Modelo Admin
-// Route::get('/admin', 'Admin\AdminController@index')->name('admin');
-// Route::get('/forms', 'Admin\AdminController@forms')->name('forms');
-// Route::get('/charts', 'Admin\AdminController@charts')->name('charts');
-// Route::get('/tables', 'Admin\AdminController@tables')->name('tables');
-// Route::get('/ingresar', 'Admin\AdminController@ingresar')->name('ingresar');
-// Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
+Route::get('/admin', 'Admin\AdminController@index')->name('admin');
+Route::get('/forms', 'Admin\AdminController@forms')->name('forms');
+Route::get('/charts', 'Admin\AdminController@charts')->name('charts');
+Route::get('/tables', 'Admin\AdminController@tables')->name('tables');
+Route::get('/ingresar', 'Admin\AdminController@ingresar')->name('ingresar');
+Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
+
+
+
 
 
 //Buscar bolsa
@@ -82,29 +77,58 @@ Route::get('/bolsas', 'Handbag\AdminController@index')->name('bolsas');
 Route::post('bolsas/resultado', 'Handbag\AdminController@showResult')->name('bolsas.resultado');
 Route::post('/bolsas/show-course', 'Handbag\AdminController@showCourse')->name('bolsas.show.curso');
 
+
 Route::get('/webhook', 'Admin\WebhookController@index')->name('webhook.index');
 
+Route::post('/bolsas/filtra-show-course', 'Handbag\AdminController@searchCourses')->name('bolsas.filtra.show.curso');
 
-//Lêr arquivos do storage para frontend
+
+
+
+// Authentication Routes...
+// $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
+// $this->post('login', 'Auth\LoginController@login');
+// $this->post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// // Registration Routes...
+// $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// $this->post('register', 'Auth\RegisterController@register');
+
+// // Password Reset Routes...
+// $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+// $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+// $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+// $this->post('password/reset', 'Auth\ResetPasswordController@reset');
+
+//File Manager
+// Route::group(array('before' => 'auth'), function ()
+// {
+//     Route::get('/laravel-filemanager', '\Unisharp\Laravelfilemanager\controllers\LfmController@show');
+//     Route::post('/laravel-filemanager/upload', '\Unisharp\Laravelfilemanager\controllers\LfmController@upload');
+
+
+// });
+
+
+//Painel para cadastrados no financiamento Colectivo
 Route::get('/miniatura/{filename}', array(
 	'as' => 'imageVideo',
 	'uses' => 'Financing\AdminController@getFile'
 ));
+Route::middleware(['auth', 'IsRoleAluno:role_fc'])->group(function(){
+	
+	include (base_path('routes/financing.php'));
+});
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
 	UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-//Rotas para autentificação
-Auth::routes();
-
-//Rotas para administrador do financimaneto coletivo
-Route::middleware(['auth', 'IsRoleAluno:role_fc'])->group(function(){
-	include (base_path('routes/financing.php'));
-});
-
-//Rotas para o painel
+//Rotas
 Route::middleware(['auth'])->group(function(){
+
 	Route::get('/painel', 'Admin\PainelController@index')->name('painel');
+
 	include (base_path('routes/admin.php'));
+	
 });

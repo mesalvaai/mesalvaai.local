@@ -13,6 +13,12 @@ use App\Campaign;
 
 class TestController extends Controller
 {
+    public function getStatusCartao()
+    {
+        $statusPagoCartao = MoipIntegration::getStatusCreditCard('PAY-B3ZO5RY5K3KT');
+        dd($statusPagoCartao);
+    }
+
 	public function retornarStatusBoleto()
 	{
 		$statusPagoBoleto = MoipIntegration::getStatusBoleto('ORD-UAN0O4CLPQKE');

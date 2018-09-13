@@ -3,7 +3,7 @@
 @section('content')
 
 <section id="cursos" class="pb-5" style="margin-top: 120px;">
-<div class="container h-100 pt-2">
+    <div class="container h-100 pt-2">
         <div class="row h-100 align-items-center">
             <div class="col-12 col-md justify-content-center">
                 <div class="curso-heading col-12 justify-content-center text-center">
@@ -12,81 +12,17 @@
             </div>
         </div>
     </div>
-   <div class="container border-bottom border-top pb-5 pt-5" align="right">
-    <div class="row" align="left">
-        <div class="form-group col">
-            {!! Form::label('category_id', 'Categoria da campanha') !!}
+    <div class="container border-bottom border-top pb-5 pt-5" align="right">
 
-            @if ($errors->get('category_id'))
-
-            @foreach ($errors->get('category_id') as $error)
-
-            {!! Form::select('category_id', [], null, ['class' => 'form-control is-invalid', 'placeholder' =>'-- Selecione uma Categoria --', 'required']) !!}
-
-            <div class="invalid-feedback">
-                {{ $error }}
-            </div>
-
-            @endforeach
-
-            @else
-
-            {!! Form::select('category_id', [], null, ['class' => 'form-control', 'placeholder' =>'-- Selecione uma Categoria --', 'required']) !!}
-
-            @endif
-        </div>
-
-        <div class="form-group col">
-            {!! Form::label('student_id', 'Estudante da campanha') !!}
-
-            @if ($errors->get('student_id'))
-
-            @foreach ($errors->get('student_id') as $error)
-
-            {!! Form::select('student_id', [], null, ['class' => 'form-control is-invalid', 'placeholder' =>'-- Selecione um Estudante --', 'required']) !!}
-
-            <div class="invalid-feedback">
-                {{ $error }}
-            </div>
-
-            @endforeach
-
-            @else
-
-            {!! Form::select('student_id', [], null, ['class' => 'form-control', 'placeholder' =>'--Selecione um Estudante--', 'required']) !!}
-
-            @endif
-        </div>
-
-        <div class="form-group col">
-            {!! Form::label('status', 'Estado') !!}
-
-            @if ($errors->get('status'))
-
-            @foreach ($errors->get('status') as $error)
-
-            {!! Form::select('status', [ '1' => 'Ativo','0' => 'Inativo'], null, ['class' => 'form-control is-invalid']) !!}
-
-            <div class="invalid-feedback">
-                {{ $error }}
-            </div>
-
-            @endforeach
-
-            @else
-
-            {!! Form::select('status', [ '1' => 'Ativo','0' => 'Inativo'], null, ['class' => 'form-control']) !!}
-
-            @endif  
-        </div>
+        {{ Form::open(['route' => 'bolsas.filtra.show.curso']) }}
+        @include('bags.partials.form-filtros')
+        {{ Form::close() }}
     </div>
-    <button class="btn-msa">Filtrar</button>
-</div>
-<div class="container border-bottom pb-2 pt-2" align="right">
-    <a href=""><small>Limpar Filtros</small></a>
-</div>
+    <div class="container border-bottom pb-2 pt-2" align="right">
+        <a href=""><small>Limpar Filtros</small></a>
+    </div>
 
-
+<!-- 
 <div class="container-fluid" align="center">  
     <div align="left">
         <div class="card">
@@ -96,7 +32,7 @@
                 <p class="text-center text-body pt-1"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;Escolha seu curso e faça a sua <b>matrícula</b></p>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="container-fluid" >                
         <div class="row pt-5">
@@ -131,32 +67,33 @@
 
                         <div align="center">
 
-                         {!! Form::open(['route' => 'bolsas.show.curso']) !!}
+                           {!! Form::open(['route' => 'bolsas.show.curso']) !!}
 
-                         <input type="hidden" value="{{$course->name_course}}" name="name_course">
-                         <input type="hidden" value="{{$course->name_level}}" name="name_level">
-                         <input type="hidden" value="{{$course->name_type}}" name="name_type">
-                         <input type="hidden" value="{{$course->name_modality}}" name="name_modality">
-                         <input type="hidden" value="{{$course->name_turn}}" name="name_turn">
-                         <input type="hidden" value="{{$course->name_institution}}" name="name_institution">
-                         <input type="hidden" value="{{$course->monthly_payment}}" name="monthly_payment">
-                         <input type="hidden" value="{{$course->discount}}" name="discount">
-                         <input type="hidden" value="{{$course->duration}}" name="duration">
-                         <input type="hidden" value="{{$priceAtual}}" name="price_atual">
-
-
-                         <button title="Buscar Bolsa"  class="btn-msa">Quero esta Bolsa</button>
+                           <input type="hidden" value="{{$course->name_course}}" name="name_course">
+                           <input type="hidden" value="{{$course->name_level}}" name="name_level">
+                           <input type="hidden" value="{{$course->name_type}}" name="name_type">
+                           <input type="hidden" value="{{$course->name_modality}}" name="name_modality">
+                           <input type="hidden" value="{{$course->name_turn}}" name="name_turn">
+                           <input type="hidden" value="{{$course->name_institution}}" name="name_institution">
+                           <input type="hidden" value="{{$course->monthly_payment}}" name="monthly_payment">
+                           <input type="hidden" value="{{$course->discount}}" name="discount">
+                           <input type="hidden" value="{{$course->duration_course}}" name="duration">
+                           <input type="hidden" value="{{$priceAtual}}" name="price_atual">
 
 
+                           <button title="Buscar Bolsa"  class="btn-msa">Quero esta Bolsa</button>
 
-                         {!! Form::close() !!}
-                     </div>
-                 </figure>
-             </div>
-         </div>
-         @endforeach
-     </div>
- </div>
+
+
+                           {!! Form::close() !!}
+                       </div>
+                   </figure>
+               </div>
+           </div>
+           @endforeach
+       </div>
+       {!! $courses->links() !!}
+   </div>
 </div>
 </div>
 </section>
