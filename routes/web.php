@@ -69,45 +69,14 @@ Route::get('/ingresar', 'Admin\AdminController@ingresar')->name('ingresar');
 Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
 
 
-
-
-
 //Buscar bolsa
 Route::get('/bolsas', 'Handbag\AdminController@index')->name('bolsas');
 Route::post('bolsas/resultado', 'Handbag\AdminController@showResult')->name('bolsas.resultado');
 Route::post('/bolsas/show-course', 'Handbag\AdminController@showCourse')->name('bolsas.show.curso');
-
-
-Route::get('/webhook', 'Admin\WebhookController@index')->name('webhook.index');
-
 Route::post('/bolsas/filtra-show-course', 'Handbag\AdminController@searchCourses')->name('bolsas.filtra.show.curso');
 
 
-
-
-// Authentication Routes...
-// $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
-// $this->post('login', 'Auth\LoginController@login');
-// $this->post('logout', 'Auth\LoginController@logout')->name('logout');
-
-// // Registration Routes...
-// $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-// $this->post('register', 'Auth\RegisterController@register');
-
-// // Password Reset Routes...
-// $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-// $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-// $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-// $this->post('password/reset', 'Auth\ResetPasswordController@reset');
-
-//File Manager
-// Route::group(array('before' => 'auth'), function ()
-// {
-//     Route::get('/laravel-filemanager', '\Unisharp\Laravelfilemanager\controllers\LfmController@show');
-//     Route::post('/laravel-filemanager/upload', '\Unisharp\Laravelfilemanager\controllers\LfmController@upload');
-
-
-// });
+Route::get('/webhook', 'Admin\WebhookController@index')->name('webhook.index');
 
 
 //Painel para cadastrados no financiamento Colectivo
