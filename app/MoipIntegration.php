@@ -304,10 +304,11 @@ class MoipIntegration extends Model
 		//PAY-BBJ3J4031QVP Boleto
 		try {
 		    $moip = Moip::start();
-			$payment = $moip->payments()->get('PAY-BBJ3J4031QVP');
+			$payment = $moip->payments()->get('PAY-B3ZO5RY5K3KT');
 			//$payment = $moip->orders()->get($idMoip);
 			//$payment->getStatus()
-			return $payment->getId();
+			//$payment->getId()
+			return $payment->getStatus();
 			//$payment->getOrder()->getCustomer()->getfullname()
 			//$payment->getOrder()->getId() //obter order id
 			//Com Json

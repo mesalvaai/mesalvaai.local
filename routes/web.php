@@ -27,9 +27,9 @@ Route::get('/info',function(){
 });
 
 
-// Route::get('get-paises-restantes', 'LocationController@getPaises')->name('get-paises-restantes');
-// Route::get('get-estados/{idPais}', 'LocationController@getEstados')->name('get-estados');
-//Route::get('get-cidades/{idPais}/{idEstado}', 'LocationController@getCidades')->name('get-cidades');
+Route::get('get-paises-restantes', 'LocationController@getPaises')->name('get-paises-restantes');
+Route::get('get-estados/{idPais}', 'LocationController@getEstados')->name('get-estados');
+Route::get('get-cidades/{idPais}/{idEstado}', 'LocationController@getCidades')->name('get-cidades');
 
 
 Route::get('/campanhas', 'Site\HomeController@campanhas')->name('campanhas');

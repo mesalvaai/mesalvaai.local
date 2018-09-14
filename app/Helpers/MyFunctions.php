@@ -28,5 +28,12 @@ class MyFunctions
         $total_amount = $valor / 100;
         return number_format($total_amount,2,',','.');
     }
+
+    public static function formatandoForView($valor)
+    {
+        $tirandoPonto = str_replace('.','',$valor);
+        $total_amount = $tirandoPonto / 100;
+        return number_format($total_amount,2,',','.');
+    }
 }
 ?>
