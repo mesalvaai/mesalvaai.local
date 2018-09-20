@@ -71,9 +71,12 @@ Route::get('/cadastrar', 'Admin\AdminController@cadastrar')->name('cadastrar');
 
 //Buscar bolsa
 Route::get('/bolsas', 'Handbag\AdminController@index')->name('bolsas');
-Route::post('bolsas/resultado', 'Handbag\AdminController@showResult')->name('bolsas.resultado');
+Route::get('bolsas/resultado', 'Handbag\AdminController@showResult')->name('bolsas.resultado');
 Route::post('/bolsas/show-course', 'Handbag\AdminController@showCourse')->name('bolsas.show.curso');
-Route::post('/bolsas/filtra-show-course', 'Handbag\AdminController@searchCourses')->name('bolsas.filtra.show.curso');
+Route::get('/bolsas/filtra-show-course', 'Handbag\AdminController@searchCourses')->name('bolsas.filtra.show.curso');
+
+Route::get('/preencheForm', 'Handbag\AdminController@preencheForm')->name('preencheForm');
+
 
 
 Route::get('/webhook', 'Admin\WebhookController@index')->name('webhook.index');
