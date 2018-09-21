@@ -219,8 +219,8 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <span class="badge badge-pill badge-secondary mb-2 float-left">R$ {{ $campanha->funds_received }}</span>
-                                    <span class="badge badge-pill badge-info mb-2 float-right">R$ {{ $campanha->goal }}</span>
+                                    <span class="badge badge-pill badge-secondary mb-2 float-left">R$ {{ MyFunctions::formatandoForView($campanha->funds_received) }}</span>
+                                    <span class="badge badge-pill badge-info mb-2 float-right">R$ {{ MyFunctions::formatandoForView($campanha->goal) }}</span>
                                 </div>
                             </div>
                             <div class="progress">
