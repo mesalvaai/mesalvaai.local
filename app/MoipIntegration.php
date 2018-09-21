@@ -24,7 +24,7 @@ class MoipIntegration extends Model
 
 		try {
 			$customer = $moip->customers()->setOwnId(uniqid())
-			->setFullname($request->card_name)
+			->setFullname($request->full_name)
 			->setEmail($request->email)
 			->setBirthDate($date_of_birth)
 			->setPhone($phone['ddd'], $phone['numero'])
