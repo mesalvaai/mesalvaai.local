@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Response;
+use Moip;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -20,39 +22,17 @@ class WebhookController extends Controller
     public function index(Request $request)
     {
         $moip = Moip::start();
-        // To list all Webhooks
-        // Recibir el cuerpo de la petición.
-        $input = @file_get_contents("php://input");
-        // Parsear el contenido como JSON.
-        $eventJson = json_decode($input);
 
-        // Usar los datos del Webhooks para alguna acción.
-        dd($eventJson);
-        // Responder
-        http_response_code(200);
+        header('Content-Type: application/json');
+        $request = file_get_contents('php://input');
+        $req_dump = print_r( $request, true );
+        $fp = file_put_contents( 'request.log', $req_dump );
         
-        // $response = \Response::json('POST', '/info', ['name' => 'Sally']);
+        // $value = 'test';
 
-        // $response
-        //     ->assertStatus(201)
-        //     ->assertJson([
-        //         'created' => true,
-        //     ]);
-
-
-
-        // To list Webhooks, using pagination and filter
-        //$moip->webhooks()->get(new Pagination(10, 0), "ORD_ID", "ORDER.PAID");
-                // try {
-        //     // $notification = $moip->notifications()->addEvent('ORDER.*')
-        //     //         ->addEvent('PAYMENT.AUTHORIZED')
-        //     //         ->setTarget('http://requestb.in/1dhjesw1')
-        //     //         ->create();
-        //     $notification = $moip->notifications()->get('NPR-DV61EEGGUFCQ');
-        //     dd($notification);
-        // } catch (Exception $e) {
-        //     printf($e->__toString());    
-        // }
+        // return Response::json([
+        //     'hello' => $value
+        // ], 200); 
     }
 
     /**
@@ -73,7 +53,30 @@ class WebhookController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // /**
+        // * Este exemplo usa a SDK do Moip de PHP, disponível 
+        // * em: https://github.com/moip/moip-sdk-php
+        // */
+
+        // // To list all Webhooks
+        // $webhooks = $moip->webhooks()->get();
+        // print_r($webhooks);
+        // $payment = $moip->payments()->get('PAY-NRBZI15BSN39');
+        // dd($payment);
+        
+
+        // // To list Webhooks, using pagination and filter
+        // $webhooks = $moip->webhooks()->get(new Pagination(10, 0), "ORD_ID", "ORDER.PAID");
+
+        // print_r($webhooks);
+
+        // $notification = $moip->notifications()->addEvent("ORDER.*")
+        //     ->addEvent("PAYMENT.AUTHORIZED")
+        //   ->addEvent("PAYMENT.CANCELLED")
+        //   ->setTarget("http://www.mesalvaai.com/webhook")
+        //   ->create();
+
+        // dd($notification);
     }
 
     /**

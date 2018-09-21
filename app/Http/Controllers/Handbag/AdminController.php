@@ -46,6 +46,7 @@ class AdminController extends Controller
 
 		return view('bags.curso', compact('nameCourse', 'nameLevel', 'nameType', 'nameModality', 'nameTurn', 'nameInstitution', 'monthlyPayment', 'discount','duration', 'priceAtual'));
 	}
+
 	public function showResult(Request $request)
 	{
 
@@ -57,22 +58,11 @@ class AdminController extends Controller
 
 		$cities = Location::getCidades($idPais, $state_id);
 
-		$levels = Level::paginate()->pluck('name', 'id');
+		$level_id = $request->input('level_id');
 
-		$institutions = Institutions::paginate()->pluck('name', 'id');
-		$modalities = Modality::paginate()->pluck('name', 'id');
-		$turns = Turn::paginate()->pluck('name', 'id');
+		$course_id = $request->input('course_id');
 
-		$level_name = $request->input('level_id');
-
-			// dd($request->input('levels'));
-		$cursos= Course::paginate()->pluck('name', 'id');
-
-		$curso = $request->input('course_id');
-
-
-
-		$dataForm = $request->all();
+		$dataForm = $request->except('_token');
 
 		$courses = \DB::table('vw_info_bags')
 		->where(function($query) use ($dataForm){
@@ -98,58 +88,15 @@ class AdminController extends Controller
 					$query->where('name_modality', '=', 'EAD');
 			}
 		})
-		->paginate(3);
+		->paginate(1);
 		// dd($courses);
 
-
-
-		// if($request->input('presential') == 1 && $request->input('distance') != 1){
-
-  //           //apenas presencial
-
-		// 	// inner join costs cc on (cc.course_id = c.id);
-
-
-		// 	$courses = \DB::table('vw_info_bags')
-
-		// 	->where('state_id_institution', '=', $request->input('state_id'))
-
-		// 	->where('name_modality', '=','presencial')
-		// 	->where('id_courses', '=', $request->input('course_id'))
-		// 	->where('name_level', '=', $request->input('levels'))
-		// 	->paginate(30);
-		// 	// dd($courses);
-
-		// } elseif ($request->input('distance') == 1 && $request->input('presential') != 1) {
-		// 	$courses = \DB::table('vw_info_bags')
-
-		// 	->where('state_id_institution', '=', $request->input('state_id'))
-		// 	->where('name_modality', '=','EAD')
-		// 	->where('id_courses', '=', $request->input('course_id'))
-		// 	->where('name_level', '=', $request->input('levels'))
-		// 	->paginate(30);
-
-		// 	// dd($courses);
-
-		// }
-		// else{
-		// 	$courses = \DB::table('vw_info_bags')
-
-		// 	->where('state_id_institution', '=', $request->input('state_id'))
-		// 	->where('id_courses', '=', $request->input('course_id'))
-		// 	->where('name_level', '=', $request->input('levels'))
-		// 	->paginate(30);
-
-			// dd($courses);
-
-         //where cidade e estado a distância ou presencial
-
-	// }
-		return view('bags.resultado', compact('courses', 'states', 'state_id', 'cities', 'levels', 'level_name', 'cursos', 'curso', 'institutions', 'modalities', 'turns', 'modalities'));
+		return view('bags.resultado', compact('courses', 'states', 'state_id', 'cities', 'level_id','course_id', 'dataForm'));
 	}
 
 	public function searchCourses(Request $request)
 	{
+
 
 		$dataForm = $request->except('_token');
 
@@ -180,8 +127,9 @@ class AdminController extends Controller
 
 		})
 		// ->toSql();
-		// dd($courses);
 		->paginate(1);
+
+		// dd($courses);
 
 		$idPais = 3469034;
 
@@ -191,22 +139,37 @@ class AdminController extends Controller
 
 		$cities = Location::getCidades($idPais, $state_id);
 
-		$levels = Level::paginate()->pluck('name', 'id');
 
-		$level_name = $request->input('level_id');
+		$level_id = $request->input('level_id');
 
-		$cursos= Course::paginate()->pluck('name', 'id');
+		// $cursos= Course::get()->pluck('name', 'id');
 
-		$curso = $request->input('course_id');
+		$course_id = $request->input('course_id');
+
+		$city_id = $request->input('city_id');
+
+		$institution_id = $request->input('institution_id');
+		$modality_id = $request->input('modality_id');
+		$turn_id = $request->input('turn_id');
+		// dd($course_id);
+
+		return view('bags.resultado', compact('courses', 'states', 'state_id', 'cities', 'level_id', 'course_id', 'city_id', 'institution_id', 'modality_id', 'turn_id', 'dataForm'));
+	}		
+
+	public function preencheForm()
+	{
+
+		$levels = Level::get()->pluck('name', 'id')->toArray();
+		$cursos= Course::get()->pluck('name', 'id')->toArray();
+
+		$institutions = Institutions::get()->pluck('name', 'id')->toArray();
+
+		$modalities = Modality::get()->pluck('name', 'id')->toArray();
+		$turns = Turn::get()->pluck('name', 'id')->toArray();
+
+		return [$levels, $cursos, $institutions, $modalities, $turns];	
 
 
-		$institutions = Institutions::paginate()->pluck('name', 'id');
-
-		$modalities = Modality::paginate()->pluck('name', 'id');
-
-		$turns = Turn::paginate()->pluck('name', 'id');
-
-
-		return view('bags.resultado', compact('courses', 'states', 'state_id', 'cities', 'levels', 'level_name', 'cursos', 'curso', 'institutions', 'modalities', 'turns'));
 	}
+
 }

@@ -19,7 +19,7 @@
                     <h2 class="text-center text-msa">Viu como é simples</h2>
                     <p class="text-center" style="color: #000">Basta escolher seu curso, instituição e pagar a primeira mensalidade e vó alá, divirta-se até o final do curso</p>
 
-                    {{ Form::open(['route' => 'bolsas.resultado']) }}
+                    {{ Form::open(['route' => 'bolsas.resultado', 'method' => 'GET']) }}
                     @include('bags.partials.form')
                     {{ Form::close() }}
 

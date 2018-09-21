@@ -14,13 +14,25 @@
     </div>
     <div class="container border-bottom border-top pb-5 pt-5" align="right">
 
-        {{ Form::open(['route' => 'bolsas.filtra.show.curso']) }}
+        {{ Form::open(['route' => 'bolsas.filtra.show.curso', 'method' => 'GET']) }}
         @include('bags.partials.form-filtros')
         {{ Form::close() }}
     </div>
-    <div class="container border-bottom pb-2 pt-2" align="right">
-        <a href=""><small>Limpar Filtros</small></a>
-    </div>
+
+    <div class="container row" align="right">
+
+        @if (session('course'))
+        <div class="alert alert-success">
+            {{ session('course') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </div>
+            @endif
+
+        </div>
+        <div class="container border-bottom pb-2 pt-2" align="right">
+            <a href=""><small>Limpar Filtros</small></a>
+        </div>
 
 <!-- 
 <div class="container-fluid" align="center">  
@@ -34,7 +46,17 @@
         </div>
     </div> -->
 
-    <div class="container-fluid" >                
+    <div class="container-fluid"> 
+
+        @if($courses->toArray()['total'] == 0)
+
+        <div  align="center" class="pt-5">
+
+            <h5> :( Ops Nenhum Curso Encontrado!! </h5>
+        
+        </div>
+        @endif
+
         <div class="row pt-5">
             @foreach($courses as $course)
             <div class="col-xm-12col-sm-6 col-md-3">
@@ -81,6 +103,8 @@
                            <input type="hidden" value="{{$priceAtual}}" name="price_atual">
 
 
+
+
                            <button title="Buscar Bolsa"  class="btn-msa">Quero esta Bolsa</button>
 
 
@@ -92,10 +116,13 @@
            </div>
            @endforeach
        </div>
-       {!! $courses->links() !!}
+       {!! $courses->appends($dataForm)->links() !!}
+       <!-- { dd($levels) }} -->
    </div>
 </div>
 </div>
 </section>
 
 @endsection
+
+
