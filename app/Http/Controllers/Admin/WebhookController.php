@@ -12,7 +12,9 @@ class WebhookController extends Controller
     
     public function index(Request $request)
     {
-        return 'Index Webhooks';
+        $moip = Moip::start();
+        $payment = $moip->payments()->get("PAY-NH5W9QM7X4K7");
+        dd($payment);
     }
 
     /**

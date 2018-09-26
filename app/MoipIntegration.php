@@ -61,6 +61,7 @@ class MoipIntegration extends Model
 				$donation->total_amount = MyFunctions::FormatCurrencyForDataBase($request['total_amount']);
 				$donation->donation_date = $current_time;
 				$donation->type_payment = $request['type_payment'];
+				$donation->payment_id = $payment->getId();
 				$donation->payment_status = $payment->getStatus();
 				$donation->status = 1;
 				$donation->details = 'Pagamento no boleto';
@@ -140,6 +141,7 @@ class MoipIntegration extends Model
 				$donation->total_amount = MyFunctions::FormatCurrencyForDataBase($request['total_amount']);
 				$donation->donation_date = $current_time;
 				$donation->type_payment = $request['type_payment'];
+				$donation->payment_id = $payment->getId();
 				$donation->payment_status = $payment->getStatus();
 				$donation->status = 1;
 				$donation->details = 'Pagamento no boleto';

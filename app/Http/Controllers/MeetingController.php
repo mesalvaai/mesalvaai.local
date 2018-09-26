@@ -30,16 +30,36 @@ class MeetingController extends Controller
         $resultado = json_decode($json);
         //$write = json_encode($json);
         
-        $result    = $request->all();
+        $payment    = $request->all();
+
+        $id = $payment['resource']['payment']['id'];
+        $event = $payment['event'];
+        $status = $payment['resource']['payment']['status'];
+        $amount = $payment['resource']['payment']['amount']['total'];
+        $fees = $payment['resource']['payment']['fees'][0]['amount'];
+
         $fp = file_put_contents( 'request.txt', $resultado );
         $name = 'request.txt';
-        $text = $result['resource']['payment']['status'];
+        $text = $status;
         $file = fopen($name, 'a');
         fwrite($file, $text);
         fclose($file);
         //$result['resource']['payment']['status']
+        
+        $meetting = [
+            'id' => $id,
+            'event' => $event,
+            'status' => $status,
+            'amount' => $amount,
+            'fees' => $fees
+        ];
 
-        return response()->json($text, 200);
+        $response = [
+            'msg' => 'Meeting Created',
+            'data' => $meetting
+        ];
+
+        return response()->json($response, 200);
     }
 
     /**
