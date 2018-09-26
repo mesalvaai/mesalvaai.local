@@ -79,7 +79,7 @@ Route::get('/preencheForm', 'Handbag\AdminController@preencheForm')->name('preen
 
 
 
-Route::get('/webhook', 'Admin\WebhookController@index')->name('webhook.index');
+
 
 
 //Painel para cadastrados no financiamento Colectivo
@@ -87,6 +87,7 @@ Route::get('/miniatura/{filename}', array(
 	'as' => 'imageVideo',
 	'uses' => 'Financing\AdminController@getFile'
 ));
+
 Route::middleware(['auth', 'IsRoleAluno:role_fc'])->group(function(){
 	
 	include (base_path('routes/financing.php'));
@@ -96,11 +97,13 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], funct
 	UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-//Rotas
+//Rotas do andmin geral
 Route::middleware(['auth'])->group(function(){
-
 	Route::get('/painel', 'Admin\PainelController@index')->name('painel');
-
 	include (base_path('routes/admin.php'));
-	
+});
+
+//Rotas para os webhooks
+Route::group(['prefix' => 'webhooks'], function() {
+	include (base_path('routes/webhook.php'));
 });
