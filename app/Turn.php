@@ -6,8 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Turn extends Model
 {
-    protected $fillable = ['name'];
-    protected $guarded = ['id'];
     protected $table = 'turns';
-    public $timestamps = false;
+
+    protected $fillable = ['name'];
+
+    public function course_turns()
+    {
+        return $this->hasMany('App\Course_Turn');
+    }
+
 }
