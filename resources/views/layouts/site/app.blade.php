@@ -23,8 +23,10 @@
   <link href="{{ asset('site/lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
   <link href="{{ asset('site/lib/aos/aos.css') }}" rel="stylesheet">
   <link href="{{ asset('site/lib/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
+
   <link href="{{ asset('site/lib/OwlCarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
   <link href="{{ asset('site/lib/OwlCarousel/assets/owl.theme.default.min.css') }}" rel="stylesheet">
+  <link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
   <link href="{{ asset('site/css/style.css') }}" rel="stylesheet">
@@ -42,7 +44,7 @@
       -moz-border-radius: 3px;
       border-radius: 3px;
     }*/
-    .caption {
+    /*.caption {
       position: absolute;
       font-size: 1.5em;
       top: 0;
@@ -51,7 +53,8 @@
       color:orange;
       text-shadow: 2px 2px 1px #000;
       width:100%;
-    }
+    }*/
+
   </style>
 
   @yield('styles')
@@ -128,6 +131,10 @@
                 // autoHeight : true,
                 // transitionStyle:"fade"
             });
+
+            $('#myCarousel').carousel({
+                interval: 3000,
+            })
 
         });
     </script>

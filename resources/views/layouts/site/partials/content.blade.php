@@ -28,14 +28,7 @@
                 </div>
             </div>
         </div> --}}
-        <div id="owl-demo" class="owl-carousel m-0">
-            
-            {{-- <div><img src="http://placehold.it/1500x600/42bdc2/FFFFFF"></div>
-            <div><img src="http://placehold.it/1500x600/42bdc2/FFFFFF"></div>
-            <div><img src="http://placehold.it/1500x600/42bdc2/FFFFFF"></div>
-            <div><img src="http://placehold.it/1500x600/42bdc2/FFFFFF"></div>
-            <div><img src="http://placehold.it/1500x600/42bdc2/FFFFFF"></div>
-            <div><img src="http://placehold.it/1500x600/42bdc2/FFFFFF"></div> --}}
+        {{-- <div id="owl-demo" class="owl-carousel m-0">
             <div class="item">
                 <img src="http://placehold.it/1500x700">
                 <div class="caption">
@@ -98,7 +91,124 @@
                     </div>
                 </div>
             </div>
-      </div>
+        </div> --}}
+
+        <!--Carousel Wrapper-->
+        {{-- <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-2" data-slide-to="1"></li>
+            <li data-target="#carousel-example-2" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+              <div class="view">
+                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
+                <div class="mask rgba-black-light"></div>
+              </div>
+              <div class="carousel-caption">
+                <h3 class="h3-responsive">Light mask</h3>
+                <p>First text</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="view">
+                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
+                <div class="mask rgba-black-strong"></div>
+              </div>
+              <div class="carousel-caption">
+                <h3 class="h3-responsive">Strong mask</h3>
+                <p>Secondary text</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="view">
+                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" alt="Third slide">
+                <div class="mask rgba-black-slight"></div>
+              </div>
+              <div class="carousel-caption">
+                <h3 class="h3-responsive">Slight mask</h3>
+                <p>Third text</p>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div> --}}
+
+        <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="mask flex-center" style="background: url('https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg');">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-md-7 col-12 order-md-1 order-2">
+                                    <h4>Present your <br>
+                                    awesome product</h4>
+                                    <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
+                                    necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+                                    <a href="#">BUY NOW</a> 
+                                </div>
+                                <div class="col-md-5 col-12 order-md-2 order-1">
+                                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" class="img-fluid mx-auto" alt="slide">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="mask flex-center" style="background: url('https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg');">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-md-7 col-12 order-md-1 order-2">
+                                    <h4>Present your <br>
+                                    awesome product</h4>
+                                    <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
+                                    necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+                                    <a href="#">BUY NOW</a> 
+                                </div>
+                                <div class="col-md-5 col-12 order-md-2 order-1">
+                                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" class="img-fluid mx-auto" alt="slide">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="mask flex-center" style="background: url('https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg');">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-md-7 col-12 order-md-1 order-2">
+                                    <h4>Present your <br>
+                                    awesome product</h4>
+                                    <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
+                                    necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
+                                    <a href="#">BUY NOW</a> 
+                                </div>
+                                <div class="col-md-5 col-12 order-md-2 order-1">
+                                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" class="img-fluid mx-auto" alt="slide">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> 
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span> 
+                <span class="sr-only">Previous</span> 
+            </a> 
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"> 
+                <span class="carousel-control-next-icon" aria-hidden="true"></span> 
+                <span class="sr-only">Next</span> 
+            </a>  --}}
+        </div>
+
     </section>
     <!-- #intro -->
 
