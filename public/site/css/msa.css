@@ -72,6 +72,35 @@
   position: relative;
   z-index: 2;
 }
+.bg-login{
+    background-color: rgb(86, 67, 176);
+}
+.btn-login{
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    user-select: none;
+    min-height: 56px;
+    white-space: nowrap;
+    display: inline-flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: rgb(86, 67, 176);
+    color: #fff;
+    -webkit-appearance: none !important;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    outline: none;
+    padding: 24px 32px;
+    transition: all 200ms ease-in-out 0s;
+    border-radius: 0px;
+    width: 100%;
+    height: 80px;
+}
 
 /*--------------------------------------------------------------
 # Call Section two

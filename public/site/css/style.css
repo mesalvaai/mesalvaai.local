@@ -9,12 +9,12 @@ body {
 }
 
 a {
-  color: #1dc8cd;
+  color: #5643b0;
   transition: 0.5s;
 }
 
 a:hover, a:active, a:focus {
-  color: #1dc9ce;
+  color: #666666;
   outline: none;
   text-decoration: none;
 }
@@ -60,8 +60,6 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  padding: 30px 0;
-  height: 92px;
   position: fixed;
   left: 0;
   top: 0;
@@ -108,6 +106,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header.header-fixed {
+  background: linear-gradient(45deg, #ffffff, #f8f9fa);
+  padding: 20px 0;
+  height: 80px;
+  transition: all 0.5s;
+}
+.header.header-fixed {
   background: linear-gradient(45deg, #ffffff, #f8f9fa);
   padding: 20px 0;
   height: 72px;
@@ -398,7 +402,7 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   top: 0;
   z-index: 999;
-  margin: 20px 20px 0 0;
+  margin: 5px 5px 0 0;
   border: 0;
   background: none;
   font-size: 24px;
@@ -486,7 +490,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
   position: fixed;
-  background: rgba(52, 59, 64, 0.9);
+  background: #5643b075;
   display: none;
 }
 

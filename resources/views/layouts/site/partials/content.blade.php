@@ -1,8 +1,11 @@
 <!--==========================
     Home Section
     ============================-->
-    <section id="home">
-        <div class="row">
+    <div class="clearfix">
+        
+    </div>
+    <section id="home" style="padding-top: 80px;">
+        {{-- <div class="row">
             <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
                 <div class="home-text">
                     <h1>O fim da <br>
@@ -24,8 +27,78 @@
                     <img src="{{ asset('site/img/msa/home-3.jpg') }}" alt="Home" class="img-fluid img-responsivo">
                 </div>
             </div>
-        </div>
-        <div class="pb-5"></div>
+        </div> --}}
+        <div id="owl-demo" class="owl-carousel m-0">
+            
+            {{-- <div><img src="http://placehold.it/1500x600/42bdc2/FFFFFF"></div>
+            <div><img src="http://placehold.it/1500x600/42bdc2/FFFFFF"></div>
+            <div><img src="http://placehold.it/1500x600/42bdc2/FFFFFF"></div>
+            <div><img src="http://placehold.it/1500x600/42bdc2/FFFFFF"></div>
+            <div><img src="http://placehold.it/1500x600/42bdc2/FFFFFF"></div>
+            <div><img src="http://placehold.it/1500x600/42bdc2/FFFFFF"></div> --}}
+            <div class="item">
+                <img src="http://placehold.it/1500x700">
+                <div class="caption">
+                    <div class="containder-fluid">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <h1 class="animated bounce">First Caption</h1>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <h1 class="animated bounce">First Caption</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item"><img src="http://placehold.it/1500x700">
+                <div class="caption">
+                    <div class="containder-fluid">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <h1 class="animated bounce">Second Caption</h1>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <h1 class="animated bounce">Second Caption</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="http://placehold.it/1500x700">
+                <div class="caption">
+                    <div class="containder-fluid">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <h1 class="animated bounce">Tree Caption</h1>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <h1 class="animated bounce">Tree Caption</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="http://placehold.it/1500x700">
+                <div class="caption">
+                    <div class="containder-fluid">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <h1 class="animated bounce">Faourth Caption</h1>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <h1 class="animated bounce">Faourth Caption</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
     </section>
     <!-- #intro -->
 
@@ -463,3 +536,4 @@
     </section><!-- #contact -->
 
 </main>
+
