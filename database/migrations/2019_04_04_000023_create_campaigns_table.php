@@ -26,13 +26,25 @@ class CreateCampaignsTable extends Migration
             $table->integer('student_id')->unsigned();
             $table->integer('category_id')->unsigned();
             $table->string('title')->nullable();
-            $table->float('goal')->nullable();
-            $table->float('funds_received')->nullable();
+            $table->decimal('goal', 12, 2)->nullable()->default(null);
+            $table->decimal('funds_received', 12, 2)->nullable()->default('0.00');
             $table->dateTime('start_date')->nullable();
             $table->dateTime('end_date')->nullable();
             $table->text('description')->nullable();
-            $table->string('location')->nullable();
             $table->integer('status')->nullable();
+      
+            $table->string('slug')->nullable()->default(null);
+            $table->text('abstract')->nullable()->default(null);
+            $table->string('file_path')->nullable()->default(null);
+            $table->string('institution')->nullable()->default(null);
+            $table->string('course')->nullable()->default(null);
+            $table->string('period', 45)->nullable()->default(null);
+            $table->string('location')->nullable()->default(null);
+            $table->integer('terms_of_use')->nullable()->default(null);
+            $table->string('facebook')->nullable()->default(null);
+            $table->string('twitter')->nullable()->default(null);
+            $table->string('instagram')->nullable()->default(null);
+            $table->integer('published')->nullable()->default('0');
 
             $table->index(["category_id"], 'fk_campaigns_categories1_idx');
 
