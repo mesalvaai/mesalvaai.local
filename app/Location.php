@@ -62,24 +62,22 @@ class Location extends Model
 
 		$states = array();
 
-//ID do Brasil == 3469034
+		//ID do Brasil == 3469034
 
 		if($idPais == 3469034)
 		{
 			try {
 
-				$url ="https://servicodados.ibge.gov.br/api/v1/localidades/estados";
-
-			// $opts = array('http' => array('header' => "User-Agent:MyAgent/1.0\r\n"));
-			// $context = stream_context_create($opts);
-			// $header = file_get_contents($url, FALSE, $context);
-			//dd($header);
+				$url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados";
 
 				$json = file_get_contents($url);
 
-				$data = json_decode($json);
+				//desfaz o gzip do json
+				$decoded_content = gzdecode($json);
 
-				foreach ($data as $key => $value) {
+				$data = json_decode($decoded_content);
+
+				foreach ($data as $value) {
 
 					$states[$value->id] = $value->nome;
 

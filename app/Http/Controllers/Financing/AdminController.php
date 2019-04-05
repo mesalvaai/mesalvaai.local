@@ -45,7 +45,7 @@ class AdminController extends Controller
         //dd(Auth::user()->students[0]['id']);
         $campings = Campaign::where('student_id', $idUser)->orderBy('id', 'ASC')->paginate();
         if($campings->count() == 0){
-            return redirect()->route('create.camping')->with('status', 'Você ainda não crio sua campanha, esta na hora de començar!!');
+            return redirect()->route('create.camping')->with('status', 'Você ainda não criou sua campanha, está na hora de começar!!');
         }
 
         $encrypted = Crypt::encrypt($idUser);

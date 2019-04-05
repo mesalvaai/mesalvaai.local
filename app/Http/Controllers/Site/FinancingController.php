@@ -24,7 +24,7 @@ class FinancingController extends Controller
    return view('sites.financing.criar-campanha', compact('encrypted', 'decrypted'));
 }
 public function createConta()
-{
+{    
     $_role = 'role_fc';
     $encrypted = Crypt::encrypt($_role);
     $decrypted = Crypt::decrypt($encrypted);

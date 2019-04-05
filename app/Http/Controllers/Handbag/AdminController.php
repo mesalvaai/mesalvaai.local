@@ -49,9 +49,8 @@ class AdminController extends Controller
 
 	public function showResult(Request $request)
 	{
-
-
 		$idPais = 3469034;
+		
 		$states = Location::getEstados($idPais);
 
 		$state_id = $request->input('state_id');

@@ -63,8 +63,6 @@
 								<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
 							</div>
 						</div>
-						<input type="hidden" class="form-control" name="_role" value="{{ $encrypted }}">
-						{{-- <input type="text" class="form-control" name="role" value="{{ $decrypted }}"> --}}
 
 						<div class="form-group row mb-0">
 							<div class="col-md-6 offset-md-4">
