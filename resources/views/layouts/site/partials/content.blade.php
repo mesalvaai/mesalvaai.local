@@ -5,182 +5,42 @@
         
     </div>
     <section id="home" style="padding-top: 80px;">
-        {{-- <div class="row">
-            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-                <div class="home-text">
-                    <h1>O fim da <br>
-                        complexidade
-                    </h1>
-                </div>
-                <div class="linea"></div>
-                <div class="row">
-                    <div class="col text-center"><h2></h2></div>
-                </div>
-                <h4 class="text-center">Encontre sua bolsa de estudos em segundos</h4>
-
-            </div>
-            <div class="celular">
-                <img src="{{ asset('site/img/msa/celular.png') }}" alt="Pesquisar" class="img-fluid">
-            </div>
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                <div class="pt-5 mt-3">
-                    <img src="{{ asset('site/img/msa/home-3.jpg') }}" alt="Home" class="img-fluid img-responsivo">
-                </div>
-            </div>
-        </div> --}}
-        {{-- <div id="owl-demo" class="owl-carousel m-0">
-            <div class="item">
-                <img src="http://placehold.it/1500x700">
-                <div class="caption">
-                    <div class="containder-fluid">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <h1 class="animated bounce">First Caption</h1>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <h1 class="animated bounce">First Caption</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item"><img src="http://placehold.it/1500x700">
-                <div class="caption">
-                    <div class="containder-fluid">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <h1 class="animated bounce">Second Caption</h1>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <h1 class="animated bounce">Second Caption</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <img src="http://placehold.it/1500x700">
-                <div class="caption">
-                    <div class="containder-fluid">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <h1 class="animated bounce">Tree Caption</h1>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <h1 class="animated bounce">Tree Caption</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <img src="http://placehold.it/1500x700">
-                <div class="caption">
-                    <div class="containder-fluid">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <h1 class="animated bounce">Faourth Caption</h1>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <h1 class="animated bounce">Faourth Caption</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
-        <!--Carousel Wrapper-->
-        {{-- <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-2" data-slide-to="1"></li>
-            <li data-target="#carousel-example-2" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-              <div class="view">
-                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
-                <div class="mask rgba-black-light"></div>
-              </div>
-              <div class="carousel-caption">
-                <h3 class="h3-responsive">Light mask</h3>
-                <p>First text</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="view">
-                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
-                <div class="mask rgba-black-strong"></div>
-              </div>
-              <div class="carousel-caption">
-                <h3 class="h3-responsive">Strong mask</h3>
-                <p>Secondary text</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="view">
-                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" alt="Third slide">
-                <div class="mask rgba-black-slight"></div>
-              </div>
-              <div class="carousel-caption">
-                <h3 class="h3-responsive">Slight mask</h3>
-                <p>Third text</p>
-              </div>
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div> --}}
-
         <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="mask flex-center" style="background: url('https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg');">
+                    <div class="mask flex-center" style="background: url({{ asset('site/img/msa/slides/slide-5.jpg') }});">
                         <div class="container">
-                            <div class="row align-items-center">
+                            <div class="row">
                                 <div class="col-md-7 col-12 order-md-1 order-2">
-                                    <h4>Present your <br>
+                                    {{-- <h4>Present your <br>
                                     awesome product</h4>
                                     <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
                                     necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
-                                    <a href="#">BUY NOW</a> 
+                                    <a href="#">BUY NOW</a>  --}}
                                 </div>
                                 <div class="col-md-5 col-12 order-md-2 order-1">
-                                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" class="img-fluid mx-auto" alt="slide">
+                                    {{-- <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" class="img-fluid mx-auto" alt="slide"> --}}
+                                    <h4 style="padding-top: 30%;"><b style="color: #30bdff">Não</b> estuda porque tá sem grana? <b style="color: #B300A1">Me Salva Ai</b> é uma opção ideal pra <b style="color: #F52A2A">você</b></h4>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="mask flex-center" style="background: url('https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg');">
+                    <div class="mask flex-center" style="background: url({{ asset('site/img/msa/slides/slide-6.jpg') }});">
                         <div class="container">
                             <div class="row align-items-center">
-                                <div class="col-md-7 col-12 order-md-1 order-2">
-                                    <h4>Present your <br>
-                                    awesome product</h4>
-                                    <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
-                                    necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
-                                    <a href="#">BUY NOW</a> 
+                                <div class="col-md-6 col-12 order-md-1 order-2">
+                                    <h4 style="padding-top: 30%;"><b style="color: #1d2126">Não</b> estuda porque tá sem grana? <b style="color: #B300A1">Me Salva Ai</b> é uma opção ideal pra <b style="color: #F52A2A">você</b></h4>
                                 </div>
                                 <div class="col-md-5 col-12 order-md-2 order-1">
-                                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" class="img-fluid mx-auto" alt="slide">
+                                    {{-- <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" class="img-fluid mx-auto" alt="slide"> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
+                {{-- <div class="carousel-item">
                     <div class="mask flex-center" style="background: url('https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg');">
                         <div class="container">
                             <div class="row align-items-center">
@@ -197,7 +57,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             {{-- <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> 
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span> 
@@ -212,10 +72,141 @@
     </section>
     <!-- #intro -->
 
+<!-- ===== Section para students and Donations === -->
+
+<section class="students pt-5 pb-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <h4 class="text-dark font-weight-bold text-center">PARA ESTUDANTES</h4>
+                <div class="row pb-4 align-items-center">
+                    <div class="col-4 d-flex flex-row justify-content-center align-items-center">
+                        <img src="{{ asset('site/img/msa/icons/icon-1.png') }}" alt="" class="img-fluid rounded-circle" width="60%" >
+                    </div>
+                    <div class="col-8">
+                        <h6 class="text-muted font-weight-bold mb-0">Modelo de campanha</h6>
+                        <p class="p-0 m-0">Crie seu projeto gratuitamente, defina sua meta em dinheiro e um prazo de ( 1 a 60 dias). leve o que arrecadar, independente da sua meta.</p>
+                    </div>
+                </div>
+                <div class="row pb-4 align-items-center">
+                    <div class="col-4 d-flex flex-row justify-content-center align-items-center">
+                        <img src="{{ asset('site/img/msa/icons/icon-2.png') }}" alt="" class="img-fluid rounded-circle" width="60%" >
+                    </div>
+                    <div class="col-8">
+                        <h6 class="text-muted font-weight-bold mb-0">Mais fácil do que usar o facebook</h6>
+                        <p class="p-0 m-0">Preencha nosso passo-a-passo online e lance seu projeto de crowdfunding em minutos!</p>
+                    </div>
+                </div>
+                <div class="row pb-4 align-items-center">
+                    <div class="col-4 d-flex flex-row justify-content-center align-items-center">
+                        <img src="{{ asset('site/img/msa/icons/icon-3.png') }}" alt="" class="img-fluid rounded-circle" width="60%" >
+                    </div>
+                    <div class="col-8">
+                        <h6 class="text-muted font-weight-bold mb-0">Divulgue</h6>
+                        <p class="p-0 m-0">Mobilize amigos, familiares, parentes e vizinhos. Divulgue seu projeto e compartilhes nas redes sociais e vu a lá só acompanhar as colaborações recebidas.</p>
+                    </div>
+                </div>
+                <div class="row pb-4 align-items-center">
+                    <div class="col-4 d-flex flex-row justify-content-center align-items-center">
+                        <img src="{{ asset('site/img/msa/icons/icon-4.png') }}" alt="" class="img-fluid rounded-circle" width="60%" >
+                    </div>
+                    <div class="col-8">
+                        <h6 class="text-muted font-weight-bold mb-0">Repasse</h6>
+                        <p class="p-0 m-0">Após a finalização do projeto, repassamos o valor R$ para a instituição de ensino semestralmente.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <a href="#" title="" class="btn btn-primary btn-lg w-50">Criar campanha</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <h4 class="text-dark font-weight-bold text-center">PARA DOADORES</h4>
+                <div class="row pb-4 align-items-center">
+                    <div class="col-4 d-flex flex-row justify-content-center align-items-center">
+                        <img src="{{ asset('site/img/msa/icons/icon-5.png') }}" alt="" class="img-fluid rounded-circle" width="60%" >
+                    </div>
+                    <div class="col-8">
+                        <h6 class="text-muted font-weight-bold mb-0">Ajude estudantes de diversas instituições de ensino.</h6>
+                        <p class="p-0 m-0">Para cada contribuição, receba uma recompensa relacionada. Tem camisas, objetos personalizados, arte e muito mais! </p>
+                    </div>
+                </div>
+                <div class="row pb-4 align-items-center">
+                    <div class="col-4 d-flex flex-row justify-content-center align-items-center">
+                        <img src="{{ asset('site/img/msa/icons/icon-6.png') }}" alt="" class="img-fluid rounded-circle" width="60%" >
+                    </div>
+                    <div class="col-8">
+                        <h6 class="text-muted font-weight-bold mb-0">Dia de fazer o bem</h6>
+                        <p class="p-0 m-0">Você pessoa física ou jurídica, faça parte de um grupo seleto de pessoas que contribuem para o crescimento da educação.</p>
+                    </div>
+                </div>
+                <div class="row pb-4 align-items-center">
+                    <div class="col-4 d-flex flex-row justify-content-center align-items-center">
+                        <img src="{{ asset('site/img/msa/icons/icon-7.png') }}" alt="" class="img-fluid rounded-circle" width="60%" >
+                    </div>
+                    <div class="col-8">
+                        <h6 class="text-muted font-weight-bold mb-0">Facilidades na sua contribuição</h6>
+                        <p class="p-0 m-0">Patrocine um ou mais projetos com boleto ou cartão de crédito (podendo parcelar em até 6x)! </p>
+                    </div>
+                </div>
+                <div class="row pb-4 align-items-center">
+                    <div class="col-4 d-flex flex-row justify-content-center align-items-center">
+                        <img src="{{ asset('site/img/msa/icons/icon-7.png') }}" alt="" class="img-fluid rounded-circle" width="60%" >
+                    </div>
+                    <div class="col-8">
+                        <h6 class="text-muted font-weight-bold mb-0">Facilidades na sua contribuição</h6>
+                        <p class="p-0 m-0">Patrocine um ou mais projetos com boleto ou cartão de crédito (podendo parcelar em até 6x)! </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <a href="#" title="" class="btn btn-primary btn-lg w-50">Doar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- <div class="container d-flex flex-column min-vh-100">
+    <div class="row flex-grow-1 justify-content-center align-items-center">
+        <div class="col-6">
+            <div class="card">
+                hello
+            </div>
+        </div>
+    </div>
+    <div class="row flex-grow-1 justify-content-center align-items-center">
+        <div class="col-4">
+            <div class="card">
+                world
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+{{-- <div class="container d-flex flex-column min-vh-100">
+    <div class="row flex-grow-1 justify-content-center align-items-center">
+        <div class="col-6">
+            <div class="card">
+                hello
+            </div>
+        </div>
+    </div>
+    <div class="row flex-grow-1 justify-content-center align-items-center">
+        <div class="col-4">
+            <div class="card">
+                world
+            </div>
+        </div>
+    </div>
+</div> --}}
+
 <!--==========================
     Call To Action Section
     ============================-->
-    <section id="call-sec-two">
+    {{-- <section id="call-sec-two">
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-lg-6 text-center">
@@ -225,26 +216,8 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- #call-to-action -->
-
-    {{-- <section class="grid1">
-        <div class="img1"></div>
-        <div class="img2"></div>
-        <div class="strapline">
-            <blockquote>“Almost immediately, word spread of a Welshman who had built this incredible sounding sub bass system, and soon enough audiophiles began searching out these legendary subs that were built like no other.”</blockquote>
-        </div>
-
-        <div class="img3"></div>
-
-        <div class="cta-wrapper">
-            <div class="cta">
-              <h1>Gibraltar</h1>
-              <p>Introducing 212/SE, our most powerful and agile subwoofer, designed exclusively for larger systems and rooms to allow superior state of the art speakers to spring to full voice.</p>
-              <a class="button" href="">View Product Details →</a>
-          </div>
-      </div>
-  </section> --}}
 
 
   <main id="main">
