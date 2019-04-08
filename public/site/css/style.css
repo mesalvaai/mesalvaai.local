@@ -9,7 +9,7 @@ body {
 }
 
 a {
-  color: #5643b0;
+  color: #0071dd;
   transition: 0.5s;
 }
 
@@ -17,11 +17,6 @@ a:hover, a:active, a:focus {
   color: #666666;
   outline: none;
   text-decoration: none;
-}
-
-p {
-  padding: 0;
-  margin: 0 0 30px 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
