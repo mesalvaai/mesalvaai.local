@@ -23,8 +23,9 @@ class CreatePeriodsTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             //$table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('year')->nullable();
-            $table->char('semester', 2)->nullable();
+            $table->string('name', 45)->nullable();
+            $table->string('slug', 45)->nullable();
+            $table->timestamps();
 
             $table->unique(["id"], 'id_UNIQUE');
         });

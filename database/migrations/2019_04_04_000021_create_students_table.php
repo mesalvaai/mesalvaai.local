@@ -37,6 +37,7 @@ class CreateStudentsTable extends Migration
             $table->string('neighborhood')->nullable();
             $table->string('complement', 45)->nullable();
             $table->string('status', 45)->nullable();
+            $table->string('how_met_us', 45)->nullable();
 
             $table->index(["city_id"], 'fk_students_cities1_idx');
 
