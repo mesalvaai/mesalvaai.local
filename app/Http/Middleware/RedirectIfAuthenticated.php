@@ -18,7 +18,14 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            //dd(Auth::user()->id);
+            //dd('testRedirecIfAutenticate');
+            // if (Auth::user()->id == 37) {
+            //     return redirect('/financing');
+            // }else{
+            //     return redirect('/home');
+            // }
+            return redirect('/painel');
         }
 
         return $next($request);

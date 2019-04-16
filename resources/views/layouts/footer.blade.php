@@ -15,10 +15,10 @@
                     <p><span>Endereço:</span> BR-101, km 197, Capoeiruçu Caixa Postal 18, Cachoeira Bahia,</p>
                 </div>
                 <div class="phone-text">
-                    <p><span>Telefone:</span> +55 (75) 99243-8993</p>
+                    <p><span>Telefone:</span> +55 (75) 99950-5469</p>
                 </div>
                 <div class="email-text">
-                    <p><span>E-mail:</span> faleconosco@mesalvaai.com</p>
+                    <p><span>E-mail:</span> msa@mesalvaai.com</p>
                 </div>
             </div>
             <div class="col-md-6">

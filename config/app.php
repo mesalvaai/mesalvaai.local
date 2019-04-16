@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pt-BR',
 
     /*
     |--------------------------------------------------------------------------
@@ -91,7 +91,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'pt-BR',
 
     /*
     |--------------------------------------------------------------------------
@@ -163,10 +163,15 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        LaravelLegends\PtBrValidator\ValidatorProvider::class,
 
         /*
          * Package Service Providers...
          */
+        //Para file manager
+        //Unisharp\Ckeditor\ServiceProvider::class,
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -176,6 +181,21 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        //Novos providers
+        App\Providers\FormatTimeServiceProvider::class,
+
+        //Laravel collective
+        Collective\Html\HtmlServiceProvider::class,
+
+        //Para modulo de usuarios
+        Caffeinated\Shinobi\ShinobiServiceProvider::class,
+        
+
+        //Moip
+        Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
+        //Illuminate\Auth\AuthServiceProvider::class,
+        Artesaos\Moip\Providers\MoipServiceProvider::class, 
+
 
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
@@ -228,7 +248,18 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+<<<<<<< HEAD
         'Image' => Intervention\Image\Facades\Image::class,
+=======
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        'FormatTime' => App\Helpers\FormatTime::class,
+        'MyFunctions' => App\Helpers\MyFunctions::class,
+        'ProgressBar' => App\Helpers\ProgressBar::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Moip'    => Artesaos\Moip\Facades\Moip::class,
+
+>>>>>>> ec6dada618596e7fa38f4cb49ba424c04e0e2d2d
 
     ],
 

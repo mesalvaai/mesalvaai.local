@@ -13,6 +13,26 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+// 
+Route::group(['prefix' => 'V1'], function() {
+	Route::resource('meeting', 'MeetingController', [
+		'except' => ['create', 'edit']
+	]);
+
+	// Route::resource('meeting/registration', 'RegisterController', [
+	// 	'only' => ['store', 'destroy']
+	// ]);
+
+	// Route::post('/user/register', [
+	// 	'uses' => 'AuthController@store'
+	// ]);
+
+	// Route::post('/user/signin', [
+	// 	'uses' => 'AuthController@signin'
+	// ]);
 });
+
+
