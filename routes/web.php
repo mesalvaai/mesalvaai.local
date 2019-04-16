@@ -28,7 +28,7 @@ Route::get('/teste', function () {
 });
 
 Route::get('test', function(){
-    return 'Route de test';
+    return view('tinymce');
 });
 
 Route::get('/hola-mundo', function () {
@@ -56,6 +56,10 @@ Route::get('/url_post', 'TestController@index');
 // Route::get('/pera', 'FrutasController@pera');
 
 Route::post('/receber', 'FrutasController@receberForm');
+
+// Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+//      \UniSharp\LaravelFilemanager\Lfm::routes();
+// });
 
 Route::group(['prefix' => 'frutaria'], function(){
     Route::get('/fruta', 'FrutasController@index');
