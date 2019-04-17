@@ -13,12 +13,9 @@ return [
     |
     */
 
-<<<<<<< HEAD
-    'default' => env('FILESYSTEM_DRIVER', 'public'),
-=======
+
     //'default' => env('FILESYSTEM_DRIVER', 'local'),
     'default' => env('FILESYSTEM_DRIVER', 'local'),
->>>>>>> ec6dada618596e7fa38f4cb49ba424c04e0e2d2d
 
     /*
     |--------------------------------------------------------------------------

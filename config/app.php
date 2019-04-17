@@ -248,9 +248,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-<<<<<<< HEAD
-        'Image' => Intervention\Image\Facades\Image::class,
-=======
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'FormatTime' => App\Helpers\FormatTime::class,
@@ -258,9 +255,6 @@ return [
         'ProgressBar' => App\Helpers\ProgressBar::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Moip'    => Artesaos\Moip\Facades\Moip::class,
-
->>>>>>> ec6dada618596e7fa38f4cb49ba424c04e0e2d2d
-
     ],
 
 ];

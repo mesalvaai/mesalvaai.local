@@ -15,14 +15,7 @@ Route::get('/info',function(){
 	return view('sites.info-cursos');
 });
 
-<<<<<<< HEAD
-Route::get('test', function(){
-    return view('tinymce');
-});
 
-Route::get('/hola-mundo', function () {
-    return 'Hola sou desde o route';
-=======
 Route::get('get-paises-restantes', 'LocationController@getPaises')->name('get-paises-restantes');
 Route::get('get-estados/{idPais}', 'LocationController@getEstados')->name('get-estados');
 Route::get('get-cidades/{idPais}/{idEstado}', 'LocationController@getCidades')->name('get-cidades');
@@ -78,46 +71,17 @@ Route::get('/miniatura/{filename}', array(
 Route::middleware(['auth', 'IsRoleAluno:role_fc'])->group(function(){
 	
 	include (base_path('routes/financing.php'));
->>>>>>> ec6dada618596e7fa38f4cb49ba424c04e0e2d2d
 });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
 	UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-<<<<<<< HEAD
-Route::get('/contato/{nombre?}/{edad?}', function ($nombre = "Eber Ortiz", $edad=20) {
-    return view('contato', array(
-    	"nombre" => $nombre,
-    	"edad" => $edad
-    ));
-})->where([
-	'nombre' => '[A-Za-z]+',
-	'edad' => '[0-9]+'
-]);
 
-Route::get('/url_post', 'TestController@index');
-
-// Route::get('/fruta', 'FrutasController@index');
-// Route::get('/naranja', 'FrutasController@naranja');
-// Route::get('/pera', 'FrutasController@pera');
-
-Route::post('/receber', 'FrutasController@receberForm');
-
-// Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-//      \UniSharp\LaravelFilemanager\Lfm::routes();
-// });
-
-Route::group(['prefix' => 'frutaria'], function(){
-    Route::get('/fruta', 'FrutasController@index');
-    Route::get('/naranja/{admin?}', ['middleware' => 'EsAdmin', 'uses' => 'FrutasController@naranja', 'as' => 'naranjitas']);
-    Route::get('/pera', 'FrutasController@pera');
-=======
 //Rotas do andmin geral
 Route::middleware(['auth'])->group(function(){
 	Route::get('/painel', 'Admin\PainelController@index')->name('painel');
 	include (base_path('routes/admin.php'));
->>>>>>> ec6dada618596e7fa38f4cb49ba424c04e0e2d2d
 });
 
 //Rotas para os webhooks
