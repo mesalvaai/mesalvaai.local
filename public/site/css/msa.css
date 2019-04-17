@@ -8,6 +8,22 @@
 .msa-bg{
   background: #5643B0!important;
 }
+.text-b{
+  font-size: 12px;
+  line-height: 13px;
+  text-align: center;
+}
+.bg-campanha{
+    background: #00bdfd;
+    background: -moz-linear-gradient(-5deg,#00bdfd 0,#009fe8 100%);
+    background: -webkit-linear-gradient(-5deg,#00bdfd 0,#009fe8 100%);
+    background: linear-gradient(-5deg,#00bdfd 0,#009fe8 100%);
+    -webkit-transition: all .15s ease-out 0s;
+    -moz-transition: all .15s ease-out 0s;
+    -o-transition: all .15s ease-out 0s;
+    transition: all .15s ease-out 0s;
+    border: none;
+}
 #home{
   width: 100%;
   background: linear-gradient(45deg, #ffffff, #fafbfb);

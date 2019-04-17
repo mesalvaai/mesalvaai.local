@@ -169,58 +169,70 @@
     </div>
 </section>
 
-{{-- <div class="container d-flex flex-column min-vh-100">
-    <div class="row flex-grow-1 justify-content-center align-items-center">
-        <div class="col-6">
-            <div class="card">
-                hello
+<!-- ===== Section campanha === -->
+<section class="campanha">
+    <div class="container-fluid">
+        <div class="row bg-campanha">
+            <div class="col-md bg-campanha">
+                <div class="row h-100">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="col-md-10">
+                            <h1 class="text-center font-weight-bold text-gray-dark">Crie sua campanha de <strong class="text-dark">GRADUAÇÃO</strong></h1>
+                            <h4 class="font-weight-bold text-warning"><strong class="text-white">CONECTE</strong> pessoas ao seu <strong class="text-danger">PROPÓSITO</strong>.</h4>
+                            <p class="text-justify text-white">Mobilize seus familiares, parentes e amigos através do Crowdfunding, define o valor da faculdade ou nº de semestre a serem financiados e vu a lá é só acompanhar as colaborações recebidas e sabe o melhor de tudo? leve o que arrecadar independente da sua meta.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md p-0 bg-campanha">
+                <img src="{{ asset('site/img/msa/camping-1.webp') }}" alt="Campanha" class="img-fluid">
             </div>
         </div>
     </div>
-    <div class="row flex-grow-1 justify-content-center align-items-center">
-        <div class="col-4">
-            <div class="card">
-                world
-            </div>
-        </div>
-    </div>
-</div> --}}
+</section>
 
-{{-- <div class="container d-flex flex-column min-vh-100">
-    <div class="row flex-grow-1 justify-content-center align-items-center">
-        <div class="col-6">
-            <div class="card">
-                hello
+<!-- ===== Section instructions === -->
+<section class="instructions">
+    <div class="container-fluid">
+        <div class="row bg-white">
+            <div class="col-md-5 p-0 bg-white">
+                <img src="{{ asset('site/img/msa/camping-2.webp') }}" alt="Campanha" class="img-fluid">
             </div>
-        </div>
-    </div>
-    <div class="row flex-grow-1 justify-content-center align-items-center">
-        <div class="col-4">
-            <div class="card">
-                world
-            </div>
-        </div>
-    </div>
-</div> --}}
-
-<!--==========================
-    Call To Action Section
-    ============================-->
-    {{-- <section id="call-sec-two">
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <div class="col-lg-6 text-center">
-                    <h3>Simples. Fácil. Rápido. <br>
-                    Comece seu futuro do proposito</h3>
-                    <p class="text-white">A revolução agora é para todo mundo. Tudo o que você faz é parte de sua história. O novo sempre vem.</p>
+            <div class="col-md-7 bg-white">
+                <div class="row h-100">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="col-md-10">
+                            <h2 class="text-right text-gray-dark">Tudo que você faz é parte de sua história.</h2>
+                            <h3 class="text-right text-danger">Traga sua campanha criativo ao mundo.</h3>
+                            <p class="text-right">Uma nova forma de financiar seus estudos e ainda, construir comunidade.</p>
+                            <div class="row">
+                                <div class="col-md text-center">
+                                    <img src="{{ asset('site/img/msa/icons/icon-1.png') }}" alt="1" class="img-fluid pb-3" width="50%">
+                                    <p class="text-muted text-b p-0 m-0">Não precisa devolver o dinheiro depois de formado.</p>
+                                </div>
+                                <div class="col-md text-center">
+                                    <img src="{{ asset('site/img/msa/icons/icon-2.png') }}" alt="1" class="img-fluid pb-3" width="50%">
+                                    <p class="text-muted text-b p-0 m-0">Receba contribuições dos seus amigos.</p>
+                                </div>
+                                <div class="col-md text-center">
+                                    <img src="{{ asset('site/img/msa/icons/icon-3.png') }}" alt="1" class="img-fluid pb-3" width="50%">
+                                    <p class="text-muted text-b p-0 m-0">Estude em qualquer Universidade dentro ou fora do Brasil.</p>
+                                </div>
+                                <div class="col-md text-center">
+                                    <img src="{{ asset('site/img/msa/icons/icon-4.png') }}" alt="1" class="img-fluid pb-3" width="50%">
+                                    <p class="text-muted text-b p-0 m-0">Faça qualquer curso seja de 2 ou seja de 6 anos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section> --}}
-    <!-- #call-to-action -->
+    </div>
+</section>
 
-
-  <main id="main">
+<main id="main">
     <!--==========================
       Buscar Bolsa Section
       ============================-->
