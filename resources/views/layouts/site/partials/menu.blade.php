@@ -6,7 +6,7 @@
                     <h1 class="m-0"><a href="/" class="scrollto"><strong>Me Salva Aí</strong></a></h1>
                 </div>
             </div> --}}
-            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
                 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
                     <a class="navbar-brand d-none d-sm-block" href="{{ url('/') }}">
                         <h1 class="m-0"><a href="/" class="scrollto"><strong>Me Salva Aí</strong></a></h1>
@@ -22,18 +22,14 @@
                         </ul>
 
                         <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="/#call-sec-two">CRIAR SUA CAMPANHA</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="/#encontre-sua-bolsa">ENCONTRE SUA BOLSA</a></li>
                         </ul>
                     </div>
             </nav>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 pl-0 pr-0 bg-login d-flex align-items-center ">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 pl-0 pr-0 bg-login d-flex align-items-center ">
                 @guest
                     <a class="btn-login" href="{{ url('/financiamento/criar-campanha') }}">{{ __('LOGIN') }}</a>
                     {{-- <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li> --}}

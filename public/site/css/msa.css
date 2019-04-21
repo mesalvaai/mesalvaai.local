@@ -3,10 +3,10 @@
 # Home Section
 --------------------------------------------------------------*/
 .text-msa{
-  color: #5643B0!important;
+  color: #0071DD!important;
 }
 .msa-bg{
-  background: #5643B0!important;
+  background: #0071DD!important;
 }
 .text-b{
   font-size: 12px;
@@ -14,10 +14,10 @@
   text-align: center;
 }
 .bg-campanha{
-    background: #00bdfd;
-    background: -moz-linear-gradient(-5deg,#00bdfd 0,#009fe8 100%);
-    background: -webkit-linear-gradient(-5deg,#00bdfd 0,#009fe8 100%);
-    background: linear-gradient(-5deg,#00bdfd 0,#009fe8 100%);
+    background: #0071dd;
+    background: -moz-linear-gradient(-5deg,#0071dd 0,#009fe8 100%);
+    background: -webkit-linear-gradient(-5deg,#0071dd 0,#009fe8 100%);
+    background: linear-gradient(-5deg,#0071dd 0,#009fe8 100%);
     -webkit-transition: all .15s ease-out 0s;
     -moz-transition: all .15s ease-out 0s;
     -o-transition: all .15s ease-out 0s;
@@ -39,7 +39,7 @@
   font-size: 65px;
   font-weight: 600;
   line-height: 65px;
-  color: #5643B0;
+  color: #0071DD;
 }
 @media (max-width: 768px) {
   #home .home-text {
@@ -131,6 +131,10 @@
   -o-transition: all .15s ease-out 0s;
   transition: all .15s ease-out 0s;
   border: none;
+}
+
+.instructions{
+  background: #717171!important;
 }
 /*--------------------------------------------------------------
 # Call Section two
@@ -226,10 +230,10 @@
   height: 154px;
   display: block;
   margin: 0 auto 46px;
-  background: #5643b0;
+  background: #0071DD;
   background: -moz-linear-gradient(-225deg,#006edc 0,#009fe8 100%);
-  background: -webkit-linear-gradient(-225deg,#5643b0 0,#7e68e4 100%);
-  background: linear-gradient(-225deg,#5643b0 0,#7e68e4 100%);
+  background: -webkit-linear-gradient(-225deg,#0071DD 0,#7e68e4 100%);
+  background: linear-gradient(-225deg,#0071DD 0,#7e68e4 100%);
   padding: 2px;
   animation: pulse 2s infinite;
   -moz-border-radius: 100%;
@@ -249,10 +253,10 @@
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
   border-radius: 100%;
-  background: #5643b0;
+  background: #0071DD;
   background: -moz-linear-gradient(-225deg,#006edc 0,#009fe8 100%);
-  background: -webkit-linear-gradient(-225deg,#5643b0 0,#7e68e4 100%);
-  background: linear-gradient(-225deg,#5643b0 0,#7e68e4 100%);
+  background: -webkit-linear-gradient(-225deg,#0071DD 0,#7e68e4 100%);
+  background: linear-gradient(-225deg,#0071DD 0,#7e68e4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -311,7 +315,7 @@
 }
 
 #section-tree .get-started-btn {
-  background: #5643B0;
+  background: #0071DD;
   display: inline-block;
   padding: 6px 30px;
   border-radius: 20px;
@@ -326,7 +330,7 @@
 }
 
 #section-tree .featured {
-  border: 2px solid #5643b0;
+  border: 2px solid #0071DD;
 }
 
 #section-tree .featured .get-started-btn {
@@ -389,24 +393,10 @@
   padding-top: 20px;
 }
 #section-four .description h2{
-  color: #5643b0;
+  color: #0071DD;
   font-weight: 600;
   font-size: 24px;
 }
-
-/*@media (max-width: 768px) {
-  #section-four .section-four-img {
-    height: auto;
-  }
-  #section-four .section-four-img img {
-    margin-left: 0;
-    padding-bottom: 30px;
-  }
-  #section-four .section-four-img img:hover{
-    background: #5643b0;
-  }
-  }*/
-
 /*--------------------------------------------------------------
 # Intro Section
 --------------------------------------------------------------*/
@@ -421,7 +411,7 @@
   padding-top: 30px;
 }
 #mimos h2{
-  color: #5643B0;
+  color: #0071DD;
   font-size: 3em;
   font-weight: 600;
 }
@@ -447,12 +437,12 @@
 }
 #crowdfounding h2{
   padding-top: 100px;
-  color: #5643B0;
+  color: #0071DD;
   font-size: 2.5rem;
   font-weight: 600;
 }
 #crowdfounding .get-started-btn {
-  background: #5643B0;
+  background: #0071DD;
   display: inline-block;
   padding: 6px 30px;
   border-radius: 20px;
@@ -475,7 +465,7 @@
   padding: 30px 0;
 }
 .juros-bg{
-  background: #5643B0;
+  background: #0071DD;
   padding-top: 50px;
   padding-bottom: 50px;
 }
@@ -509,7 +499,7 @@
   margin-top: 30%;
 }
 #section-five h2{
-  color: #5643B0;
+  color: #0071DD;
   font-size: 2rem;
   font-weight: 600;
   margin: 0;
@@ -520,7 +510,7 @@
   padding: 20px 20px;
 }
 #section-five .get-started-btn {
-  background: #5643B0;
+  background: #0071DD;
   display: inline-block;
   padding: 6px 60px;
   border-radius: 10px;
@@ -543,7 +533,7 @@
   padding-bottom: 30px;
 }
 .relacionamento-bg{
-  background: #5643B0;
+  background: #0071DD;
 }
 #relacionamento h3{
   color: #fff;
@@ -584,10 +574,10 @@
   padding-bottom: 30px;
 }
 .items-rodape-bg{
-  background: #fff;
+  background: #0071dd;
 }
 #items-rodape h3{
-  color: #5643B0;
+  color: #0071DD;
   font-size: 1.5rem;
   font-weight: 300;
   margin: 0;
@@ -617,16 +607,16 @@
 #items-rodape ul {
   padding: 0;
   list-style: none;
-  color: #999;
+  color: #fff;
   text-align: left;
   line-height: 20px;
 }
 
 #items-rodape ul li {
-  padding-bottom: 10px;
+  padding-bottom: 1px;
 }
 #items-rodape ul li a {
-  color: #999;
+  color: #fff;
   font-size: 15px;
 }
 
@@ -715,7 +705,7 @@
 #quem-somos .qs-text h2 {
   font-size: 7rem;
   font-weight: 700;
-  color: #5643B0;
+  color: #0071DD;
 }
 
 #quem-somos h3 {
@@ -792,7 +782,7 @@
   #quem-somos .qs-text h2 {
     font-size: 4rem;
     font-weight: 700;
-    color: #5643B0;
+    color: #0071DD;
   }
 }
 
@@ -818,7 +808,7 @@ sub-footer Section
   padding: 30px 0;
 }
 .sub-footer-bg{
-  background:#000;
+  background:#fff;
 }
 #sub-footer .sub-footer-about h3 {
   font-size: 36px;
@@ -860,7 +850,7 @@ sub-footer Section
 }
 
 #sub-footer .social-links a:hover {
-  background: #5643B0;
+  background: #0071DD;
   color: #fff;
 }
 
@@ -933,12 +923,12 @@ sub-footer Section
   background: #fafafa;
 }
 .financing-sec-two h3{
-  color: #5643B0;
+  color: #0071DD;
   font-size: 1rem;
   font-weight: 600;
 }
 .btn-msa{
-  background: #5643B0;
+  background: #0071DD;
   display: inline-block;
   padding: 6px 30px;
   border-radius: 5px;
@@ -952,7 +942,7 @@ sub-footer Section
 }
 
 #financing-sec-two .btn-msa{
-  background: #5643B0;
+  background: #0071DD;
   display: inline-block;
   padding: 10px 50px;
   border-radius: 20px;
@@ -966,8 +956,8 @@ sub-footer Section
   color: #fff;
 }
 .btn-msa-white{
-  border: 1px solid #5643B0;
-  color: #5643B0;
+  border: 1px solid #0071DD;
+  color: #0071DD;
   background-color: #fff;
   font-weight: 600;
   max-width: 18rem;
@@ -979,7 +969,7 @@ sub-footer Section
   padding: 20px 20px;
 }
 .btn-msa-white:hover{
-  background: #5643B0;
+  background: #0071DD;
   color: #fff;
 }
 
@@ -999,7 +989,7 @@ sub-footer Section
   background-image: url(/site/img/msa/financiamento-2.jpg);
 }
 .financing-sec-tree .box-title {
-  background-color: #5643B0;
+  background-color: #0071DD;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -1034,7 +1024,7 @@ sub-footer Section
   left: 30%;
 }
 .financing-camping .box-camping-bg{
-  background: #5643B0;
+  background: #0071DD;
   width: 50%;
   float: right;
   display: block;
@@ -1045,7 +1035,7 @@ sub-footer Section
   padding-bottom: 50px;
 }
 .financing-camping .box-two .fc-bg{
-  background: #5643B0;
+  background: #0071DD;
   height: 60vh;
 }
 .financing-camping .box-two .fc-img{
@@ -1089,7 +1079,7 @@ sub-footer Section
   font-weight: 700;
 }
 #financing-project .btn-msa{
-  background: #5643B0;
+  background: #0071DD;
   display: inline-block;
   padding: 10px 50px;
   border-radius: 20px;
@@ -1108,7 +1098,7 @@ sub-footer Section
     font-size: 24px;
   }
   .financing-camping .box-two .fc-bg{
-    background: #5643B0;
+    background: #0071DD;
     height: 90vh;
   }
   .financing-camping .box-two .fc-img{
@@ -1137,7 +1127,7 @@ sub-footer Section
   padding: 0;
 }
 .painel-fc-bg{
-  background-color: #5643B0;
+  background-color: #0071DD;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -1181,15 +1171,16 @@ sub-footer Section
 
 /*campanhas ativas*/
 .campanhas-ativas{
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: 50px;
+  padding-bottom: 40px;
+  background: #f8f8f8;
 }
 .campaing-for-student{
   width: 100%;
   padding-top: 6em;
 }
 .campanhas-ativas .get-started-btn {
-  background: #5643B0;
+  background: #0071DD;
   display: inline-block;
   padding: 6px 30px;
   border-radius: 20px;
@@ -1200,7 +1191,21 @@ sub-footer Section
   font-family: "Montserrat", sans-serif;
 }
 .campanhas-ativas .get-started-btn:hover{
-  background: rgba(74, 186, 167, 1);
+  background: rgb(102, 102, 102);
+}
+.campanhas-ativas .card-body .card-title>a{
+    color: #1d2126;
+    font: 500 20px/26px Montserrat;
+    letter-spacing: -.6px;
+    height: 52px;
+}
+.campanhas-ativas .card-body .card-title>a:hover{
+    color: #0071dd;
+}
+.campanhas-ativas  .card-body>.card-text{
+    font: 300 16px/20px Montserrat;
+    line-height: 1.2em;
+    color: rgb(118, 118, 118);
 }
 .img-min-campaign{
   background-position: center;
@@ -1211,9 +1216,6 @@ sub-footer Section
   padding-top: 65%;
   width: 100%;
 }
-
-
-
 
 #myCarousel .carousel-item .mask {
     position: absolute;
