@@ -13,7 +13,9 @@
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <!-- Logo -->
                         <a class="navbar-brand col-2 nav-item active" href="/"><img src="{{ url('bootstrap/img/logos/msa-logo.png') }}" alt="Me salva Ai" width="100%"></a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ca-navbar" aria-controls="ca-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ca-navbar" aria-controls="ca-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
                         <!-- Menu Area -->
                         <div class="collapse navbar-collapse" id="ca-navbar">
                             <ul class="navbar-nav ml-auto" id="nav">

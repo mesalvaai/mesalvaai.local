@@ -1,9 +1,5 @@
-<!--==========================
-    Home Section
-    ============================-->
-    <div class="clearfix">
-        
-    </div>
+<!--========================== Home Section ============================-->
+    <div class="clearfix"></div>
     <section id="home" style="padding-top: 80px;">
         <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
@@ -12,14 +8,8 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-7 col-12 order-md-1 order-2">
-                                    {{-- <h4>Present your <br>
-                                    awesome product</h4>
-                                    <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
-                                    necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
-                                    <a href="#">BUY NOW</a>  --}}
                                 </div>
                                 <div class="col-md-5 col-12 order-md-2 order-1">
-                                    {{-- <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" class="img-fluid mx-auto" alt="slide"> --}}
                                     <h4 style="padding-top: 30%;"><b style="color: #30bdff">Não</b> estuda porque tá sem grana? <b style="color: #B300A1">Me Salva Ai</b> é uma opção ideal pra <b style="color: #F52A2A">você</b></h4>
                                 </div>
                             </div>
@@ -34,46 +24,16 @@
                                     <h4 style="padding-top: 30%;"><b style="color: #1d2126">Não</b> estuda porque tá sem grana? <b style="color: #B300A1">Me Salva Ai</b> é uma opção ideal pra <b style="color: #F52A2A">você</b></h4>
                                 </div>
                                 <div class="col-md-5 col-12 order-md-2 order-1">
-                                    {{-- <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" class="img-fluid mx-auto" alt="slide"> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {{-- <div class="carousel-item">
-                    <div class="mask flex-center" style="background: url('https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg');">
-                        <div class="container">
-                            <div class="row align-items-center">
-                                <div class="col-md-7 col-12 order-md-1 order-2">
-                                    <h4>Present your <br>
-                                    awesome product</h4>
-                                    <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
-                                    necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
-                                    <a href="#">BUY NOW</a> 
-                                </div>
-                                <div class="col-md-5 col-12 order-md-2 order-1">
-                                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" class="img-fluid mx-auto" alt="slide">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
-            {{-- <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> 
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span> 
-                <span class="sr-only">Previous</span> 
-            </a> 
-            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"> 
-                <span class="carousel-control-next-icon" aria-hidden="true"></span> 
-                <span class="sr-only">Next</span> 
-            </a>  --}}
         </div>
-
     </section>
-    <!-- #intro -->
 
 <!-- ===== Section para students and Donations === -->
-
 <section class="students pt-5 pb-5">
     <div class="container-fluid">
         <div class="row">
@@ -203,24 +163,24 @@
                 <div class="row h-100">
                     <div class="d-flex justify-content-center align-items-center">
                         <div class="col-md-10">
-                            <h2 class="text-right text-gray-dark">Tudo que você faz é parte de sua história.</h2>
-                            <h3 class="text-right text-danger">Traga sua campanha criativo ao mundo.</h3>
+                            <h2 class="text-right text-gray-dark font-weight-bold">Tudo que você faz é parte de sua história.</h2>
+                            <h3 class="text-right text-danger font-weight-bold">Traga sua campanha criativo ao mundo.</h3>
                             <p class="text-right">Uma nova forma de financiar seus estudos e ainda, construir comunidade.</p>
                             <div class="row">
                                 <div class="col-md text-center">
-                                    <img src="{{ asset('site/img/msa/icons/icon-1.png') }}" alt="1" class="img-fluid pb-3" width="50%">
+                                    <img src="{{ asset('site/img/msa/icons/bank.png') }}" alt="1" class="img-fluid pb-3" width="50%">
                                     <p class="text-muted text-b p-0 m-0">Não precisa devolver o dinheiro depois de formado.</p>
                                 </div>
                                 <div class="col-md text-center">
-                                    <img src="{{ asset('site/img/msa/icons/icon-2.png') }}" alt="1" class="img-fluid pb-3" width="50%">
+                                    <img src="{{ asset('site/img/msa/icons/duties.png') }}" alt="1" class="img-fluid pb-3" width="50%">
                                     <p class="text-muted text-b p-0 m-0">Receba contribuições dos seus amigos.</p>
                                 </div>
                                 <div class="col-md text-center">
-                                    <img src="{{ asset('site/img/msa/icons/icon-3.png') }}" alt="1" class="img-fluid pb-3" width="50%">
+                                    <img src="{{ asset('site/img/msa/icons/school.webp') }}" alt="1" class="img-fluid pb-3" width="50%">
                                     <p class="text-muted text-b p-0 m-0">Estude em qualquer Universidade dentro ou fora do Brasil.</p>
                                 </div>
                                 <div class="col-md text-center">
-                                    <img src="{{ asset('site/img/msa/icons/icon-4.png') }}" alt="1" class="img-fluid pb-3" width="50%">
+                                    <img src="{{ asset('site/img/msa/icons/mortarboard.webp') }}" alt="1" class="img-fluid pb-3" width="50%">
                                     <p class="text-muted text-b p-0 m-0">Faça qualquer curso seja de 2 ou seja de 6 anos.</p>
                                 </div>
                             </div>

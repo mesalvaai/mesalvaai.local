@@ -1,39 +1,54 @@
 <header class="header-fixed fixed-top bg-white">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 d-flex align-items-center">
-                <h1 class="m-0"><a href="/" class="scrollto"><strong>Me Salva Aí</strong></a></h1>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 d-flex align-items-center justify-content-end">
-                <nav id="nav-menu-container"> 
-                    <ul class="nav-menu">
-                        <li><a href="/#call-sec-two">CRIAR SUA CAMPANHA</a></li> 
-                        <li><a href="{{ url('mimos') }}">ENCONTRE SUA BOLSA</a></li>
-                    </ul>
-                </nav>
+            {{-- <div class="col-xs-12 col-sm-12 col-md- col-lg-4">
+                <div class="d-flex h-100 align-items-center text-center">
+                    <h1 class="m-0"><a href="/" class="scrollto"><strong>Me Salva Aí</strong></a></h1>
+                </div>
+            </div> --}}
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+                    <a class="navbar-brand d-none d-sm-block" href="{{ url('/') }}">
+                        <h1 class="m-0"><a href="/" class="scrollto"><strong>Me Salva Aí</strong></a></h1>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav mr-auto">
+
+                        </ul>
+
+                        <!-- Right Side Of Navbar -->
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        </ul>
+                    </div>
+            </nav>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 pl-0 pr-0 bg-login d-flex align-items-center ">
                 @guest
                     <a class="btn-login" href="{{ url('/financiamento/criar-campanha') }}">{{ __('LOGIN') }}</a>
                     {{-- <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li> --}}
                 @else
-                    <li class="menu-has-children"><a href="#"><i class="fas fa-user"></i> {{ Auth::user()->name }}</a>
-                        <ul>
-                            <li class="menu-has-children"><a href="#" title="Criar Campanha">Perfil</a></li>
-                            <li class="menu-has-children"><a href="{{ route('financiamento.index') }}" title="Criar Campanha">Campanhas</a></li>
-                            <li class="menu-has-children"><a href="{{ route('create.camping') }}" title="Criar Campanha">Criar Campanhas</a></li>
-                            <li class="menu-has-children"><a href="{{ route('list.rewards') }}" title="Criar Recompensas">Recompensas</a></li>
-                            <li class="menu-has-children"><a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a></li>
+                    <a class="btn-login text-uppercase" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        {{-- {{ __('Logout') }} --}}
+                        Sair
+                    </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </ul> 
-                    </li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    
                 @endguest
             </div>
         </div>
