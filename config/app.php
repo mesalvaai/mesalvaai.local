@@ -254,7 +254,7 @@ return [
         'MyFunctions' => App\Helpers\MyFunctions::class,
         'ProgressBar' => App\Helpers\ProgressBar::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Moip'    => Artesaos\Moip\Facades\Moip::class,
+        'Moip' => Artesaos\Moip\Facades\Moip::class,
     ],
 
 ];
