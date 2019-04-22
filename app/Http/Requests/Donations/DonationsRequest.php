@@ -34,7 +34,7 @@ class DonationsRequest extends FormRequest
                 $rules = [
                     'full_name' => 'required|max:100',
                     'phone' => 'required|max:15',
-                    'email' => 'email|max:200|unique:donations',
+                    'email' => 'email|max:200|required',
                     'date_of_birth' => 'date_format:"d/m/Y"',
                     'cpf' => 'required|cpf|max:14',
                     'total_amount' => [function ($attribute, $value, $fail) {
