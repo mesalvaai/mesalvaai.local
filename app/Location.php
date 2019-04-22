@@ -127,8 +127,11 @@ class Location extends Model
 
 				$url ="http://servicodados.ibge.gov.br/api/v1/localidades/estados/{$idEstado}/municipios";
 
-				$json = file_get_contents($url);
-				$data = json_decode($json);
+				$json = file_get_contents($url);				
+
+				$decoded_content = gzdecode($json);
+
+				$data = json_decode($decoded_content);
 
 				foreach ($data as $key => $value) {
 
