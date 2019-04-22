@@ -28,7 +28,7 @@ class CreateStudentsTable extends Migration
             $table->string('cpf', 14)->nullable();
             $table->string('email')->nullable();
             $table->date('data_of_birth')->nullable();
-            $table->string('phone', 14)->nullable();
+            $table->string('phone', 45)->nullable();
             $table->string('cep', 10)->nullable();
             $table->integer('state_id')->unsigned();
             $table->integer('city_id')->unsigned();
@@ -37,7 +37,12 @@ class CreateStudentsTable extends Migration
             $table->string('neighborhood')->nullable();
             $table->string('complement', 45)->nullable();
             $table->string('status', 45)->nullable();
+
+            $table->string('institution', 45)->nullable();
+            $table->string('course', 45)->nullable();
+            $table->string('period', 45)->nullable();
             $table->string('how_met_us', 45)->nullable();
+            $table->string('country_id', 45)->nullable();
 
             $table->index(["city_id"], 'fk_students_cities1_idx');
 
