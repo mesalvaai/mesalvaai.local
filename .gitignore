@@ -1,4 +1,10 @@
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
 /node_modules
 /public/hot
 /public/storage
