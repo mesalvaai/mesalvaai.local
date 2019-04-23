@@ -6,10 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePeriodsTable extends Migration
 {
-    /**
-     * Schema table name to migrate
-     * @var string
-     */
+
     public $tableName = 'periods';
 
     /**
