@@ -31,17 +31,17 @@
 	            			@if (Storage::disk('images')->has($campanha->file_path))
 		                    <img class="card-img-bottom" alt="{{ $campanha->title }}" src="{{ url('/miniatura/'. $campanha->file_path) }}">
 		                    @endif 
-	            			<h5 class="text-success text-center font-weight-bold pt-3">{{ ($campanha->funds_received == '') ? 'R$0,00' :  'R$ ' .number_format($campanha->funds_received,2,',','.') }} 
+	            			<h5 class="text-success text-center pt-3">{{ ($campanha->funds_received == '') ? 'R$0,00' :  'R$ ' .number_format($campanha->funds_received,2,',','.') }} 
 		            			<b class="text-dark">de</b> <small class="text-muted">$R {{ number_format($campanha->goal,2,',','.') }}</small>
 		            		</h5> 
 
 	            			<div class="progress bg-danger">
-	            				<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {!! \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) !!}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{!! \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) !!}
+	            				<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {!! ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) !!}%" aria-valuenow="{!! ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) !!}" aria-valuemin="0" aria-valuemax="100">{!! ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) !!}%
 	            				</div>
 	            			</div>
 	            		</div>
-	            		<div class="card-footer text-center">
-	            			<h2 class="text-msa font-weight-bold">ME SALVA AI</h2>
+	            		<div class="card-footer bg-dark text-center pb-0">
+	            			<h3 class="text-white font-weight-bold">ME SALVA AI</h3>
 	            		</div>
 	            	</div>
 	            </div>

@@ -26,25 +26,25 @@
 	            </div>
 	            <div class="col-xs-12 col-sm-4 col-md-4">
 	            	<div class="card">
-	            		<div class="card-header">
-	            			<h2 class="text-info text-center">OBJETIVO</h2>
+	            		<div class="card-header pt-4 pb-1">
+	            			<h3 class="text-dark text-center font-weight-bold">OBJETIVO</h3>
 	            		</div>
 	            		<div class="card-body">
-	            			<h2 class="text-success text-center font-weight-bold">{{ ($campanha->funds_received == '') ? 'R$0,00' :  'R$ ' .number_format($campanha->funds_received,2,',','.') }}</h2>
-	            			<div class="progress bg-danger">
-	            				<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {!! \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) !!}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{!! \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) !!}
+	            			<h4 class="text-success text-center">{{ ($campanha->funds_received == '') ? 'R$0,00' :  'R$ ' .number_format($campanha->funds_received,2,',','.') }}</h4>
+	            			<div class="progress bg-warning">
+	            				<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {!! ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) !!}%" aria-valuenow="{!! ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) !!}" aria-valuemin="0" aria-valuemax="100">{!! ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) !!}%
 	            				</div>
 	            			</div>
 	            			<p class="text-center pt-3">Arrecadados da meta de <br> $R {{ number_format($campanha->goal,2,',','.') }} </p>
 	            		</div>
 	            		<div class="card-footer text-center">
-	            			<a href="{{ route('donate.campanha', $campanha->slug) }}" title="Donar" class="btn btn-success w-100">Quero doar!</a>
+	            			<a href="{{ route('donate.campanha', $campanha->slug) }}" title="Donar" class="btn btn-info w-100">Quero doar!</a>
 	            		</div>
 	            	</div>
 
 	            	<div class="card mt-3">
-	            		<div class="card-header bg-info pt-4">
-	            			<h2 class="text-white text-center">RECOMPENSAS</h2>
+	            		<div class="card-header bg-dark pt-3 pb-0 mb-0">
+	            			<h5 class="text-white text-center">RECOMPENSAS</h5>
 	            		</div>
 	            		<div class="card-body text-center">
 	            			@foreach ($campanha->rewards as $reward)

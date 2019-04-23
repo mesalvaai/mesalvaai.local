@@ -76,7 +76,7 @@
 </div>
 
 <div class="form-group row">
-	{!! Form::label('phone', 'phone', ['class' => 'col-sm-3 col-form-label'] ) !!}
+	{!! Form::label('phone', 'Telefone', ['class' => 'col-sm-3 col-form-label'] ) !!}
 	<div class="col-sm-4">
 		{!! Form::text('phone', null, ['class' => $errors->has('phone') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 		@if ($errors->has('phone'))
