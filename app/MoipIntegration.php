@@ -288,7 +288,7 @@ class MoipIntegration extends Model
 			->setBoleto($expiration_date, $logo_uri, $instruction_lines)
 			->execute();
 			//Status => CREATED, WAITING, IN_ANALYSIS, PRE_AUTHORIZED, AUTHORIZED, CANCELLED, REFUNDED, REVERSED, SETTLED.
-			dd($payment->getStatus());
+			//dd($payment->getStatus());
 			$url = file_get_contents($payment->getHrefPrintBoleto());
 
 			$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);

@@ -3,6 +3,7 @@ namespace App\Helpers;
 
 use Illuminate\Support\Facades\DB;
 use \Carbon\Carbon;
+use DateTime;
 
 class FormatTime {
 
@@ -67,15 +68,32 @@ class FormatTime {
         return "faz " . $result;
     }
 
-    public static function diasRestantes($start_date, $end_date)
+    public static function diasRestantes($end_date)
+    {   
+        $data1 = Carbon::now()->toDateString() .'00:00:00'; //data inicia
+        $data2 = Carbon::createFromFormat('Y-m-d H:s:i', $end_date);; //data final
+        // converte as datas para o formato timestamp
+        $d1 = strtotime($data1); 
+        $d2 = strtotime($data2);
+        // verifica a diferença em segundos entre as duas datas e divide pelo número de segundos que um dia possui
+        $dataFinal = ($d2 - $d1) /86400;
+        if($dataFinal < 0)
+            $dataFinal = $dataFinal * 0;
+        return $dataFinal . ' Dias restantes';
+    }
+
+    public static function FullDatesDiff($start_date, $end_date)
     {
-        $start_date = Carbon::now('America/Sao_Paulo');
-        // $to = Carbon::createFromFormat('Y-m-d H:s:i', $start_date);
-        // $from = Carbon::createFromFormat('Y-m-d H:s:i', $end_date);
-        $to = Carbon::createFromFormat('Y-m-d H:s:i', $start_date);
-        $from = Carbon::createFromFormat('Y-m-d H:s:i', $end_date);
-        $diff_in_days = $to->diffInDays($from);
-        return $diff_in_days;
+        $start_date = "2019-04-22 00:00:00"; 
+        $end_date = "2019-04-22 00:00:00"; 
+        $diff = abs(strtotime($end_date) - strtotime($start_date)); 
+        $years   = floor($diff / (365*60*60*24)); 
+        $months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24)); 
+        $days    = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+        $hours   = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24)/ (60*60)); 
+        $minuts  = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60)/ 60); 
+        $seconds = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minuts*60)); 
+        printf("%d years, %d months, %d days, %d hours, %d minuts\n, %d seconds\n", $years, $months, $days, $hours, $minuts, $seconds);
     }
     
     public static function formatData($data){
