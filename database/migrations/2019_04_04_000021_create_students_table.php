@@ -58,16 +58,6 @@ class CreateStudentsTable extends Migration
                 ->references('id')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
-
-            $table->foreign('state_id', 'fk_students_states1_idx')
-                ->references('id')->on('states')
-                ->onDelete('no action')
-                ->onUpdate('no action');
-
-            $table->foreign('city_id', 'fk_students_cities1_idx')
-                ->references('id')->on('cities')
-                ->onDelete('no action')
-                ->onUpdate('no action');
         });
     }
 

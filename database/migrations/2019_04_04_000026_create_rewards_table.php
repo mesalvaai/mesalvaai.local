@@ -34,14 +34,14 @@ class CreateRewardsTable extends Migration
             $table->string('delivery_mode', 45)->nullable();
             $table->char('variations', 1)->nullable();
             $table->string('thanks', 45)->nullable();
+            $table->integer('status')->nullable();
+            $table->nullableTimestamps();
 
             $table->index(["user_id"], 'fk_reward_users1_idx');
 
             $table->index(["campaign_id", "description", "quantity"], 'fk_reward_campaigns1_idx');
 
             $table->unique(["id"], 'id_UNIQUE');
-            $table->nullableTimestamps();
-
 
             $table->foreign('user_id', 'fk_reward_users1_idx')
                 ->references('id')->on('users')

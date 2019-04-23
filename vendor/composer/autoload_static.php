@@ -11,11 +11,13 @@ class ComposerStaticInite7b4efb54b3e4e9ad4fb61bb0cfb4e65
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '7785487378a7be19e13559cd0ddda925' => __DIR__ . '/..' . '/moip/moip-sdk-php/src/Helper/helpers.php',
@@ -108,6 +110,8 @@ class ComposerStaticInite7b4efb54b3e4e9ad4fb61bb0cfb4e65
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
+            'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\' => 11,
         ),
         'F' => 
         array (
@@ -128,9 +132,16 @@ class ComposerStaticInite7b4efb54b3e4e9ad4fb61bb0cfb4e65
         'C' => 
         array (
             'Cron\\' => 5,
+            'Composer\\CaBundle\\' => 18,
             'Collective\\Html\\' => 16,
             'Carbon\\' => 7,
             'Caffeinated\\Shinobi\\' => 20,
+        ),
+        'B' => 
+        array (
+            'Bugsnag\\PsrLogger\\' => 18,
+            'Bugsnag\\BugsnagLaravel\\' => 23,
+            'Bugsnag\\' => 8,
         ),
         'A' => 
         array (
@@ -310,6 +321,14 @@ class ComposerStaticInite7b4efb54b3e4e9ad4fb61bb0cfb4e65
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
+        'GuzzleHttp\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
+        ),
+        'GuzzleHttp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
         'Fideloper\\Proxy\\' => 
         array (
             0 => __DIR__ . '/..' . '/fideloper/proxy/src',
@@ -342,6 +361,10 @@ class ComposerStaticInite7b4efb54b3e4e9ad4fb61bb0cfb4e65
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
+        'Composer\\CaBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
+        ),
         'Collective\\Html\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravelcollective/html/src',
@@ -353,6 +376,18 @@ class ComposerStaticInite7b4efb54b3e4e9ad4fb61bb0cfb4e65
         'Caffeinated\\Shinobi\\' => 
         array (
             0 => __DIR__ . '/..' . '/caffeinated/shinobi/src',
+        ),
+        'Bugsnag\\PsrLogger\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bugsnag/bugsnag-psr-logger/src',
+        ),
+        'Bugsnag\\BugsnagLaravel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bugsnag/bugsnag-laravel/src',
+        ),
+        'Bugsnag\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bugsnag/bugsnag/src',
         ),
         'Artesaos\\Moip\\' => 
         array (
@@ -494,9 +529,53 @@ class ComposerStaticInite7b4efb54b3e4e9ad4fb61bb0cfb4e65
         'App\\Turn' => __DIR__ . '/../..' . '/app/Turn.php',
         'App\\Types' => __DIR__ . '/../..' . '/app/Types.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'AreasTableSeed' => __DIR__ . '/../..' . '/database/seeds/AreasTableSeed.php',
         'Artesaos\\Moip\\Facades\\Moip' => __DIR__ . '/..' . '/artesaos/moip/src/Facades/Moip.php',
         'Artesaos\\Moip\\Moip' => __DIR__ . '/..' . '/artesaos/moip/src/Moip.php',
         'Artesaos\\Moip\\Providers\\MoipServiceProvider' => __DIR__ . '/..' . '/artesaos/moip/src/Providers/MoipServiceProvider.php',
+        'Bugsnag\\Breadcrumbs\\Breadcrumb' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Breadcrumbs/Breadcrumb.php',
+        'Bugsnag\\Breadcrumbs\\Recorder' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Breadcrumbs/Recorder.php',
+        'Bugsnag\\BugsnagLaravel\\BugsnagServiceProvider' => __DIR__ . '/..' . '/bugsnag/bugsnag-laravel/src/BugsnagServiceProvider.php',
+        'Bugsnag\\BugsnagLaravel\\Commands\\DeployCommand' => __DIR__ . '/..' . '/bugsnag/bugsnag-laravel/src/Commands/DeployCommand.php',
+        'Bugsnag\\BugsnagLaravel\\EventTrait' => __DIR__ . '/..' . '/bugsnag/bugsnag-laravel/src/EventTrait.php',
+        'Bugsnag\\BugsnagLaravel\\Facades\\Bugsnag' => __DIR__ . '/..' . '/bugsnag/bugsnag-laravel/src/Facades/Bugsnag.php',
+        'Bugsnag\\BugsnagLaravel\\LaravelLogger' => __DIR__ . '/..' . '/bugsnag/bugsnag-laravel/src/LaravelLogger.php',
+        'Bugsnag\\BugsnagLaravel\\Middleware\\UnhandledState' => __DIR__ . '/..' . '/bugsnag/bugsnag-laravel/src/Middleware/UnhandledState.php',
+        'Bugsnag\\BugsnagLaravel\\MultiLogger' => __DIR__ . '/..' . '/bugsnag/bugsnag-laravel/src/MultiLogger.php',
+        'Bugsnag\\BugsnagLaravel\\Queue\\Tracker' => __DIR__ . '/..' . '/bugsnag/bugsnag-laravel/src/Queue/Tracker.php',
+        'Bugsnag\\BugsnagLaravel\\Request\\LaravelRequest' => __DIR__ . '/..' . '/bugsnag/bugsnag-laravel/src/Request/LaravelRequest.php',
+        'Bugsnag\\BugsnagLaravel\\Request\\LaravelResolver' => __DIR__ . '/..' . '/bugsnag/bugsnag-laravel/src/Request/LaravelResolver.php',
+        'Bugsnag\\Callbacks\\CustomUser' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Callbacks/CustomUser.php',
+        'Bugsnag\\Callbacks\\EnvironmentData' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Callbacks/EnvironmentData.php',
+        'Bugsnag\\Callbacks\\GlobalMetaData' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Callbacks/GlobalMetaData.php',
+        'Bugsnag\\Callbacks\\RequestContext' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Callbacks/RequestContext.php',
+        'Bugsnag\\Callbacks\\RequestCookies' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Callbacks/RequestCookies.php',
+        'Bugsnag\\Callbacks\\RequestMetaData' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Callbacks/RequestMetaData.php',
+        'Bugsnag\\Callbacks\\RequestSession' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Callbacks/RequestSession.php',
+        'Bugsnag\\Callbacks\\RequestUser' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Callbacks/RequestUser.php',
+        'Bugsnag\\Client' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Client.php',
+        'Bugsnag\\Configuration' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Configuration.php',
+        'Bugsnag\\ErrorTypes' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/ErrorTypes.php',
+        'Bugsnag\\Handler' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Handler.php',
+        'Bugsnag\\HttpClient' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/HttpClient.php',
+        'Bugsnag\\Middleware\\BreadcrumbData' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Middleware/BreadcrumbData.php',
+        'Bugsnag\\Middleware\\CallbackBridge' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Middleware/CallbackBridge.php',
+        'Bugsnag\\Middleware\\NotificationSkipper' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Middleware/NotificationSkipper.php',
+        'Bugsnag\\Middleware\\SessionData' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Middleware/SessionData.php',
+        'Bugsnag\\Pipeline' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Pipeline.php',
+        'Bugsnag\\PsrLogger\\AbstractLogger' => __DIR__ . '/..' . '/bugsnag/bugsnag-psr-logger/src/AbstractLogger.php',
+        'Bugsnag\\PsrLogger\\BugsnagLogger' => __DIR__ . '/..' . '/bugsnag/bugsnag-psr-logger/src/BugsnagLogger.php',
+        'Bugsnag\\PsrLogger\\MultiLogger' => __DIR__ . '/..' . '/bugsnag/bugsnag-psr-logger/src/MultiLogger.php',
+        'Bugsnag\\Report' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Report.php',
+        'Bugsnag\\Request\\BasicResolver' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Request/BasicResolver.php',
+        'Bugsnag\\Request\\ConsoleRequest' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Request/ConsoleRequest.php',
+        'Bugsnag\\Request\\NullRequest' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Request/NullRequest.php',
+        'Bugsnag\\Request\\PhpRequest' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Request/PhpRequest.php',
+        'Bugsnag\\Request\\RequestInterface' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Request/RequestInterface.php',
+        'Bugsnag\\Request\\ResolverInterface' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Request/ResolverInterface.php',
+        'Bugsnag\\SessionTracker' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/SessionTracker.php',
+        'Bugsnag\\Stacktrace' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Stacktrace.php',
+        'Bugsnag\\Utils' => __DIR__ . '/..' . '/bugsnag/bugsnag/src/Utils.php',
         'Caffeinated\\Shinobi\\Facades\\Shinobi' => __DIR__ . '/..' . '/caffeinated/shinobi/src/Facades/Shinobi.php',
         'Caffeinated\\Shinobi\\Middleware\\UserHasPermission' => __DIR__ . '/..' . '/caffeinated/shinobi/src/Middleware/UserHasPermission.php',
         'Caffeinated\\Shinobi\\Middleware\\UserHasRole' => __DIR__ . '/..' . '/caffeinated/shinobi/src/Middleware/UserHasRole.php',
@@ -510,6 +589,7 @@ class ComposerStaticInite7b4efb54b3e4e9ad4fb61bb0cfb4e65
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'CategoriesTableSeed' => __DIR__ . '/../..' . '/database/seeds/CategoriesTableSeed.php',
         'CitiesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CitiesTableSeeder.php',
         'Collective\\Html\\Componentable' => __DIR__ . '/..' . '/laravelcollective/html/src/Componentable.php',
         'Collective\\Html\\Eloquent\\FormAccessible' => __DIR__ . '/..' . '/laravelcollective/html/src/Eloquent/FormAccessible.php',
@@ -518,6 +598,7 @@ class ComposerStaticInite7b4efb54b3e4e9ad4fb61bb0cfb4e65
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
+        'Composer\\CaBundle\\CaBundle' => __DIR__ . '/..' . '/composer/ca-bundle/src/CaBundle.php',
         'CoursesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CoursesTableSeeder.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
@@ -1068,6 +1149,47 @@ class ComposerStaticInite7b4efb54b3e4e9ad4fb61bb0cfb4e65
         'Faker\\ValidGenerator' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/ValidGenerator.php',
         'Fideloper\\Proxy\\TrustProxies' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustProxies.php',
         'Fideloper\\Proxy\\TrustedProxyServiceProvider' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustedProxyServiceProvider.php',
+        'GuzzleHttp\\Client' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Client.php',
+        'GuzzleHttp\\ClientInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/ClientInterface.php',
+        'GuzzleHttp\\Cookie\\CookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/CookieJar.php',
+        'GuzzleHttp\\Cookie\\CookieJarInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/CookieJarInterface.php',
+        'GuzzleHttp\\Cookie\\FileCookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/FileCookieJar.php',
+        'GuzzleHttp\\Cookie\\SessionCookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/SessionCookieJar.php',
+        'GuzzleHttp\\Cookie\\SetCookie' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/SetCookie.php',
+        'GuzzleHttp\\Exception\\BadResponseException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/BadResponseException.php',
+        'GuzzleHttp\\Exception\\ClientException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/ClientException.php',
+        'GuzzleHttp\\Exception\\ConnectException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/ConnectException.php',
+        'GuzzleHttp\\Exception\\GuzzleException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/GuzzleException.php',
+        'GuzzleHttp\\Exception\\RequestException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/RequestException.php',
+        'GuzzleHttp\\Exception\\SeekException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/SeekException.php',
+        'GuzzleHttp\\Exception\\ServerException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/ServerException.php',
+        'GuzzleHttp\\Exception\\TooManyRedirectsException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/TooManyRedirectsException.php',
+        'GuzzleHttp\\Exception\\TransferException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/TransferException.php',
+        'GuzzleHttp\\HandlerStack' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/HandlerStack.php',
+        'GuzzleHttp\\Handler\\CurlFactory' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/CurlFactory.php',
+        'GuzzleHttp\\Handler\\CurlFactoryInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/CurlFactoryInterface.php',
+        'GuzzleHttp\\Handler\\CurlHandler' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/CurlHandler.php',
+        'GuzzleHttp\\Handler\\CurlMultiHandler' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/CurlMultiHandler.php',
+        'GuzzleHttp\\Handler\\EasyHandle' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/EasyHandle.php',
+        'GuzzleHttp\\Handler\\MockHandler' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/MockHandler.php',
+        'GuzzleHttp\\Handler\\Proxy' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/Proxy.php',
+        'GuzzleHttp\\Handler\\StreamHandler' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Handler/StreamHandler.php',
+        'GuzzleHttp\\MessageFormatter' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/MessageFormatter.php',
+        'GuzzleHttp\\Middleware' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Middleware.php',
+        'GuzzleHttp\\Pool' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Pool.php',
+        'GuzzleHttp\\PrepareBodyMiddleware' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/PrepareBodyMiddleware.php',
+        'GuzzleHttp\\Promise\\AggregateException' => __DIR__ . '/..' . '/guzzlehttp/promises/src/AggregateException.php',
+        'GuzzleHttp\\Promise\\CancellationException' => __DIR__ . '/..' . '/guzzlehttp/promises/src/CancellationException.php',
+        'GuzzleHttp\\Promise\\Coroutine' => __DIR__ . '/..' . '/guzzlehttp/promises/src/Coroutine.php',
+        'GuzzleHttp\\Promise\\EachPromise' => __DIR__ . '/..' . '/guzzlehttp/promises/src/EachPromise.php',
+        'GuzzleHttp\\Promise\\FulfilledPromise' => __DIR__ . '/..' . '/guzzlehttp/promises/src/FulfilledPromise.php',
+        'GuzzleHttp\\Promise\\Promise' => __DIR__ . '/..' . '/guzzlehttp/promises/src/Promise.php',
+        'GuzzleHttp\\Promise\\PromiseInterface' => __DIR__ . '/..' . '/guzzlehttp/promises/src/PromiseInterface.php',
+        'GuzzleHttp\\Promise\\PromisorInterface' => __DIR__ . '/..' . '/guzzlehttp/promises/src/PromisorInterface.php',
+        'GuzzleHttp\\Promise\\RejectedPromise' => __DIR__ . '/..' . '/guzzlehttp/promises/src/RejectedPromise.php',
+        'GuzzleHttp\\Promise\\RejectionException' => __DIR__ . '/..' . '/guzzlehttp/promises/src/RejectionException.php',
+        'GuzzleHttp\\Promise\\TaskQueue' => __DIR__ . '/..' . '/guzzlehttp/promises/src/TaskQueue.php',
+        'GuzzleHttp\\Promise\\TaskQueueInterface' => __DIR__ . '/..' . '/guzzlehttp/promises/src/TaskQueueInterface.php',
         'GuzzleHttp\\Psr7\\AppendStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/AppendStream.php',
         'GuzzleHttp\\Psr7\\BufferStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/BufferStream.php',
         'GuzzleHttp\\Psr7\\CachingStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/CachingStream.php',
@@ -1091,6 +1213,11 @@ class ComposerStaticInite7b4efb54b3e4e9ad4fb61bb0cfb4e65
         'GuzzleHttp\\Psr7\\Uri' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/Uri.php',
         'GuzzleHttp\\Psr7\\UriNormalizer' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/UriNormalizer.php',
         'GuzzleHttp\\Psr7\\UriResolver' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/UriResolver.php',
+        'GuzzleHttp\\RedirectMiddleware' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/RedirectMiddleware.php',
+        'GuzzleHttp\\RequestOptions' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/RequestOptions.php',
+        'GuzzleHttp\\RetryMiddleware' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/RetryMiddleware.php',
+        'GuzzleHttp\\TransferStats' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/TransferStats.php',
+        'GuzzleHttp\\UriTemplate' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/UriTemplate.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',
