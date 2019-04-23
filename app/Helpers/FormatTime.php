@@ -69,20 +69,17 @@ class FormatTime {
     }
 
     public static function diasRestantes($end_date)
-    {
-        //$start_date = "2008-11-01 22:45:00"; 
-        //$date2 = "2009-12-04 13:44:01";
-        //$start_date = Carbon::now()->toDateString(); 
-        //$end_date = Carbon::createFromFormat('Y-m-d H:s:i', $end_date);
-
-        // $first_date = new DateTime($start_date);
-        // $second_date = new DateTime($end_date);
-        // echo $first_date->diff($second_date)->days; // 98
-        // $first_date = "2018-03-17";
-        // $second_date = "2018-03-17";
-        $date_now =  Carbon::now()->toDateString();
-        $days = floor(abs(strtotime($end_date) - strtotime($date_now))/(60*60*24));
-        echo $days. " Dias restantes";
+    {   
+        $data1 = Carbon::now()->toDateString() .'00:00:00'; //data inicia
+        $data2 = Carbon::createFromFormat('Y-m-d H:s:i', $end_date);; //data final
+        // converte as datas para o formato timestamp
+        $d1 = strtotime($data1); 
+        $d2 = strtotime($data2);
+        // verifica a diferença em segundos entre as duas datas e divide pelo número de segundos que um dia possui
+        $dataFinal = ($d2 - $d1) /86400;
+        if($dataFinal < 0)
+            $dataFinal = $dataFinal * 0;
+        return $dataFinal . ' Dias restantes';
     }
 
     public static function FullDatesDiff($start_date, $end_date)
