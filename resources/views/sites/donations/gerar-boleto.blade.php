@@ -24,7 +24,7 @@
 							<div class="form-group text-center col-sm-6 offset-3">
 								<input id="CopyCodBoleto" type="text" name="codigo" value="{{ $codBoleto }}" class="form-control ">
 								<br>
-								<a href="#"" class="text-center btn btn-outline-secondary" id="copyCodBoleto" data-clipboard-action="copy" data-clipboard-target="#CopyCodBoleto"><em>Copiar o código</em></a>
+								<a href="#" class="text-center btn btn-outline-secondary" id="copyCodBoleto" data-clipboard-action="copy" data-clipboard-target="#CopyCodBoleto"><em>Copiar o código</em></a>
 							</div>
 							
 							<p class="text-center">ou</p>

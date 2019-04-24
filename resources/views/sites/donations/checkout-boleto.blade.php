@@ -19,12 +19,12 @@
 	            			<b class="text-muted">Juntos caminhamos mais longe</b>
 	            		</div>
 	            		<div class="card-body">
-	            			<p class="text-center">Obrigado pela contribuição de R$ 45,00 no Me Salva Aí <br><b>Henrique Werneck Guerreiro</b><br><em>Henrique Werneck Guerreiro</em></p>
+	            			<p class="text-center">Obrigado pela contribuição de R$ {{ MyFunctions::formatandoForView($total_amount) }} no Me Salva Aí <br><em>{{ $full_name }}</em></p>
 							<br>
 							<div class="form-group text-center col-sm-6 offset-3">
 								<input id="CopyCodBoleto" type="text" name="codigo" value="{{ $codBoleto }}" class="form-control ">
 								<br>
-								<a href="#"" class="text-center btn btn-outline-secondary" id="copyCodBoleto" data-clipboard-action="copy" data-clipboard-target="#CopyCodBoleto"><em>Copiar o código</em></a>
+								<a href="#" class="text-center btn btn-outline-secondary" id="copyCodBoleto" data-clipboard-action="copy" data-clipboard-target="#CopyCodBoleto"><em>Copiar o código</em></a>
 							</div>
 							
 							<p class="text-center">ou</p>
@@ -34,7 +34,7 @@
 								</div>
 							</div> --}}
 							<div class="text-center">
-								{{-- <a target="_blank" href="{{ route('boleto.print', $hrefBoleto) }}"  class="btn btn-msa btn-sm w-50" >Clique para ver o boleto</a> --}}
+								{{-- <a target="_blank" href="https://sandbox.moip.com.br/v2/boleto/{{ $hrefBoleto }}/print"  class="btn btn-msa btn-sm w-50" >Clique para ver o boleto</a> --}}
 								<a target="_blank" href="{{ route('boleto.print', $idBoleto) }}"  class="btn btn-msa btn-sm w-50" >Clique para ver o boleto</a>
 							</div>
 							<br>

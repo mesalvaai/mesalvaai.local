@@ -129,7 +129,6 @@ class MoipIntegration extends Model
 			->execute();
 
 			//dd($payment->getOrder()->getCustomer()->getfullname());
-
 			//dd(MyFunctions::FormatCurrencyForDataBase($request['total_amount']));
 			if ($payment->getStatus() === 'WAITING') {
 				$donation = new Donation();
@@ -168,6 +167,7 @@ class MoipIntegration extends Model
 				$urlBoleto = $payment->getHrefPrintBoleto();
 				$hrefBoleto = explode('/', $payment->getHrefBoleto());
 				$hrefBoleto = array_last($hrefBoleto);
+				$total_amount = $payment->getAmount()->total;
 				$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);
 
 				$data = [
@@ -176,6 +176,8 @@ class MoipIntegration extends Model
 					'codBoleto' => $codBoleto,
 					'urlBoleto' => $urlBoleto,
 					'hrefBoleto' => $hrefBoleto,
+					'total_amount' => $total_amount,
+					'full_name' => $request->full_name,
 					'print' => $print
 				];
 

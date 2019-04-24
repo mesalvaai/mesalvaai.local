@@ -24,12 +24,6 @@ class HomeController extends Controller
         //$this->middleware('auth');
     }
 
-    public function campanhas()
-    {
-        $campanhas = Campaign::where('published', 1)->paginate(30);
-        return view('sites.campanhas', compact('campanhas'));
-    }
-
     public function index()
     {
         return view('sites.home');
@@ -42,6 +36,11 @@ class HomeController extends Controller
         return view('sites.site', compact('campanhas', 'progress'));
     }
 
+    public function campanhas()
+    {
+        $campanhas = Campaign::where('published', 1)->paginate(30);
+        return view('sites.campanhas', compact('campanhas'));
+    }
 
     public function mimos()
     {
@@ -91,15 +90,18 @@ class HomeController extends Controller
         } elseif ( ($request->type_payment === 'BOLETO') AND ($request->op === 'BOLETO') ){
 
             $boleto = MoipIntegration::getPagamentoBoleto($request);
+
             $idBoleto = $boleto['idBoleto'];
             $orderId = $boleto['orderId'];
-            // $codBoleto = $boleto['codBoleto'];
-            // $urlBoleto = $boleto['urlBoleto'];
-            // $hrefBoleto = $boleto['hrefBoleto'];
-            // $printBoleto = $boleto['print'];
-            // $request->session()->flash('status', 'Obrigado por sua contribuição, aguardamos o pagamento do boleto!!');
-            // return view('sites.donations.checkout-boleto', compact('idBoleto', 'codBoleto', 'printBoleto', 'hrefBoleto'));
-            return redirect()->route('gerar.boleto', ['idBoleto' => $idBoleto, 'orderId ' => $orderId]);
+            $codBoleto = $boleto['codBoleto'];
+            $urlBoleto = $boleto['urlBoleto'];
+            $hrefBoleto = $boleto['hrefBoleto'];
+            $total_amount = $boleto['total_amount'];
+            $printBoleto = $boleto['print'];
+            $full_name = $boleto['full_name'];
+            $request->session()->flash('status', 'Obrigado por sua contribuição, aguardamos o pagamento do boleto!!');
+            return view('sites.donations.checkout-boleto', compact('idBoleto', 'codBoleto', 'printBoleto', 'hrefBoleto', 'total_amount', 'full_name'));
+            //return redirect()->route('gerar.boleto', ['idBoleto' => $idBoleto, 'orderId ' => $orderId]);
 
         } else {
             dd('false');
