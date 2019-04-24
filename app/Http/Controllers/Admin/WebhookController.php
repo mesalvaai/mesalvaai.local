@@ -12,9 +12,26 @@ class WebhookController extends Controller
     
     public function index(Request $request)
     {
+        /**
+        * Este exemplo usa a SDK da Wirecard de PHP, disponível 
+        * em: https://github.com/moip/moip-sdk-php
+        */
         $moip = Moip::start();
-        $payment = $moip->payments()->get("PAY-NH5W9QM7X4K7");
-        dd($payment);
+        // Pega o RAW data da requisição
+        $json = file_get_contents('php://input');
+        // Converte os dados recebidos
+        $response = json_decode($json, true);
+
+        // To list all Webhooks
+        $moip->webhooks()->get();
+
+        // To list Webhooks, using pagination and filter
+        //$moip->webhooks()->get(new Pagination(10, 0), "ORD_ID", "ORDER.PAID");
+        
+        //$payment = $moip->payments()->get("PAY-NH5W9QM7X4K7");
+
+        dd($moip);
+        
     }
 
     /**
