@@ -17,20 +17,19 @@ class WebhookController extends Controller
         * em: https://github.com/moip/moip-sdk-php
         */
         $moip = Moip::start();
-        // Pega o RAW data da requisição
+
         $json = file_get_contents('php://input');
-        // Converte os dados recebidos
         $response = json_decode($json, true);
 
         // To list all Webhooks
-        $moip->webhooks()->get();
+        //$moip->webhooks()->get();
 
         // To list Webhooks, using pagination and filter
         //$moip->webhooks()->get(new Pagination(10, 0), "ORD_ID", "ORDER.PAID");
         
-        //$payment = $moip->payments()->get("PAY-NH5W9QM7X4K7");
+        $webHookList = $notifications = $moip->notifications()->getList()->getNotifications();
 
-        dd($moip);
+        dd($webHookList);
         
     }
 
@@ -69,8 +68,8 @@ class WebhookController extends Controller
     {
         $moip = Moip::start();
 
-        $notification = $moip->notifications()->delete('NPR-3ADBMQK26JMA');
+        $notification = $moip->notifications()->delete('NPR-A5OY1S5CYR58');
         //$notification = $moip->notifications()->delete('NPR-JN2XJU76LRO3');
-        dd($notification);
+        return redirect()->route('webhook.index');
     }
 }

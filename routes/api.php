@@ -21,18 +21,6 @@ Route::group(['prefix' => 'V1'], function() {
 	Route::resource('meeting', 'MeetingController', [
 		'except' => ['create', 'edit']
 	]);
-
-	// Route::resource('meeting/registration', 'RegisterController', [
-	// 	'only' => ['store', 'destroy']
-	// ]);
-
-	// Route::post('/user/register', [
-	// 	'uses' => 'AuthController@store'
-	// ]);
-
-	// Route::post('/user/signin', [
-	// 	'uses' => 'AuthController@signin'
-	// ]);
 });
 
 

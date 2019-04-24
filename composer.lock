@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0fdb2a7d5a3b294a0d4212c85513d8b6",
+    "content-hash": "ec7fba26b3d144fc631684bf63890412",
     "packages": [
         {
             "name": "artesaos/moip",

@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "php": "^7.1.3",
-        "artesaos/moip": "^1.0",
+        "artesaos/moip": "^1.0.3",
         "bugsnag/bugsnag-laravel": "^2.0",
         "caffeinated/shinobi": "^3.2",
         "fideloper/proxy": "^4.0",
