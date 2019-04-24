@@ -77,7 +77,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 text-center pb-4">
-                        <a href="#" title="" class="btn btn-primary btn-lg w-50">Criar campanha</a>
+                        <a href="{{ route('create.project') }}" title="" class="btn btn-primary btn-lg w-50">Criar campanha</a>
                     </div>
                 </div>
             </div>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 text-center pb-4">
-                        <a href="#" title="" class="btn btn-primary btn-lg w-50">Doar</a>
+                        <a href="#camping" title="" class="btn btn-primary btn-lg w-50">Doar</a>
                     </div>
                 </div>
             </div>
@@ -193,7 +193,9 @@
 </section>
 
 <!--========================== Campanhas Ativas ============================-->
-<section class="campanhas-ativas">
+@if ($campanhas->count() > 0)
+
+<section class="campanhas-ativas" id="camping">
     <div class="container-fluid">
         <div class="row justify-content-between pb-3">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
@@ -243,6 +245,7 @@
         </div>
     </div>
 </section>
+@endif
 
 <!--========================== Section items rodape ============================-->
 <section id="items-rodape" class="items-rodape-bg">
