@@ -14,7 +14,7 @@
 		{{-- {!! Form::text('donation', null, ['class' => $errors->has('donation') ? 'form-control is-invalid' : 'form-control' , 'rows' => '3', 'required']) !!} --}}
 		<div class="input-group">
 			<div class="input-group-prepend">
-				<span class="input-group-text">$R</span>
+				<span class="input-group-text">R$</span>
 				<span class="input-group-text">0,00</span>
 			</div>
 			{!! Form::text('donation', null, ['class' => $errors->has('donation') ? 'form-control is-invalid' : 'form-control', 'data-thousands' => '.', 'data-decimal' => ',', 'required']) !!}

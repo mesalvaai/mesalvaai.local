@@ -40,7 +40,7 @@
                             <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {!! \ProgressBar::progressDonation($camping->funds_received, $camping->goal) !!}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{!! \ProgressBar::progressDonation($camping->funds_received, $camping->goal) !!}
                             </div>
                         </div>
-                        <p class="text-center pt-3">Arrecadados da meta de <br> $R {{ number_format($camping->goal,2,',','.') }} </p>
+                        <p class="text-center pt-3">Arrecadados da meta de <br> R$ {{ number_format($camping->goal,2,',','.') }} </p>
                         
                         @if ($camping->published !== 1)
 							<hr>

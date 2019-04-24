@@ -32,7 +32,7 @@
 		                    <img class="card-img-bottom" alt="{{ $campanha->title }}" src="{{ url('/miniatura/'. $campanha->file_path) }}">
 		                    @endif 
 	            			<h5 class="text-success text-center pt-3">{{ ($campanha->funds_received == '') ? 'R$0,00' :  'R$ ' .number_format($campanha->funds_received,2,',','.') }} 
-		            			<b class="text-dark">de</b> <small class="text-muted">$R {{ number_format($campanha->goal,2,',','.') }}</small>
+		            			<b class="text-dark">de</b> <small class="text-muted">R$ {{ number_format($campanha->goal,2,',','.') }}</small>
 		            		</h5> 
 
 	            			<div class="progress bg-danger">

@@ -33,9 +33,9 @@
 					<div class="media-body">
 						<h5 class="mt-0">{{ $camping->title }}</h5>
 						<small class="figure-caption">{{ $camping->abstract }}</small> <hr>
-						<a href="#" class="badge badge-info">Meta $R: {{ $camping->goal }}</a>
-						<a href="#" class="badge badge-info">Arecaudado $R: {{ $camping->funds_received }}</a>
-						<a href="{{ route('show.camping', $camping->id ) }}" class="badge badge-success">Mais Info>></a>
+						<a href="#" class="badge badge-info">Meta R$: {{ $camping->goal }}</a>
+						<a href="#" class="badge badge-info">Arrecadado R$: {{ $camping->funds_received }}</a>
+						<a href="{{ route('show.camping', $camping->id ) }}" class="badge badge-success">Visualizar >></a>
 					</div>
 				</div>
 			</div>

@@ -24,28 +24,32 @@
 	                <div class="card-body">
 				    	<p class="card-title text-justify">{!! $camping->description !!}</p>
 				  	</div>
+					  <div class="card-footer">
+					  <span>{{url('/campanhas/'.$camping->slug)}}</span>
+					  </div>
+
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-4 col-md-4">
-				<a href="{{ route('edit.camping', $camping->id) }}" title="Alterar" class="btn btn-outline-success w-100 mb-3"><i class="fas fa-edit"></i> Altera campanha</a>
+				<a href="{{ route('edit.camping', $camping->id) }}" title="Alterar" class="btn btn-outline-success w-100 mb-3"><i class="fas fa-edit"></i> Alterar campanha</a>
 				<ul class="list-group pb-3">
 				  	<li class="list-group-item msa-bg text-white">INICIO DA CAMPANHA</li>
-				  	<li class="list-group-item">{{ $camping->start_date }}</li>
+				  	<li class="list-group-item">{{ date('d/m/Y', strtotime($camping->start_date)) }}</li>
 				</ul>
 
 				<ul class="list-group pb-3">
-				  	<li class="list-group-item bg-danger text-white">FIN DA CAMPANHA</li>
-				  	<li class="list-group-item">{{ $camping->end_date }}</li>
+				  	<li class="list-group-item bg-danger text-white">FIM DA CAMPANHA</li>
+				  	<li class="list-group-item">{{ date('d/m/Y', strtotime($camping->end_date)) }}</li>
 				</ul>
 
 				<ul class="list-group pb-3">
 				  	<li class="list-group-item bg-success text-white">META</li>
-				  	<li class="list-group-item">$R {{ $camping->goal }}</li>
+				  	<li class="list-group-item">R$ {{ number_format($camping->goal, 2) }}</li>
 				</ul>
 
 				<ul class="list-group pb-3">
-				  	<li class="list-group-item bg-success text-white">RECEVIDOS</li>
-				  	<li class="list-group-item">$R {{ $camping->funds_received }}</li>
+				  	<li class="list-group-item bg-success text-white">RECEBIDOS</li>
+				  	<li class="list-group-item">R$ {{ number_format($camping->funds_received, 2) }}</li>
 				</ul>
 
 				<ul class="list-group pb-3">

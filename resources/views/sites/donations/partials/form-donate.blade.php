@@ -105,7 +105,7 @@
 
 	<div class="input-group col-md-4">
 		<div class="input-group-prepend">
-			<span class="input-group-text">$R</span>
+			<span class="input-group-text">R$</span>
 			<span class="input-group-text">0,00</span>
 		</div>
 		{!! Form::text('total_amount', null, ['class' => $errors->has('total_amount') ? 'form-control is-invalid' : 'form-control','id' => 'total_amount', 'required']) !!}
