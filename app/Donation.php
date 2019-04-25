@@ -24,4 +24,9 @@ class Donation extends Model
 		'created_at',
 		'updated_at', 
 	];
+
+	public function campaigns()
+    {
+    	return $this->belongsToMany(Campaign::class)->withPivot('id', 'type_payment', 'payment_id', 'order_id', 'payment_status')->withTimestamps();;
+    }
 }

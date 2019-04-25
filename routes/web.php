@@ -9,7 +9,6 @@ Route::get('/boleto', 'MoipIntegrationController@PagamentoBoleto')->name('gerar.
 
 Route::get('/moipt', 'MoipIntegrationController@test')->name('moipt');
 Route::get('/testt', 'MoipIntegrationController@testt')->name('testt');
-Route::get('/t', 'MoipIntegrationController@t')->name('t');
 
 Route::get('/info',function(){
 	return view('sites.info-cursos');
@@ -32,7 +31,6 @@ Route::get('/financiamento/criar-campanha', 'Site\FinancingController@createCamp
 Route::get('/financiamento/criar-conta', 'Site\FinancingController@createConta')->name('create.conta');
 
 Route::get('/mimos', 'Site\HomeController@mimos')->name('mimos');
-Route::get('/test', 'Site\HomeController@test')->name('test');
 Route::get('/cursos', 'Site\CursoController@curso');
 Route::get('/faculdade/id_curso', 'Site\CursoController@faculdade');
 Route::get('/student', 'Admin\StudentController@index');

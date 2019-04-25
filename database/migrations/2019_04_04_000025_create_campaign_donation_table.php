@@ -26,6 +26,10 @@ class CreateCampaignDonationTable extends Migration
             $table->integer('campaign_id')->unsigned();
             $table->integer('donation_id')->unsigned();
             $table->float('donation_amount')->nullable();
+            $table->char('type_payment', 11);
+            $table->string('payment_id', 16);
+            $table->string('order_id', 16);
+            $table->char('payment_status', 15);
             $table->string('details')->nullable();
 
             $table->index(["donation_id"], 'fk_campaigns_has_donations_donations1_idx');

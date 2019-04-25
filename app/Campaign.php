@@ -18,4 +18,9 @@ class Campaign extends Model
     	return $this->belongsTo('App\Category');
     }
 
+    public function donations()
+    {
+    	return $this->belongsToMany(Donation::class)->withPivot('id', 'type_payment', 'payment_id', 'order_id', 'payment_status')->withTimestamps();;
+    }
+
 }

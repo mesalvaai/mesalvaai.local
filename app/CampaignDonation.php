@@ -10,6 +10,10 @@ class CampaignDonation extends Model
 		'campaign_id',
 		'donation_id',
 		'donation_amount',
+		'type_payment',
+		'payment_id',
+		'order_id',
+		'payment_status',
 		'details'
 	];
 	
