@@ -27,9 +27,12 @@ class WebhookController extends Controller
         // To list Webhooks, using pagination and filter
         //$moip->webhooks()->get(new Pagination(10, 0), "ORD_ID", "ORDER.PAID");
         
-        $webHookList = $notifications = $moip->notifications()->getList()->getNotifications();
+        //$webHookList = $notifications = $moip->notifications()->getList()->getNotifications();
+        
+        // With pagination
+        $orders = $moip->orders()->getList();
 
-        dd($webHookList);
+        dd($orders);
         
     }
 

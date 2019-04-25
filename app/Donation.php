@@ -15,6 +15,8 @@ class Donation extends Model
 		'total_amount',
 		'donation_date',
 		'type_payment',
+		'payment_id',
+		'order_id',
 		'country',
 		'postal_code',
 		'anonymus',

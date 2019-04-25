@@ -129,7 +129,6 @@ class MoipIntegration extends Model
 			->execute();
 
 			//dd($payment->getOrder()->getCustomer()->getfullname());
-			//dd(MyFunctions::FormatCurrencyForDataBase($request['total_amount']));
 			if ($payment->getStatus() === 'WAITING') {
 				$donation = new Donation();
 				$donation->full_name = $request['full_name'];
@@ -141,6 +140,7 @@ class MoipIntegration extends Model
 				$donation->donation_date = $current_time;
 				$donation->type_payment = $request['type_payment'];
 				$donation->payment_id = $payment->getId();
+				$donation->order_id = $order->getId();
 				$donation->payment_status = $payment->getStatus();
 				$donation->status = 1;
 				$donation->details = 'Pagamento no boleto';
@@ -393,33 +393,27 @@ class MoipIntegration extends Model
 
 		$moip = Moip::start();
 
-		// $notification = $moip->notifications()->delete('NPR-7PG2BKR3T42M');
-		// $notification = $moip->notifications()->delete('NPR-FX00FPQ5VMJP');
-		// $notification = $moip->notifications()->delete('NPR-JN2XJU76LRO3');
-
-		// $notification = $moip->notifications()->getList();
-		//  dd($notification);
-		// $payment = $moip->payments()->get("PAY-DZ8ME9LE0GUA");
-		// 
-		// 		$json = file_get_contents('php://input');
-		// // Converte os dados recebidos
-		// 		$response = json_decode($json, true);
-		// 		dd($json);
-
-		// $notification = $moip->notifications()->delete("NPR-UCHE076YIHAO");
-		// dd($notification);
-
-		// $notification = $moip->notifications()->getList();;
-		// dd($notification);
-
-		$notification = $moip->notifications()
+		/*Criar notificação*/
+		/*$notification = $moip->notifications()
 		->addEvent('PAYMENT.AUTHORIZED')
 		->addEvent('PAYMENT.CANCELLED')
 		->setTarget('http://msalvaai.proxy.beeceptor.com/')
-		->create();
+		->create();*/
 
-		dd($notification);
-		// https://sandbox.moip.com.br/v2/payments/ORD-JZ7XQFDOOSUJ
+		/*Lista de notificações criadas */
+		//$notification = $moip->notifications()->getList();
+		
+		/*Excluir notificação */
+		//$notification = $moip->notifications()->delete("NPR-2K4MR6122GX4");
+		
+		/* Obter pagamento por id PAY-EVICHTET82MY */
+		$payment = $moip->payments()->get("PAY-H2VLCCH77YUM");
+		
+		//$json = file_get_contents('php://input');
+		// Converte os dados recebidos
+		//$response = json_decode($json, true);
+		dd($payment->getId());
+
 	}
 
 	public static function testt(){
