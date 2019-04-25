@@ -23,7 +23,7 @@
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav nav-menu">
-                            <li class="nav-item"><a class="nav-link" href="{{route('create.project')}}">CRIAR SUA CAMPANHA</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="/#crie-sua-campanha">CRIAR SUA CAMPANHA</a></li> 
                             <li class="nav-item"><a class="nav-link" href="{{route('financing.index')}}">ENCONTRE SUA BOLSA</a></li>
                             @auth
                                 <li class="nav-item"><a class="nav-link" href="{{route('financiamento.index')}}">MINHAS CAMPANHAS</a></li>

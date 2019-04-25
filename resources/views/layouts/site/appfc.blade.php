@@ -38,8 +38,6 @@
     Header
   ============================-->
   @include('layouts.site.partials.menufc', ['some' => 'data'])
-  <!-- #header -->
-  @include('layouts.site.partials.sub-menu-fc', ['some' => 'data'])
 
   
   @yield('content')

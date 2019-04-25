@@ -32,32 +32,27 @@
 			</div>
 			<div class="col-xs-12 col-sm-4 col-md-4">
 				<a href="{{ route('edit.camping', $camping->id) }}" title="Alterar" class="btn btn-outline-success w-100 mb-3"><i class="fas fa-edit"></i> Alterar campanha</a>
-				<ul class="list-group pb-3">
-				  	<li class="list-group-item msa-bg text-white">INICIO DA CAMPANHA</li>
-				  	<li class="list-group-item">{{ date('d/m/Y', strtotime($camping->start_date)) }}</li>
-				</ul>
 
-				<ul class="list-group pb-3">
-				  	<li class="list-group-item bg-danger text-white">FIM DA CAMPANHA</li>
-				  	<li class="list-group-item">{{ date('d/m/Y', strtotime($camping->end_date)) }}</li>
-				</ul>
+				<div class="card">
+					<div class="card-body">
+						<h6 class="card-title font-weight-bold">Inicio da campanha</h6>
+						<h6 class="card-subtitle mb-2 text-muted">{{ date('d/m/Y', strtotime($camping->start_date)) }}</h6>
+						<div class="dropdown-divider"></div>
+						<h6 class="card-title font-weight-bold">Fin da campanha</h6>
+						<h6 class="card-subtitle mb-2 text-muted">{{ date('d/m/Y', strtotime($camping->end_date)) }}</h6>
+						<div class="dropdown-divider"></div>
+						<h6 class="card-title font-weight-bold">Meta</h6>
+						<h6 class="card-subtitle mb-2 text-muted">R$ {{ number_format($camping->goal, 2) }}</h6>
+						<div class="dropdown-divider"></div>
+						<h6 class="card-title font-weight-bold">Recebidos</h6>
+						<h6 class="card-subtitle mb-2 text-muted">R$ {{ number_format($camping->funds_received, 2) }}</h6>
+						<div class="dropdown-divider"></div>
+						<h6 class="card-title font-weight-bold">Categoria</h6>
+						<h6 class="card-subtitle mb-2 text-muted">{{ $camping->category->name }}</h6>
+					</div>
+				</div>
 
-				<ul class="list-group pb-3">
-				  	<li class="list-group-item bg-success text-white">META</li>
-				  	<li class="list-group-item">R$ {{ number_format($camping->goal, 2) }}</li>
-				</ul>
-
-				<ul class="list-group pb-3">
-				  	<li class="list-group-item bg-success text-white">RECEBIDOS</li>
-				  	<li class="list-group-item">R$ {{ number_format($camping->funds_received, 2) }}</li>
-				</ul>
-
-				<ul class="list-group pb-3">
-				  	<li class="list-group-item msa-bg text-white">CATEGORIA</li>
-				  	<li class="list-group-item">{{ $camping->category->name }}</li>
-				</ul>
-
-				<ul class="list-group pb-3">
+				<ul class="list-group pt-2 pb-3">
 				  	<li class="list-group-item active">DADOS DO ESTUDO</li>
 				  	<li class="list-group-item">Institução: {{ $camping->institution }}</li>
 				  	<li class="list-group-item">Curso: {{ $camping->course }}</li>
@@ -66,4 +61,8 @@
 			</div>
 		</div>
 	</div>
+@endsection
+
+@section('scripts')
+
 @endsection

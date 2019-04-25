@@ -31,13 +31,13 @@
                             </div>
                         </div>
                         <div class="progress">
-                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{ \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}</div>
+                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{ ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}%" aria-valuenow="{{ ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}" aria-valuemin="0" aria-valuemax="100">{{ \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}%</div>
                         </div>
                         {{-- <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: {{ \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ \ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}</div>
                         </div> --}}
                         <p class="card-text pt-2">
-                            <small class="text-muted float-left">{{ FormatTime::diasRestantes($campanha->start_date, $campanha->end_date) }} Dias restantes</small>
+                            <small class="text-muted float-left">{{ FormatTime::diasRestantes($campanha->end_date) }}</small>
                         </p>
                         <div style="margin: 20px; margin-top: 50px;" width="100%" align="center">
                             <a href="{{ route('show.campanha', $campanha->slug) }}" title="Doar"  class="get-started-btn">Doar</a>

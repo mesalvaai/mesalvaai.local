@@ -35,7 +35,7 @@
 
 <!-- ===== Section para students and Donations === -->
 <section class="students pt-5 pb-5" id="crie-sua-campanha">
-    <div class="container-fluid">
+    <div class="container-fluid pt-5">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6">
                 <h4 class="text-dark font-weight-bold text-center">PARA ESTUDANTES</h4>
