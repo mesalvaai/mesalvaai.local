@@ -27,12 +27,12 @@ class WebhookController extends Controller
         // To list Webhooks, using pagination and filter
         //$moip->webhooks()->get(new Pagination(10, 0), "ORD_ID", "ORDER.PAID");
         
-        //$webHookList = $notifications = $moip->notifications()->getList()->getNotifications();
+        $webHookList = $notifications = $moip->notifications()->getList()->getNotifications();
         
         // With pagination
-        $orders = $moip->orders()->getList();
+        //$orders = $moip->orders()->getList();
 
-        dd($orders);
+        dd($webHookList);
         
     }
 
@@ -50,7 +50,7 @@ class WebhookController extends Controller
 
         $notification = $moip->notifications()
             ->addEvent("PAYMENT.*")
-            ->setTarget("http://mesalvaai.com/api/V1/meeting")
+            ->setTarget("http://127.0.0.1:8000/api/V1/webhook-boleto")
             ->create();
 
         return Response::json([
@@ -71,7 +71,7 @@ class WebhookController extends Controller
     {
         $moip = Moip::start();
 
-        $notification = $moip->notifications()->delete('NPR-A5OY1S5CYR58');
+        $notification = $moip->notifications()->delete('NPR-S0KXXPLPJQDH');
         //$notification = $moip->notifications()->delete('NPR-JN2XJU76LRO3');
         return redirect()->route('webhook.index');
     }

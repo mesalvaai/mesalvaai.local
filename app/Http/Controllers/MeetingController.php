@@ -54,7 +54,8 @@ class MeetingController extends Controller
                 $donations = $donation->where('type_payment', $paymentType)->where('payment_id', $paymentId)->first();
                 //convertCoin("BR",0,$xValue); // 12.345.678
                 //dd(MyFunctions::convertCoin("EN", 2,$amount));
-                if( $donations->payment_status != 'AUTHORIZED'){
+                //dd($donations);
+                if( $donations != null and $donations->payment_status != 'AUTHORIZED' ){
                     $campaigns = $donation->find($donations->id)->campaigns()->first();
                     $campaignDonation = CampaignDonation::find($campaigns->pivot->id);
                     $campaignDonation->payment_status = $event;
