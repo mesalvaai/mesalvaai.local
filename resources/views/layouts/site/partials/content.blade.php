@@ -112,11 +112,11 @@
                 </div>
                 <div class="row pb-4 align-items-center">
                     <div class="col-4 d-flex flex-row justify-content-center align-items-center">
-                        <img src="{{ asset('site/img/msa/icons/icon-7.png') }}" alt="" class="img-fluid rounded-circle" width="60%" >
+                        <img src="{{ asset('site/img/msa/icons/icon-8.png') }}" alt="" class="img-fluid rounded-circle" width="60%" >
                     </div>
                     <div class="col-8">
-                        <h6 class="text-muted font-weight-bold mb-0">Facilidades na sua contribuição</h6>
-                        <p class="p-0 m-0">Patrocine um ou mais projetos com boleto ou cartão de crédito (podendo parcelar em até 6x)! </p>
+                        <h6 class="text-muted font-weight-bold mb-0">Compartilhe</h6>
+                        <p class="p-0 m-0">Sempre que fizer uma contribuição em alguma campanha no ME SALVA AÍ compartilhe com seus amigos e essa cultura alcançara muito mais pessoas </p>
                     </div>
                 </div>
                 <div class="row">
@@ -169,19 +169,19 @@
                             <div class="row">
                                 <div class="col-md text-center">
                                     <img src="{{ asset('site/img/msa/icons/bank.png') }}" alt="1" class="img-fluid pb-3" width="50%">
-                                    <p class="text-muted text-b p-0 m-0">Não precisa devolver o dinheiro depois de formado.</p>
+                                    <p class="text-muted text-b p-0 m-0">Não precisa <b>devolver</b> o dinheiro depois de formado.</p>
                                 </div>
                                 <div class="col-md text-center">
                                     <img src="{{ asset('site/img/msa/icons/duties.png') }}" alt="1" class="img-fluid pb-3" width="50%">
-                                    <p class="text-muted text-b p-0 m-0">Receba contribuições dos seus amigos.</p>
+                                    <p class="text-muted text-b p-0 m-0">Receba <b>contribuições</b> dos seus amigos.</p>
                                 </div>
                                 <div class="col-md text-center">
                                     <img src="{{ asset('site/img/msa/icons/school.webp') }}" alt="1" class="img-fluid pb-3" width="50%">
-                                    <p class="text-muted text-b p-0 m-0">Estude em qualquer Universidade dentro ou fora do Brasil.</p>
+                                    <p class="text-muted text-b p-0 m-0">Estude em <b>qualquer</b> Universidade dentro ou fora do Brasil.</p>
                                 </div>
                                 <div class="col-md text-center">
                                     <img src="{{ asset('site/img/msa/icons/mortarboard.webp') }}" alt="1" class="img-fluid pb-3" width="50%">
-                                    <p class="text-muted text-b p-0 m-0">Faça qualquer curso seja de 2 ou seja de 6 anos.</p>
+                                    <p class="text-muted text-b p-0 m-0">Faça <b>qualquer</b> curso seja de 2 ou seja de 6 anos.</p>
                                 </div>
                             </div>
                         </div>

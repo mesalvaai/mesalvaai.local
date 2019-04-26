@@ -34,6 +34,9 @@
 	border: 1px solid #ccc;
 	border-top: none;
 }
+.card-title {display: inline;font-weight: bold;}
+.checkbox.pull-right { margin: 0; }
+.pl-ziro { padding-left: 0px; }
 </style>
 
 {{-- {!! Form::hidden('user_id', $encrypted) !!}
@@ -141,67 +144,88 @@
 	</div>
 </div>
 <div id="cred-card" class="tabcontent">
-	<div class="form-group row">
-		{!! Form::label('card_number', 'Número do cartão:', ['class' => 'col-sm-3 col-form-label'] ) !!}
-		<div class="col-sm-9">
-			{!! Form::text('card_number', null, ['class' => $errors->has('card_number') ? 'form-control is-invalid' : 'form-control', 'id' => 'number']) !!}
-			@if ($errors->has('card_number'))
-			<span class="invalid-feedback" style="display: block;">
-				<strong>{{ $errors->first('card_number') }}</strong>
-			</span>
-			@endif
+	<div class="card">
+		<div class="card-header">
+			<h3 class="card-title">
+                Detalhes do pagamento        
+            </h3>
 		</div>
-	</div>
-	<div class="form-group row">
-		{!! Form::label('card_name', 'Nome do Titular:', ['class' => 'col-sm-3 col-form-label'] ) !!}
-		<div class="col-sm-9">
-			{!! Form::text('card_name', null, ['class' => $errors->has('card_name') ? 'form-control is-invalid' : 'form-control']) !!}
-			@if ($errors->has('card_name'))
-			<span class="invalid-feedback" style="display: block;">
-				<strong>{{ $errors->first('card_name') }}</strong>
-			</span>
-			@endif
-		</div>
-	</div>
-	<div class="form-group row">
-		{!! Form::label('card_cvc', 'Código de segurança: ', ['class' => 'col-sm-3 col-form-label'] ) !!}
-		<div class="col-sm-9">
-			{!! Form::text('card_cvc', null, ['class' => $errors->has('card_cvc') ? 'form-control is-invalid' : 'form-control', 'id' => 'cvc']) !!}
-			@if ($errors->has('card_cvc'))
-			<span class="invalid-feedback" style="display: block;">
-				<strong>{{ $errors->first('card_cvc') }}</strong>
-			</span>
-			@endif
-		</div>
-	</div>
-	<?php  $mes = ['01'=>'Janeiro', '02' =>'Fevereiro', '03' =>'Março', '04' =>'Abril', '05' =>'Maio', '06' =>'Junho', '07' =>'Julho', '08' =>'Agosto', '09' =>'Setembro', '10' =>'Outubro', '11' =>'Novembro', '12' =>'Dezembro'] ?>
-	<?php  $ano = [''=>'',18=>18, 19 =>19, 20 =>20, 22 =>22, 23 =>23, 24 =>24, 25 =>25, 26 =>26, 27 =>27, 28 =>28, 29 =>29, 30 =>30] ?>
-	<div class="form-group row">
-		{!! Form::label('card_expiration', 'Validade:', ['class' => 'col-sm-3 col-form-label'] ) !!}
-		<div class="col-sm-9 row">
-			<div class="form-group col-xs-12 col-md-6">
-				{!! Form::label('month', 'Mês') !!}
-				{!! Form::select('month', $mes, null, ['class' => $errors->has('year') ? 'form-control is-invalid' : 'form-control', 'placeholder' => '-- Selecione um mês --', 'id' => 'month']) !!}
-				@if ($errors->has('month'))
+		<div class="card-body">
+			<div class="form-group row">
+				<div class="col-sm-12">
+					{!! Form::label('card_name', 'Nome do Titular:', ['class' => 'col-form-label'] ) !!}
+					{!! Form::text('card_name', null, ['class' => $errors->has('card_name') ? 'form-control is-invalid' : 'form-control']) !!}
+					@if ($errors->has('card_name'))
 					<span class="invalid-feedback" style="display: block;">
-						<strong>{{ $errors->first('month') }}</strong>
+						<strong>{{ $errors->first('card_name') }}</strong>
 					</span>
-				@endif
+					@endif
+				</div>
 			</div>
-			<div class="form-group col-xs-12 col-md-6">
-				{!! Form::label('year', 'Ano') !!}
-				{!! Form::select('year', $ano, null, ['class' => $errors->has('year') ? 'form-control is-invalid' : 'form-control', 'placeholder' => '00', 'id' => 'year']) !!}
-				@if ($errors->has('year'))
-					<span class="invalid-feedback" style="display: block;">
-						<strong>{{ $errors->first('year') }}</strong>
-					</span>
-				@endif
+			<div class="form-group row">
+				<div class="col-sm-12">
+					{!! Form::label('card_number', 'NÚMERO DO CARTÃO', ['class' => 'col-form-label'] ) !!}
+					<div class="input-group">
+						{!! Form::text('card_number', null, ['class' => $errors->has('card_number') ? 'form-control is-invalid' : 'form-control', 'id' => 'number', 'placeholder'=>'Número de cartão válido']) !!}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="validationTooltipUsernamePrepend"><i class="fa fa-lock"></i></span>
+						</div>
+						@if ($errors->has('card_number'))
+						<span class="invalid-feedback" style="display: block;">
+							<strong>{{ $errors->first('card_number') }}</strong>
+						</span>
+						@endif
+					</div>
+				</div>
+			</div>
+			<?php  //$mes = ['01'=>'Janeiro', '02' =>'Fevereiro', '03' =>'Março', '04' =>'Abril', '05' =>'Maio', '06' =>'Junho', '07' =>'Julho', '08' =>'Agosto', '09' =>'Setembro', '10' =>'Outubro', '11' =>'Novembro', '12' =>'Dezembro'] ?>
+			<?php  $mes = ['01'=>'01', '02' =>'02', '03' =>'03', '04' =>'04', '05' =>'05', '06' =>'06', '07' =>'07', '08' =>'08', '09' =>'09', '10' =>'10', '11' =>'11', '12' =>'12'] ?>
+			<?php  $ano = ["ANO" => 'ANO', 18=>18, 19 =>19, 20 =>20, 22 =>22, 23 =>23, 24 =>24, 25 =>25, 26 =>26, 27 =>27, 28 =>28, 29 =>29, 30 =>30] ?>
+			<div class="row">
+				<div class="col-md-8">
+					{!! Form::label('card_expiration', 'DATA DE VALIDADE', ['class' => 'col-form-label'] ) !!}
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								{!! Form::select('month', $mes, null, ['class' => $errors->has('year') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'MÊS', 'id' => 'month']) !!}
+								@if ($errors->has('month'))
+								<span class="invalid-feedback" style="display: block;">
+									<strong>{{ $errors->first('month') }}</strong>
+								</span>
+								@endif
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								{!! Form::select('year', $ano, null, ['class' => $errors->has('year') ? 'form-control is-invalid' : 'form-control', 'id' => 'year']) !!}
+								@if ($errors->has('year'))
+								<span class="invalid-feedback" style="display: block;">
+									<strong>{{ $errors->first('year') }}</strong>
+								</span>
+								@endif
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						{!! Form::label('cod_expiration', 'CÓDIGO CV', ['class' => 'col-form-label'] ) !!}
+						{!! Form::text('card_cvc', null, ['class' => $errors->has('card_cvc') ? 'form-control is-invalid' : 'form-control', 'id' => 'cvc', 'placeholder' => 'CV']) !!}
+						@if ($errors->has('card_cvc'))
+						<span class="invalid-feedback" style="display: block;">
+							<strong>{{ $errors->first('card_cvc') }}</strong>
+						</span>
+						@endif
+					</div>
+				</div>
+			</div>
+			<textarea name="keyMoip" id="encrypted_value" style="display: none;"></textarea>
+		</div>
+		<div class="card-footer">
+			<div class="col-md">
+				{{ Form::button('CONTRIBUIR', ['type' => 'submit', 'name' =>'op', 'value' => 'CREDIT_CARD', 'class' => 'btn btn-msa btn-sm w-100', 'id' => 'encrypt'] )  }}
 			</div>
 		</div>
-	</div>
-	<textarea name="keyMoip" id="encrypted_value" style="display: none;"></textarea>
-	<div class="col-md">
-		{{ Form::button('CONTRIBUIR', ['type' => 'submit', 'name' =>'op', 'value' => 'CREDIT_CARD', 'class' => 'btn btn-msa btn-sm w-100', 'id' => 'encrypt'] )  }}
 	</div>
 </div>
 
@@ -226,7 +250,7 @@
 			//$("#total_amount").maskMoney();
 			$("#total_amount").maskMoney({thousands:".", decimal:",", symbol:"R$", showSymbol:true, symbolStay:true});
 			$("#number").mask("0000 0000 0000 0000");
-			$("#card_cvc").mask("000");
+			$("#cvc").mask("000");
 			$("#date_of_birth").mask("00/00/0000");
 		});
 	})(jQuery);
