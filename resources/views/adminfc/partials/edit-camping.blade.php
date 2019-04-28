@@ -1,6 +1,3 @@
-{{-- {!! Form::hidden('user_id', $encrypted) !!}
-{!! Form::hidden('user_id', $decrypted) !!} --}}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="form-group pb-4 row">
 	<h4 class="font-weight-bold">{!! Form::label('title', '1. Qual é o título da sua campanha?*  &nbsp; &nbsp;') !!}</h4><i  class="fa fa-question-circle-o" data-toggle="modal" data-target="#titulo-campanha"></i>
@@ -229,12 +226,22 @@
 			</span>
 			@endif
 		</div>
+
+		<div class="form-group col-md">
+			{!! Form::label('status', 'Situaçāo') !!}
+			{!! Form::select('status', [1 => 'Ativo', 0 => 'Inativo'],null, ['class' => $errors->has('status') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+			@if ($errors->has('status'))
+			<span class="invalid-feedback">
+				<strong>{{ $errors->first('status') }}</strong>
+			</span>
+			@endif
+		</div>
 	</div>
-	<h4 class="font-weight-bold">7. Adicione sua localização</h4><br>
+	{{-- <h4 class="font-weight-bold">7. Adicione sua localização</h4><br>
 	<div class="row">
 		<div class="form-group col-md">
 			{!! Form::label('institution', 'Instituição') !!}
-			{!! Form::text('institution', null, ['class' => $errors->has('institution') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+			{!! Form::text('institution', $campaign->student->institution, ['class' => $errors->has('institution') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 			@if ($errors->has('institution'))
 			<span class="invalid-feedback">
 				<strong>{{ $errors->first('institution') }}</strong>
@@ -243,7 +250,7 @@
 		</div>
 		<div class="form-group col-md">
 			{!! Form::label('course', 'Curso') !!}
-			{!! Form::text('course', null, ['class' => $errors->has('course') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+			{!! Form::text('course', $campaign->student->course, ['class' => $errors->has('course') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 			@if ($errors->has('course'))
 			<span class="invalid-feedback">
 				<strong>{{ $errors->first('course') }}</strong>
@@ -262,7 +269,7 @@
 	</div>
 	<div class="row">
 		<div class="form-group col-md">
-			{!! Form::label('location', 'Localizaçāo') !!}
+			{!! Form::label('location', 'Localizaçāo da instituição') !!}
 			{!! Form::text('location', null, ['class' => $errors->has('location') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 			@if ($errors->has('location'))
 			<span class="invalid-feedback">
@@ -279,9 +286,9 @@
 			</span>
 			@endif
 		</div>
-	</div>
+	</div> --}}
 	<br>
-	<h3 class="font-weight-bold">8. Adicione suas redes sociais para promover sua campanha (opcional)</h3><br>
+	<h3 class="font-weight-bold">7. Adicione suas redes sociais para promover sua campanha (opcional)</h3><br>
 	<div class="row">
 
 		<div class="form-group col-md">

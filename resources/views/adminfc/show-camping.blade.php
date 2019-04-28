@@ -24,9 +24,10 @@
 	                <div class="card-body">
 				    	<p class="card-title text-justify">{!! $camping->description !!}</p>
 				  	</div>
-					  <div class="card-footer">
-					  <span>{{url('/campanhas/'.$camping->slug)}}</span>
-					  </div>
+
+				    <div class="card-footer text-center">
+				    	<a target="_blank" class="btn btn-dark" href="{{url('/campanhas/'.$camping->slug)}}" title="Ver campanha"><span>Ver campanha</span></a>
+				    </div>
 
 				</div>
 			</div>
@@ -54,9 +55,9 @@
 
 				<ul class="list-group pt-2 pb-3">
 				  	<li class="list-group-item active">DADOS DO ESTUDO</li>
-				  	<li class="list-group-item">Institução: {{ $camping->institution }}</li>
-				  	<li class="list-group-item">Curso: {{ $camping->course }}</li>
-				  	<li class="list-group-item">Periodo: {{ $camping->period }}</li>
+				  	<li class="list-group-item">Institução: {{ $camping->student->institution }}</li>
+				  	<li class="list-group-item">Curso: {{ $camping->student->course }}</li>
+				  	<li class="list-group-item">Periodo: {{ $camping->student->period }}</li>
 				</ul>
 			</div>
 		</div>

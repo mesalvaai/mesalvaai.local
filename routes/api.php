@@ -18,12 +18,12 @@ use Illuminate\Http\Request;
 // });
 // 
 Route::group(['prefix' => 'V1'], function() {
-	// Route::resource('meeting', 'MeetingController', [
-	// 	'except' => ['create', 'edit']
-	// ]);
-	Route::get('webhook-boleto', 'MeetingController@index')->name('webhooks.boletos');
-	Route::get('webhook-creditcard', 'MeetingController@webhookCreditCard')->name('webhooks.creditcards');
-	Route::get('webhook-json', 'MeetingController@jsonWebhooks')->name('webhooks.store');
+	Route::resource('meeting', 'MeetingController', [
+		'except' => ['create', 'edit']
+	]);
+	// Route::get('webhook-boleto', 'MeetingController@index')->name('webhooks.boletos');
+	// Route::get('webhook-creditcard', 'MeetingController@webhookCreditCard')->name('webhooks.creditcards');
+	// Route::get('webhook-json', 'MeetingController@jsonWebhooks')->name('webhooks.store');
 });
 
 

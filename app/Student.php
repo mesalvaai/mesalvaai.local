@@ -28,4 +28,9 @@ class Student extends Model
     	return $this->belongsTo(City::class);
     }
 
+    public function campaigns()
+    {
+        return $this->hasMany(Campaign::class);
+    }
+
 }

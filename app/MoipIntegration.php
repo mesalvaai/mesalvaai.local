@@ -52,6 +52,20 @@ class MoipIntegration extends Model
 			$payment = $order->payments()->setCreditCardHash($hash, $customer)
 			->execute();
 			if ($payment->getStatus() === 'IN_ANALYSIS') {
+				// $donation = new Donation();
+				// $donation->full_name = $request['full_name'];
+				// $donation->email = $request['email'];
+				// $donation->date_of_birth = $date_of_birth;
+				// $donation->phone = $request['phone'];
+				// $donation->cpf = $request['cpf'];
+				// $donation->total_amount = MyFunctions::FormatCurrencyForDataBase($request['total_amount']);
+				// $donation->donation_date = $current_time;
+				// $donation->type_payment = $request['type_payment'];
+				// $donation->payment_id = $payment->getId();
+				// $donation->payment_status = $payment->getStatus();
+				// $donation->status = 1;
+				// $donation->details = 'Pagamento no boleto';
+				// $save = $donation->save();
 				$donation = new Donation();
 				$donation->full_name = $request['full_name'];
 				$donation->email = $request['email'];
@@ -62,10 +76,30 @@ class MoipIntegration extends Model
 				$donation->donation_date = $current_time;
 				$donation->type_payment = $request['type_payment'];
 				$donation->payment_id = $payment->getId();
+				$donation->order_id = $order->getId();
 				$donation->payment_status = $payment->getStatus();
 				$donation->status = 1;
-				$donation->details = 'Pagamento no boleto';
+				$donation->details = 'Pagamento no cartão';
 				$save = $donation->save();
+
+				if ($save) {
+					$campaign_donation = new CampaignDonation();
+					$campaign_donation->campaign_id = $request['campaign_id'];
+					$campaign_donation->donation_id = $donation->id;
+					$campaign_donation->donation_amount = MyFunctions::FormatCurrencyForDataBase($request['total_amount']);
+					$campaign_donation->type_payment = $payment->getFundingInstrument()->method;
+					$campaign_donation->payment_id = $payment->getId();
+					$campaign_donation->order_id = $order->getId();
+					$campaign_donation->payment_status = $payment->getStatus();
+					$campaign_donation->details = 'Pagamento no boleto';
+					$saveCampaingDonation  = $campaign_donation->save();
+
+					/*if ($saveCampaingDonation) {
+						$campaign = Campaign::where('id', $request->input('campaign_id'))->first();
+					    $campaign->funds_received = $campaign->funds_received + MyFunctions::FormatCurrencyForDataBase($request['total_amount']);
+					    $campaign->update();
+					}*/
+				}
 
 				$data = [
 					'idCard' => $payment->getId(),

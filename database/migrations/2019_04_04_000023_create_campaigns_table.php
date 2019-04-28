@@ -25,6 +25,7 @@ class CreateCampaignsTable extends Migration
             $table->increments('id');
             $table->integer('student_id')->unsigned();
             $table->integer('category_id')->unsigned();
+            //$table->integer('period_id')->unsigned();
             $table->string('title')->nullable();
             $table->decimal('goal', 12, 2)->nullable()->default(null);
             $table->decimal('funds_received', 12, 2)->nullable()->default('0.00');
@@ -50,6 +51,8 @@ class CreateCampaignsTable extends Migration
 
             $table->index(["student_id"], 'fk_campaigns_students1_idx');
 
+            //$table->index(["period_id"], 'fk_campaigns_periods1_idx');
+
             $table->unique(["id"], 'id_UNIQUE');
             $table->nullableTimestamps();
 
@@ -63,6 +66,11 @@ class CreateCampaignsTable extends Migration
                 ->references('id')->on('students')
                 ->onDelete('no action')
                 ->onUpdate('no action');
+
+            /*$table->foreign('periods_id', 'fk_campaigns_periods1_idx')
+                ->references('id')->on('periods')
+                ->onDelete('no action')
+                ->onUpdate('no action');*/
         });
     }
 

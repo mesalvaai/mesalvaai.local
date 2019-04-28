@@ -29,11 +29,11 @@ class CreateRewardsTable extends Migration
             $table->float('donation');
             $table->string('description', 255)->nullable();
             $table->integer('quantity');
-            $table->char('unlimited', 3);
+            $table->char('unlimited', 3)->nullable();
             $table->date('delivery_date')->nullable();
             $table->string('delivery_mode', 45)->nullable();
             $table->char('variations', 1)->nullable();
-            $table->string('thanks', 45)->nullable();
+            $table->text('thanks')->nullable();
             $table->integer('status')->nullable();
             $table->nullableTimestamps();
 

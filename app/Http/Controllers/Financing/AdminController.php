@@ -282,16 +282,17 @@ class AdminController extends Controller
         $idUser = Auth::user()->id;
 
         $studentId = Student::where('user_id', $idUser)->pluck('id');
-
         $student_id = $studentId[0];
+
         
         $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
         $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
         $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
+        $periods = Period::get()->pluck('name', 'id');
 
         $campaign = Campaign::where('id', $idCamping)->first();
         //dd($campaign);
-        return view('adminfc.edit-camping', compact('campaign','idUser', 'student_id', 'states', 'cities', 'encrypted', 'decrypted','categories'));
+        return view('adminfc.edit-camping', compact('campaign','idUser', 'student_id', 'states', 'cities', 'encrypted', 'decrypted','categories', 'periods'));
     }
 
     public function updateCamping(StoreCampingRequest $request, $idCamping)
@@ -309,9 +310,9 @@ class AdminController extends Controller
         $camping->start_date = FormatTime::FormatDataDB($request['start_date']);
         $camping->end_date = FormatTime::FormatDataDB($request['end_date']);
         $camping->goal = str_replace(',','.',str_replace('.','',$request['goal']));
-        // $camping->institution = $request['institution'];
-        // $camping->course = $request['course'];
-        // $camping->period = $request['period'];
+        $camping->institution = $request['institution'];
+        $camping->course = $request['course'];
+        $camping->period = $request['period'];
         $camping->location = $request['location'];
         $camping->facebook = $request['facebook'];
         $camping->twitter = $request['twitter'];

@@ -1,15 +1,11 @@
 
 @extends('layouts.site.appfc')
 
-@section('content')
+@section('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@endsection
 
-{{-- <section id="painel-fc" class="painel-fc">
-    <div class="painel-fc-bg">
-        <div class="container text-center">
-            <h1 class="text-white">CRIAR SUA CAMPANHA</h1>
-        </div>
-    </div>
-</section> --}}
+@section('content')
 
 <section class="painel-form">
     <div class="container">
@@ -17,7 +13,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong class="text-msa">Editar Campanha {{ session()->get('student_id') }}</strong>
+                        <strong class="text-msa">ALTERAR CAMPANHA </strong>
                     </div>
 
                     <div class="card-body">
@@ -29,11 +25,8 @@
                             </div>
                             @endif
                             
-                            
-                            {{-- {{ Form::open(['route' => 'store.camping', 'enctype' => 'multipart/form-data', 'novalidate']) }} --}}
-                            
                             {!! Form::model($campaign, ['route' => ['update.camping', $campaign->id], 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
-                            @include('adminfc.partials.edit-camping')
+                                @include('adminfc.partials.edit-camping')
                             {{ Form::close() }}
 
                             

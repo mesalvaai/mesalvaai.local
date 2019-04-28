@@ -64,8 +64,8 @@ class Location extends Model
 				$url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados";
 				$json = file_get_contents($url);
 				//desfaz o gzip do json
-				//$decoded_content = gzdecode($json);
-				$data = json_decode($json);
+				$decoded_content = gzdecode($json);
+				$data = json_decode($decoded_content);
 
 				foreach ($data as $value) {
 					$states[$value->id] = $value->nome;
