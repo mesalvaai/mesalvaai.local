@@ -256,10 +256,12 @@ class MeetingController extends Controller
         $amount = $payment['resource']['payment']['amount']['total'];
         $method = $payment['resource']['payment']['fundingInstrument']['method'];
 
+        $donation = new Donation();
+
         switch ($status) {
             case 'WAITING':
                 // Atualização de status para Aguardando, indica que a Wirecard está aguardando confirmação de pagamento.
-                $donations = $donation->where('type_payment', $paymentType)->where('payment_id', $paymentId)->first();
+                $donations = $donation->where('type_payment', $method)->where('payment_id', $paymentId)->first();
                 dd($donations->payment_status);
                 foreach ($donations->campaigns as $cam) {
                     echo $cam->pivot->type_payment;
@@ -273,7 +275,7 @@ class MeetingController extends Controller
                 break;
             case 'AUTHORIZED':
                 // Atualização de status para Autorizado
-                $donations = $donation->where('type_payment', $paymentType)->where('payment_id', $paymentId)->first();
+                $donations = $donation->where('type_payment', $method)->where('payment_id', $paymentId)->first();
                 //convertCoin("BR",0,$xValue); // 12.345.678
                 //dd(MyFunctions::convertCoin("EN", 2,$amount));
                 //dd($donations);

@@ -52,20 +52,6 @@ class MoipIntegration extends Model
 			$payment = $order->payments()->setCreditCardHash($hash, $customer)
 			->execute();
 			if ($payment->getStatus() === 'IN_ANALYSIS') {
-				// $donation = new Donation();
-				// $donation->full_name = $request['full_name'];
-				// $donation->email = $request['email'];
-				// $donation->date_of_birth = $date_of_birth;
-				// $donation->phone = $request['phone'];
-				// $donation->cpf = $request['cpf'];
-				// $donation->total_amount = MyFunctions::FormatCurrencyForDataBase($request['total_amount']);
-				// $donation->donation_date = $current_time;
-				// $donation->type_payment = $request['type_payment'];
-				// $donation->payment_id = $payment->getId();
-				// $donation->payment_status = $payment->getStatus();
-				// $donation->status = 1;
-				// $donation->details = 'Pagamento no boleto';
-				// $save = $donation->save();
 				$donation = new Donation();
 				$donation->full_name = $request['full_name'];
 				$donation->email = $request['email'];
@@ -91,7 +77,7 @@ class MoipIntegration extends Model
 					$campaign_donation->payment_id = $payment->getId();
 					$campaign_donation->order_id = $order->getId();
 					$campaign_donation->payment_status = $payment->getStatus();
-					$campaign_donation->details = 'Pagamento no boleto';
+					$campaign_donation->details = 'Pagamento no cartão';
 					$saveCampaingDonation  = $campaign_donation->save();
 
 					/*if ($saveCampaingDonation) {
