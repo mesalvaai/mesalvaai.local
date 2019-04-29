@@ -24,9 +24,15 @@
     });
 
         //Validar Money
-        //$("#goal").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});
         //$("#goal").maskMoney();
-        $("#goal").maskMoney({thousands:".", decimal:",", symbol:"R$", showSymbol:true, symbolStay:true});
+        //$("#goal").maskMoney({decimal:",",thousands:".",precision: 2});
+        //$('#goal').mask('#.##0,00', {reverse: true});
+        $("#goal").each(function (){
+            $(this).maskMoney({decimal:",",thousands:".",precision: 2})
+            .maskMoney('mask',Number($(this).val()));
+        });
         $("#donation").maskMoney();
         $("#total_amount").maskMoney();
+
+        
     })(jQuery);

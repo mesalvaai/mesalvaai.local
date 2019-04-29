@@ -102,6 +102,12 @@ class FormatTime {
         return $data;
     }
 
+    public static function formatDataBrasil($data){
+        $data = explode('-', $data);
+        $data = $data[2].'/'.$data[1].'/'.$data[0];
+        return $data;
+    }
+
     public static function FormatDataDB($dateFormatBR)
     {
          $data = Carbon::createFromFormat('d/m/Y', $dateFormatBR)->toDateString();

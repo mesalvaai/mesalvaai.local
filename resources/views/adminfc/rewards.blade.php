@@ -1,13 +1,6 @@
 @extends('layouts.site.appfc')
  
 @section('content')
-{{-- <section id="painel-fc" class="painel-fc">
-    <div class="painel-fc-bg">
-        <div class="container text-center">
-            <h1 class="text-white">TODA SUAS CAMPANHAS</h1>
-        </div>
-    </div>
-</section> --}}
 	
 <div class="container pt-5 pb-5">
 	@if (session('status'))
@@ -57,23 +50,6 @@
 			</div>
 		</div>
 	@endforeach
-	{{-- <div class="card" style="max-width: 319px;">
-	    @if (Storage::disk('images')->has($camping->file))
-            <img class="card-img-top" data-src="holder.js/100px160/" alt="{{ $camping->title }}" src="{{ url('/miniatura/'. $camping->file) }}" data-holder-rendered="true">
-        @endif
-	    <div class="card-body">
-	      	<h5 class="card-title">{{ $camping->title }}</h5>
-	      	<p class="card-text">{{ $camping->abstract }}</p>
-	      	<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-	      	@foreach ($camping->rewards as $reward)
-	      		{{ $reward->title }}
-	      	@endforeach
-	    </div>
-	    <div class="card-footer">
-	    	<a class="btn btn-outline-info btn-sm w-100 mb-2" href="{{ route('create.rewards', $camping->id ) }}" title="Criar recompensa">Criar Recompensas</a>
-	    	<a class="btn btn-outline-info btn-sm w-100" href="{{ route('create.rewards', $camping->id ) }}" title="Criar recompensa">Ver Campanha</a>
-	    </div>
-	</div> --}}
 </div>
 
 @endsection

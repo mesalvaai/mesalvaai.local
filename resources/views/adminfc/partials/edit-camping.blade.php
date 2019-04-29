@@ -189,12 +189,12 @@
 		{!! Form::label('goal', 'Valor da meta*:') !!}
 		<div class="input-group">
 			<div class="input-group-prepend">
-				<span class="input-group-text">$R</span>
+				<span class="input-group-text">R$</span>
 				<span class="input-group-text">0,00</span>
 			</div>
-			{!! Form::text('goal', null, ['class' => $errors->has('goal') ? 'form-control is-invalid' : 'form-control', 'data-thousands' => '.', 'data-decimal' => ',', 'required']) !!}
+			{!! Form::text('goal', null, ['class' => $errors->has('goal') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 		</div>
-		<small class="text-muted">(mínimo de R$500,00) </small><br>
+		<small class="text-muted">(mínimo de R$20,00) </small><br>
 		
 		@if ($errors->has('goal'))
 		<span class="invalid-feedback">

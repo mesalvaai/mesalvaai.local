@@ -67,6 +67,7 @@ return [
                 'image/jpeg',
                 'image/pjpeg',
                 'image/png',
+                'image/jpg',
                 'image/gif',
                 'image/svg+xml',
             ],
@@ -79,6 +80,7 @@ return [
                 'image/jpeg',
                 'image/pjpeg',
                 'image/png',
+                'image/jpg',
                 'image/gif',
                 'image/svg+xml',
                 'application/pdf',
@@ -128,6 +130,7 @@ return [
         'image/jpeg',
         'image/pjpeg',
         'image/png',
+        'image/jpg',
     ],
 
     'thumb_img_width'  => 200,

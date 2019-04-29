@@ -11,7 +11,6 @@ use App\Http\Requests\Financing\StoreStudentRequest;
 use App\Http\Requests\Financing\StudentUpdateRequest;
 use App\Http\Requests\Financing\StoreRewardRequest;
 
-
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,7 +28,6 @@ use App\User;
 use Image;
 use FormatTime;
 
-
 class AdminController extends Controller
 {
     public function __construct()
@@ -38,6 +36,7 @@ class AdminController extends Controller
     	//$this->middleware('IsRoleAluno:role_fc');
         //$this->middleware('IsRoleAluno:role_fc');
     }
+
     public function index(Request $request)
     {
     	$request->user()->authorizeRoles(['role_fc']);
@@ -291,7 +290,7 @@ class AdminController extends Controller
         $periods = Period::get()->pluck('name', 'id');
 
         $campaign = Campaign::where('id', $idCamping)->first();
-        //dd($campaign);
+        
         return view('adminfc.edit-camping', compact('campaign','idUser', 'student_id', 'states', 'cities', 'encrypted', 'decrypted','categories', 'periods'));
     }
 

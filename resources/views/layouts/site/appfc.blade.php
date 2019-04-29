@@ -62,7 +62,7 @@
 
   <!-- Contact Form JavaScript File -->
   <script src="{{ asset('site/js/jquery.mask.min.js') }}" type="text/javascript"></script>
-  <script src="{{ asset('site//lib/maskMoney/jquery.maskMoney.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('site/lib/maskMoney/jquery.maskMoney.min.js') }}" type="text/javascript"></script>
   <script src="{{ asset('site/contactform/contactform.js') }}"></script>
  
   <!-- Template Main Javascript File -->
