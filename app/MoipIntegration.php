@@ -30,7 +30,7 @@ class MoipIntegration extends Model
 			->setPhone($phone['ddd'], $phone['numero'])
 			->setTaxDocument($request['cpf'])
 			->addAddress('SHIPPING',
-				'Rua de teste do SHIPPING', 101,
+				'CACHOEIRA', 101,
 				'Bairro de Capoeiruçu', 'Bahia', 'BA',
 				'44.300-000', 197)
 			->create();
@@ -40,7 +40,7 @@ class MoipIntegration extends Model
 		try {
             //set OwnId único, adiciona item [doação, a quantidade, detalhe, e valor no ex. 100 R$]
 			$order = $moip->orders()->setOwnId(uniqid())
-			->addItem("Doação",1, "sku1", $total_amount)
+			->addItem($request->campaign_title,1, "sku1", $total_amount)
 			->setCustomer($customer)
 			->create();
 		} catch (Exception $e) {
@@ -79,12 +79,6 @@ class MoipIntegration extends Model
 					$campaign_donation->payment_status = $payment->getStatus();
 					$campaign_donation->details = 'Pagamento no cartão';
 					$saveCampaingDonation  = $campaign_donation->save();
-
-					/*if ($saveCampaingDonation) {
-						$campaign = Campaign::where('id', $request->input('campaign_id'))->first();
-					    $campaign->funds_received = $campaign->funds_received + MyFunctions::FormatCurrencyForDataBase($request['total_amount']);
-					    $campaign->update();
-					}*/
 				}
 
 				$data = [
@@ -117,10 +111,11 @@ class MoipIntegration extends Model
 			->setBirthDate($date_of_birth)
 			->setTaxDocument($request['cpf'])
 			->setPhone($phone['ddd'], $phone['numero'])
-			->addAddress('SHIPPING',
-				'Rua de teste do SHIPPING', 101,
+			//->addAddress('SHIPPING','', '', '', '', '', '', '')
+			/*->addAddress('SHIPPING',
+				'CACHOEIRA', 101,
 				'Bairro de Capoeiruçu', 'Bahia', 'BA',
-				'44.300-000', 197)
+				'44.300-000', 197)*/
 			->create();
 		} catch (Exception $e) {
 			dd($e->__toString());
@@ -129,7 +124,7 @@ class MoipIntegration extends Model
 		try {
             //set OwnId único, adiciona item [doação, a quantidade, detalhe, e valor no ex. 100 R$]
 			$order = $moip->orders()->setOwnId(uniqid())
-			->addItem("Doação",1, "sku1", $total_amount)
+			->addItem($request->campaign_title,1, "sku1", $total_amount)
 			->setCustomer($customer)
 			->create();
 
@@ -141,7 +136,7 @@ class MoipIntegration extends Model
 			$logo_uri = 'https://cdn.moip.com.br/wp-content/uploads/2016/05/02163352/logo-moip.png';
 			$expiration_date = new Carbon(date('Y-m-d', strtotime('+4 days')));
 
-			$instruction_lines = ['INSTRUÇÃO 1', 'INSTRUÇÃO 2', 'INSTRUÇÃO 3'];
+			$instruction_lines = ['', '', ''];
 
 			$payment = $order->payments()  
 			->setBoleto($expiration_date, $logo_uri, $instruction_lines)
@@ -176,12 +171,6 @@ class MoipIntegration extends Model
 					$campaign_donation->payment_status = $payment->getStatus();
 					$campaign_donation->details = 'Pagamento no boleto';
 					$saveCampaingDonation  = $campaign_donation->save();
-
-					/*if ($saveCampaingDonation) {
-						$campaign = Campaign::where('id', $request->input('campaign_id'))->first();
-					    $campaign->funds_received = $campaign->funds_received + MyFunctions::FormatCurrencyForDataBase($request['total_amount']);
-					    $campaign->update();
-					}*/
 				}
 
 				$url = file_get_contents($payment->getHrefPrintBoleto());

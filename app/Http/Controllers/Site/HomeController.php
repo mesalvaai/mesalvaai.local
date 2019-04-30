@@ -81,10 +81,9 @@ class HomeController extends Controller
         
         if ( ($request->type_payment === 'CREDIT_CARD') AND ($request->op === 'CREDIT_CARD') ) {
             
-            //dd($campaignSlug->slug);
             $pagoComCartao = MoipIntegration::getPagamentoCreditCard($request);
             $campaignSlug = Campaign::where('id', $request['campaign_id'])->first();
-            //$campaignSlug = Campaign::find($request['campaign_id']);
+            
             return redirect()->route('show.campanha', $campaignSlug->slug)->with('status', 'Obrigado pos sua contribuição');
 
         } elseif ( ($request->type_payment === 'BOLETO') AND ($request->op === 'BOLETO') ){

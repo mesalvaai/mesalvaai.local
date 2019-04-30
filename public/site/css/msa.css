@@ -1179,6 +1179,10 @@ sub-footer Section
   width: 100%;
   padding-top: 6em;
 }
+.campaing-for-student .card img{
+    width: 100%;
+    height: auto;
+}
 .campanhas-ativas .get-started-btn {
   background: #0071DD;
   display: inline-block;

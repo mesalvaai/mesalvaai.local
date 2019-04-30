@@ -9,7 +9,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
                 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
                     <a class="navbar-brand d-none d-sm-block" href="{{ url('/') }}">
-                        <h1 class="m-0"><a href="/" class="scrollto"><strong>Me Salva Aí</strong></a></h1>
+                        <h1 class="m-0"><a href="/" class="scrollto"><strong>MSA</strong></a></h1>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                             <span class="navbar-toggler-icon"></span>

@@ -42,6 +42,7 @@
 {{-- {!! Form::hidden('user_id', $encrypted) !!}
 {!! Form::hidden('user_id', $decrypted) !!} --}}
 {!! Form::hidden('campaign_id', $campanha->id) !!}
+{!! Form::hidden('campaign_title', $campanha->title) !!}
 <div class="form-group row">
 	{!! Form::label('full_name', 'Nome completo', ['class' => 'col-sm-3 col-form-label'] ) !!}
 	<div class="col-sm-9">
@@ -131,7 +132,7 @@
 		{!! Form::radio('type_payment','CREDIT_CARD', null, ['onclick' => 'openMethodPago(event, "cred-card")']) !!}
 		{!! Form::label('type_payment', 'Cartão de crédito') !!}
 		<br>
-		<img src="{{ asset('site/img/donations/cartao.png') }}"  width= "160" height= "100">
+		<img src="{{ asset('site/img/donations/cartao.png') }}"  width= "160" height= "100" style="width: 160px;">
 
 	</div>
 	
@@ -139,7 +140,7 @@
 		{!! Form::radio('type_payment', 'BOLETO', null,['onclick' => 'openMethodPago(event, "boleto")']) !!}
 		{!! Form::label('type_payment', 'Boleto') !!}
 		<br>
-		<img src="{{ asset('site/img/donations/boleto.png') }}">
+		<img src="{{ asset('site/img/donations/boleto.png') }}" style="width: 50px;">
 
 	</div>
 </div>

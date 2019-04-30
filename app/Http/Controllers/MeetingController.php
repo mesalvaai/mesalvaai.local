@@ -101,6 +101,108 @@ class MeetingController extends Controller
         return response()->json($response, 200);
     }
 
+    public function store(Request $request)
+    {
+        //$moip = Moip::start();
+
+        header('Content-Type: application/json; charset=utf-8');
+        $json = file_get_contents('php://input', true);
+        $resultado = json_decode($json);
+
+        $payment    = $request->all();
+
+        $paymentId = $payment['resource']['payment']['id'];
+        $evento = $payment['event']; //PAYMENT.AUTHORIZED
+        $status = $payment['resource']['payment']['status']; //CREATED, WAITING, IN_ANALYSIS, PRE_AUTHORIZED, AUTHORIZED, CANCELLED, REFUNDED, REVERSED, SETTLED.
+        $amount = $payment['resource']['payment']['amount']['total'];
+        $method = $payment['resource']['payment']['fundingInstrument']['method'];
+
+        $donation = new Donation();
+
+        switch ($status) {
+            case 'WAITING':
+                // Atualização de status para Aguardando, indica que a Wirecard está aguardando confirmação de pagamento.
+                $donations = $donation->where('type_payment', $method)->where('payment_id', $paymentId)->first();
+
+                if ($donations != null ) {
+                    return response()->json('Meeting Created',200);
+                } else{
+                    return response()->json('Erro Meeting Created',500);
+                }
+
+                // foreach ($donations->campaigns as $cam) {
+                //     echo $cam->pivot->type_payment;
+                // }
+                
+                break;
+            case 'IN_ANALYSIS':
+                // Status Em Análise, indica que o pagamento está passando por uma análise de risco dentro da Wirecard.
+                $donations = $donation->where('type_payment', $method)->where('payment_id', $paymentId)->first();
+                if ($donations != null ) {
+                    return response()->json('Meeting Created',200);
+                } else{
+                    return response()->json('Erro Meeting Created',500);
+                }
+                break;
+            case 'PRE_AUTHORIZED':
+                // Pré-autorizado: esse status indica a reserva do valor do pagamento no cartão do cliente.
+                $donations = $donation->where('type_payment', $method)->where('payment_id', $paymentId)->first();
+                if ($donations != null ) {
+                    return response()->json('Meeting Created',200);
+                } else{
+                    return response()->json('Erro Meeting Created',500);
+                }
+
+                break;
+            case 'AUTHORIZED':
+                // Atualização de status para Autorizado
+                $donations = $donation->where('type_payment', $method)->where('payment_id', $paymentId)->first();
+                if( $donations != null and $donations->payment_status != 'AUTHORIZED' ){
+                    $campaigns = $donation->find($donations->id)->campaigns()->first();
+                    $campaignDonation = CampaignDonation::find($campaigns->pivot->id);
+                    $campaignDonation->payment_status = $status;
+                    $campaignDonation->details = 'Pagamento Autorizado no' . $method;
+                    if ($campaignDonation->save()) {
+                        $donation = Donation::where('id', $donations->id)->first();
+                        $donation->payment_status = $status;
+                        if ($donation->update()) {
+                            $campaign = Campaign::where('id', $campaigns->id)->first();
+                            $campaign->funds_received = $campaign->funds_received + MyFunctions::convertCoin("EN", 2,$amount);
+                            $campaign->update();
+                        }
+                        
+                    }
+                    return response()->json('Meeting Created',200);
+                }
+                return response()->json('Erro Meeting Created',500);
+                // foreach ($donations->campaigns as $cam) {
+                //     echo $cam->pivot->type_payment;
+                // }
+
+                break;
+            case 'CANCELLED':
+                // Pagamento Cancelado
+                break;
+            case 'REFUNDED':
+                // Pagamento reembolsado (quem processa reembolsos são Wirecard e/ou Merchant).
+                break;
+            case 'REVERSED':
+                // Estornado não reconhecimento do pagamento em sua fatura).
+                break;
+            case 'SETTLED':
+                // Atualização para Concluído, valor disponível para transferência em conta bancária (saque).
+                break;
+            default:
+                break;
+        } 
+        $response = [
+            'msg' => 'Meeting Created',
+            'data' => $status
+        ];
+
+        return response()->json($response, 200);
+    }
+
     public function jsonWebhooks(Request $request)
     {
         $payment = '{  
@@ -240,126 +342,7 @@ class MeetingController extends Controller
         return response()->json($response, 200);
     }
 
-    public function store(Request $request)
-    {
-        //$moip = Moip::start();
-
-        header('Content-Type: application/json; charset=utf-8');
-        $json = file_get_contents('php://input', true);
-        $resultado = json_decode($json);
-
-        $payment    = $request->all();
-
-        $paymentId = $payment['resource']['payment']['id'];
-        $evento = $payment['event']; //PAYMENT.AUTHORIZED
-        $status = $payment['resource']['payment']['status']; //AUTHORIZED
-        $amount = $payment['resource']['payment']['amount']['total'];
-        $method = $payment['resource']['payment']['fundingInstrument']['method'];
-
-        $donation = new Donation();
-
-        switch ($status) {
-            case 'WAITING':
-                // Atualização de status para Aguardando, indica que a Wirecard está aguardando confirmação de pagamento.
-                $donations = $donation->where('type_payment', $method)->where('payment_id', $paymentId)->first();
-                dd($donations->payment_status);
-                foreach ($donations->campaigns as $cam) {
-                    echo $cam->pivot->type_payment;
-                }
-                break;
-            case 'IN_ANALYSIS':
-                // Status Em Análise, indica que o pagamento está passando por uma análise de risco dentro da Wirecard.
-                break;
-            case 'PRE_AUTHORIZED':
-                // Pré-autorizado: esse status indica a reserva do valor do pagamento no cartão do cliente.
-                break;
-            case 'AUTHORIZED':
-                // Atualização de status para Autorizado
-                $donations = $donation->where('type_payment', $method)->where('payment_id', $paymentId)->first();
-                //convertCoin("BR",0,$xValue); // 12.345.678
-                //dd(MyFunctions::convertCoin("EN", 2,$amount));
-                //dd($donations);
-                if( $donations != null and $donations->payment_status != 'AUTHORIZED' ){
-                    $campaigns = $donation->find($donations->id)->campaigns()->first();
-                    $campaignDonation = CampaignDonation::find($campaigns->pivot->id);
-                    $campaignDonation->payment_status = $status;
-                    $campaignDonation->details = 'Pagamento Autorizado no' . $method;
-                    if ($campaignDonation->save()) {
-                        $donation = Donation::where('id', $donations->id)->first();
-                        $donation->payment_status = $status;
-                        if ($donation->update()) {
-                            $campaign = Campaign::where('id', $campaigns->id)->first();
-                            $campaign->funds_received = $campaign->funds_received + MyFunctions::convertCoin("EN", 2,$amount);
-                            $campaign->update();
-                        }
-                        
-                    }
-                    return response()->json('Meeting Created',200);
-                }
-                return response()->json('Erro Meeting Created',500);
-                // foreach ($donations->campaigns as $cam) {
-                //     echo $cam->pivot->type_payment;
-                // }
-
-                break;
-            case 'CANCELLED':
-                // Pagamento Cancelado
-                break;
-            case 'REFUNDED':
-                // Pagamento reembolsado (quem processa reembolsos são Wirecard e/ou Merchant).
-                break;
-            case 'REVERSED':
-                // Estornado não reconhecimento do pagamento em sua fatura).
-                break;
-            case 'SETTLED':
-                // Atualização para Concluído, valor disponível para transferência em conta bancária (saque).
-                break;
-            default:
-                break;
-        } 
-        $response = [
-            'msg' => 'Meeting Created',
-            'data' => $status
-        ];
-
-        return response()->json($response, 200);
-
-        /*$payment = $moip->payments()->get("$paymentId");
-        $paymentId = $payment->getId(); //PAY-68JDI01L0E8C
-        $event = $payment->getStatus(); //CREATED, WAITING, IN_ANALYSIS, PRE_AUTHORIZED, AUTHORIZED, CANCELLED, REFUNDED, REVERSED, SETTLED.
-        $amount = $payment->getAmount()->total; //Monto da doação
-        $paymentType = $payment->getFundingInstrument()->method; //BOLETO, CRETIT_CARD */
-
-        // $donation = new Donation();
-        // $donations = $donation->where('type_payment', $method)->where('payment_id', $paymentId)->first();
-        // $donations->payment_status = $status;
-        // $donations->details = $method . 'yeha';
-        // if ($donations->update()) {
-        //     return response()->json('Meeting Created',200);
-        // } else {
-        //     return response()->json('Erro Meeting Created',500);
-        // }
-
-        // $fp = file_put_contents( 'request.txt', $resultado );
-        // $name = 'request.txt';
-        // $text = $fees;
-        // $file = fopen($name, 'a');
-        // fwrite($file, $text);
-        // fclose($file);
-        
-        // $meetting = [
-        //     'id' => $paymentId,
-        //     'status' => $status,
-        //     'amount' => $amount
-        // ];
-
-        // $response = [
-        //     'msg' => 'Meeting Created',
-        //     'data' => $meetting
-        // ];
-
-        // return response()->json($response, 200);
-    }
+    
 
     /**
      * Store a newly created resource in storage.
