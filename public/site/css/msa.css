@@ -160,8 +160,8 @@
 .box-slide .text-one-slide{
     color: #fff;
     font-family: Montserrat,Helvetica,Arial,Sans-Serif;
-    font-size: 3.5rem;
-    line-height: 4rem;
+    font-size: 3rem;
+    line-height: 3rem;
     font-weight: 800;
     transition: .2s cubic-bezier(.55,0,.1,1);
     letter-spacing: 0;
@@ -169,15 +169,15 @@
 .box-slide .text-two-slide{
     color: #fff;
     font-family: Montserrat,Helvetica,Arial,Sans-Serif;
-    font-size: 5rem;
-    line-height: 5rem;
+    font-size: 4rem;
+    line-height: 4rem;
     font-weight: 800;
     transition: .2s cubic-bezier(.55,0,.1,1);
     letter-spacing: 0;
 }
 .box-slide .text-two-slide span{
     font-family: "Source Sans Pro",Helvetica,Arial,Sans-Serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 300;
 }
 /*--------------------------------------------------------------
@@ -1452,4 +1452,78 @@ sub-footer Section
 .slideInRight {
   -webkit-animation-name: slideInRight;
   animation-name: slideInRight;
+  font-weight: 
 }
+
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+    .box-slide .text-two-slide {
+        font-size: 2rem;
+        line-height: 2rem;
+    }
+    .box-slide .text-one-slide {
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+    }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .box-slide .text-one-slide {
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+    }
+    .box-slide .text-two-slide {
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+    }
+    .box-slide .text-two-slide span {
+        font-size: 1.5rem;
+    }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .box-slide .text-one-slide {
+        font-size: 2rem;
+        line-height: 2rem;
+    }
+    .box-slide .text-two-slide {
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+    }
+    .box-slide .text-two-slide span {
+        font-size: 1.5rem;
+    }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .box-slide .text-one-slide {
+        font-size: 2.8rem;
+        line-height: 2.8rem;
+    }
+    .box-slide .text-two-slide {
+        font-size: 3rem;
+        line-height: 3rem;
+    }
+    .box-slide .text-two-slide span {
+        font-size: 2rem;
+    }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .box-slide .text-one-slide {
+        font-size: 2.8rem;
+        line-height: 2.8rem;
+    }
+    .box-slide .text-two-slide {
+        font-size: 4rem;
+        line-height: 4rem;
+    }
+    .box-slide .text-two-slide span {
+        font-size: 2rem;
+    }
+}
+
