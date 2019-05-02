@@ -4,6 +4,7 @@ namespace App\Http\Requests\Financing;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use MyFunctions;
 
 class StoreCampingRequest extends FormRequest
 {
@@ -24,7 +25,8 @@ class StoreCampingRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [];
+        $rules = [
             'title'    =>'required|min:5|max:250',
             'abstract'    =>'required|min:5|max:160',
             'description'   =>'required|min:5',
@@ -32,10 +34,17 @@ class StoreCampingRequest extends FormRequest
             'end_date'   =>'required',
             'file_path' => 'file|mimes:png,gif,jpg,jpeg,mp4',
             'goal' => 'required',
+            'goal' => [function ($attribute, $value, $fail) {
+                $valor = MyFunctions::FormatCurrencyForScreen($value);
+                if ($valor < 1000) {
+                    $fail('O valor mínimo da meta é R$ 1.000,00');
+                }
+            }],
             'student_id'   =>'required|integer',
             'category_id' =>'required|integer',
             'terms_of_use' => 'required|integer'
         ];
+        return $rules;
     }
     
     public function messages(){
@@ -55,6 +64,7 @@ class StoreCampingRequest extends FormRequest
             'abstract.required' => 'O campo de resumo é obrigatório.',
             'description.required' => 'O campo de descrição é obrigatório.',
             'goal.required' => 'O campo de meta deve ser preenchido.',
+            'goal.min' => 'O valor minimo é R$ 1.000,00.',
 
             'terms_of_use.required' => 'Você deve aceitar os termos de uso.',
             'unique' => 'Este ":attribute" já se encontra cadastrado no sistema.',

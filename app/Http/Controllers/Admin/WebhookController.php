@@ -50,7 +50,7 @@ class WebhookController extends Controller
 
         $notification = $moip->notifications()
             ->addEvent("PAYMENT.*")
-            ->setTarget("http://127.0.0.1:8000/api/V1/webhook-boleto")
+            ->setTarget("http://mesalvaai.com/api/V1/meeting")
             ->create();
 
         return Response::json([

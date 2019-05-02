@@ -12,12 +12,14 @@
             <div class="col-lg-6">
                 <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
                     <a href="#intro" class="scrollto">Home</a>
-                    <a href="#about" class="scrollto">Termos de uso</a>
-                    <a href="#">Politicas de privacidade</a>
+                    <a href="#" data-toggle="modal" data-target="#termos-de-uso">Termos de uso</a>
+                    <a href="#" data-toggle="modal" data-target="#politicas">Politicas de privacidade</a>
                 </nav>
             </div>
         </div>
     </div>
 </footer>
+@include('layouts.site.partials.termos-de-uso', ['termos' => 'tremos-de-uso'])
+@include('layouts.site.partials.politicas', ['termos' => 'politicas'])
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>

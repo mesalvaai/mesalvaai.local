@@ -1118,6 +1118,9 @@ sub-footer Section
     margin-top: 10%;
     margin-right: -15px!important;
   }
+  #myCarousel .carousel-item .mask {
+    top: 5em!important;
+  }
 }
 
 /*Painel Financiamento Colectivo */

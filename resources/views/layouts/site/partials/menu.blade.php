@@ -9,7 +9,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
                 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
                     <a class="navbar-brand d-none d-sm-block" href="{{ url('/') }}">
-                        <h1 class="m-0"><a href="/" class="scrollto"><strong>MSA</strong></a></h1>
+                        <h1 class="m-0"><a href="/" class="scrollto">Me Salva Aí</a></h1>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                             <span class="navbar-toggler-icon"></span>
@@ -21,9 +21,11 @@
 
                         </ul>
 
+                        <b class="pr-5"><i class="fab fa-whatsapp" style="font-size: 16px; color: green;"> </i> (75)99157-0597</b>
+
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav nav-menu">
-                            <li class="nav-item"><a class="nav-link" href="/#crie-sua-campanha">CRIAR SUA CAMPANHA</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="/#crie-sua-campanha">CRIE SUA CAMPANHA</a></li> 
                             <li class="nav-item"><a class="nav-link" href="{{route('financing.index')}}">ENCONTRE SUA BOLSA</a></li>
                             @auth
                                 <li class="nav-item"><a class="nav-link" href="{{route('financiamento.index')}}">MINHAS CAMPANHAS</a></li>

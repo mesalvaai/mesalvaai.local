@@ -41,7 +41,6 @@ class AdminController extends Controller
     {
     	$request->user()->authorizeRoles(['role_fc']);
     	$idUser = Auth::user()->students[0]['id'];
-        //dd(Auth::user()->students[0]['id']);
         $campings = Campaign::where('student_id', $idUser)->orderBy('id', 'ASC')->paginate();
         if($campings->count() == 0){
             return redirect()->route('create.camping')->with('status', 'Você ainda não criou sua campanha, está na hora de começar!!');
@@ -79,9 +78,6 @@ class AdminController extends Controller
         } else {
             $encrypted = Crypt::encrypt($idUser);
             $decrypted = Crypt::decrypt($encrypted);
-
-            // $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
-            // $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
             $countries = Location::getPaises();
 
            //Add ID do pais do usuário
@@ -136,8 +132,6 @@ class AdminController extends Controller
         $encrypted = Crypt::encrypt($idUser);
         $decrypted = Crypt::decrypt($encrypted);
 
-        // $states = State::orderBy('name', 'ASC')->pluck('name', 'id');
-        // $cities = City::orderBy('name', 'ASC')->pluck('name', 'id');
         //Add ID do pais do usuário
         //Brasil id = 3469034
         $idPais = 3469034;
@@ -163,10 +157,8 @@ class AdminController extends Controller
     {
         $request->user()->authorizeRoles(['role_fc']);
         $validated = $request->validated();
-        //dd($request->input('data_of_birth'));
 
         $student = Student::find($idStudent);
-        //$student->fill($request->all())->save();
         $student->user_id = Auth::user()->id;
         $student->name = $request->input('name');
         $student->email = $request->input('email');
@@ -246,7 +238,7 @@ class AdminController extends Controller
         $camping->save();
         // Deletando uma sessão específica:
         $request->session()->put('campaign_id', $camping->id);
-        //$request->session()->forget('student_id');
+
         if ($request['op'] == 'add_r') {
             return redirect()->route('create.rewards', $camping->id)->with('status', 'Vamos lá, crie suas recompensas');
         } elseif ($request['op'] == 'add') {
@@ -323,50 +315,15 @@ class AdminController extends Controller
         $image = $request->file('file_path');
 
         if ($image) {
-            //$image_path = time().$image->getClientOriginalName();
             $image_path = time().'_'.str_random(4).'.'.$image->getClientOriginalExtension();
             \Storage::disk('images')->put($image_path, \File::get($image));
             $camping->file_path = $image_path;
         }
-        // if ($image) {
-        //     //get filename with extension
-        //     //$filenamewithextension = $request->file('profile_image')->getClientOriginalName();
-        //     $filenamewithextension = $image->getClientOriginalName(); //1534820296vestibular.jpg
-
-
-        //     //get filename without extension, Ex 1534820358vestibular
-        //     $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-
-        //     //get file extension , Ex = jpg
-        //     $extension = $image->getClientOriginalExtension();
-
-
-        //     //filename to store
-        //     $filenametostore = $filename.'_'.time().'.'.$extension;
-
-        //     //Upload File
-        //     //$request->file('profile_image')->storeAs('public/profile_images', $filenametostore);
-        //     //$request->file('profile_image')->storeAs('public/profile_images/thumbnail', $filenametostore);
-        //     $image->storeAs('public/uploads/campanha', $filenametostore);
-        //     $image->storeAs('public/uploads/campanha/thumbnail', $filenametostore);
-
-
-        //     //Resize image here
-        //     $thumbnailpath = public_path('uploads/campanha/thumbnail/'.$filenametostore);
-        //     //Image::make(Input::file('artist_pic')->getRealPath())->resize(120,75);
-        //     $img = Image::make($image->getRealPath())->resize(400, 150, function($constraint) {
-        //         $constraint->aspectRatio();
-        //     });
-        //     $img->save($thumbnailpath);
-        //     $camping->file_path = $thumbnailpath;
-        // }
 
         $camping->save();
 
         // Deletando uma sessão específica:
         $request->session()->put('campaign_id', $camping->id);
-        //$request->session()->forget('student_id');
-        //return redirect()->route('create.rewards')->with('status', 'Sua campanha foi atualizado com sucesso');
         if ($request['op'] == 'add_r') {
             return redirect()->route('create.rewards', $camping->id)->with('status', 'Vamos lá, crie suas recompensas');
         } elseif ($request['op'] == 'add') {
@@ -417,8 +374,8 @@ class AdminController extends Controller
     }
 
     /**
-     * [Inicio Modulo de Recompensas]
-     */
+    * [Inicio Modulo de Recompensas]
+    */
     public function listRewards(Request $request)
     {
         $request->user()->authorizeRoles(['role_fc']);
@@ -443,7 +400,6 @@ class AdminController extends Controller
     public function storeRewards(StoreRewardRequest $request)
     {
         $request->user()->authorizeRoles(['role_fc']);
-        //$validated = $request->validated();
         
         $rewards = new Reward();
         $rewards->user_id = Auth::user()->id;
@@ -486,7 +442,6 @@ class AdminController extends Controller
     public function updateReward(Request $request, $idReward)
     {
         $request->user()->authorizeRoles(['role_fc']);
-        //$validated = $request->validated();
         
         $rewards = Reward::find($idReward);
         $rewards->user_id = Auth::user()->id;
@@ -507,8 +462,6 @@ class AdminController extends Controller
         // Deletando uma sessão específica:
         $request->session()->forget('student_id');
         $request->session()->forget('campaign_id');
-
-        //return redirect()->route('edit.reward', $idReward)->with('status', 'Dados Atualizados!!');
 
         if ($request['op'] == 'add_r') {
             return redirect()->route('create.rewards', $rewards->campaign_id)->with('status', 'Vamos lá, crie mais uma recompensas');

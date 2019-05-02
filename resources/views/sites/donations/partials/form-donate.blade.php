@@ -113,7 +113,7 @@
 			<span class="input-group-text">0,00</span>
 		</div>
 		{!! Form::text('total_amount', null, ['class' => $errors->has('total_amount') ? 'form-control is-invalid' : 'form-control','id' => 'total_amount', 'required']) !!}
-		<small class="text-warning">(mínimo de R$20,00) </small>
+		<small class="text-warning">(mínimo de R$10,00) </small>
 		@if ($errors->has('total_amount'))
 			<span class="invalid-feedback">
 				<strong>{{ $errors->first('total_amount') }}</strong>

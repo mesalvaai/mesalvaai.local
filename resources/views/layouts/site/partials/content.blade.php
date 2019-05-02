@@ -3,8 +3,8 @@
     <section id="home" style="padding-top: 80px;">
         <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="mask flex-center" style="background: url({{ asset('site/img/msa/slides/slide-5.jpg') }});">
+                {{-- <div class="carousel-item active">
+                    <div class="mask flex-center" style="background: url({{ asset('site/img/msa/slides/slide-10.jpg') }});">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-7 col-12 order-md-1 order-2">
@@ -15,13 +15,30 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="mask flex-center" style="background: url({{ asset('site/img/msa/slides/slide-6.jpg') }});">
+                </div> --}}
+                <div class="carousel-item active">
+                    <div class="mask flex-center" style="background: url({{ asset('site/img/msa/slides/slide-11.jpg') }});background-position:center top;">                        
                         <div class="container">
                             <div class="row align-items-center">
                                 <div class="col-md-6 col-12 order-md-1 order-2">
-                                    <h4 style="padding-top: 30%;"><b style="color: #1d2126">Não</b> estuda porque tá sem grana? <b style="color: #B300A1">Me Salva Ai</b> é uma opção ideal pra <b style="color: #F52A2A">você</b></h4>
+                                    <h4 style="padding-top: 30%;line-height: 50px;"><b style="color: #F52A2A">Não</b> estuda porque tá sem grana? <b style="color: #0071dd">Me Salva Aí</b> é uma opção ideal pra <b style="color: #C3C105">você</b></h4>
+                                </div>
+                                <div class="col-md-5 col-12 order-md-2 order-1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="mask flex-center" style="background: url({{ asset('site/img/msa/slides/slide-11.jpg') }});background-position:center top;">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-md-6 col-12 order-md-1 order-2">
+                                    <h2 class="text-white" style="padding-top: 30%;font-size: 3rem;">Melhor plataforma <br>
+                                        <strong class="text-primary">educacional</strong> <br>
+                                        <m class="text-white" style="font-size: 1.5rem;;font-weight: 300;">Viva seu sonho com a Me Salva Aí</m>
+                                    </h2>
+                                    
                                 </div>
                                 <div class="col-md-5 col-12 order-md-2 order-1">
                                 </div>
@@ -63,7 +80,7 @@
                     </div>
                     <div class="col-8">
                         <h6 class="text-muted font-weight-bold mb-0">Divulgue</h6>
-                        <p class="p-0 m-0">Mobilize amigos, familiares, parentes e vizinhos. Divulgue seu projeto e compartilhes nas redes sociais e vu a lá só acompanhar as colaborações recebidas.</p>
+                        <p class="p-0 m-0">Mobilize amigos, familiares, parentes e vizinhos. Divulgue seu projeto e compartilhe nas redes sociais e vu a lá só acompanhar as colaborações recebidas.</p>
                     </div>
                 </div>
                 <div class="row pb-4 align-items-center">
@@ -116,7 +133,7 @@
                     </div>
                     <div class="col-8">
                         <h6 class="text-muted font-weight-bold mb-0">Compartilhe</h6>
-                        <p class="p-0 m-0">Sempre que fizer uma contribuição em alguma campanha no ME SALVA AÍ compartilhe com seus amigos e essa cultura alcançara muito mais pessoas </p>
+                        <p class="p-0 m-0">Sempre que fizer uma contribuição em alguma campanha no ME SALVA AÍ compartilhe com seus amigos e essa cultura alcançará muito mais pessoas </p>
                     </div>
                 </div>
                 <div class="row">

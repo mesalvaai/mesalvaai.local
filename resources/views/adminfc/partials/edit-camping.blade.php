@@ -194,13 +194,12 @@
 			</div>
 			{!! Form::text('goal', null, ['class' => $errors->has('goal') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
 		</div>
-		<small class="text-muted">(mínimo de R$20,00) </small><br>
-		
 		@if ($errors->has('goal'))
-		<span class="invalid-feedback">
+		<span class="invalid-feedback" style="display: block;">
 			<strong>{{ $errors->first('goal') }}</strong>
 		</span>
 		@endif
+		<small class="text-muted">(mínimo de R$1000,00) </small><br>
 	</div>
 	<br>
 	<h4 class="font-weight-bold">6. Qual será a duração da sua campanha?</h4><br>

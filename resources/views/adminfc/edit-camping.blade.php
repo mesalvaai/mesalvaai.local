@@ -28,8 +28,7 @@
                             {!! Form::model($campaign, ['route' => ['update.camping', $campaign->id], 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
                                 @include('adminfc.partials.edit-camping')
                             {{ Form::close() }}
-
-                            
+                                                        
                         </div>
                     </div>
                 </div>

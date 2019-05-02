@@ -39,8 +39,8 @@ class DonationsRequest extends FormRequest
                     'cpf' => 'required|cpf|max:14',
                     'total_amount' => [function ($attribute, $value, $fail) {
                         $valor = MyFunctions::FormatCurrencyForScreen($value);
-                        if ($valor < 20) {
-                            $fail('O valor mínimo de doação é R$ 20,00');
+                        if ($valor < 10) {
+                            $fail('O valor mínimo de doação é R$ 10,00');
                         }
                     }]
                 ];
