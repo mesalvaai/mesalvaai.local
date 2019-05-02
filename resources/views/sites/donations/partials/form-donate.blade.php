@@ -143,6 +143,9 @@
 		<img src="{{ asset('site/img/donations/boleto.png') }}" style="width: 50px;">
 
 	</div>
+	<div class="col-xs-12 col-sm12 col-md-12 text-center">
+		<a class="font-weight-bold" href="#" title="TERMO DO DOADOR" data-toggle="modal" data-target="#termo-doador"><small>TERMO DO DOADOR</small></a>
+	</div>
 </div>
 <div id="cred-card" class="tabcontent">
 	<div class="card">
@@ -235,6 +238,8 @@
 </div>
 
 <br>
+<!--Include termino do doador-->
+@include('layouts.site.partials.termo-doador', ['termos' => 'tremos-doador'])
 
 @section('scripts')
 <!-- JavaScript do moip -->

@@ -21,7 +21,9 @@
                         <div class="container">
                             <div class="row align-items-center">
                                 <div class="col-md-6 col-12 order-md-1 order-2">
-                                    <h4 style="padding-top: 30%;line-height: 50px;"><b style="color: #F52A2A">Não</b> estuda porque tá sem grana? <b style="color: #0071dd">Me Salva Aí</b> é uma opção ideal pra <b style="color: #C3C105">você</b></h4>
+                                    <div class="box-slide">
+                                        <h4 class="text-one-slide"><b style="color: #F52A2A">Não</b> estuda porque tá sem grana? <b style="color: #0071dd">Me Salva Aí</b> é uma opção ideal pra <b style="color: #C3C105">você</b></h4>
+                                    </div>
                                 </div>
                                 <div class="col-md-5 col-12 order-md-2 order-1">
                                 </div>
@@ -34,11 +36,12 @@
                         <div class="container">
                             <div class="row align-items-center">
                                 <div class="col-md-6 col-12 order-md-1 order-2">
-                                    <h2 class="text-white" style="padding-top: 30%;font-size: 3rem;">Melhor plataforma <br>
-                                        <strong class="text-primary">educacional</strong> <br>
-                                        <m class="text-white" style="font-size: 1.5rem;;font-weight: 300;">Viva seu sonho com a Me Salva Aí</m>
-                                    </h2>
-                                    
+                                    <div class="box-slide">
+                                        <h2 class="text-two-slide">Melhor plataforma <br>
+                                            <strong class="text-primary">educacional</strong><br>
+                                            <span class="text-white p-0">Viva seu sonho com a Me Salva Aí</span>
+                                        </h2>
+                                    </div>
                                 </div>
                                 <div class="col-md-5 col-12 order-md-2 order-1">
                                 </div>
@@ -284,7 +287,7 @@ CNPJ: 30.423.752/0001-26 - Capoeiruçu, Edifício Sabiá 05 ,Cachoeira/BA -  1º
                   <ul>
                         <li><a href="#" title="">Sobre nós</a></li>
                         <li><a href="#" title="">Como criar uma campanha</a></li>
-                        <li><a href="#" title="">Termos</a></li>
+                        {{-- <li><a href="#" title="">Termos</a></li> --}}
                         <li><a href="#" title="">Para Instituições</a></li>
                         <li><a href="#" title="">Bolsas de estudos</a></li>
 

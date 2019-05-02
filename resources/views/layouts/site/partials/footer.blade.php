@@ -12,7 +12,7 @@
             <div class="col-lg-6">
                 <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
                     <a href="#intro" class="scrollto">Home</a>
-                    <a href="#" data-toggle="modal" data-target="#termos-de-uso">Termos de uso</a>
+                    <a href="#" data-toggle="modal" data-target="#termos-de-uso">Termo de uso</a>
                     <a href="#" data-toggle="modal" data-target="#politicas">Politicas de privacidade</a>
                 </nav>
             </div>

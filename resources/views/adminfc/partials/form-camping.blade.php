@@ -295,14 +295,14 @@
 	<div class="col-4">
 		<div class="card bg-light mb-3" style="max-width: 18rem;">
 			<div class="card-body">
-				<a href="#" title=""><strong>POLÍTICA DE PRIVACIDADE</strong></a>
+				<a href="#" data-toggle="modal" data-target="#politicas"><strong>POLÍTICA DE PRIVACIDADE</strong></a>
 			</div>
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="card bg-light mb-3" style="max-width: 18rem;">
 			<div class="card-body">
-				<a href="#" title=""><strong>TERMOS DE USO</a></strong>
+				<a href="#" data-toggle="modal" data-target="#termos-de-uso"><strong>TERMO DE USO</a></strong>
 			</div>
 		</div>
 	</div>
@@ -335,6 +335,11 @@
 </div>
 <hr>
 <b><strong class="text-msa">NOVIDADE!</strong></b> Ao clicar em qualquer um destes botões, o seu rascunho estará salvo para edição ou lançamento imediato e futuro.
+
+<!--Termos e politicas-->
+@include('layouts.site.partials.termos-de-uso', ['termos' => 'tremos-de-uso'])
+@include('layouts.site.partials.politicas', ['termos' => 'politicas'])
+
 @section('scripts')
 <script src="{{ asset('vendor/tinymce/tinymce.min.js') }}" type="text/javascript"></script>
 <script>

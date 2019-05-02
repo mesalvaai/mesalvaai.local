@@ -1,12 +1,29 @@
-
+@import url(../fonts/fonts.css);
 /*--------------------------------------------------------------
 # Home Section
 --------------------------------------------------------------*/
+.text-logo{
+    /*font-family: Montserrat,Helvetica,Arial,Sans-Serif;*/
+    font-family: "Source Sans Pro",Helvetica,Arial,Sans-Serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
 .text-msa{
   color: #0071DD!important;
 }
 .msa-bg{
   background: #0071DD!important;
+}
+.text-phone{
+    font-family: "Source Sans Pro",Helvetica,Arial,Sans-Serif;
+}
+.navbar-light .navbar-nav .nav-link {
+    font-family: "Source Sans Pro",Helvetica,Arial,Sans-Serif;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.84);
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: rgb(0, 113, 221);
 }
 .text-b{
   font-size: 12px;
@@ -93,6 +110,7 @@
 }
 .btn-login{
     font-size: 18px;
+    font-family: "Source Sans Pro",Helvetica,Arial,Sans-Serif;
     cursor: pointer;
     text-align: center;
     user-select: none;
@@ -135,6 +153,32 @@
 
 .instructions{
   background: #717171!important;
+}
+.box-slide{
+    padding-top: 20%;
+}
+.box-slide .text-one-slide{
+    color: #fff;
+    font-family: Montserrat,Helvetica,Arial,Sans-Serif;
+    font-size: 3.5rem;
+    line-height: 4rem;
+    font-weight: 800;
+    transition: .2s cubic-bezier(.55,0,.1,1);
+    letter-spacing: 0;
+}
+.box-slide .text-two-slide{
+    color: #fff;
+    font-family: Montserrat,Helvetica,Arial,Sans-Serif;
+    font-size: 5rem;
+    line-height: 5rem;
+    font-weight: 800;
+    transition: .2s cubic-bezier(.55,0,.1,1);
+    letter-spacing: 0;
+}
+.box-slide .text-two-slide span{
+    font-family: "Source Sans Pro",Helvetica,Arial,Sans-Serif;
+    font-size: 3rem;
+    font-weight: 300;
 }
 /*--------------------------------------------------------------
 # Call Section two
@@ -751,39 +795,47 @@
   padding: 0 30px 30px 0;
 }
 @media (max-width: 480px){
-  #quem-somos {
-    padding: 60px 0 60px 0;
-  }
-  #quem-somos .quem-somos-bg {
-    background: url(/site/img/msa/qs-1.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    height: auto;
-  }
-  #quem-somos .qs-child-bg{
-    border: 0px solid rgba(50, 65, 88, 1);
-    background-color: rgba(255, 255, 255, 0.82);
-    border-radius: 6px;
-    box-shadow: 0px -5px 24px 0px rgba(153, 153, 151, 0.42);
-    padding: 10px 10px;
-    border-radius: 6px 6px;
-    height: 100%;
-    top: 0px;
-    position: relative;
-    margin-right: 0;
-  }
-  #quem-somos .qs-text{
-    top: -60px!important;
-    display: block;
-    position: relative;
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-  #quem-somos .qs-text h2 {
-    font-size: 4rem;
-    font-weight: 700;
-    color: #0071DD;
-  }
+    #quem-somos {
+        padding: 60px 0 60px 0;
+    }
+    #quem-somos .quem-somos-bg {
+        background: url(/site/img/msa/qs-1.jpg);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        height: auto;
+    }
+    #quem-somos .qs-child-bg{
+        border: 0px solid rgba(50, 65, 88, 1);
+        background-color: rgba(255, 255, 255, 0.82);
+        border-radius: 6px;
+        box-shadow: 0px -5px 24px 0px rgba(153, 153, 151, 0.42);
+        padding: 10px 10px;
+        border-radius: 6px 6px;
+        height: 100%;
+        top: 0px;
+        position: relative;
+        margin-right: 0;
+    }
+    #quem-somos .qs-text{
+        top: -60px!important;
+        display: block;
+        position: relative;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    #quem-somos .qs-text h2 {
+        font-size: 4rem;
+        font-weight: 700;
+        color: #0071DD;
+    }
+    .box-slide .text-two-slide {
+        font-size: 2rem;
+        line-height: 2rem;
+    }
+    .box-slide .text-one-slide {
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1121,6 +1173,14 @@ sub-footer Section
   #myCarousel .carousel-item .mask {
     top: 5em!important;
   }
+  .box-slide .text-two-slide {
+        font-size: 2rem;
+        line-height: 2rem;
+    }
+    .box-slide .text-one-slide {
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+    }
 }
 
 /*Painel Financiamento Colectivo */
@@ -1193,16 +1253,16 @@ sub-footer Section
   border-radius: 20px;
   color: #fff;
   transition: none;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Source Sans Pro",Helvetica,Arial,Sans-Serif;
 }
 .campanhas-ativas .get-started-btn:hover{
   background: rgb(102, 102, 102);
 }
 .campanhas-ativas .card-body .card-title>a{
     color: #1d2126;
-    font: 500 20px/26px Montserrat;
+    font: 500 20px/26px "Source Sans Pro",Helvetica,Arial,Sans-Serif;
     letter-spacing: -.6px;
     height: 52px;
 }
@@ -1210,7 +1270,7 @@ sub-footer Section
     color: #0071dd;
 }
 .campanhas-ativas  .card-body>.card-text{
-    font: 300 16px/20px Montserrat;
+    font: 300 16px/20px "Source Sans Pro",Helvetica,Arial,Sans-Serif;
     line-height: 1.2em;
     color: rgb(118, 118, 118);
 }
@@ -1231,19 +1291,6 @@ sub-footer Section
     height:100%;
     width: 100%;
     background-attachment: fixed;
-}
-#myCarousel h4{
-    font-size:40px;
-    margin-bottom:15px;
-    color:#FFF;
-    line-height:100%;
-    letter-spacing:0.5px;
-    font-weight:600;
-}
-#myCarousel p{
-    font-size:18px;
-    margin-bottom:15px;
-    color:#d5d5d5;
 }
 #myCarousel .carousel-item a{background:#F47735; font-size:14px; color:#FFF; padding:13px 32px; display:inline-block; }
 #myCarousel .carousel-item a:hover{background:#394fa2; text-decoration:none;  }

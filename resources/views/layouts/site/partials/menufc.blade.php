@@ -6,7 +6,7 @@
                     {{ config('app.name', 'Laravel') }}
                 </a> --}}
                 <a class="navbar-brand d-none d-sm-block" href="{{ url('/') }}">
-                    <h3 class="m-0"><a href="/" class="scrollto text-white">Me Salva Aí</a></h3>
+                    <h3 class="text-logo m-0"><a href="/" class="scrollto text-white">Me Salva Aí</a></h3>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
