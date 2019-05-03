@@ -22,7 +22,7 @@ class CreateCitiesTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             //$table->engine = 'InnoDB';
-            $table->increments('id');
+            $table->integer('id')->unsigned();
             $table->string('name', 45)->nullable();
             $table->string('slug', 45)->nullable();
             $table->integer('status')->nullable();
