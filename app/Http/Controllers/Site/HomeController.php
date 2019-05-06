@@ -33,7 +33,7 @@ class HomeController extends Controller
     {
             //$campanhas = Campaign::where('status', 1)->paginate();
         $campanhas = Campaign::where('published', 1)->paginate(4);
-        return view('sites.site', compact('campanhas', 'progress'));
+        return view('sites.site', compact('campanhas'));
     }
 
     public function campanhas()
@@ -49,6 +49,7 @@ class HomeController extends Controller
 
     public function campanha($slug = null)
     {
+        //dd($slug);
             //$campanha = Campaign::where('slug', $slug)->first();
         if ($slug == null) {
             abort(404, 'A url não existe');

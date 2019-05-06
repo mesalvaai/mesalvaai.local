@@ -283,7 +283,7 @@ class AdminController extends Controller
 
         $campaign = Campaign::where('id', $idCamping)->first();
         
-        return view('adminfc.edit-camping', compact('campaign','idUser', 'student_id', 'states', 'cities', 'encrypted', 'decrypted','categories', 'periods'));
+        return view('adminfc.edit-camping', compact('campaign','idUser', 'student_id', 'states', 'cities','categories', 'periods'));
     }
 
     public function updateCamping(StoreCampingRequest $request, $idCamping)

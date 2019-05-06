@@ -1,6 +1,9 @@
 
-@extends('layouts.site.app', ['title' => 'ME SALVA AI'])
-
+@extends('layouts.site.app', 
+[
+	'title' => $campanha->title.' - ME SALVA AI',
+	'image' => url("/miniatura/". $campanha->file_path)
+])
 
 @section('content')
 	<section class="campaing-for-student">
