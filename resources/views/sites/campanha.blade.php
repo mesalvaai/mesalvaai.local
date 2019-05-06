@@ -1,8 +1,9 @@
 
 @extends('layouts.site.app', 
 [
-	'title' => $campanha->title.' - ME SALVA AI',
-	'image' => url("/miniatura/". $campanha->file_path)
+	'title' => $campanha->title.' - Me salva aí',
+	'image' => url("/miniatura/". $campanha->file_path).'?w=600',
+	'description' => $campanha->abstract
 ])
 
 @section('content')

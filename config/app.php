@@ -165,6 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         LaravelLegends\PtBrValidator\ValidatorProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -256,6 +257,7 @@ return [
         'ProgressBar' => App\Helpers\ProgressBar::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Moip' => Artesaos\Moip\Facades\Moip::class,
+        'Image' => Intervention\Image\Facades\Image::class
     ],
 
 ];

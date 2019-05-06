@@ -2,10 +2,11 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <title>{{ ucfirst($title) ?? 'ME SALVA AI' }}</title>
+  <title>{{ ucfirst($title) ?? 'Me salva aí' }}</title>
   <meta property="og:image" content="{{ ucfirst($image ?? url('/site/img/msa/slides/slide9.jpg')) }}" />
-  <meta property="og:title" content="{{ ucfirst($title ?? 'Confira esse projeto no ME SALVA AI!') }}" />
-  <meta property="og:description" content="{{ ucfirst($description ?? 'Ajude o meu projeto a decolar!') }}" />
+  <meta property="og:title" content="{{ ucfirst($title ?? 'mesalvaai.com') }}" />
+  <meta property="og:description" content="{{ ucfirst($description ?? 'Visite mesalvaai.com') }}" />
+  <meta property="og:url" content="{{ ucfirst(URL::current() ?? '') }}" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">

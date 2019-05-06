@@ -28,6 +28,8 @@ use App\User;
 use Image;
 use FormatTime;
 
+use Intervention\Image\ImageManager;
+
 class AdminController extends Controller
 {
     public function __construct()
@@ -335,10 +337,30 @@ class AdminController extends Controller
         }
     }
 
-    public function getFile($filename)
-    {
-        $file = Storage::disk('images')->get($filename);
-        return new Response($file, 200);
+    //passar w faz a imagem ser redimensionada
+    public function getFile($filename, Request $request)
+    { 
+        
+        $imageStorage = Storage::disk('images')->get($filename);
+
+        $w = $request->w;
+
+        if(is_numeric($w)){
+
+            $img = Image::make($imageStorage)->resize(null, $w, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+    
+            return $img->response();
+
+        }else{
+
+            $img = Image::make($imageStorage);
+    
+            return $img->response();
+
+        }
     }
 
     public function viewCamping($idCamping)
