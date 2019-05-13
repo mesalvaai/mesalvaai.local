@@ -142,12 +142,11 @@ class MoipIntegration extends Model
 			$payment = $order->payments()  
 			->setBoleto($expiration_date, $logo_uri, $instruction_lines)
 			->execute();
-			dd($payment);
 			$url = file_get_contents($payment->getHrefPrintBoleto());
 
 			$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);
 
-			dd($print);
+			//dd($payment->getHrefPrintBoleto());
 
 			//dd($payment->getFundingInstrument()->method);
 			if ($payment->getStatus() === 'WAITING') {
@@ -185,16 +184,17 @@ class MoipIntegration extends Model
 				$idBoleto = $payment->getId();
 				$urlBoleto = $payment->getHrefPrintBoleto();
 				$hrefBoleto = explode('/', $payment->getHrefBoleto());
-				$hrefBoleto = array_last($hrefBoleto);
+				$CodBoleto = array_last($hrefBoleto);
 				$total_amount = $payment->getAmount()->total;
 				$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);
 
+				dd($hrefBoleto);
 				$data = [
 					'idBoleto' => $idBoleto,
 					'orderId' => $payment->getOrder()->getId(),
 					'codBoleto' => $codBoleto,
 					'urlBoleto' => $urlBoleto,
-					'hrefBoleto' => $hrefBoleto,
+					'codBoleto' => $CodBoleto,
 					'total_amount' => $total_amount,
 					'full_name' => $request->full_name,
 					'print' => $print
