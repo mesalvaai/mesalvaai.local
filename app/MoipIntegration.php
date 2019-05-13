@@ -112,10 +112,10 @@ class MoipIntegration extends Model
 			->setTaxDocument($request['cpf'])
 			->setPhone($phone['ddd'], $phone['numero'])
 			//->addAddress('SHIPPING','', '', '', '', '', '', '')
-			/*->addAddress('SHIPPING',
+			->addAddress('SHIPPING',
 				'CACHOEIRA', 101,
 				'Bairro de Capoeiruçu', 'Bahia', 'BA',
-				'44.300-000', 197)*/
+				'44.300-000', 197)
 			->create();
 		} catch (Exception $e) {
 			dd($e->__toString());
@@ -136,11 +136,18 @@ class MoipIntegration extends Model
 			$logo_uri = 'https://cdn.moip.com.br/wp-content/uploads/2016/05/02163352/logo-moip.png';
 			$expiration_date = new Carbon(date('Y-m-d', strtotime('+4 days')));
 
-			$instruction_lines = ['', '', ''];
+
+			$instruction_lines = ['INSTRUÇÃO 1', 'INSTRUÇÃO 2', 'INSTRUÇÃO 3'];
 
 			$payment = $order->payments()  
 			->setBoleto($expiration_date, $logo_uri, $instruction_lines)
 			->execute();
+			dd($payment);
+			$url = file_get_contents($payment->getHrefPrintBoleto());
+
+			$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);
+
+			dd($print);
 
 			//dd($payment->getFundingInstrument()->method);
 			if ($payment->getStatus() === 'WAITING') {
