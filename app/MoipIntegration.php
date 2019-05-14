@@ -147,7 +147,7 @@ class MoipIntegration extends Model
 
 			//dd($payment->getHrefPrintBoleto());
 
-			dd($customer->getShippingAddress());
+			//dd($customer->getShippingAddress());
 			if ($payment->getStatus() === 'WAITING') {
 				$donation = new Donation();
 				$donation->full_name = $request['full_name'];
@@ -183,17 +183,16 @@ class MoipIntegration extends Model
 				$idBoleto = $payment->getId();
 				$urlBoleto = $payment->getHrefPrintBoleto();
 				$hrefBoleto = explode('/', $payment->getHrefBoleto());
-				$CodBoleto = array_last($hrefBoleto);
+				$bol_id = array_last($hrefBoleto);
 				$total_amount = $payment->getAmount()->total;
 				$print = str_replace(' <link rel="icon" type="image/png" href="https://s3.amazonaws.com/assets.moip.com.br/boleto/images/moip-icon.png" />', '<link href="{{ asset("site/css/style.css") }}" rel="stylesheet">', $url);
 
-				dd($hrefBoleto);
 				$data = [
 					'idBoleto' => $idBoleto,
 					'orderId' => $payment->getOrder()->getId(),
 					'codBoleto' => $codBoleto,
 					'urlBoleto' => $urlBoleto,
-					'codBoleto' => $CodBoleto,
+					'bolCod' => $bol_id,
 					'total_amount' => $total_amount,
 					'full_name' => $request->full_name,
 					'print' => $print

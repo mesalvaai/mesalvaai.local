@@ -95,12 +95,12 @@ class HomeController extends Controller
             $orderId = $boleto['orderId'];
             $codBoleto = $boleto['codBoleto'];
             $urlBoleto = $boleto['urlBoleto'];
-            $hrefBoleto = $boleto['hrefBoleto'];
+            $bolCod = $boleto['bolCod'];
             $total_amount = $boleto['total_amount'];
             $printBoleto = $boleto['print'];
             $full_name = $boleto['full_name'];
             $request->session()->flash('status', 'Obrigado por sua contribuição, aguardamos o pagamento do boleto!!');
-            return view('sites.donations.checkout-boleto', compact('idBoleto', 'codBoleto', 'printBoleto', 'hrefBoleto', 'total_amount', 'full_name'));
+            return view('sites.donations.checkout-boleto', compact('idBoleto', 'codBoleto', 'printBoleto', 'urlBoleto', 'bolCod', 'total_amount', 'full_name'));
             //return redirect()->route('gerar.boleto', ['idBoleto' => $idBoleto, 'orderId ' => $orderId]);
 
         } else {

@@ -38,7 +38,7 @@
 							<div class="text-center">
 								{{-- <a target="_blank" href="https://sandbox.moip.com.br/v2/boleto/{{ $hrefBoleto }}/print"  class="btn btn-msa btn-sm w-50" >Clique para ver o boleto</a> --}}
 								{{-- <a target="_blank" href="{{ route('boleto.print', $idBoleto) }}"  class="btn btn-msa btn-sm w-50" >Clique para ver o boleto</a> --}}
-								<a target="_blank" href="{{ route('boleto.print', $printBoleto) }}"  class="btn btn-msa btn-sm w-50" >Clique para ver o boleto</a>
+								<a target="_blank" href="{!! $urlBoleto !!}"  class="btn btn-msa btn-sm w-50" >Clique para ver o boleto</a>
 
 							</div>
 							<br>
