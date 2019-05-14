@@ -111,11 +111,10 @@ class MoipIntegration extends Model
 			->setBirthDate($date_of_birth)
 			->setTaxDocument($request['cpf'])
 			->setPhone($phone['ddd'], $phone['numero'])
-			//->addAddress('SHIPPING','', '', '', '', '', '', '')
-			/*->addAddress('SHIPPING',
+			->addAddress('SHIPPING',
 				'CACHOEIRA', 101,
 				'Bairro de Capoeiruçu', 'Bahia', 'BA',
-				'44.300-000', 197)*/
+				'44300000', 197)
 			->create();
 		} catch (Exception $e) {
 			dd($e->__toString());
@@ -142,7 +141,7 @@ class MoipIntegration extends Model
 			->setBoleto($expiration_date, $logo_uri, $instruction_lines)
 			->execute();
 
-			//dd($payment->getFundingInstrument()->method);
+			dd($customer->getShippingAddress());
 			if ($payment->getStatus() === 'WAITING') {
 				$donation = new Donation();
 				$donation->full_name = $request['full_name'];
