@@ -28,13 +28,7 @@
 							</div>
 							
 							<p class="text-center">ou</p> --}}
-							<div class="row justify-content-center">
-								<div class="col-md-8 align-content-center">
-									{{-- <div id="printableArea">{!! $printBoleto !!}</div> --}}
-									{{-- <iframe src="https://checkout-sandbox.moip.com.br/boleto/{{$idBoleto}}/print" width="100%" height="750" frameborder="0" allowfullscreen></iframe> --}}
-									<iframe src="{{ $printBoleto }}" width="100%" height="750" frameborder="0" allowfullscreen></iframe>
-								</div>
-							</div>
+							
 							<div class="text-center">
 								{{-- <a target="_blank" href="https://sandbox.moip.com.br/v2/boleto/{{ $hrefBoleto }}/print"  class="btn btn-msa btn-sm w-50" >Clique para ver o boleto</a> --}}
 								{{-- <a target="_blank" href="{{ route('boleto.print', $idBoleto) }}"  class="btn btn-msa btn-sm w-50" >Clique para ver o boleto</a> --}}
@@ -42,7 +36,7 @@
 
 							</div>
 							<br>
-							<p class="text-center"><b>Pague seu boleto até a data de vencimento. Contamos com você!</b> <br>
+							<p class="text-center"><b>Uma cópia do boleto foi enviada para seu email. Esse projeto conta com você!</b> <br>
 							{{-- <em>ID da transação: 1764921</em></p> --}}
 	            		</div>
 	            		<div class="card-footer text-center">

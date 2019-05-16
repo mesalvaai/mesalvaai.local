@@ -93,9 +93,19 @@ class HomeController extends Controller
 
             $boleto = MoipIntegration::getPagamentoBoleto($request);
 
-            dd($boleto);
+            //dd($boleto);
             try {
-                Mail::to($request->email)->send(new BoletoMail($boleto['full_name'], $boleto['urlBoleto']));
+                //Mail::to($request->email)->send(new BoletoMail($boleto['full_name'], $boleto['urlBoleto']));
+
+                Mail::send('mail.boletomail', ['name'=>$boleto['full_name'], 'link'=>$boleto['urlBoleto']], function($message) use ($request)
+                {
+                    $message->from('financeiro@mesalvaai.com', 'Me salva aí | Financeiro');
+
+                    $message->subject('Cópia do boleto');
+            
+                    $message->to($request->email);
+                });
+
             } catch (\Throwable $th) {
             }
             

@@ -38,7 +38,7 @@
 								<a target="_blank" href="{{ route('boleto.print', $idBoleto) }}"  class="btn btn-msa btn-sm w-50" >Clique para ver o boleto</a>
 							</div>
 							<br>
-							<p class="text-center"><b>Pague seu boleto até a data de vencimento. Contamos com você!</b> <br>
+							<p class="text-center"><b>Uma cópia do boleto foi enviada para seu email. Esse projeto conta com você!</b> <br>
 							{{-- <em>ID da transação: 1764921</em></p> --}}
 	            		</div>
 	            		<div class="card-footer text-center">
