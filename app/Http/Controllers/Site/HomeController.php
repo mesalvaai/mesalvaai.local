@@ -104,7 +104,7 @@ class HomeController extends Controller
             $orderId = $boleto['orderId'];
             $codBoleto = $boleto['codBoleto'];
             $urlBoleto = $boleto['urlBoleto'];
-            $bolCod = $boleto['CodigoBol'];
+            $bolCod = $boleto['CodigoBol']; //no modo dev esse campo é 'bolCod'
             $total_amount = $boleto['total_amount'];
             $printBoleto = $boleto['print'];
             $full_name = $boleto['full_name'];
