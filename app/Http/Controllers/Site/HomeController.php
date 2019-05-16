@@ -93,7 +93,7 @@ class HomeController extends Controller
 
             $boleto = MoipIntegration::getPagamentoBoleto($request);
 
-            //dd($request, $boleto);
+            dd($boleto);
             try {
                 Mail::to($request->email)->send(new BoletoMail($boleto['full_name'], $boleto['urlBoleto']));
             } catch (\Throwable $th) {
@@ -104,7 +104,7 @@ class HomeController extends Controller
             $orderId = $boleto['orderId'];
             $codBoleto = $boleto['codBoleto'];
             $urlBoleto = $boleto['urlBoleto'];
-            $bolCod = $boleto['bolCod'];
+            $bolCod = $boleto['CodigoBol'];
             $total_amount = $boleto['total_amount'];
             $printBoleto = $boleto['print'];
             $full_name = $boleto['full_name'];
