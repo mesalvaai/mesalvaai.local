@@ -141,7 +141,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 text-center pb-4">
-                        <a href="#camping" title="" class="btn btn-primary btn-lg w-50">Doar</a>
+                        <a href="{{ route('campanhas') }}" title="" class="btn btn-primary btn-lg w-50">Doar</a>
                     </div>
                 </div>
             </div>

@@ -27,7 +27,7 @@ class TestController extends Controller
 
 	public function testSessions()
 	{
-		session()->flash('status', 'Obrigado por sua contribuição, aguardamos o pagamento do boleto!!');
+		session()->flash('status', 'Obrigado por sua contribuição! O boleto pode levar até duas horas para ficar pronto');
 		return view('sites.tests.sessions');
 	}
     public function test()

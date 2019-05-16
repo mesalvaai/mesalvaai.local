@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\Donations\DonationsRequest;
 use App\Helpers\MyFunctions;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BoletoMail;
 
 use App\Campaign;
 
@@ -85,11 +87,18 @@ class HomeController extends Controller
             $pagoComCartao = MoipIntegration::getPagamentoCreditCard($request);
             $campaignSlug = Campaign::where('id', $request['campaign_id'])->first();
             
-            return redirect()->route('show.campanha', $campaignSlug->slug)->with('status', 'Obrigado pos sua contribuição');
+            return redirect()->route('show.campanha', $campaignSlug->slug)->with('status', 'Obrigado por sua contribuição!');
 
         } elseif ( ($request->type_payment === 'BOLETO') AND ($request->op === 'BOLETO') ){
 
             $boleto = MoipIntegration::getPagamentoBoleto($request);
+
+            //dd($request, $boleto);
+            try {
+                Mail::to($request->email)->send(new BoletoMail($boleto['full_name'], $boleto['urlBoleto']));
+            } catch (\Throwable $th) {
+            }
+            
 
             $idBoleto = $boleto['idBoleto'];
             $orderId = $boleto['orderId'];
@@ -99,7 +108,7 @@ class HomeController extends Controller
             $total_amount = $boleto['total_amount'];
             $printBoleto = $boleto['print'];
             $full_name = $boleto['full_name'];
-            $request->session()->flash('status', 'Obrigado por sua contribuição, aguardamos o pagamento do boleto!!');
+            $request->session()->flash('status', 'O boleto pode levar até duas horas para ser processado e até dois dias úteis para ser compensado. Obrigado pela sua contribuição!');
             return view('sites.donations.checkout-boleto', compact('idBoleto', 'codBoleto', 'printBoleto', 'urlBoleto', 'bolCod', 'total_amount', 'full_name'));
             //return redirect()->route('gerar.boleto', ['idBoleto' => $idBoleto, 'orderId ' => $orderId]);
 
