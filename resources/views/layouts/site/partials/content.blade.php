@@ -1,57 +1,112 @@
 <!--========================== Home Section ============================-->
-    <div class="clearfix"></div>
-    <section id="home" style="padding-top: 80px;">
-        <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-            <div class="carousel-inner">
-                {{-- <div class="carousel-item active">
-                    <div class="mask flex-center" style="background: url({{ asset('site/img/msa/slides/slide-10.jpg') }});">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-7 col-12 order-md-1 order-2">
-                                </div>
-                                <div class="col-md-5 col-12 order-md-2 order-1">
-                                    <h4 style="padding-top: 30%;"><b style="color: #30bdff">Não</b> estuda porque tá sem grana? <b style="color: #B300A1">Me Salva Ai</b> é uma opção ideal pra <b style="color: #F52A2A">você</b></h4>
-                                </div>
+<div class="clearfix"></div>
+<section id="home" style="padding-top: 80px;">
+    <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            {{-- <div class="carousel-item active">
+                <div class="mask flex-center" style="background: url({{ asset('site/img/msa/slides/slide-10.jpg') }});">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7 col-12 order-md-1 order-2">
                             </div>
-                        </div>
-                    </div>
-                </div> --}}
-                <div class="carousel-item active">
-                    <div class="mask flex-center" style="background: url({{ asset('site/img/msa/slides/slide-11.jpg') }});background-position:center top;">                        
-                        <div class="container">
-                            <div class="row align-items-center">
-                                <div class="col-md-6 col-12 order-md-1 order-2">
-                                    <div class="box-slide">
-                                        <h4 class="text-one-slide"><b style="color: #F52A2A">Não</b> estuda porque tá sem grana? <b style="color: #0071dd">Me Salva Aí</b> é uma opção ideal pra <b style="color: #C3C105">você</b></h4>
-                                    </div>
-                                </div>
-                                <div class="col-md-5 col-12 order-md-2 order-1">
-                                </div>
+                            <div class="col-md-5 col-12 order-md-2 order-1">
+                                <h4 style="padding-top: 30%;"><b style="color: #30bdff">Não</b> estuda porque tá sem grana? <b style="color: #B300A1">Me Salva Ai</b> é uma opção ideal pra <b style="color: #F52A2A">você</b></h4>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="mask flex-center" style="background: url({{ asset('site/img/msa/slides/slide-11.jpg') }});background-position:center top;">
-                        <div class="container">
-                            <div class="row align-items-center">
-                                <div class="col-md-6 col-12 order-md-1 order-2">
-                                    <div class="box-slide">
-                                        <h2 class="text-two-slide">Melhor plataforma <br>
-                                            <strong class="text-primary">educacional</strong><br>
-                                            <span class="text-white p-0">Viva seu sonho com a Me Salva Aí</span>
-                                        </h2>
-                                    </div>
+            </div> --}}
+            <div class="carousel-item active">
+                <div class="mask flex-center" style="background: url({{ asset('site/img/msa/slides/slide-11.jpg') }});background-position:center top;">                        
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 col-12 order-md-1 order-2">
+                                <div class="box-slide">
+                                    <h4 class="text-one-slide"><b style="color: #F52A2A">Não</b> estuda porque tá sem grana? <b style="color: #0071dd">Me Salva Aí</b> é uma opção ideal pra <b style="color: #C3C105">você</b></h4>
                                 </div>
-                                <div class="col-md-5 col-12 order-md-2 order-1">
+                            </div>
+                            <div class="col-md-5 col-12 order-md-2 order-1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="mask flex-center" style="background: url({{ asset('site/img/msa/slides/slide-11.jpg') }});background-position:center top;">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 col-12 order-md-1 order-2">
+                                <div class="box-slide">
+                                    <h2 class="text-two-slide">Melhor plataforma <br>
+                                        <strong class="text-primary">educacional</strong><br>
+                                        <span class="text-white p-0">Viva seu sonho com a Me Salva Aí</span>
+                                    </h2>
                                 </div>
+                            </div>
+                            <div class="col-md-5 col-12 order-md-2 order-1">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<!--========================== Campanhas Ativas ============================-->
+@if ($campanhas->count() > 0)
+
+<section class="campanhas-ativas" id="camping">
+    <div class="container-fluid">
+        <div class="row justify-content-between pb-3">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                <h3 class="font-weight-bold text-gray-dark">CAMPANHA ESTUDANTIS</h3>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <a class="get-started-btn float-right" href="/" title="Ver campanhas">Ver todos</a>
+            </div>
+        </div>
+        <div class="row">
+            @foreach ($campanhas as $campanha)
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 pb-3">
+                    <div class="card h-100">
+                        <a href="#" style="background-image: url({{ url('/miniatura/'. $campanha->file_path)  }});" class="img-min-campaign"></a>
+
+                        <div class="card-body pb-1">
+                            <div class="card-title">
+                                <a href="{{ route('show.campanha', $campanha->slug) }}">{{ str_limit($campanha->title,'50') }}</a>
+                            </div>
+                            
+                            <p class="card-text pt-0">{{ str_limit($campanha->abstract, '80') }}</p>
+                            
+                        </div>
+                        <div class="align-items-end p-2">
+                            <div class="row pt-2">
+                                <div class="col">
+                                    <span class="badge badge-pill badge-secondary mb-2 float-left">R$ {{ MyFunctions::formatandoForView($campanha->funds_received) }}</span>
+                                    <span class="badge badge-pill badge-info mb-2 float-right">R$ {{ MyFunctions::formatandoForView($campanha->goal) }}</span>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {!! ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) !!}%;" aria-valuenow="{!! ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) !!}" aria-valuemin="0" aria-valuemax="100">{{ ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}%</div>
+                            </div>
+                            <p class="card-text pt-2">
+                                <small class="text-muted float-left">{{ FormatTime::diasRestantes($campanha->end_date) }}</small>
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white text-center">
+                            <a href="{{ route('show.campanha', $campanha->slug) }}" title="Seja parte da histori"  class="get-started-btn">Saiba mais <i class="fas fa-angle-double-right" style="font-size: 16px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <div style="margin: 20px; margin-top: 50px;" width="100%" align="center">
+            <a href="{{ route('campanhas') }}" title="todas-campanhas"  class="get-started-btn">Todas as campanhas</a>
+        </div>
+    </div>
+</section>
+@endif
 
 <!-- ===== Section para students and Donations === -->
 <section class="students pt-5 pb-5" id="crie-sua-campanha">
@@ -211,61 +266,6 @@
         </div>
     </div>
 </section>
-
-<!--========================== Campanhas Ativas ============================-->
-@if ($campanhas->count() > 0)
-
-<section class="campanhas-ativas" id="camping">
-    <div class="container-fluid">
-        <div class="row justify-content-between pb-3">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-                <h3 class="font-weight-bold text-gray-dark">CAMPANHA ESTUDANTIS</h3>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                <a class="get-started-btn float-right" href="/" title="Ver campanhas">Ver todos</a>
-            </div>
-        </div>
-        <div class="row">
-            @foreach ($campanhas as $campanha)
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 pb-3">
-                    <div class="card h-100">
-                        <a href="#" style="background-image: url({{ url('/miniatura/'. $campanha->file_path)  }});" class="img-min-campaign"></a>
-
-                        <div class="card-body pb-1">
-                            <div class="card-title">
-                                <a href="{{ route('show.campanha', $campanha->slug) }}">{{ str_limit($campanha->title,'50') }}</a>
-                            </div>
-                            
-                            <p class="card-text pt-0">{{ str_limit($campanha->abstract, '80') }}</p>
-                            
-                        </div>
-                        <div class="align-items-end p-2">
-                            <div class="row pt-2">
-                                <div class="col">
-                                    <span class="badge badge-pill badge-secondary mb-2 float-left">R$ {{ MyFunctions::formatandoForView($campanha->funds_received) }}</span>
-                                    <span class="badge badge-pill badge-info mb-2 float-right">R$ {{ MyFunctions::formatandoForView($campanha->goal) }}</span>
-                                </div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {!! ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) !!}%;" aria-valuenow="{!! ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) !!}" aria-valuemin="0" aria-valuemax="100">{{ ProgressBar::progressDonation($campanha->funds_received, $campanha->goal) }}%</div>
-                            </div>
-                            <p class="card-text pt-2">
-                                <small class="text-muted float-left">{{ FormatTime::diasRestantes($campanha->end_date) }}</small>
-                            </p>
-                        </div>
-                        <div class="card-footer bg-white text-center">
-                            <a href="{{ route('show.campanha', $campanha->slug) }}" title="Doar"  class="get-started-btn">Doar</a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-        <div style="margin: 20px; margin-top: 50px;" width="100%" align="center">
-            <a href="{{ route('campanhas') }}" title="todas-campanhas"  class="get-started-btn">Todas as campanhas</a>
-        </div>
-    </div>
-</section>
-@endif
 
 <!--========================== Section items rodape ============================-->
 <section id="items-rodape" class="items-rodape-bg">
