@@ -923,6 +923,90 @@ sub-footer Section
   font-size: 14px;
 }
 
+/*redes sociais*/
+.contenedor-redes-sociales {  
+  right: 0;
+  position: fixed;
+  bottom: 95px;
+  margin-right: 15px;
+  z-index: 9;
+}
+
+.icono {
+  top: 50%;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.icono-primary {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  background: #3b5998;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  line-height: 40px;
+
+  -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.5);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.5);
+}
+
+.contenedor-descripcion {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 24px;
+}
+
+.icono-descripcion {
+  width: 200px;
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  background: #3b5998;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 40px;
+  border-radius: 20px 0 0 20px;
+
+  -webkit-box-shadow: 1px 0 1px rgba(0,0,0,0.5);
+  box-shadow: 1px 0 1px rgba(0,0,0,0.5);
+
+  -webkit-transform: translate3d(-110%, 0, 0);
+  -ms-transform: translate3d(-110%, 0, 0);
+  -o-transform: translate3d(-110%, 0, 0);
+  transform: translate3d(-110%, 0, 0);
+
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.icono-primary:hover ~ .contenedor-descripcion .icono-descripcion {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+/*-------Colores Para Redes Sociales-------*/
+.color-twitter {
+  background: #3B94D9;
+}
+.color-instagram {
+  background: #a3308f;
+}
+.color-facebook {
+  background: blue;
+}
+.color-youtube {
+  background: #dd4339;
+}
+
 /*------------------------------
  Financing Section
  --------------------------------*/

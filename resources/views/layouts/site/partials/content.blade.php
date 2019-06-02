@@ -273,8 +273,39 @@
         <div class="row ljustify-content-md-center">
             <div class="col-md">
                     <h5 class="text-white">mesalvaai.com</h5>
-                    <p>© 2018 todos os direitos reservados. <br>
-CNPJ: 30.423.752/0001-26 - Capoeiruçu, Edifício Sabiá 05 ,Cachoeira/BA -  1º Andar.</p>
+                    <p>© 2019 todos os direitos reservados. <br>
+                    CNPJ: 30.423.752/0001-26 - Capoeiruçu, Edifício Sabiá 05 ,Cachoeira/BA -  1º Andar.</p>
+
+                    <div class="contenedor-redes-sociales">
+                        <div class="icono">
+                            <a href="https://www.facebook.com/mesalvacrowdfunding/" class="icono-primary" target="_blank"><i class="fab fa-facebook"></i></a>
+
+                            <div class="contenedor-descripcion">
+                                <a href="#" class="icono-descripcion">Seguir Facebook</a>
+                            </div>
+                        </div>
+                        {{-- <div class="icono">
+                            <a href="https://www.twitter.com/mesalvaai" class="icono-primary color-twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+
+                            <div class="contenedor-descripcion">
+                                <a href="#" class="icono-descripcion color-twitter">Seguir Twitter</a>
+                            </div>
+                        </div> --}}
+                        <div class="icono">
+                            <a href="https://www.instagram.com/oficial_mesalvaai/" class="icono-primary color-instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+
+                            <div class="contenedor-descripcion">
+                                <a href="#" class="icono-descripcion color-instagram">Seguir Instagram</a>
+                            </div>
+                        </div>
+                        <div class="icono">
+                            <a href="https://www.youtube.com/channel/UCzA3tMcA3zcXUyvdFNKQe3g" class="icono-primary color-youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+
+                            <div class="contenedor-descripcion">
+                                <a href="#" class="icono-descripcion color-youtube">Seguir youtube</a>
+                            </div>
+                        </div>
+                    </div>
             </div>
             <div class="col-md">
                 <h3>Central de Ajuda</h3>
